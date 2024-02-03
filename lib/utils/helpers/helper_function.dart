@@ -79,34 +79,34 @@ class THelperFunction {
     return MediaQuery.of(Get.context!).size;
   }
 
+  static double screenHeight(BuildContext context) {
+    return MediaQuery.of(Get.context!).size.height;
+  }
   // static double screenHeight() {
-  //   return MediaQuery.of(Get.context!).size.height;
+  //   BuildContext? context = Get.context;
+  //   if (context != null) {
+  //     return MediaQuery.of(context).size.height;
+  //   } else {
+  //     // Manejar el caso en el que el contexto es null, tal vez lanzar una excepción o proporcionar un valor predeterminado.
+  //     // En este ejemplo, se devuelve 0, pero debes adaptarlo según tus necesidades.
+  //     return 0;
+  //   }
   // }
-  static double screenHeight() {
-    BuildContext? context = Get.context;
-    if (context != null) {
-      return MediaQuery.of(context).size.height;
-    } else {
-      // Manejar el caso en el que el contexto es null, tal vez lanzar una excepción o proporcionar un valor predeterminado.
-      // En este ejemplo, se devuelve 0, pero debes adaptarlo según tus necesidades.
-      return 0;
-    }
+
+  static double screenWidth(BuildContext context) {
+    return MediaQuery.of(Get.context!).size.width;
   }
 
   // static double screenWidth() {
-  //   return MediaQuery.of(Get.context!).size.width;
+  //   BuildContext? context = Get.context;
+  //   if (context != null) {
+  //     return MediaQuery.of(context).size.width;
+  //   } else {
+  //     // Manejar el caso en el que el contexto es null, tal vez lanzar una excepción o proporcionar un valor predeterminado.
+  //     // En este ejemplo, se devuelve 0, pero debes adaptarlo según tus necesidades.
+  //     return 0;
+  //   }
   // }
-
-  static double screenWidth() {
-    BuildContext? context = Get.context;
-    if (context != null) {
-      return MediaQuery.of(context).size.width;
-    } else {
-      // Manejar el caso en el que el contexto es null, tal vez lanzar una excepción o proporcionar un valor predeterminado.
-      // En este ejemplo, se devuelve 0, pero debes adaptarlo según tus necesidades.
-      return 0;
-    }
-  }
 
   static String getFormattedDate(DateTime date,
       {String format = 'dd MM yyyy'}) {
