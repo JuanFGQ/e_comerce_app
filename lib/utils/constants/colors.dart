@@ -19,12 +19,12 @@ class TColors {
 //TEXT COLORS
   static const Color textPrimary = Color(0xff4b68ff);
   static const Color textSecondary = Color(0xff4b68ff);
-  static const Color textWhite = Color(0xff4b68ff);
+  static const Color textWhite = Color.fromARGB(255, 242, 242, 243);
 
   //BACKGROUND COLORS
 
-  static const Color light = Color(0xff4b68ff);
-  static const Color dark = Color(0xff4b68ff);
+  static const Color light = Color.fromARGB(255, 248, 249, 250);
+  static const Color dark = Color.fromARGB(255, 16, 16, 16);
   static const Color primaryBackGround = Color(0xff4b68ff);
 
   //BACKGROUND CONTAINER COLORS
@@ -49,11 +49,11 @@ class TColors {
 
   //NEUTRAL SHADES
 
-  static const Color black = Color(0xff4b68ff);
-  static const Color darkGrey = Color(0xff4b68ff);
-  static const Color darkerGrey = Color(0xff4b68ff);
-  static const Color grey = Color(0xff4b68ff);
+  static const Color black = Color.fromARGB(255, 0, 0, 0);
+  static const Color darkGrey = Color.fromARGB(255, 61, 61, 61);
+  static const Color darkerGrey = Color.fromARGB(255, 49, 49, 49);
+  static const Color grey = Color.fromARGB(255, 158, 158, 158);
   static const Color softGrey = Color(0xff4b68ff);
-  static const Color lightGrey = Color(0xff4b68ff);
-  static const Color white = Color(0xff4b68ff);
+  static const Color lightGrey = Color.fromARGB(255, 242, 243, 244);
+  static const Color white = Color.fromARGB(255, 255, 255, 255);
 }

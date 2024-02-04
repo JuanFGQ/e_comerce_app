@@ -1,6 +1,6 @@
-import 'package:e_comerce_app/features/authentication/screens/login/widgets/form_divider.dart';
-import 'package:e_comerce_app/features/authentication/screens/login/widgets/social_button.dart';
-import 'package:e_comerce_app/features/authentication/screens/signup/widgets/sign_up_form.dart';
+import 'package:e_comerce_app/features/authentication/screens/authentication/login/widgets/form_divider.dart';
+import 'package:e_comerce_app/features/authentication/screens/authentication/login/widgets/social_button.dart';
+import 'package:e_comerce_app/features/authentication/screens/authentication/signup/widgets/sign_up_form.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/constants/text_strings.dart';

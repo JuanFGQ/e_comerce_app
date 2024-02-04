@@ -14,7 +14,7 @@ class TTexts {
 
   //HOME
   static const String homeAppbarTitle = "Good day for shopping";
-  static const String homeAppbarSubTitle = "RandomName";
+  static const String homeAppbarSubTitle = "Welcom MobileX";
 
   //AUTHENTICATION FORM TEXT
   static const String email = "E-mail";

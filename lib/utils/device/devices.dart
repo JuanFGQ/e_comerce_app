@@ -31,13 +31,13 @@ class TDeviceUtils {
         enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
   }
 
-  // static double getScreenHeight() {
-  //   return MediaQuery.of(Get.context!).size.height;
-  // }
+  static double getScreenHeight(BuildContext context) {
+    return MediaQuery.of(Get.context!).size.height;
+  }
 
-  // static double getScreenWidth() {
-  //   return MediaQuery.of(Get.context!).size.width;
-  // }
+  static double getScreenWidth(BuildContext context) {
+    return MediaQuery.of(Get.context!).size.width;
+  }
 
   static double getPixelRatio() {
     return MediaQuery.of(Get.context!).devicePixelRatio;
