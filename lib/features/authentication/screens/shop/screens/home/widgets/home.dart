@@ -60,6 +60,9 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: TSizes.spaceBtwSection),
+                    //POPULAR PRODUCTS HEADING
+                    TSectionHeading(title: 'Popular Products'),
+                    SizedBox(height: TSizes.spaceBtwSection),
                     //POPULAR PRODUCTS
                     GridLayout(
                       itemBuilder: (p0, p1) => const ProductCardVertical(),
