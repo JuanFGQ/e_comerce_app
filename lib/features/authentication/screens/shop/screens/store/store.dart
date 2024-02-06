@@ -1,5 +1,6 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/appbar/tab_bar.dart';
+import 'package:e_comerce_app/common/widgets/brands/brand_show_case.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
@@ -7,6 +8,8 @@ import 'package:e_comerce_app/common/widgets/layout/grid_layout.dart';
 import 'package:e_comerce_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
+import 'package:e_comerce_app/common/widgets/brands/brand_card.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/store/widgets/categories_brand.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
@@ -43,7 +46,7 @@ class StoreScreen extends StatelessWidget {
                       : TColors.light,
                   expandedHeight: 440,
                   flexibleSpace: Padding(
-                    padding: EdgeInsets.all(TSizes.defaultSpace),
+                    padding: const EdgeInsets.all(TSizes.defaultSpace),
                     child: ListView(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -65,7 +68,7 @@ class StoreScreen extends StatelessWidget {
                             itemCount: 4,
                             mainAxisExtent: 80,
                             itemBuilder: (_, index) {
-                              return TBrandCard(showBorder: false);
+                              return const TBrandCard(showBorder: false);
                             })
                       ],
                     ),
@@ -84,99 +87,15 @@ class StoreScreen extends StatelessWidget {
           },
 
           //BODY
-          body: TabBarView(children: [
-            Padding(
-              padding: EdgeInsets.all(TSizes.defaultSpace),
-              child: Column(
-                children: [
-                  //BRANDS
-
-                  CRoundedContainer(
-                    showBorder: true,
-                    borderColor: TColors.darkGrey,
-                    backGroundColor: Colors.transparent,
-                    margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItems),
-                    widget: Column(
-                      children: [
-                        //BRAND with product count
-                        TBrandCard(showBorder: false),
-                        // TBrand TOP 3 PRODUCT IMAGES
-                        Row(
-                          children: [
-                            CRoundedContainer(
-                              height: 100,
-                              backGroundColor:
-                                  THelperFunction.isDarkMode(context)
-                                      ? TColors.darkGrey
-                                      : TColors.light,
-                              margin: const EdgeInsets.only(right: TSizes.sm),
-                              padding: const EdgeInsets.all(TSizes.md),
-                              widget: const Image(
-                                  fit: BoxFit.contain,
-                                  image: AssetImage(TImages.onBoardingImage2)),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
-          ]),
-        ),
-      ),
-    );
-  }
-}
-
-class TBrandCard extends StatelessWidget {
-  const TBrandCard({
-    super.key,
-    required this.showBorder,
-    this.onTap,
-  });
-
-  final bool showBorder;
-  final void Function()? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: CRoundedContainer(
-        padding: EdgeInsets.all(TSizes.sm),
-        showBorder: showBorder,
-        backGroundColor: Colors.transparent,
-        widget: Row(
-          children: [
-            //ICON
-
-            Flexible(
-              child: TCircularImage(
-                  image: TImages.google,
-                  backGroundColor: Colors.transparent,
-                  isNetWorkImage: false,
-                  overlayColor: THelperFunction.isDarkMode(context)
-                      ? TColors.white
-                      : TColors.black),
-            ),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
-            //TEXT
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const TBrandTitleTextWithVerifiedIcon(
-                      title: 'Nike', brandTextSize: TextSizes.large),
-                  Text('256 products',
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelMedium)
-                ],
-              ),
-            )
-          ],
+          body: const TabBarView(
+            children: [
+              TCategoryTab(),
+              TCategoryTab(),
+              TCategoryTab(),
+              TCategoryTab(),
+              TCategoryTab(),
+            ],
+          ),
         ),
       ),
     );
