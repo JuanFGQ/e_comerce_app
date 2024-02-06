@@ -2,6 +2,8 @@ import 'package:e_comerce_app/common/styles/shadows.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_comerce_app/common/widgets/icon/circular_icon.dart';
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
+import 'package:e_comerce_app/common/widgets/text/brand_title.dart';
+import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
@@ -89,16 +91,7 @@ class ProductCardVertical extends StatelessWidget {
                 children: [
                   const ProductTitleText(title: 'Produc Text', smailSize: true),
                   const SizedBox(height: TSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text('brand',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: Theme.of(context).textTheme.labelMedium),
-                      const Icon(Iconsax.verify5,
-                          color: TColors.primary, size: TSizes.iconXs)
-                    ],
-                  ),
+                  TBrandTitleTextWithVerifiedIcon(title: 'Nike')
                 ],
               ),
             ),

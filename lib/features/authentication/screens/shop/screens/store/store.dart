@@ -3,8 +3,10 @@ import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_co
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
 import 'package:e_comerce_app/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
+import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
@@ -72,7 +74,13 @@ class StoreScreen extends StatelessWidget {
                           //TEXT
                           Column(
                             children: [
-                              Text('HOLA'),
+                              const TBrandTitleTextWithVerifiedIcon(
+                                  title: 'Nike',
+                                  brandTextSize: TextSizes.large),
+                              Text('256 products',
+                                  overflow: TextOverflow.ellipsis,
+                                  style:
+                                      Theme.of(context).textTheme.labelMedium)
                             ],
                           )
                         ],
