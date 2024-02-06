@@ -1,8 +1,6 @@
-import 'package:e_comerce_app/common/styles/shadows.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_comerce_app/common/widgets/icon/circular_icon.dart';
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
-import 'package:e_comerce_app/common/widgets/text/brand_title.dart';
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
@@ -84,18 +82,18 @@ class ProductCardVertical extends StatelessWidget {
 
             ///DETAILS
 
-            Padding(
-              padding: const EdgeInsets.only(left: TSizes.sm),
+            const Padding(
+              padding: EdgeInsets.only(left: TSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const ProductTitleText(title: 'Produc Text', smailSize: true),
-                  const SizedBox(height: TSizes.spaceBtwItems / 2),
+                  ProductTitleText(title: 'Produc Text', smailSize: true),
+                  SizedBox(height: TSizes.spaceBtwItems / 2),
                   TBrandTitleTextWithVerifiedIcon(title: 'Nike')
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

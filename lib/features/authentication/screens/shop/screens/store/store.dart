@@ -1,18 +1,12 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/appbar/tab_bar.dart';
-import 'package:e_comerce_app/common/widgets/brands/brand_show_case.dart';
-import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/search_container.dart';
-import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
 import 'package:e_comerce_app/common/widgets/layout/grid_layout.dart';
 import 'package:e_comerce_app/common/widgets/products/cart/cart_menu_icon.dart';
-import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/common/widgets/brands/brand_card.dart';
 import 'package:e_comerce_app/features/authentication/screens/shop/screens/store/widgets/categories_brand.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
-import 'package:e_comerce_app/utils/constants/enums.dart';
-import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +80,7 @@ class StoreScreen extends StatelessWidget {
             ];
           },
 
-          //BODY
+          //BODY TAB BAR VIEW
           body: const TabBarView(
             children: [
               TCategoryTab(),

@@ -1,7 +1,6 @@
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_comerce_app/common/widgets/brands/brand_card.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
-import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +23,7 @@ class TBrandShowCase extends StatelessWidget {
       widget: Column(
         children: [
           //BRAND with product count
-          TBrandCard(showBorder: false),
+          const TBrandCard(showBorder: false),
           const SizedBox(height: TSizes.spaceBtwItems),
 
           // TBrand TOP 3 PRODUCT IMAGES
@@ -42,8 +41,8 @@ Widget brandTopProductImageWidget(String image, context) {
   return Expanded(
       child: CRoundedContainer(
           height: 100,
-          padding: EdgeInsets.all(TSizes.md),
-          margin: EdgeInsets.only(right: TSizes.sm),
+          padding: const EdgeInsets.all(TSizes.md),
+          margin: const EdgeInsets.only(right: TSizes.sm),
           backGroundColor: THelperFunction.isDarkMode(context)
               ? TColors.darkerGrey
               : TColors.light,

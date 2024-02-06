@@ -1,13 +1,11 @@
 import 'package:e_comerce_app/features/authentication/screens/authentication/login/widgets/form_divider.dart';
 import 'package:e_comerce_app/features/authentication/screens/authentication/login/widgets/social_button.dart';
 import 'package:e_comerce_app/features/authentication/screens/authentication/signup/widgets/sign_up_form.dart';
-import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/constants/text_strings.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
-import 'package:iconsax/iconsax.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

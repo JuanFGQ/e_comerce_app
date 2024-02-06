@@ -6,11 +6,11 @@ class ShadowStyle {
       color: TColors.darkGrey.withOpacity(0.1),
       blurRadius: 1,
       spreadRadius: 1,
-      offset: Offset(0, 1));
+      offset: const Offset(0, 1));
 
   static final horizontalProductShadow = BoxShadow(
       color: TColors.darkGrey.withOpacity(0.1),
       blurRadius: 50,
       spreadRadius: 7,
-      offset: Offset(0, 2));
+      offset: const Offset(0, 2));
 }

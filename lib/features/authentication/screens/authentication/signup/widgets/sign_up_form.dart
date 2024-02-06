@@ -1,6 +1,5 @@
 import 'package:e_comerce_app/features/authentication/screens/authentication/signup/verify_email.dart';
 import 'package:e_comerce_app/features/authentication/screens/authentication/signup/widgets/term_conditions.dart';
-import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/constants/text_strings.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';

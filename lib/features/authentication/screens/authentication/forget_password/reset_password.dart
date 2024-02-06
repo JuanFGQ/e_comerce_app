@@ -6,7 +6,6 @@ import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
@@ -23,11 +22,11 @@ class ResetPassword extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               Image(
-                  image: AssetImage(TImages.darkAppLogo),
+                  image: const AssetImage(TImages.darkAppLogo),
                   width: THelperFunction.screenWidth(context) * 0.6),
               const SizedBox(height: TSizes.spaceBtwSection),
 

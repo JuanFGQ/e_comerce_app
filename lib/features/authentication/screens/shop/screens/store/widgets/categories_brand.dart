@@ -48,7 +48,7 @@ class TCategoryTab extends StatelessWidget {
 
                 GridLayout(
                     itemCount: 4,
-                    itemBuilder: (_, index) => ProductCardVertical()),
+                    itemBuilder: (_, index) => const ProductCardVertical()),
                 const SizedBox(height: TSizes.spaceBtwSection),
               ],
             ),
