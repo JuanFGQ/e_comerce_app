@@ -26,12 +26,12 @@ class FavouriteScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               GridLayout(
                 itemCount: 8,
-                itemBuilder: (_, index) => ProductCardVertical(),
+                itemBuilder: (_, index) => const ProductCardVertical(),
               )
             ],
           ),
