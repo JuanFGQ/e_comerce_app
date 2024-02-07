@@ -1,8 +1,8 @@
 import 'package:e_comerce_app/common/widgets/custom_shapes/curved_edges/curved_edges.dart';
 import 'package:flutter/material.dart';
 
-class TCurvedEdges extends StatelessWidget {
-  const TCurvedEdges({
+class TCurvedEdgesWidget extends StatelessWidget {
+  const TCurvedEdgesWidget({
     super.key,
     required this.child,
   });
