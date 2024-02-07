@@ -102,7 +102,7 @@ class ProductCardVertical extends StatelessWidget {
                 //PRICE
                 const Padding(
                   padding: EdgeInsets.only(left: TSizes.md),
-                  child: PriceText(price: '35', isLarge: false),
+                  child: TProductPriceText(price: '35', isLarge: false),
                 ),
 
                 //ADD TO CART "BUTTON"

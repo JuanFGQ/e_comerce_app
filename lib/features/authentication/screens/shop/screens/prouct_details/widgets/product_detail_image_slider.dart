@@ -23,8 +23,10 @@ class TProductImageSlider extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(TSizes.productImageRadius * 2),
                   child: Center(
-                      child:
-                          Image(image: AssetImage(TImages.onBoardingImage1))),
+                      child: Image(
+                    image: AssetImage(TImages.onBoardingImage1),
+                    fit: BoxFit.contain,
+                  )),
                 )),
 
             //IMAGE SLIDER
