@@ -7,11 +7,15 @@ import 'package:iconsax/iconsax.dart';
 class TUserProfileTile extends StatelessWidget {
   const TUserProfileTile({
     super.key,
+    required this.onPressed,
   });
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onPressed,
       title: Text('Welcome MobileX',
           style: Theme.of(context)
               .textTheme
