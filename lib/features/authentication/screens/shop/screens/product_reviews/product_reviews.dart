@@ -1,6 +1,8 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
+import 'package:e_comerce_app/common/widgets/products/rating/rating_indicator.dart';
 import 'package:e_comerce_app/features/authentication/screens/shop/screens/product_reviews/widgets/overall_rating_indicator.dart';
 import 'package:e_comerce_app/features/authentication/screens/shop/screens/product_reviews/widgets/ratings_indicator.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/product_reviews/widgets/user_review.card.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
@@ -30,29 +32,18 @@ class ProductReviewsScreen extends StatelessWidget {
 
             //overall product ratings
             OverallProductRatings(),
-            TRatingBarIndicator()
+            TRatingBarIndicator(rating: 3.5),
+            Text('12,611', style: Theme.of(context).textTheme.bodySmall),
+            const SizedBox(height: TSizes.spaceBtwSection),
+
+            ///USER Reviews List
+            UserReviewCard(),
+            UserReviewCard(),
+            UserReviewCard(),
+            UserReviewCard(),
           ],
         ),
       )),
     );
-  }
-}
-
-class TRatingBarIndicator extends StatelessWidget {
-  const TRatingBarIndicator({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return RatingBarIndicator(
-        rating: 3.5,
-        itemSize: 20,
-        itemCount: 4,
-        unratedColor: TColors.grey,
-        itemBuilder: (_, __) => const Icon(
-              Iconsax.star,
-              color: TColors.primary,
-            ));
   }
 }
