@@ -21,28 +21,28 @@ class UserReviewCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  CircleAvatar(backgroundImage: AssetImage(TImages.facebook)),
-                  SizedBox(width: TSizes.spaceBtwItems),
+                  const CircleAvatar(backgroundImage: AssetImage(TImages.facebook)),
+                  const SizedBox(width: TSizes.spaceBtwItems),
                   Text('MobileX', style: Theme.of(context).textTheme.titleLarge)
                 ],
               ),
-              IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
+              IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
             ],
           ),
-          SizedBox(width: TSizes.spaceBtwItems),
+          const SizedBox(width: TSizes.spaceBtwItems),
 
           //REVIEWS
 
           Row(
             children: [
-              TRatingBarIndicator(rating: 4),
-              SizedBox(width: TSizes.spaceBtwItems),
+              const TRatingBarIndicator(rating: 4),
+              const SizedBox(width: TSizes.spaceBtwItems),
               Text('0.1 Nov, 2023',
                   style: Theme.of(context).textTheme.bodyMedium)
             ],
           ),
-          SizedBox(height: TSizes.spaceBtwItems),
-          ReadMoreText(
+          const SizedBox(height: TSizes.spaceBtwItems),
+          const ReadMoreText(
               'Ex quis veniam magna duis excepteur adipisicing nisi culpa laborum. Consequat dolor ullamco deserunt exercitation reprehenderit nulla enim. Nostrud nulla excepteur non veniam. Nostrud excepteur elit sit eiusmod sit. Fugiat ut enim magna do exercitation aliquip.',
               trimLines: 2,
               trimMode: TrimMode.Line,
@@ -56,14 +56,14 @@ class UserReviewCard extends StatelessWidget {
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: TColors.primary)),
-          SizedBox(height: TSizes.spaceBtwItems),
+          const SizedBox(height: TSizes.spaceBtwItems),
 
           ///Company Review
           ///
           CRoundedContainer(
             backGroundColor: dark ? TColors.darkerGrey : TColors.grey,
             widget: Padding(
-              padding: EdgeInsets.all(TSizes.md),
+              padding: const EdgeInsets.all(TSizes.md),
               child: Column(
                 children: [
                   Row(
@@ -75,8 +75,8 @@ class UserReviewCard extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyMedium),
                     ],
                   ),
-                  SizedBox(height: TSizes.spaceBtwItems),
-                  ReadMoreText(
+                  const SizedBox(height: TSizes.spaceBtwItems),
+                  const ReadMoreText(
                       'Ex quis veniam magna duis excepteur adipisicing nisi culpa laborum. Consequat dolor ullamco deserunt exercitation reprehenderit nulla enim. Nostrud nulla excepteur non veniam. Nostrud excepteur elit sit eiusmod sit. Fugiat ut enim magna do exercitation aliquip.',
                       trimLines: 2,
                       trimMode: TrimMode.Line,
