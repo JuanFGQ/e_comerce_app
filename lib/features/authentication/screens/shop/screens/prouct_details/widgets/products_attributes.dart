@@ -17,7 +17,7 @@ class ProductsAttributes extends StatelessWidget {
     return Column(
       children: [
         CRoundedContainer(
-          padding: EdgeInsets.all(TSizes.md),
+          padding: const EdgeInsets.all(TSizes.md),
           backGroundColor: dark ? TColors.darkerGrey : TColors.grey,
           widget: Column(
             children: [
@@ -47,12 +47,12 @@ class ProductsAttributes extends StatelessWidget {
                           const SizedBox(width: TSizes.spaceBtwItems),
 
                           //sale price
-                          TProductPriceText(price: '20')
+                          const TProductPriceText(price: '20')
                         ],
                       ),
                       Row(
                         children: [
-                          ProductTitleText(title: 'Stock:  ', smailSize: true),
+                          const ProductTitleText(title: 'Stock:  ', smailSize: true),
                           Text(
                             'In Stock',
                             style: Theme.of(context).textTheme.titleMedium,
@@ -64,21 +64,21 @@ class ProductsAttributes extends StatelessWidget {
                 ],
               ),
               //VARIATION DESCRIPTION
-              ProductTitleText(
+              const ProductTitleText(
                   title: 'This is a brief description of each product',
                   smailSize: true,
                   maxLines: 4)
             ],
           ),
         ),
-        SizedBox(height: TSizes.spaceBtwItems),
+        const SizedBox(height: TSizes.spaceBtwItems),
 
         //Atributes - Colors
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TSectionHeading(title: 'Colors', showActionButton: false),
-            SizedBox(height: TSizes.spaceBtwItems / 2),
+            const TSectionHeading(title: 'Colors', showActionButton: false),
+            const SizedBox(height: TSizes.spaceBtwItems / 2),
             Wrap(
               spacing: 8,
               children: [
@@ -94,8 +94,8 @@ class ProductsAttributes extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TSectionHeading(title: 'Size', showActionButton: false),
-            SizedBox(height: TSizes.spaceBtwItems / 2),
+            const TSectionHeading(title: 'Size', showActionButton: false),
+            const SizedBox(height: TSizes.spaceBtwItems / 2),
             Wrap(
               spacing: 8,
               children: [

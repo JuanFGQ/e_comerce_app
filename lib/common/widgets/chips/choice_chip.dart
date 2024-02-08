@@ -27,9 +27,9 @@ class TChoiceChip extends StatelessWidget {
                 height: 50,
                 backGroundColor: THelperFunction.getColor(text)!)
             : null,
-        shape: isColor ? CircleBorder() : null,
-        labelPadding: isColor ? EdgeInsets.all(0) : null,
-        padding: isColor ? EdgeInsets.all(0) : null,
+        shape: isColor ? const CircleBorder() : null,
+        labelPadding: isColor ? const EdgeInsets.all(0) : null,
+        padding: isColor ? const EdgeInsets.all(0) : null,
         // selectedColor: isColor ? ,
         backgroundColor: isColor ? THelperFunction.getColor(text) : null,
       ),

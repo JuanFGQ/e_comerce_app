@@ -31,13 +31,13 @@ class SettingsScreen extends StatelessWidget {
                       .headlineMedium!
                       .apply(color: TColors.white),
                 )),
-                SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: TSizes.spaceBtwSection),
 
                 //USER PROFILE SETTINGS
                 TUserProfileTile(
                   onPressed: () => Get.to(() => const ProfileScreen()),
                 ),
-                SizedBox(height: TSizes.spaceBtwSection)
+                const SizedBox(height: TSizes.spaceBtwSection)
               ],
             )),
             Padding(

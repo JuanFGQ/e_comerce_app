@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TProductImageSlider extends StatelessWidget {
+  const TProductImageSlider({super.key});
+
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunction.isDarkMode(context);
@@ -18,10 +20,10 @@ class TProductImageSlider extends StatelessWidget {
         color: dark ? TColors.darkGrey : TColors.light,
         child: Stack(
           children: [
-            SizedBox(
+            const SizedBox(
                 height: 400,
                 child: Padding(
-                  padding: const EdgeInsets.all(TSizes.productImageRadius * 2),
+                  padding: EdgeInsets.all(TSizes.productImageRadius * 2),
                   child: Center(
                       child: Image(
                     image: AssetImage(TImages.onBoardingImage1),
@@ -39,10 +41,10 @@ class TProductImageSlider extends StatelessWidget {
                 child: ListView.separated(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: const AlwaysScrollableScrollPhysics(),
                   itemCount: 6,
                   separatorBuilder: (_, __) =>
-                      SizedBox(width: TSizes.spaceBtwItems),
+                      const SizedBox(width: TSizes.spaceBtwItems),
                   itemBuilder: (context, index) {
                     return TRoundedImage(
                       imageUrl: TImages.lightAppLogo,
@@ -55,7 +57,7 @@ class TProductImageSlider extends StatelessWidget {
                 ),
               ),
             ),
-            TAppBar(
+            const TAppBar(
               showBackArrow: true,
               actions: [TCircularIcon(icon: Iconsax.heart5, color: Colors.red)],
             )

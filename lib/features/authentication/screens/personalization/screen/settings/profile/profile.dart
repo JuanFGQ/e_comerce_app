@@ -5,7 +5,6 @@ import 'package:e_comerce_app/features/authentication/screens/personalization/sc
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -13,13 +12,13 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: TAppBar(
+        appBar: const TAppBar(
           showBackArrow: true,
           title: Text('Profile'),
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(TSizes.defaultSpace),
+            padding: const EdgeInsets.all(TSizes.defaultSpace),
             child: Column(
               children: [
                 //*profilePicture
@@ -27,11 +26,11 @@ class ProfileScreen extends StatelessWidget {
                   width: double.infinity,
                   child: Column(
                     children: [
-                      TCircularImage(
+                      const TCircularImage(
                           image: TImages.facebook, width: 80, height: 80),
                       TextButton(
                           onPressed: () {},
-                          child: Text('Change Profile Picture'))
+                          child: const Text('Change Profile Picture'))
                     ],
                   ),
                 ),
@@ -73,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                 Center(
                   child: TextButton(
                       onPressed: () {},
-                      child: Text('Close Accouont',
+                      child: const Text('Close Accouont',
                           style: TextStyle(color: Colors.red))),
                 )
               ],
