@@ -7,6 +7,8 @@ import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
 import 'package:e_comerce_app/common/widgets/products/cart/cart_item.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/cart/widgets/cart_items.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/checkout/checkout.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
@@ -27,35 +29,13 @@ class CartScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(TSizes.defaultSpace),
-        child: ListView.separated(
-          shrinkWrap: true,
-          itemCount: 20,
-          separatorBuilder: (_, __) => SizedBox(height: TSizes.spaceBtwSection),
-          itemBuilder: (_, index) => Column(
-            children: [
-              TCartItem(),
-              SizedBox(height: TSizes.spaceBtwItems),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(width: 70),
-                      //add remove buttons
-                      TProductQuantityWithAddRemove(),
-                    ],
-                  ),
-                  TProductPriceText(price: '195')
-                ],
-              )
-            ],
-          ),
-        ),
+        child: TCartItems(),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
-        child:
-            ElevatedButton(onPressed: () {}, child: Text('Checkout \$256.0')),
+        child: ElevatedButton(
+            onPressed: () => Get.to(() => CheckOutScreen()),
+            child: Text('Checkout \$256.0')),
       ),
     );
   }
