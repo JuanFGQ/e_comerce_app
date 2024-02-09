@@ -1,7 +1,14 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:e_comerce_app/common/widgets/products/cart/coupon_widget.dart';
+import 'package:e_comerce_app/common/widgets/succes%20screen/success_screen.dart';
 import 'package:e_comerce_app/features/authentication/screens/shop/screens/cart/widgets/cart_items.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/checkout/widgets/billing_address_section.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/checkout/widgets/billing_ammount_section.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/checkout/widgets/billing_payment_section.dart';
+import 'package:e_comerce_app/navigation_menu.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
+import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +24,7 @@ class CheckOutScreen extends StatelessWidget {
       appBar: TAppBar(
         showBackArrow: true,
         title: Text(
-          'Cart',
+          'Overview',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
@@ -31,15 +38,49 @@ class CheckOutScreen extends StatelessWidget {
               SizedBox(height: TSizes.defaultSpace),
 
               //coupon textField
+              TCouponCode(dark: dark),
+              SizedBox(height: TSizes.spaceBtwSection),
+
+              /// BILLING SECTION
               CRoundedContainer(
                 showBorder: true,
-                backGroundColor: dark ? TColors.light : TColors.white,
-                padding: EdgeInsets.only(
-                    top: TSizes.sm, bottom: TSizes.sm, left: TSizes.sm),
-              ),
+                padding: EdgeInsets.all(TSizes.md),
+                backGroundColor: dark ? TColors.black : TColors.white,
+                widget: Column(
+                  children: [
+                    //PRICING
+                    TBillingAmountSection(),
+                    SizedBox(height: TSizes.spaceBtwItems),
+                    //DIVIDER
+                    Divider(),
+                    SizedBox(height: TSizes.spaceBtwItems),
+
+                    //PAYMENT  METHODS
+                    TBillingAmountSection(),
+                    SizedBox(height: TSizes.spaceBtwItems),
+
+                    //ADDRESS
+                    TBillingPaymentSection(),
+                    SizedBox(height: TSizes.spaceBtwItems),
+
+                    //ADDRESS
+                  ],
+                ),
+              )
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        child: ElevatedButton(
+            onPressed: () => Get.to(() => SuccesScreen(
+                  image: TImages.google,
+                  onPressed: () => Get.offAll(() => const NavigationMenu()),
+                  subTitle: 'Your item will be shipped soon!',
+                  title: 'Payment Success!',
+                )),
+            child: Text('Checkout \$256.0')),
       ),
     );
   }
