@@ -29,8 +29,10 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider: ^4.2.1
+  cloud_firestore: ^4.15.4
   connectivity_plus: ^5.0.2
   cupertino_icons: ^1.0.2
+  firebase_auth: ^4.17.4
   firebase_core: ^2.25.4
   flutter:
     sdk: flutter
@@ -69,6 +71,8 @@ flutter:
     - assets/images/
     - assets/images/on_boarding_images/
     - assets/logos/
+    - assets/animation/
+
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

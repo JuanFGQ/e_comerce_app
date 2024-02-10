@@ -14,4 +14,9 @@ class TImages {
       'assets/images/on_boarding_images/shopping-bag.gif';
   static const String onBoardingImage3 =
       'assets/images/on_boarding_images/delivery-truck.gif';
+
+  //Loading Animations
+  static const String loadingAnim = 'assets/animation/loading_animation.json';
+  static const String handLoading = 'assets/animation/hand_loading.json';
+  static const String successCheck = 'assets/animation/succes_check.json';
 }

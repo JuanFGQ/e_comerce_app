@@ -24,7 +24,7 @@ class TAnimationLoader extends StatelessWidget {
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Lottie.asset(animation,
             width: THelperFunction.screenWidth(context) * 0.8),
-        SizedBox(height: TSizes.defaultSpace),
+        const SizedBox(height: TSizes.defaultSpace),
         showAction
             ? SizedBox(
                 width: 250,
@@ -40,7 +40,7 @@ class TAnimationLoader extends StatelessWidget {
                           .apply(color: TColors.light),
                     )),
               )
-            : SizedBox()
+            : const SizedBox()
       ]),
     );
   }

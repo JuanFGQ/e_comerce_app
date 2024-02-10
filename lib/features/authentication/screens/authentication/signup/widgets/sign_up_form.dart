@@ -1,5 +1,4 @@
-import 'package:e_comerce_app/features/authentication/controllers/signup_controller.dart';
-import 'package:e_comerce_app/features/authentication/screens/authentication/signup/verify_email.dart';
+import 'package:e_comerce_app/features/authentication/controllers/authentication/signup/signup_controller.dart';
 import 'package:e_comerce_app/features/authentication/screens/authentication/signup/widgets/term_conditions.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/constants/text_strings.dart';
@@ -33,7 +32,7 @@ class SignUpForm extends StatelessWidget {
                       decoration: const InputDecoration(
                           labelText: TTexts.firstName,
                           prefixIcon: Icon(Iconsax.user)))),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
+              const SizedBox(width: TSizes.spaceBtwInputFields),
               Expanded(
                   child: TextFormField(
                       validator: (value) =>
@@ -69,6 +68,7 @@ class SignUpForm extends StatelessWidget {
 
           //PHONE NUMBER
           TextFormField(
+              keyboardType: TextInputType.number,
               validator: (value) => TValidator.validatePhoneNumber(value),
               controller: controller.phoneNumber,
               expands: false,
@@ -76,14 +76,22 @@ class SignUpForm extends StatelessWidget {
                   labelText: TTexts.phoneNo, prefixIcon: Icon(Iconsax.call))),
           const SizedBox(height: TSizes.spaceBtwInputFields),
           //PASSWORD
-          TextFormField(
-              validator: (value) => TValidator.validatePassword(value),
-              controller: controller.password,
-              expands: false,
-              decoration: const InputDecoration(
-                  labelText: TTexts.password,
-                  prefixIcon: Icon(Iconsax.password_check),
-                  suffixIcon: Icon(Iconsax.eye_slash))),
+          Obx(
+            () => TextFormField(
+                validator: (value) => TValidator.validatePassword(value),
+                controller: controller.password,
+                obscureText: controller.hidePassword.value,
+                expands: false,
+                decoration: InputDecoration(
+                    labelText: TTexts.password,
+                    prefixIcon: const Icon(Iconsax.password_check),
+                    suffixIcon: IconButton(
+                        onPressed: () => controller.hidePassword.value =
+                            !controller.hidePassword.value,
+                        icon: Icon(controller.hidePassword.value
+                            ? Iconsax.eye_slash
+                            : Iconsax.eye)))),
+          ),
           const SizedBox(height: TSizes.spaceBtwInputFields),
 
           //TERMS AND CONDITIONS CHECK BOX

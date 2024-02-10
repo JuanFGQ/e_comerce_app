@@ -2,6 +2,7 @@ import 'package:e_comerce_app/common/styles/spacing_styles.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SuccesScreen extends StatelessWidget {
   const SuccesScreen(
@@ -22,9 +23,11 @@ class SuccesScreen extends StatelessWidget {
           padding: TSpacingStyle.paddingWithAppBarHeight * 2,
           child: Column(
             children: [
-              Image(
-                  image: AssetImage(image),
-                  width: THelperFunction.screenWidth(context) * 0.6),
+              Lottie.asset(image,
+                  width: THelperFunction.screenWidth(context) * 0.8),
+              // Image(
+              //     image: AssetImage(image),
+              //     width: THelperFunction.screenWidth(context) * 0.6),
               const SizedBox(height: TSizes.spaceBtwSection),
 
               //TITLE and SUBTITLE

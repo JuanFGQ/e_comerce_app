@@ -1,8 +1,10 @@
+import 'package:e_comerce_app/features/authentication/controllers/authentication/signup/signup_controller.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/constants/text_strings.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TermsAndConditions extends StatelessWidget {
   const TermsAndConditions({
@@ -11,6 +13,7 @@ class TermsAndConditions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
     final dark = THelperFunction.isDarkMode(context);
 
     return Row(
@@ -18,7 +21,11 @@ class TermsAndConditions extends StatelessWidget {
         SizedBox(
             width: 24,
             height: 24,
-            child: Checkbox(value: true, onChanged: (value) {})),
+            child: Obx(() => Checkbox(
+                value: controller.privacyPolicy.value,
+                onChanged: (value) {
+                  controller.privacyPolicy.value = value!;
+                }))),
         const SizedBox(height: TSizes.spaceBtwItems),
         Text.rich(TextSpan(children: [
           TextSpan(
