@@ -1,5 +1,6 @@
 import 'package:e_comerce_app/features/authentication/screens/shop/screens/cart/cart.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
+import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -14,11 +15,13 @@ class TCartCounterIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunction.isDarkMode(context);
     return Stack(
       children: [
         IconButton(
-            onPressed: () => Get.to(() => CartScreen()),
-            icon: Icon(Iconsax.shopping_bag, color: iconColor)),
+            onPressed: () => Get.to(() => const CartScreen()),
+            icon: Icon(Iconsax.shopping_bag,
+                color: dark ? TColors.white : TColors.dark)),
         Positioned(
           right: 0,
           child: Container(
@@ -30,7 +33,7 @@ class TCartCounterIcon extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                '2',
+                '3',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!

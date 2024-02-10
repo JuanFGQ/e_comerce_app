@@ -22,12 +22,12 @@ class TCartItem extends StatelessWidget {
           imageUrl: TImages.onBoardingImage1,
           width: 60,
           height: 60,
-          padding: EdgeInsets.all(TSizes.sm),
+          padding: const EdgeInsets.all(TSizes.sm),
           backGroundColor: THelperFunction.isDarkMode(context)
               ? TColors.light
               : TColors.dark,
         ),
-        SizedBox(width: TSizes.spaceBtwSection),
+        const SizedBox(width: TSizes.spaceBtwSection),
 
         //title,price & size
         Expanded(
@@ -35,8 +35,8 @@ class TCartItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              TBrandTitleTextWithVerifiedIcon(title: 'Mobile X'),
-              Flexible(
+              const TBrandTitleTextWithVerifiedIcon(title: 'Mobile X'),
+              const Flexible(
                   child: ProductTitleText(title: 'Product Brand', maxLines: 1)),
 
               ///attributes

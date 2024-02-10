@@ -5,6 +5,8 @@ import 'package:e_comerce_app/common/widgets/list_tiles/user_list_tile.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/features/authentication/screens/personalization/screen/address/address.dart';
 import 'package:e_comerce_app/features/authentication/screens/personalization/screen/settings/profile/profile.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/cart/cart.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/order/orders.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -52,17 +54,17 @@ class SettingsScreen extends StatelessWidget {
                       icon: Iconsax.safe_home,
                       title: 'My Address',
                       subTitle: 'Set shopping delivery adress',
-                      onTap: () => Get.to(() => UserAddressScreen())),
+                      onTap: () => Get.to(() => const UserAddressScreen())),
                   TSettingMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: 'My Cart',
                       subTitle: 'Add, remove products and move to checkout',
-                      onTap: () {}),
+                      onTap: () => Get.to(() => const CartScreen())),
                   TSettingMenuTile(
                       icon: Iconsax.bag_tick,
                       title: 'My Orders',
                       subTitle: 'In-progres and Completed Orders',
-                      onTap: () {}),
+                      onTap: () => Get.to(() => const OrderScreen())),
                   TSettingMenuTile(
                       icon: Iconsax.bank,
                       title: 'Bank Account',

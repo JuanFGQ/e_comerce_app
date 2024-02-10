@@ -10,12 +10,11 @@ class TUserProfileTile extends StatelessWidget {
     required this.onPressed,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onPressed,
       title: Text('Welcome MobileX',
           style: Theme.of(context)
               .textTheme
@@ -27,7 +26,7 @@ class TUserProfileTile extends StatelessWidget {
               .bodyMedium!
               .apply(color: TColors.white)),
       trailing: IconButton(
-          onPressed: () {},
+          onPressed: onPressed,
           icon: const Icon(Iconsax.edit),
           color: TColors.white),
       leading: const TCircularImage(

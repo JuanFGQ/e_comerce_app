@@ -5,11 +5,13 @@ import 'package:e_comerce_app/common/widgets/layout/grid_layout.dart';
 import 'package:e_comerce_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/common/widgets/brands/brand_card.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/brands/all_brands.dart';
 import 'package:e_comerce_app/features/authentication/screens/shop/screens/store/widgets/categories_brand.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -20,9 +22,10 @@ class StoreScreen extends StatelessWidget {
       length: 5,
       child: Scaffold(
         appBar: TAppBar(
+          showBackArrow: true,
           title:
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
-          actions: [TCartCounterIcon()],
+          actions: const [TCartCounterIcon()],
         ),
         body: NestedScrollView(
           headerSliverBuilder: (_, innerBoxScrolled) {
@@ -51,7 +54,9 @@ class StoreScreen extends StatelessWidget {
 
                         ///FEATURE BRANDS
                         TSectionHeading(
-                            title: 'Featured Brands', onPressed: () {}),
+                            showActionButton: true,
+                            title: 'Featured Brands',
+                            onPressed: () => Get.to(() => const AllBrandsScreen())),
                         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
                         GridLayout(

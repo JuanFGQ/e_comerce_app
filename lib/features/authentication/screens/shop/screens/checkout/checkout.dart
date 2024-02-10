@@ -24,29 +24,29 @@ class CheckOutScreen extends StatelessWidget {
       appBar: TAppBar(
         showBackArrow: true,
         title: Text(
-          'Overview',
+          'Order review',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               //ITEMS IN CART
-              TCartItems(showAddRemoveButton: false),
-              SizedBox(height: TSizes.defaultSpace),
+              const TCartItems(showAddRemoveButton: false),
+              const SizedBox(height: TSizes.defaultSpace),
 
               //coupon textField
-              TCouponCode(dark: dark),
-              SizedBox(height: TSizes.spaceBtwSection),
+              const TCouponCode(),
+              const SizedBox(height: TSizes.spaceBtwSection),
 
               /// BILLING SECTION
               CRoundedContainer(
                 showBorder: true,
-                padding: EdgeInsets.all(TSizes.md),
+                padding: const EdgeInsets.all(TSizes.md),
                 backGroundColor: dark ? TColors.black : TColors.white,
-                widget: Column(
+                widget: const Column(
                   children: [
                     //PRICING
                     TBillingAmountSection(),
@@ -59,11 +59,12 @@ class CheckOutScreen extends StatelessWidget {
                     TBillingAmountSection(),
                     SizedBox(height: TSizes.spaceBtwItems),
 
-                    //ADDRESS
+                    //PAYMENT METHODS
                     TBillingPaymentSection(),
                     SizedBox(height: TSizes.spaceBtwItems),
 
                     //ADDRESS
+                    TBillingAddressSection()
                   ],
                 ),
               )
@@ -80,7 +81,7 @@ class CheckOutScreen extends StatelessWidget {
                   subTitle: 'Your item will be shipped soon!',
                   title: 'Payment Success!',
                 )),
-            child: Text('Checkout \$256.0')),
+            child: const Text('Checkout \$256.0')),
       ),
     );
   }

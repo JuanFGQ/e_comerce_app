@@ -3,12 +3,14 @@ import 'package:e_comerce_app/common/widgets/custom_shapes/containers/search_con
 import 'package:e_comerce_app/common/widgets/layout/grid_layout.dart';
 import 'package:e_comerce_app/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
+import 'package:e_comerce_app/features/authentication/screens/shop/screens/all_products/all_products.dart';
 import 'package:e_comerce_app/features/authentication/screens/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:e_comerce_app/features/authentication/screens/shop/screens/home/widgets/home_categories.dart';
 import 'package:e_comerce_app/features/authentication/screens/shop/screens/home/widgets/promo_slider.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -53,7 +55,11 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: TSizes.spaceBtwSection),
                     //POPULAR PRODUCTS HEADING
-                    const TSectionHeading(title: 'Popular Products'),
+                    TSectionHeading(
+                      showActionButton: true,
+                      title: 'Popular Products',
+                      onPressed: () => Get.to(() => const AllProducts()),
+                    ),
                     const SizedBox(height: TSizes.spaceBtwSection),
                     //POPULAR PRODUCTS
                     GridLayout(

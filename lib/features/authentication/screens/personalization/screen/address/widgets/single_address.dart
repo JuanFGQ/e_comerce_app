@@ -49,9 +49,9 @@ class TSingleAddress extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: TSizes.sm / 2),
-                Text('((+123) 456 7890 )', maxLines: 1),
+                const Text('((+123) 456 7890 )', maxLines: 1),
                 const SizedBox(height: TSizes.sm / 2),
-                Text(
+                const Text(
                   '82356 Timmy Coves ,South Liana, Maine , 87665,USA',
                   softWrap: true,
                 ),
