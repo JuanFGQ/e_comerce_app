@@ -1,4 +1,4 @@
-import 'package:e_comerce_app/features/authentication/controllers/authentication/login/login_controller.dart';
+import 'package:e_comerce_app/features/authentication/controllers/login/login/login_controller.dart';
 import 'package:e_comerce_app/features/authentication/screens/authentication/forget_password/forget_password.dart';
 import 'package:e_comerce_app/features/authentication/screens/authentication/signup/signup.dart';
 import 'package:e_comerce_app/navigation_menu.dart';

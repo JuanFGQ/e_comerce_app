@@ -1,7 +1,7 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/authentication_repository.dart';
 import 'package:e_comerce_app/data/repositories/user/user_repository.dart';
-import 'package:e_comerce_app/features/authentication/controllers/network_manager.dart';
+import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/authentication/screens/authentication/signup/verify_email.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
