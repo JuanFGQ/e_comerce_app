@@ -1,4 +1,4 @@
-import 'package:e_comerce_app/features/authentication/screens/shop/screens/cart/cart.dart';
+import 'package:e_comerce_app/features/screens/shop/screens/cart/cart.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';

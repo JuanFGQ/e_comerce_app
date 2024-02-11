@@ -1,4 +1,5 @@
 import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
+import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
@@ -14,13 +15,15 @@ class TUserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return ListTile(
-      title: Text('Welcome MobileX',
+      title: Text(controller.user.value.fullName,
           style: Theme.of(context)
               .textTheme
               .headlineSmall!
               .apply(color: TColors.white)),
-      subtitle: Text('Welcome MobileX',
+      subtitle: Text(controller.user.value.email,
           style: Theme.of(context)
               .textTheme
               .bodyMedium!

@@ -1,7 +1,7 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/authentication_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
-import 'package:e_comerce_app/features/authentication/screens/authentication/forget_password/reset_password.dart';
+import 'package:e_comerce_app/features/screens/authentication/forget_password/reset_password.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter/material.dart';

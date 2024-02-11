@@ -1,13 +1,13 @@
-import 'package:e_comerce_app/features/authentication/screens/authentication/login/login.dart';
-import 'package:e_comerce_app/features/authentication/screens/authentication/screen%20onboarding/onboarding.dart';
-import 'package:e_comerce_app/features/authentication/screens/authentication/signup/verify_email.dart';
+import 'package:e_comerce_app/data/repositories/user/user_repository.dart';
+import 'package:e_comerce_app/features/screens/authentication/login/login.dart';
+import 'package:e_comerce_app/features/screens/authentication/screen%20onboarding/onboarding.dart';
+import 'package:e_comerce_app/features/screens/authentication/signup/verify_email.dart';
 import 'package:e_comerce_app/navigation_menu.dart';
 import 'package:e_comerce_app/utils/exceptions/firebase_auth_exception.dart';
 import 'package:e_comerce_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:e_comerce_app/utils/exceptions/format_exception.dart';
 import 'package:e_comerce_app/utils/exceptions/platform_exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -22,6 +22,8 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+//Get Authenticated User Data
+  User? get authUser => _auth.currentUser;
   //called from main.dart on app launch
 
   @override
@@ -88,6 +90,29 @@ class AuthenticationRepository extends GetxController {
   }
 
 //[ReAuthenticate] - ReAuthenticate User
+
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      //create credential
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      //REAUTHENTICATE
+
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
 //[Email Verification] - Mail Verification
 
@@ -183,4 +208,23 @@ class AuthenticationRepository extends GetxController {
   }
 
   ///[DeleteUser] - Remove user Auth and firestore account
+
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(() => const LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 }

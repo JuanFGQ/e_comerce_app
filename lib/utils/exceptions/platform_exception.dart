@@ -33,7 +33,7 @@ class TPlatformException implements Exception {
       case 'invalid-verification-id':
         return 'Invalid verification id';
       default:
-        return 'There\`s an error, Please try again later.';
+        return 'There`s an error, Please try again later.';
     }
   }
 }

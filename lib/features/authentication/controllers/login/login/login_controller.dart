@@ -1,7 +1,7 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/authentication_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
-import 'package:e_comerce_app/features/authentication/screens/personalization/controller/user_controller.dart';
+import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter/material.dart';
@@ -18,12 +18,17 @@ class LoginController extends GetxController {
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final userController = Get.put(UserController());
   @override
-  void onInit() {
-    email.text = localStorage.read('REMEMBER_ME_EMAIL');
-    password.text = localStorage.read('REMEMBER_ME_PASSWORD');
 
-    super.onInit();
-  }
+  // void onInit() {
+  // if(localStorge.isNotEmpty)
+  // {   email.text = localStorage.read('REMEMBER_ME_EMAIL');
+  //password.text = localStorage.read('REMEMBER_ME_PASSWORD');
+//}else{
+// email.text = '';
+  //password.text = '');
+//}
+  //   super.onInit();
+  // }
 
   Future<void> emailAndPasswordSignIn() async {
     try {
