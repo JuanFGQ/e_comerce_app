@@ -11,15 +11,18 @@ class TScrollableCategories extends StatelessWidget {
     this.textColor = TColors.white,
     this.backGroundColor = TColors.black,
     this.onTap,
+    this.isNetworkImage = true,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backGroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunction.isDarkMode(context);
     return GestureDetector(
       onTap: onTap,
       child: Padding(

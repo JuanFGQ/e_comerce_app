@@ -1,10 +1,10 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
-import 'package:e_comerce_app/data/repositories/authentication_repository.dart';
+import 'package:e_comerce_app/data/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/data/repositories/user/user_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/personalization/screen/profile/widgets/re_authenticate_user_login.dart';
-import 'package:e_comerce_app/features/screens/authentication/login/login.dart';
+import 'package:e_comerce_app/features/shop/authentication/login/login.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';

@@ -3,11 +3,11 @@ import 'package:e_comerce_app/common/widgets/custom_shapes/containers/primary_he
 import 'package:e_comerce_app/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:e_comerce_app/common/widgets/list_tiles/user_list_tile.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
-import 'package:e_comerce_app/data/repositories/authentication_repository.dart';
+import 'package:e_comerce_app/data/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/features/personalization/screen/address/address.dart';
 import 'package:e_comerce_app/features/personalization/screen/profile/profile.dart';
-import 'package:e_comerce_app/features/screens/shop/screens/cart/cart.dart';
-import 'package:e_comerce_app/features/screens/shop/screens/order/orders.dart';
+import 'package:e_comerce_app/features/shop/screens/screens/cart/cart.dart';
+import 'package:e_comerce_app/features/shop/screens/screens/order/orders.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:e_comerce_app/features/screens/authentication/login/login.dart';
+import 'package:e_comerce_app/features/shop/authentication/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

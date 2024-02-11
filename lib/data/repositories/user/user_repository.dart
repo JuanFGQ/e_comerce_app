@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_comerce_app/data/repositories/authentication_repository.dart';
+import 'package:e_comerce_app/data/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:e_comerce_app/utils/exceptions/format_exception.dart';
