@@ -1,4 +1,4 @@
-import 'package:e_comerce_app/data/autentication/authentication_repository.dart';
+import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/login/signup/verify_email_controller.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';

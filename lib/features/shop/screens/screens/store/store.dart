@@ -6,7 +6,7 @@ import 'package:e_comerce_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/common/widgets/brands/brand_card.dart';
 import 'package:e_comerce_app/features/shop/screens/brands/all_brands.dart';
-import 'package:e_comerce_app/features/shop/screens/controllers/categories_controller.dart';
+import 'package:e_comerce_app/features/shop/controllers/categories_controller.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/store/widgets/categories_brand.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';

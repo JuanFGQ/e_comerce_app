@@ -1,7 +1,7 @@
 import 'package:e_comerce_app/common/widgets/image_text_widgets/scrollable_categories.dart';
 import 'package:e_comerce_app/common/widgets/shimmer_effect/category_shimmer.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
-import 'package:e_comerce_app/features/shop/screens/controllers/categories_controller.dart';
+import 'package:e_comerce_app/features/shop/controllers/categories_controller.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/sub_category/sub_category.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';

@@ -1,5 +1,5 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
-import 'package:e_comerce_app/data/autentication/authentication_repository.dart';
+import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/data/repositories/user/user_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';

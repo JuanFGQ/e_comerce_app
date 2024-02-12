@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
-import 'package:e_comerce_app/features/shop/screens/controllers/home_controller.dart';
+import 'package:e_comerce_app/features/shop/controllers/banner_controller.dart';
+import 'package:e_comerce_app/features/shop/controllers/home_controller.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class TPromoSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
+    final controller = Get.put(BannerController());
 
     return Column(
       children: [
