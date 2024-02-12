@@ -47,12 +47,12 @@ class HomePage extends StatelessWidget {
                   children: [
                     //PROMO SLIDER
                     const TPromoSlider(
-                      banners: [
-                        TImages.onBoardingImage1,
-                        TImages.onBoardingImage2,
-                        TImages.onBoardingImage3
-                      ],
-                    ),
+                        // banners: [
+                        //   TImages.onBoardingImage1,
+                        //   TImages.onBoardingImage2,
+                        //   TImages.onBoardingImage3
+                        // ],
+                        ),
                     const SizedBox(height: TSizes.spaceBtwSection),
                     //POPULAR PRODUCTS HEADING
                     TSectionHeading(

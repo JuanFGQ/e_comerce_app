@@ -13,11 +13,11 @@ class PromoSlider extends StatelessWidget {
     return const Padding(
         padding: EdgeInsets.all(TSizes.defaultSpace),
         child: TPromoSlider(
-          banners: [
-            TImages.onBoardingImage1,
-            TImages.onBoardingImage2,
-            TImages.onBoardingImage3
-          ],
-        ));
+            // banners: [
+            //   TImages.onBoardingImage1,
+            //   TImages.onBoardingImage2,
+            //   TImages.onBoardingImage3
+            // ],
+            ));
   }
 }

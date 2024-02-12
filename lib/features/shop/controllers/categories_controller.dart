@@ -31,7 +31,7 @@ class CategoryController extends GetxController {
       //Update the categories list
 
 //if something goes wrong check this one and follow the error 42  17:00
-      allCategories.assignAll(categories as Iterable<CategoryModel>);
+      allCategories.assignAll(categories);
 
       //Filter featured categories
       featuredCategories.assignAll(allCategories

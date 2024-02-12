@@ -1,3 +1,6 @@
+import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
+import 'package:e_comerce_app/data/repositories/banners/banner_repository.dart';
+import 'package:e_comerce_app/features/shop/models/baner_model.dart';
 import 'package:get/get.dart';
 
 class BannerController extends GetxController {
@@ -5,36 +8,37 @@ class BannerController extends GetxController {
   final isLoading = false.obs;
 
   final carouselCurrentIndex = 0.obs;
+  final RxList<BannerModel> banners = <BannerModel>[].obs;
+//43
+  @override
+  void onInit() {
+    fetchBanners();
+    super.onInit();
+  }
 
 //update page navigational dots
   void updatePageIndicator(index) {
     carouselCurrentIndex.value = index;
   }
 
-//   //Fetch Banners
-//   //Load category data
-//   Future<void> fetchBanner() async {
-//     try {
-//       //show loader while loading categories
-//       isLoading.value = true;
+  Future<void> fetchBanners() async {
+    try {
+      //show loader while loading categories
+      isLoading.value = true;
 
-//       //fetch categories from data source (Firestore, API)
+      //Fetch Banners
+      final bannerRepo = Get.put(BannerRepository());
+      final banners = await bannerRepo.fetchBanners();
 
-//       //Update the categories list
+      //assign banners to the vatiable banners declared above
+      this.banners.assignAll(banners);
 
-// //if something goes wrong check this one and follow the error 42  17:00
-//       allCategories.assignAll(categories as Iterable<CategoryModel>);
-
-//       //Filter featured categories
-//       featuredCategories.assignAll(allCategories
-//           .where((category) => category.isFeatured && category.parentId.isEmpty)
-//           .take(8)
-//           .toList());
-//     } catch (e) {
-//       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-//     } finally {
-//       //remove loader
-//       isLoading.value = false;
-//     }
-//   }
+      //fetch banners
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    } finally {
+      //remove loader
+      isLoading.value = false;
+    }
+  }
 }
