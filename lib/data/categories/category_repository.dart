@@ -5,6 +5,7 @@ import 'package:e_comerce_app/features/shop/screens/models/category_model.dart';
 import 'package:e_comerce_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:e_comerce_app/utils/exceptions/format_exception.dart';
 import 'package:e_comerce_app/utils/exceptions/platform_exception.dart';
+import 'package:e_comerce_app/utils/firebase_storage/firebase_storage_service.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -39,13 +40,13 @@ class CategoryRepository extends GetxController {
   Future<void> uploadDummyData(List<CategoryModel> categories) async {
     try {
       //upload all the categories along with their Images
-      final storage = Get.put(TFireBaseStorageService());
+      final storage = Get.put(TFirebaseStorageService());
 
       //loop through each category
 
       for (var category in categories) {
         //Get image data Link from the local assets
-        final file = await storage.getImageDataFromAssets(category.image);
+        final file = await storage.getImageDataFrommAssets(category.image);
 
         //upload image and get its url
         final url =
