@@ -1,4 +1,5 @@
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
+import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/product_reviews/product_reviews.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/bottom_add_to_cart.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/product_detail_image_slider.dart';
@@ -13,7 +14,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({super.key});
+  const ProductDetailScreen({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

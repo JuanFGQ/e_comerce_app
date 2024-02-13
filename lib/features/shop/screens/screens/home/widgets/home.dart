@@ -2,7 +2,9 @@ import 'package:e_comerce_app/common/widgets/custom_shapes/containers/primary_he
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:e_comerce_app/common/widgets/layout/grid_layout.dart';
 import 'package:e_comerce_app/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:e_comerce_app/common/widgets/shimmer_effect/vertical_shimmer.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
+import 'package:e_comerce_app/features/shop/controllers/product_controller.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/all_products/all_products.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_app_bar.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_categories.dart';
@@ -17,6 +19,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -62,10 +65,21 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: TSizes.spaceBtwSection),
                     //POPULAR PRODUCTS
-                    GridLayout(
-                      itemBuilder: (p0, p1) => const ProductCardVertical(),
-                      itemCount: 4,
-                    )
+                    Obx(() {
+                      if (controller.isLoading.value)
+                        return const TVerticalProductShimmer();
+                      if (controller.featuredProducts.isEmpty) {
+                        return Center(
+                          child: Text('No Data Found',
+                              style: Theme.of(context).textTheme.bodyMedium),
+                        );
+                      }
+                      return GridLayout(
+                        itemBuilder: (_, index) => ProductCardVertical(
+                            product: controller.featuredProducts[index]),
+                        itemCount: controller.featuredProducts.length,
+                      );
+                    })
                   ],
                 ))
           ],

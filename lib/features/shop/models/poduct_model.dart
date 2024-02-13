@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_comerce_app/features/shop/models/product_variations_model.dart';
+import 'package:e_comerce_app/features/shop/models/brand_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_attribute_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_variation_model.dart';
 
 class ProductModel {
   String id;
@@ -16,7 +18,7 @@ class ProductModel {
   String? categoryId;
   List<String>? images;
   String productType;
-  List<ProductAttributeMode>? productAttributes;
+  List<ProductAttributeModel>? productAttributes;
   List<ProductVariationModel>? productVariatiosn;
 
   ProductModel({
@@ -72,6 +74,8 @@ class ProductModel {
 
   factory ProductModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() == null) return ProductModel.empty();
+
     final data = document.data() as Map<String, dynamic>;
     return ProductModel(
         id: document.id,
