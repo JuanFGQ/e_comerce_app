@@ -46,18 +46,19 @@ class ImagesController extends GetxController {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                         vertical: TSizes.defaultSpace * 2,
                         horizontal: TSizes.defaultSpace),
                     child: CachedNetworkImage(imageUrl: image),
                   ),
-                  SizedBox(height: TSizes.spaceBtwSection),
+                  const SizedBox(height: TSizes.spaceBtwSection),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: SizedBox(
                         width: 150,
                         child: OutlinedButton(
-                            onPressed: () => Get.back(), child: Text('Close'))),
+                            onPressed: () => Get.back(),
+                            child: const Text('Close'))),
                   )
                 ],
               ),

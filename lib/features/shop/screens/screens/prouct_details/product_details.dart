@@ -40,7 +40,7 @@ class ProductDetailScreen extends StatelessWidget {
                 const TRatingAndShare(),
 
                 //PRICE TITLE STOCK & BRAND
-                const TProductMetaData(),
+                TProductMetaData(product: product),
 
                 //ATTRIBUTES
                 const ProductsAttributes(),

@@ -3,7 +3,10 @@ import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
+import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
+import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
+import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
@@ -11,10 +14,16 @@ import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
 class TProductMetaData extends StatelessWidget {
-  const TProductMetaData({super.key});
+  const TProductMetaData({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage =
+        controller.calculatSalePercetange(product.price, product.salePrice);
+
     final darkMode = THelperFunction.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +39,7 @@ class TProductMetaData extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   horizontal: TSizes.sm, vertical: TSizes.xs),
               widget: Text(
-                '25%',
+                '$salePercentage%',
                 style: Theme.of(context)
                     .textTheme
                     .labelLarge!
@@ -40,14 +49,17 @@ class TProductMetaData extends StatelessWidget {
             const SizedBox(width: TSizes.spaceBtwItems),
 
             //price
-            Text('\$250',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleSmall!
-                    .apply(decoration: TextDecoration.lineThrough)),
+            if (product.productType == ProductType.single.toString() &&
+                product.salePrice > 0)
+              Text('\$250',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall!
+                      .apply(decoration: TextDecoration.lineThrough)),
             const SizedBox(width: TSizes.spaceBtwItems),
 
-            const TProductPriceText(price: '175', isLarge: true)
+            TProductPriceText(
+                price: controller.getProductsPrice(product), isLarge: true)
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
