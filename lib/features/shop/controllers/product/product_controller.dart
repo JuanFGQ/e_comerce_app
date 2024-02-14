@@ -1,8 +1,8 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/products/products_repository.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();
@@ -11,11 +11,6 @@ class ProductController extends GetxController {
   final productRepository = Get.put(ProductRepository());
   final isLoading = false.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    //get the data and asign data to a variable
-  }
 
   void fetchFeaturedProducts() async {
     try {

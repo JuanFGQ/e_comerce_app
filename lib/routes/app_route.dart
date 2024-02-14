@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comerce_app/features/personalization/screen/address/address.dart';
 import 'package:e_comerce_app/features/personalization/screen/profile/profile.dart';
 import 'package:e_comerce_app/features/personalization/screen/settings/settings.dart';

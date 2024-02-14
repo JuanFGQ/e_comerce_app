@@ -1,6 +1,5 @@
 import 'package:e_comerce_app/common/widgets/shimmer_effect/shimmer_effect.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class TCategoryShimmer extends StatelessWidget {

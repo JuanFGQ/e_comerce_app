@@ -2,7 +2,6 @@
 //
 //     final productVariationModel = productVariationModelFromJson(jsonString);
 
-import 'dart:convert';
 
 class ProductVariationModel {
   final String id;

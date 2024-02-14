@@ -1,7 +1,6 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/categories/category_repository.dart';
 import 'package:e_comerce_app/features/shop/models/category_model.dart';
-import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
 import 'package:get/get.dart';
 
 class CategoryController extends GetxController {

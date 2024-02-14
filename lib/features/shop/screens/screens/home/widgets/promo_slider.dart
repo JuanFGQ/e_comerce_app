@@ -3,7 +3,6 @@ import 'package:e_comerce_app/common/widgets/custom_shapes/containers/circular_c
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
 import 'package:e_comerce_app/common/widgets/shimmer_effect/shimmer_effect.dart';
 import 'package:e_comerce_app/features/shop/controllers/banner_controller.dart';
-import 'package:e_comerce_app/features/shop/controllers/home_controller.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +22,13 @@ class TPromoSlider extends StatelessWidget {
         //loader
 
 //43
-        if (controller.isLoading.value)
+        if (controller.isLoading.value) {
           return const TShimmerEffect(width: double.infinity, height: 190);
+        }
 
         //no data found
         if (controller.banners.isEmpty) {
-          return Center(child: Text('No Data Found!'));
+          return const Center(child: Text('No Data Found!'));
         } else {
           return Column(
             children: [

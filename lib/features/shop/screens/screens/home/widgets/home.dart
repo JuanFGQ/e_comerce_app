@@ -4,12 +4,11 @@ import 'package:e_comerce_app/common/widgets/layout/grid_layout.dart';
 import 'package:e_comerce_app/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:e_comerce_app/common/widgets/shimmer_effect/vertical_shimmer.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
-import 'package:e_comerce_app/features/shop/controllers/product_controller.dart';
+import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/all_products/all_products.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_app_bar.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_categories.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/promo_slider.dart';
-import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -66,8 +65,9 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: TSizes.spaceBtwSection),
                     //POPULAR PRODUCTS
                     Obx(() {
-                      if (controller.isLoading.value)
+                      if (controller.isLoading.value) {
                         return const TVerticalProductShimmer();
+                      }
                       if (controller.featuredProducts.isEmpty) {
                         return Center(
                           child: Text('No Data Found',

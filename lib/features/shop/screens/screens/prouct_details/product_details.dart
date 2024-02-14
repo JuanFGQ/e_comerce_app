@@ -25,7 +25,7 @@ class ProductDetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(children: [
           // PRODUCT IMAGE SLIDER
-          const TProductImageSlider(),
+          TProductImageSlider(product: product),
 
           //PRODUCT DETAILS
 

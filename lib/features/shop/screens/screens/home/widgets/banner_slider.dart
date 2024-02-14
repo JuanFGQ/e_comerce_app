@@ -1,5 +1,4 @@
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/promo_slider.dart';
-import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 

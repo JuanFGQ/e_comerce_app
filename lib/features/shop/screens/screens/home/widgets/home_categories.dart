@@ -3,7 +3,6 @@ import 'package:e_comerce_app/common/widgets/shimmer_effect/category_shimmer.dar
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/features/shop/controllers/categories_controller.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/sub_category/sub_category.dart';
-import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,7 +28,7 @@ class ScrollableCategories extends StatelessWidget {
           const SizedBox(height: TSizes.spaceBtwItems),
           //SCROLL CATEGORIES
           Obx(() {
-            if (controller.isLoading.value) return TCategoryShimmer();
+            if (controller.isLoading.value) return const TCategoryShimmer();
             if (controller.featuredCategories.isEmpty) {
               return Center(
                 child: Text('No Data Found!',
