@@ -6,6 +6,7 @@ import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widge
 import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/product_meta_data.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/products_attributes.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/rating_share_widget.dart';
+import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
@@ -43,8 +44,10 @@ class ProductDetailScreen extends StatelessWidget {
                 TProductMetaData(product: product),
 
                 //ATTRIBUTES
-                const ProductsAttributes(),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                if (product.productType == ProductType.variable.toString())
+                  ProductsAttributes(product: product),
+                if (product.productType == ProductType.variable.toString())
+                  const SizedBox(height: TSizes.spaceBtwSection),
 
                 //CHECKPOINT BUTTON
                 SizedBox(
@@ -58,8 +61,8 @@ class ProductDetailScreen extends StatelessWidget {
                 const TSectionHeading(
                     title: 'Description', showActionButton: false),
                 const SizedBox(height: TSizes.spaceBtwSection),
-                const ReadMoreText(
-                  'Ea ipsum aute aliqua eiusmod aute laborum Lorem quis veniam. Sunt quis esse sint dolore deserunt aute quis sint elit ex mollit. Incididunt in nisi officia nostrud pariatur pariatur aliqua eiusmod sunt ipsum deserunt.',
+                ReadMoreText(
+                  product.description ?? '',
                   trimLines: 2,
                   trimMode: TrimMode.Line,
                   trimCollapsedText: ' Show more',

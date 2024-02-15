@@ -3,13 +3,16 @@ import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_co
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
+import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
 class ProductsAttributes extends StatelessWidget {
-  const ProductsAttributes({super.key});
+  const ProductsAttributes({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,8 @@ class ProductsAttributes extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const ProductTitleText(title: 'Stock:  ', smailSize: true),
+                          const ProductTitleText(
+                              title: 'Stock:  ', smailSize: true),
                           Text(
                             'In Stock',
                             style: Theme.of(context).textTheme.titleMedium,
@@ -75,39 +79,62 @@ class ProductsAttributes extends StatelessWidget {
 
         //Atributes - Colors
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TSectionHeading(title: 'Colors', showActionButton: false),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
-            Wrap(
-              spacing: 8,
-              children: [
-                TChoiceChip(text: 'Red', selected: true, onSelected: (p0) {}),
-                TChoiceChip(text: 'Pink', selected: false, onSelected: (p0) {}),
-                TChoiceChip(text: 'Blue', selected: false, onSelected: (p0) {}),
-              ],
-            ),
-          ],
-        ),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: product.productAttributes!
+                .map(
+                  (attribute) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TSectionHeading(
+                          title: attribute.name ?? '', showActionButton: false),
+                      const SizedBox(height: TSizes.spaceBtwItems / 2),
+                      Wrap(
+                          spacing: 8,
+                          children: attribute.values!
+                              .map((e) => TChoiceChip(
+                                    text: e,
+                                    selected: false,
+                                    onSelected: (value) {},
+                                  ))
+                              .toList()
+                          //  [
+
+                          //   TChoiceChip(
+                          //       text: 'Red', selected: true, onSelected: (p0) {}),
+                          //   TChoiceChip(
+                          //       text: 'Pink',
+                          //       selected: false,
+                          //       onSelected: (p0) {}),
+                          //   TChoiceChip(
+                          //       text: 'Blue',
+                          //       selected: false,
+                          //       onSelected: (p0) {}),
+                          // ],
+                          ),
+                    ],
+                  ),
+                )
+                .toList()),
+
         //Atributes - Sizes
 
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TSectionHeading(title: 'Size', showActionButton: false),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
-            Wrap(
-              spacing: 8,
-              children: [
-                TChoiceChip(text: 'EU 34', selected: true, onSelected: (p0) {}),
-                TChoiceChip(
-                    text: 'EU 36', selected: false, onSelected: (p0) {}),
-                TChoiceChip(
-                    text: 'EU 38', selected: false, onSelected: (p0) {}),
-              ],
-            ),
-          ],
-        )
+        // Column(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     const TSectionHeading(title: 'Size', showActionButton: false),
+        //     const SizedBox(height: TSizes.spaceBtwItems / 2),
+        //     Wrap(
+        //       spacing: 8,
+        //       children: [
+        //         TChoiceChip(text: 'EU 34', selected: true, onSelected: (p0) {}),
+        //         TChoiceChip(
+        //             text: 'EU 36', selected: false, onSelected: (p0) {}),
+        //         TChoiceChip(
+        //             text: 'EU 38', selected: false, onSelected: (p0) {}),
+        //       ],
+        //     ),
+        //   ],
+        // )
       ],
     );
   }

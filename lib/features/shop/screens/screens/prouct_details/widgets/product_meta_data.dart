@@ -51,12 +51,14 @@ class TProductMetaData extends StatelessWidget {
             //price
             if (product.productType == ProductType.single.toString() &&
                 product.salePrice > 0)
-              Text('\$250',
+              Text('\$${product.price}',
                   style: Theme.of(context)
                       .textTheme
                       .titleSmall!
                       .apply(decoration: TextDecoration.lineThrough)),
-            const SizedBox(width: TSizes.spaceBtwItems),
+            if (product.productType == ProductType.single.toString() &&
+                product.salePrice > 0)
+              const SizedBox(width: TSizes.spaceBtwItems),
 
             TProductPriceText(
                 price: controller.getProductsPrice(product), isLarge: true)
@@ -65,7 +67,7 @@ class TProductMetaData extends StatelessWidget {
         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
         //title
-        const ProductTitleText(title: 'One random product for U'),
+        ProductTitleText(title: product.title),
         const SizedBox(height: TSizes.spaceBtwSection / 2),
 
         //stock status
@@ -74,7 +76,8 @@ class TProductMetaData extends StatelessWidget {
           children: [
             const ProductTitleText(title: 'Status :'),
             const SizedBox(width: TSizes.spaceBtwItems / 2),
-            Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
+            Text(controller.getProductStockStatus(product.stock),
+                style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 2),
@@ -85,10 +88,11 @@ class TProductMetaData extends StatelessWidget {
             TCircularImage(
                 width: 50,
                 height: 50,
-                image: TImages.google,
+                image: product.brand != null ? product.brand!.name : '',
                 overlayColor: darkMode ? TColors.white : TColors.black),
-            const TBrandTitleTextWithVerifiedIcon(
-                title: 'Prod', brandTextSize: TextSizes.medium),
+            TBrandTitleTextWithVerifiedIcon(
+                title: product.brand != null ? product.brand!.name : '',
+                brandTextSize: TextSizes.medium),
           ],
         )
       ],
