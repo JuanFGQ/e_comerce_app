@@ -21,7 +21,7 @@ class BrandProductsScreen extends StatelessWidget {
               //BRAND DETAIL
               TBrandCard(showBorder: true),
               SizedBox(height: TSizes.spaceBtwSection),
-              TSortableProducts()
+              TSortableProducts(products: [])
             ],
           ),
         ),

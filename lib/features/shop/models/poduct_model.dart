@@ -98,16 +98,31 @@ class ProductModel {
         productType: data['ProductType'] ?? '');
   }
 
-  //Map Json oriented document snapsow from firebase to userModel
+  //Map Json oriented document snapshot from firebase to userModel
 
-  // factory BrandModel.fromSnapshot(
-  //     DocumentSnapshot<Map<String, dynamic>> document) {
-  //   if (document.data() != null) {
-  //     final data = document.data()!;
+  factory ProductModel.fromQuerySnapshot(
+      QueryDocumentSnapshot<Object?> document) {
+    if (document.data() == null) return ProductModel.empty();
 
-  //     //Map Json Record to the model
-
-  //     return BrandModel ()
-  //   }
-  // }
+    final data = document.data() as Map<String, dynamic>;
+    return ProductModel(
+        id: document.id,
+        sku: data['SKU'],
+        title: data['Title'] ?? '',
+        isFeatured: data['IsFeatured'] ?? false,
+        categoryId: data['CategoryId'] ?? '',
+        description: data['Description'] ?? '',
+        brand: BrandModel.fromJson(data['Brand']),
+        images: data['Images'] != null ? List<String>.from(data['Images']) : [],
+        productAttributes: (data['productAttributes'] as List<dynamic>)
+            .map((e) => ProductAttributeModel.fromJson(e))
+            .toList(),
+        productVariatiosn: (data['productVariatiosn'] as List<dynamic>)
+            .map((e) => ProductVariationModel.fromJson(e))
+            .toList(),
+        stock: data['Stock'] ?? 0,
+        price: double.parse((data['Price'] ?? 0.0).toString()),
+        thumbnail: data['Thumbnail'] ?? '',
+        productType: data['ProductType'] ?? '');
+  }
 }

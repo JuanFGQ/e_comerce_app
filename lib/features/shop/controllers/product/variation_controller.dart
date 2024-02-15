@@ -54,7 +54,25 @@ class VariationController extends GetxController {
 
   //Check attribute availability /Stock in variation
   Set<String?> getAttributesAvailabilityVariation(
-      List<ProductVariationModel> variations, String attributeName) {}
+      List<ProductVariationModel> variations, String attributeName) {
+    //pass the variations to check which attributes are available and stock is not 0
+    final availableVariationsAttributesValues = variations
+        .where((element) =>
+            //Check empty // Out of Stock Attributes
+            element.attributeValues[attributeName] != null &&
+            element.attributeValues[attributeName]!.isNotEmpty &&
+            element.stock > 0)
+        .map((element) => element.attributeValues[attributeName])
+        .toSet();
+    return availableVariationsAttributesValues;
+  }
+
+  String getVariationPrice() {
+    return (selectedVariation.value.salePrice > 0
+            ? selectedVariation.value.salePrice
+            : selectedVariation.value.price)
+        .toString();
+  }
 
   ///Check Product variation Stock status
   void getProductVariationStockStatus() {

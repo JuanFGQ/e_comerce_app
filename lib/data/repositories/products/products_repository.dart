@@ -34,7 +34,43 @@ class ProductRepository extends GetxController {
     }
   }
 
-  //upload test data to the cloud firebase
+  Future<List<ProductModel>> getAllFeaturedProducts() async {
+    try {
+      final snapshot = await _db
+          .collection('Products')
+          .where('IsFeatured', isEqualTo: true)
+          .limit(6)
+          .get();
+      //return the snapshot document of the products
+      return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Pleae try again';
+    }
+  }
+
+  //!GET PRODUCTOS BASED ON THE BRAND
+  Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
+    try {
+      final querySnapshot = await query.get();
+      final List<ProductModel> productList = querySnapshot.docs
+          .map((e) => ProductModel.fromQuerySnapshot(e))
+          .toList();
+
+      return productList;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Pleae try again';
+    }
+  }
+
+  //!upload test data to the cloud firebase
 
   //**WARNING
   //this could be optional due to this method is used to upload test data or dummy data whatever
@@ -73,7 +109,7 @@ class ProductRepository extends GetxController {
           product.images!.clear();
           product.images!.addAll(imageUrl);
         }
-        //**Upload Variation Images
+        //!Upload Variation Images
 
         // if (product.productType == ProductType.variable.toString()) {
         //   for (var variation in product.productVariatiosn!) {

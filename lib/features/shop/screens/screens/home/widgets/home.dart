@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:e_comerce_app/common/widgets/layout/grid_layout.dart';
@@ -56,11 +57,14 @@ class HomePage extends StatelessWidget {
                         // ],
                         ),
                     const SizedBox(height: TSizes.spaceBtwSection),
-                    //POPULAR PRODUCTS HEADING
+                    //!POPULAR PRODUCTS HEADING
                     TSectionHeading(
                       showActionButton: true,
                       title: 'Popular Products',
-                      onPressed: () => Get.to(() => const AllProducts()),
+                      onPressed: () => Get.to(() => AllProducts(
+                            title: 'Popular Products',
+                            futureMethod: controller.fetchAllFeaturedProducts(),
+                          )),
                     ),
                     const SizedBox(height: TSizes.spaceBtwSection),
                     //POPULAR PRODUCTS
