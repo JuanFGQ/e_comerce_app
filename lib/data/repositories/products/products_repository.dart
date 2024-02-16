@@ -139,4 +139,31 @@ class ProductRepository extends GetxController {
       throw e.toString();
     }
   }
+
+//get the brand information by the brand id based on productModel
+  Future<List<ProductModel>> getProductsForBrand(
+      {required String brandId, int limit = -1}) async {
+    try {
+      final querySnapshot = limit == -1
+          ? await _db
+              .collection('Products')
+              .where('BrandId', isEqualTo: brandId)
+              .get()
+          : await _db
+              .collection('Products')
+              .where('Brand.Id', isEqualTo: brandId)
+              .limit(limit)
+              .get();
+
+      final products =
+          querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+      return products;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Pleae try again';
+    }
+  }
 }

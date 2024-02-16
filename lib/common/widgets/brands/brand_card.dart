@@ -1,6 +1,7 @@
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
+import 'package:e_comerce_app/features/shop/models/brand_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
@@ -13,8 +14,9 @@ class TBrandCard extends StatelessWidget {
     super.key,
     required this.showBorder,
     this.onTap,
+    required this.brand,
   });
-
+  final BrandModel brand;
   final bool showBorder;
   final void Function()? onTap;
 
@@ -32,9 +34,9 @@ class TBrandCard extends StatelessWidget {
 
             Flexible(
               child: TCircularImage(
-                  image: TImages.google,
+                  image: brand.image,
                   backGroundColor: Colors.transparent,
-                  isNetWorkImage: false,
+                  isNetWorkImage: true,
                   overlayColor: THelperFunction.isDarkMode(context)
                       ? TColors.white
                       : TColors.black),
@@ -46,9 +48,9 @@ class TBrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TBrandTitleTextWithVerifiedIcon(
-                      title: 'Nike', brandTextSize: TextSizes.large),
-                  Text('256 products',
+                  TBrandTitleTextWithVerifiedIcon(
+                      title: brand.name, brandTextSize: TextSizes.large),
+                  Text('${brand.productsCount ?? 0} products',
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.labelMedium)
                 ],

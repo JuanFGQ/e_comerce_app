@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 BrandModel brandModelFromJson(String str) =>
     BrandModel.fromJson(json.decode(str));
 
@@ -32,9 +34,11 @@ class BrandModel {
     };
   }
 
-  factory BrandModel.fromJson(Map<String, dynamic> document) {
-    final data = document;
-    if (data.isEmpty) return BrandModel.empty();
+  factory BrandModel.fromJson(
+      QueryDocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() == null) return BrandModel.empty();
+    final data = document.data() as Map<String, dynamic>;
+
     return BrandModel(
       id: data["id"] ?? '',
       name: data["name"] ?? '',
@@ -42,5 +46,23 @@ class BrandModel {
       isFeatured: data["isFeatured"] ?? false,
       productsCount: data["productsCount"] ?? 0,
     );
+  }
+//Map Json oriented document snapshot from Firebase to UserModel
+  factory BrandModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+
+      //Map Json Record to the Model
+      return BrandModel(
+        id: data["id"] ?? '',
+        name: data["name"] ?? '',
+        image: data["image"] ?? '',
+        isFeatured: data["isFeatured"] ?? false,
+        productsCount: data["productsCount"] ?? 0,
+      );
+    } else {
+      return BrandModel.empty();
+    }
   }
 }

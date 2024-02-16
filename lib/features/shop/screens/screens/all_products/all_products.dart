@@ -5,6 +5,7 @@ import 'package:e_comerce_app/common/widgets/shimmer_effect/vertical_shimmer.dar
 import 'package:e_comerce_app/features/shop/controllers/product/all_products_controller.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
+import 'package:e_comerce_app/utils/helpers/cloud_helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,22 +30,13 @@ class AllProducts extends StatelessWidget {
           builder: (context, snapshot) {
             //Check the state of the FutureBuilder snapshot
             const loader = TVerticalProductShimmer();
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return loader;
-            }
 
-            if (!snapshot.hasData ||
-                snapshot.data == null ||
-                snapshot.data!.isEmpty) {
-              return const Center(
-                child: Text('No Data Found'),
-              );
-            }
-            if (!snapshot.hasError) {
-              return const Center(
-                child: Text('No Data Found'),
-              );
-            }
+            //! this function it serves to execute all the has data an hasn´t data from a builder
+            final widget = TCloudHelperFunction.checkMultiRecordState(
+                snapshot: snapshot, loader: loader);
+
+            //return appropiate widget based on snapshot state
+            if (widget != null) return widget;
 
             //Products Found!
             final products = snapshot.data!;

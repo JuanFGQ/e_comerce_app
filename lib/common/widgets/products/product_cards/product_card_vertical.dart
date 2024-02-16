@@ -38,7 +38,7 @@ class ProductCardVertical extends StatelessWidget {
             color: dark ? TColors.darkGrey : TColors.white),
         child: Column(
           children: [
-            //THUMBNAIL,WISHLIST
+            //*THUMBNAIL,WISHLIST
 
             CRoundedContainer(
               height: 180,
@@ -58,27 +58,27 @@ class ProductCardVertical extends StatelessWidget {
                         applyImageRadius: true),
                   ),
 
-                  // SALE TAG
-
-                  Positioned(
-                    top: 12,
-                    left: 5,
-                    child: CRoundedContainer(
-                      radius: TSizes.sm,
-                      backGroundColor: TColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: TSizes.sm, vertical: TSizes.xs),
-                      widget: Text(
-                        '$salePercentage%',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(color: TColors.black),
+                  //* SALE TAG
+                  if (salePercentage != null)
+                    Positioned(
+                      top: 12,
+                      left: 5,
+                      child: CRoundedContainer(
+                        radius: TSizes.sm,
+                        backGroundColor: TColors.secondary.withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: TSizes.sm, vertical: TSizes.xs),
+                        widget: Text(
+                          '$salePercentage%',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .apply(color: TColors.black),
+                        ),
                       ),
                     ),
-                  ),
 
-                  //FAVOURITE ICON BUTTON
+                  //*FAVOURITE ICON BUTTON
                   const Positioned(
                       top: 0,
                       right: 0,
@@ -93,7 +93,7 @@ class ProductCardVertical extends StatelessWidget {
 
             const SizedBox(height: TSizes.spaceBtwItems / 2),
 
-            ///DETAILS
+            ///*DETAILS
 
             Padding(
               padding: const EdgeInsets.only(left: TSizes.sm),
@@ -108,12 +108,12 @@ class ProductCardVertical extends StatelessWidget {
             ),
             const Spacer(),
 
-            //PRICE ROW
+            //*PRICE ROW
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //PRICE
+                //*PRICE
                 Flexible(
                   child: Column(
                     children: [
@@ -144,7 +144,7 @@ class ProductCardVertical extends StatelessWidget {
                   ),
                 ),
 
-                //ADD TO CART "BUTTON"
+                //*ADD TO CART "BUTTON"
                 Container(
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
