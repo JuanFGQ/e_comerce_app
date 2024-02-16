@@ -33,7 +33,7 @@ class BrandProductsScreen extends StatelessWidget {
               ),
               SizedBox(height: TSizes.spaceBtwSection),
               FutureBuilder(
-                  future: brandController.getBrandProducts(brand.id),
+                  future: brandController.getBrandProducts(brandId: brand.id),
                   builder: (context, snapshot) {
                     //handle loader , no record , or Error Message
                     const loader = TVerticalProductShimmer();

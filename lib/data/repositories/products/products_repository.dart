@@ -166,4 +166,43 @@ class ProductRepository extends GetxController {
       throw 'Something went wrong. Pleae try again';
     }
   }
+
+  Future<List<ProductModel>> getProductsForCategory(
+      {required String categoryId, int limit = -1}) async {
+    try {
+      QuerySnapshot productCategoryQuery = limit == -1
+          ? await _db
+              .collection('ProductsCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .get()
+          : await _db
+              .collection('ProductsCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .limit(limit)
+              .get();
+
+      //Exract productsIds from the documents
+      List<String> productsIds = productCategoryQuery.docs
+          .map((e) => e['productsId'] as String)
+          .toList();
+
+      //Query to get all documents where the brandId is in the list of brandsId , FilePath.documentId to query documents in Collection
+      final productsQuery = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productsIds)
+          .get();
+
+      //Extract brand names or other relevant data from the documents
+      List<ProductModel> products =
+          productsQuery.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+
+      return products;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Pleae try again';
+    }
+  }
 }
