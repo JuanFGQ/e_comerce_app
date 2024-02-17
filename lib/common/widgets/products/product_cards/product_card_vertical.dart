@@ -23,10 +23,12 @@ class ProductCardVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //
     final controller = ProductController.instance;
     final salePercentage =
         controller.calculatSalePercetange(product.price, product.salePrice);
     final dark = THelperFunction.isDarkMode(context);
+    //
     return GestureDetector(
       onTap: () => Get.to(() => ProductDetailScreen(product: product)),
       child: Container(

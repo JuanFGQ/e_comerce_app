@@ -5,8 +5,10 @@ import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart'
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
+import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
+import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
@@ -20,6 +22,9 @@ class TProductHorizontalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage =
+        controller.calculatSalePercetange(product.price, product.salePrice);
     final dark = THelperFunction.isDarkMode(context);
     return Container(
       width: 310,
@@ -37,29 +42,33 @@ class TProductHorizontalCard extends StatelessWidget {
             widget: Stack(
               children: [
                 // THUMBNAIL IMAGE
-                const SizedBox(
+                SizedBox(
                     height: 120,
                     width: 120,
                     child: TRoundedImage(
-                        imageUrl: TImages.google, applyImageRadius: true)),
+                        isNetworkImage: true,
+                        imageUrl: product.thumbnail,
+                        applyImageRadius: true)),
 
-                Positioned(
-                  top: 12,
-                  left: 5,
-                  child: CRoundedContainer(
-                    radius: TSizes.sm,
-                    backGroundColor: TColors.secondary.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: TSizes.sm, vertical: TSizes.xs),
-                    widget: Text(
-                      '25%',
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .apply(color: TColors.black),
+//SALE TAG
+                if (salePercentage != null)
+                  Positioned(
+                    top: 12,
+                    left: 5,
+                    child: CRoundedContainer(
+                      radius: TSizes.sm,
+                      backGroundColor: TColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: TSizes.sm, vertical: TSizes.xs),
+                      widget: Text(
+                        '$salePercentage%',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .apply(color: TColors.black),
+                      ),
                     ),
                   ),
-                ),
 
                 //FAVOURITE ICON BUTTON
                 Positioned(
@@ -78,22 +87,56 @@ class TProductHorizontalCard extends StatelessWidget {
               padding: const EdgeInsets.only(top: TSizes.sm, left: TSizes.sm),
               child: Column(
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ProductTitleText(
-                          title: 'Product Description', smailSize: true),
+                      ProductTitleText(title: product.title, smailSize: true),
                       SizedBox(height: TSizes.spaceBtwItems / 2),
-                      TBrandTitleTextWithVerifiedIcon(title: 'Product Brand'),
+                      TBrandTitleTextWithVerifiedIcon(
+                          title: product.brand!.name),
                     ],
                   ),
                   const Spacer(),
+
+                  //SALE PRICE
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Flexible(child: TProductPriceText(price: '590')),
+                      //*PRICE
+                      Flexible(
+                        child: Column(
+                          children: [
+                            if (product.productType ==
+                                    ProductType.single.toString() &&
+                                product.salePrice > 0)
+                              Padding(
+                                padding: const EdgeInsets.only(left: TSizes.md),
+                                child: Text(
+                                  product.price.toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelMedium!
+                                      .apply(
+                                          decoration:
+                                              TextDecoration.lineThrough),
+                                ),
+                              ),
+                            //
+                            //price, show sale price as main price if sale exist
+                            //
 
-                      //Add to cart
+                            Padding(
+                              padding: const EdgeInsets.only(left: TSizes.md),
+                              child: TProductPriceText(
+                                  price: controller.getProductsPrice(product),
+                                  isLarge: false),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      //*ADD TO CART "BUTTON"
                       Container(
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
@@ -106,7 +149,10 @@ class TProductHorizontalCard extends StatelessWidget {
                           width: TSizes.iconLg * 1.2,
                           height: TSizes.iconLg * 1.2,
                           child: Center(
-                            child: Icon(Iconsax.add, color: TColors.white),
+                            child: Icon(
+                              Iconsax.add,
+                              color: TColors.white,
+                            ),
                           ),
                         ),
                       )

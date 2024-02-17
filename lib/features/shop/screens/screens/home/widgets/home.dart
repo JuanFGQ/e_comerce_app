@@ -41,9 +41,7 @@ class HomePage extends StatelessWidget {
 
                   //CATEGORIES
 
-                  ScrollableCategories(
-                    product: ProductModel.empty(),
-                  )
+                  THomeCategories(product: ProductModel.empty())
                 ],
               ),
             ),

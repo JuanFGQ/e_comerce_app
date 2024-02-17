@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comerce_app/features/shop/models/category_model.dart';
 import 'package:e_comerce_app/utils/exceptions/firebase_exceptions.dart';
@@ -33,7 +32,27 @@ class CategoryRepository extends GetxController {
   }
 
   //get sub categories
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try {
+      final snapshot = await _db
+          .collection('Categories')
+          .where('ParentId', isEqualTo: categoryId)
+          .get();
 
+      final result =
+          snapshot.docs.map((e) => CategoryModel.fromSnapshot(e)).toList();
+
+      return result;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. please try again';
+    }
+  }
   //upload categories to the cloud firebase firesbas firestore
 
   Future<void> uploadDummyData(List<CategoryModel> categories) async {

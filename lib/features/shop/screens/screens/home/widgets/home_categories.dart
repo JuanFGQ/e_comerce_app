@@ -2,14 +2,15 @@ import 'package:e_comerce_app/common/widgets/image_text_widgets/scrollable_categ
 import 'package:e_comerce_app/common/widgets/shimmer_effect/category_shimmer.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/features/shop/controllers/categories_controller.dart';
+import 'package:e_comerce_app/features/shop/models/category_model.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/sub_category/sub_category.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ScrollableCategories extends StatelessWidget {
-  const ScrollableCategories({
+class THomeCategories extends StatelessWidget {
+  const THomeCategories({
     super.key,
     required this.product,
   });
@@ -52,8 +53,8 @@ class ScrollableCategories extends StatelessWidget {
                   return TScrollableCategories(
                     image: category.image,
                     title: category.name,
-                    onTap: () =>
-                        Get.to(() => SubCategoryScreen(product: product)),
+                    onTap: () => Get.to(() =>
+                        SubCategoryScreen(category: CategoryModel.empty())),
                   );
                 },
               ),
