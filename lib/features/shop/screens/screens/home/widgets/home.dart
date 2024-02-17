@@ -6,6 +6,7 @@ import 'package:e_comerce_app/common/widgets/products/product_cards/product_card
 import 'package:e_comerce_app/common/widgets/shimmer_effect/vertical_shimmer.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
+import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/all_products/all_products.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_app_bar.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_categories.dart';
@@ -25,7 +26,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             //CUSTOM HEADER
-            const TPrimaryHeaderContainer(
+            TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   SizedBox(height: TSizes.sm),
@@ -40,7 +41,9 @@ class HomePage extends StatelessWidget {
 
                   //CATEGORIES
 
-                  ScrollableCategories()
+                  ScrollableCategories(
+                    product: ProductModel.empty(),
+                  )
                 ],
               ),
             ),

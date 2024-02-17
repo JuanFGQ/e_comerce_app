@@ -7,6 +7,7 @@ import 'package:e_comerce_app/utils/exceptions/firebase_auth_exception.dart';
 import 'package:e_comerce_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:e_comerce_app/utils/exceptions/format_exception.dart';
 import 'package:e_comerce_app/utils/exceptions/platform_exception.dart';
+import 'package:e_comerce_app/utils/local_storage/storage_utility.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -36,9 +37,15 @@ class AuthenticationRepository extends GetxController {
   void screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
+      //if the user´s email is verified, navigate to the main Navigation menu
       if (user.emailVerified) {
+        //initialize user specific storage //49
+        await TLocalStorage.init(user.uid);
+
+        //if the user´s email is verified , navigate to the main Navigation Menu
         Get.offAll(() => const NavigationMenu());
       } else {
+        //if the user´s email is not verified, navigate to the verifyemailScreen
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
       }
     } else {

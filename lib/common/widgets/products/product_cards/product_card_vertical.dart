@@ -1,4 +1,5 @@
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:e_comerce_app/common/widgets/favourite_icon/favourite_icon.dart';
 import 'package:e_comerce_app/common/widgets/icon/circular_icon.dart';
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
@@ -79,14 +80,12 @@ class ProductCardVertical extends StatelessWidget {
                     ),
 
                   //*FAVOURITE ICON BUTTON
-                  const Positioned(
+                  Positioned(
                       top: 0,
                       right: 0,
-                      child: TCircularIcon(
-                          backGroundColor: TColors.lightGrey,
-                          margin: EdgeInsets.all(5),
-                          icon: Iconsax.heart5,
-                          color: Colors.red)),
+                      child: TFavouriteIcon(
+                        productId: product.id,
+                      )),
                 ],
               ),
             ),

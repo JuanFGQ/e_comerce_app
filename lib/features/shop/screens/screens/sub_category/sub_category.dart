@@ -2,12 +2,15 @@ import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/products/product_cards/product_card_horizontal.dart';
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
+import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class SubCategoryScreen extends StatelessWidget {
-  const SubCategoryScreen({super.key});
+  const SubCategoryScreen({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,9 @@ class SubCategoryScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: 4,
                       itemBuilder: (context, index) {
-                        return const TProductHorizontalCard();
+                        return TProductHorizontalCard(
+                          product: product,
+                        );
                       },
                     ),
                   )

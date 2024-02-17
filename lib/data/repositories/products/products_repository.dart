@@ -70,6 +70,26 @@ class ProductRepository extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> getFavoritesProducts(
+      List<String> productsIds) async {
+    try {
+      final snapshot = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productsIds)
+          .get();
+
+      return snapshot.docs
+          .map((quuerySnapshot) => ProductModel.fromSnapshot(quuerySnapshot))
+          .toList();
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Pleae try again';
+    }
+  }
+
   //!upload test data to the cloud firebase
 
   //**WARNING
