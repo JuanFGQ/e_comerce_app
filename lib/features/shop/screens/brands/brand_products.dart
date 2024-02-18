@@ -23,7 +23,7 @@ class BrandProductsScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               //BRAND DETAIL
@@ -31,7 +31,7 @@ class BrandProductsScreen extends StatelessWidget {
                 showBorder: true,
                 brand: brand,
               ),
-              SizedBox(height: TSizes.spaceBtwSection),
+              const SizedBox(height: TSizes.spaceBtwSection),
               FutureBuilder(
                   future: brandController.getBrandProducts(brandId: brand.id),
                   builder: (context, snapshot) {

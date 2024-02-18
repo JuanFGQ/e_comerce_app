@@ -21,10 +21,10 @@ class AllProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(AllProductsController());
     return Scaffold(
-      appBar: TAppBar(title: Text('Popular Products'), showBackArrow: true),
+      appBar: const TAppBar(title: Text('Popular Products'), showBackArrow: true),
       body: SingleChildScrollView(
           child: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: FutureBuilder(
           future: futureMethod ?? controller.fetchProductsByQuery(query),
           builder: (context, snapshot) {

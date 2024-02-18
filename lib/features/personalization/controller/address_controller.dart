@@ -1,15 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
+import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/data/repositories/address/addres_respository.dart';
-import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/personalization/models/address_model.dart';
+import 'package:e_comerce_app/features/personalization/screen/address/widgets/single_address.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
+import 'package:e_comerce_app/utils/constants/sizes.dart';
+import 'package:e_comerce_app/utils/helpers/cloud_helper_function.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class AddressController extends GetxController {
   static AddressController get instance => Get.find();
@@ -50,7 +50,7 @@ class AddressController extends GetxController {
         },
         barrierDismissible: false,
         backgroundColor: Colors.transparent,
-        content: CircularProgressIndicator());
+        content: const CircularProgressIndicator());
 
     try {
       //clear the "selected" field
@@ -130,6 +130,45 @@ class AddressController extends GetxController {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Address not found', message: e.toString());
     }
+  }
+
+  //Show Addresses ModalBottomSheet at CheckOut
+  Future<dynamic> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (_) => Container(
+        padding: EdgeInsets.all(TSizes.lg),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TSectionHeading(title: 'Select Address'),
+            FutureBuilder(
+              future: getAllUserAddresses(),
+              builder: (_, snapshot) {
+                //Helper function: handle Loader , No Recor , Or Error message
+                final response = TCloudHelperFunction.checkMultiRecordState(
+                    snapshot: snapshot);
+                if (response != null) return response;
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    return TSingleAddress(
+                      address: snapshot.data![index],
+                      onTap: () async {
+                        await selectAddress(snapshot.data![index]);
+                        Get.back();
+                      },
+                    );
+                  },
+                );
+              },
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   //Function to reset form fields

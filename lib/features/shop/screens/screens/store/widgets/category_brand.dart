@@ -5,7 +5,6 @@ import 'package:e_comerce_app/features/shop/controllers/product/brand_controller
 import 'package:e_comerce_app/features/shop/models/category_model.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/cloud_helper_function.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CategoryBrand extends StatelessWidget {
@@ -40,7 +39,7 @@ class CategoryBrand extends StatelessWidget {
 
           return ListView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: brands.length,
             itemBuilder: (_, index) {
               final brand = brands[index];

@@ -18,18 +18,24 @@ class TPricingCalculator {
     return shippingCost.toStringAsFixed(2);
   }
 
+//CALCULATE TAXT
   static String calculateTax(double productPrice, String location) {
     double taxRate = getTaxRateForLocation(location);
     double taxAmount = productPrice + taxRate;
     return taxAmount.toStringAsFixed(2);
   }
 
+//CALCULATE TAX EVEN THE WORLD LOCATION
   static double getTaxRateForLocation(String location) {
-    return 0.10;
+    //lookUp the tax rate for the given location from a tax rate database or API
+    //return the appropiate txt rate
+    return 0.10; //tax rate of 10%
   }
 
   static double getShippingCost(String location) {
-    return 5.00;
+    //lookUp the shipping cost fro the givenLocation using a shipping rate API.
+    //calculate the shipping cost based on various factors like distance, weight, etc.
+    return 5.00; //example shipping cost of $5
   }
 
   /// SUM ALL CART VALUES AND RETURN TOTAL AMOUNT

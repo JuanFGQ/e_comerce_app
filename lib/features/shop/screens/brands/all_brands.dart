@@ -4,7 +4,6 @@ import 'package:e_comerce_app/common/widgets/layout/grid_layout.dart';
 import 'package:e_comerce_app/common/widgets/shimmer_effect/brand_shimmer.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/brand_controller.dart';
-import 'package:e_comerce_app/features/shop/models/brand_model.dart';
 import 'package:e_comerce_app/features/shop/screens/brands/brand_products.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +29,9 @@ class AllBrandsScreen extends StatelessWidget {
 
               /// BRANDS
               Obx(() {
-                if (brandController.isLoading.value)
+                if (brandController.isLoading.value) {
                   return const TBrandShimmer();
+                }
 
                 if (brandController.allBrands.isEmpty) {
                   return Center(

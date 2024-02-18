@@ -36,8 +36,7 @@ class BrandModel {
 
   factory BrandModel.fromJson(
       QueryDocumentSnapshot<Map<String, dynamic>> document) {
-    if (document.data() == null) return BrandModel.empty();
-    final data = document.data() as Map<String, dynamic>;
+    final data = document.data();
 
     return BrandModel(
       id: data["id"] ?? '',

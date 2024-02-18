@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:e_comerce_app/common/widgets/layout/grid_layout.dart';
@@ -29,15 +28,15 @@ class HomePage extends StatelessWidget {
             TPrimaryHeaderContainer(
               child: Column(
                 children: [
-                  SizedBox(height: TSizes.sm),
+                  const SizedBox(height: TSizes.sm),
 
                   /// APPBAR
-                  THomeAppBar(),
-                  SizedBox(height: TSizes.spaceBtwSection),
+                  const THomeAppBar(),
+                  const SizedBox(height: TSizes.spaceBtwSection),
 
                   //SEARCH BAR
-                  TSearchContainer(text: 'SearchInStore'),
-                  SizedBox(height: TSizes.spaceBtwSection),
+                  const TSearchContainer(text: 'SearchInStore'),
+                  const SizedBox(height: TSizes.spaceBtwSection),
 
                   //CATEGORIES
 

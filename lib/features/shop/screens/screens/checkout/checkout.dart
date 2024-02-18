@@ -1,7 +1,10 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/common/widgets/products/cart/coupon_widget.dart';
 import 'package:e_comerce_app/common/widgets/succes%20screen/success_screen.dart';
+import 'package:e_comerce_app/features/shop/controllers/product/cart_controller.dart';
+import 'package:e_comerce_app/features/shop/controllers/product/order_controller.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/cart/widgets/cart_items.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/checkout/widgets/billing_address_section.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/checkout/widgets/billing_ammount_section.dart';
@@ -11,6 +14,7 @@ import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
+import 'package:e_comerce_app/utils/helpers/princing_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +23,10 @@ class CheckOutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = CartController.instance;
+    final subtotal = cartController.totalCartPrice.value;
+    final orderController = Get.put(OrderController());
+    final totalAmount = TPricingCalculator.calculateTotalPrice(subtotal, 'EU');
     final dark = THelperFunction.isDarkMode(context);
     return Scaffold(
       appBar: TAppBar(
@@ -37,7 +45,7 @@ class CheckOutScreen extends StatelessWidget {
               const TCartItems(showAddRemoveButton: false),
               const SizedBox(height: TSizes.defaultSpace),
 
-              //coupon textField
+              //COUPON TEXTFIELD
               const TCouponCode(),
               const SizedBox(height: TSizes.spaceBtwSection),
 
@@ -53,10 +61,6 @@ class CheckOutScreen extends StatelessWidget {
                     SizedBox(height: TSizes.spaceBtwItems),
                     //DIVIDER
                     Divider(),
-                    SizedBox(height: TSizes.spaceBtwItems),
-
-                    //PAYMENT  METHODS
-                    TBillingAmountSection(),
                     SizedBox(height: TSizes.spaceBtwItems),
 
                     //PAYMENT METHODS
@@ -75,13 +79,12 @@ class CheckOutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: ElevatedButton(
-            onPressed: () => Get.to(() => SuccesScreen(
-                  image: TImages.google,
-                  onPressed: () => Get.offAll(() => const NavigationMenu()),
-                  subTitle: 'Your item will be shipped soon!',
-                  title: 'Payment Success!',
-                )),
-            child: const Text('Checkout \$256.0')),
+            onPressed: subtotal > 0
+                ? () => orderController.processOrder(totalAmount)
+                : TLoaders.warningSnackBar(
+                    title: 'Empty Cart',
+                    message: 'Add items in the cart in order to proceed'),
+            child: Text('Checkout \$$totalAmount')),
       ),
     );
   }

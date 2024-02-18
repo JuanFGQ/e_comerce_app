@@ -1,3 +1,4 @@
+import 'package:e_comerce_app/features/shop/controllers/product/cart_controller.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/images_controller.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/features/shop/models/product_variation_model.dart';
@@ -32,6 +33,13 @@ class VariationController extends GetxController {
       ImagesController.instance.selectedProductImage.value =
           selectedVariation.image;
     }
+    //Show selected variation quantity already in the cart.
+    if (selectedVariation.id.isNotEmpty) {
+      final cartController = CartController.instance;
+      cartController.productQuantityInCart.value = cartController
+          .getVariationsQuantityInCart(product.id, selectedVariation.id);
+    }
+
     //Assign Selected Variation
     this.selectedVariation.value = selectedVariation;
 

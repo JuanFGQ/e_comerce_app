@@ -1,6 +1,5 @@
 import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_comerce_app/common/widgets/favourite_icon/favourite_icon.dart';
-import 'package:e_comerce_app/common/widgets/icon/circular_icon.dart';
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
@@ -9,7 +8,6 @@ import 'package:e_comerce_app/features/shop/controllers/product/product_controll
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/enums.dart';
-import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +89,7 @@ class TProductHorizontalCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ProductTitleText(title: product.title, smailSize: true),
-                      SizedBox(height: TSizes.spaceBtwItems / 2),
+                      const SizedBox(height: TSizes.spaceBtwItems / 2),
                       TBrandTitleTextWithVerifiedIcon(
                           title: product.brand!.name),
                     ],

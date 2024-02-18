@@ -5,7 +5,6 @@ import 'package:e_comerce_app/common/widgets/shimmer_effect/horizontal_product_s
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/features/shop/controllers/categories_controller.dart';
 import 'package:e_comerce_app/features/shop/models/category_model.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/all_products/all_products.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
@@ -91,7 +90,7 @@ class SubCategoryScreen extends StatelessWidget {
                                     height: 120,
                                     child: ListView.separated(
                                       separatorBuilder: (context, index) =>
-                                          SizedBox(width: TSizes.spaceBtwItems),
+                                          const SizedBox(width: TSizes.spaceBtwItems),
                                       scrollDirection: Axis.horizontal,
                                       itemCount: subCategories.length,
                                       itemBuilder: (context, index) {
