@@ -19,4 +19,16 @@ class TImages {
   static const String loadingAnim = 'assets/animation/loading_animation.json';
   static const String handLoading = 'assets/animation/hand_loading.json';
   static const String successCheck = 'assets/animation/succes_check.json';
+
+  //categories String
+
+  static const String furniture = 'assets/animation/furnitures.json';
+  static const String clothes = 'assets/animation/clothes.json';
+  static const String diy = 'assets/animation/tools.json';
+  static const String jewelry = 'assets/animation/jewelry.json';
+  static const String animals = 'assets/animation/animals.json';
+  static const String electricity = 'assets/animation/electricity.json';
+  static const String electronics = 'assets/animation/electronics.json';
+  static const String cosmetics = 'assets/animation/cosmetics.json';
+  static const String shoes = 'assets/animation/shoes.json';
 }

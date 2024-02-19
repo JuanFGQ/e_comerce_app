@@ -12,10 +12,7 @@ import 'package:get/get.dart';
 class THomeCategories extends StatelessWidget {
   const THomeCategories({
     super.key,
-    required this.product,
   });
-
-  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +43,12 @@ class THomeCategories extends StatelessWidget {
               height: 80,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: 6,
+                itemCount: controller.featuredCategories.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   final category = controller.featuredCategories[index];
                   return TScrollableCategories(
+                    isNetworkImage: true,
                     image: category.image,
                     title: category.name,
                     onTap: () => Get.to(() =>

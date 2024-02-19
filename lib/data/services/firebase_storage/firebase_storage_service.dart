@@ -45,8 +45,8 @@ class TFirebaseStorageService extends GetxController {
     }
   }
 
-//UPLOAD IMAGE ON CLOUD FIRESTORA STORAGE
-//return the deonload URL of the uploaded image.
+//UPLOAD IMAGE ON CLOUD FIRESTORAGE STORAGE
+//return the dowloaded URL of the uploaded image.
   Future<String> uploadImageFiles(String path, XFile image) async {
     try {
       final ref = _firebaseStorage.ref(path).child(image.name);

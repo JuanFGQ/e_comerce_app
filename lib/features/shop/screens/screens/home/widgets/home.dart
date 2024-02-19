@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
 
                   //CATEGORIES
 
-                  THomeCategories(product: ProductModel.empty())
+                  THomeCategories()
                 ],
               ),
             ),

@@ -4,6 +4,8 @@ import 'package:e_comerce_app/common/widgets/list_tiles/settings_menu_tile.dart'
 import 'package:e_comerce_app/common/widgets/list_tiles/user_list_tile.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
+import 'package:e_comerce_app/data/repositories/categories/category_repository.dart';
+import 'package:e_comerce_app/dummy_data.dart';
 import 'package:e_comerce_app/features/personalization/screen/address/address.dart';
 import 'package:e_comerce_app/features/personalization/screen/profile/profile.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/cart/cart.dart';
@@ -20,6 +22,8 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = AuthenticationRepository.instance;
+    final uploadData = CategoryRepository.instance;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -93,7 +97,9 @@ class SettingsScreen extends StatelessWidget {
                   const TSectionHeading(
                       title: 'App Settings', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
-                  const TSettingMenuTile(
+                  TSettingMenuTile(
+                      onTap: () =>
+                          uploadData.uploadDummyData(TDummyData.categories),
                       icon: Iconsax.document_upload,
                       title: 'Load Data',
                       subTitle: 'Upload Data to your Cloud Firestorage '),
