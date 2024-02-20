@@ -22,13 +22,13 @@ class TImages {
 
   //categories String
 
-  static const String furniture = 'assets/animation/furnitures.json';
-  static const String clothes = 'assets/animation/clothes.json';
-  static const String diy = 'assets/animation/tools.json';
-  static const String jewelry = 'assets/animation/jewelry.json';
-  static const String animals = 'assets/animation/animals.json';
-  static const String electricity = 'assets/animation/electricity.json';
-  static const String electronics = 'assets/animation/electronics.json';
-  static const String cosmetics = 'assets/animation/cosmetics.json';
-  static const String shoes = 'assets/animation/shoes.json';
+  static const String furniture = 'assets/categories/furnitures.png';
+  static const String clothes = 'assets/categories/clothes.png';
+  static const String diy = 'assets/categories/tools.png';
+  static const String jewelry = 'assets/categories/jewelry.png';
+  static const String animals = 'assets/categories/animals.png';
+  static const String electricity = 'assets/categories/electricity.png';
+  static const String electronics = 'assets/categories/electronics.png';
+  static const String cosmetics = 'assets/categories/cosmetics.png';
+  static const String shoes = 'assets/categories/shoes.png';
 }

@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class TScrollableCategories extends StatelessWidget {
   const TScrollableCategories({
@@ -9,7 +11,7 @@ class TScrollableCategories extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = TColors.white,
-    this.backGroundColor = TColors.black,
+    this.backGroundColor = TColors.light,
     this.onTap,
     this.isNetworkImage = true,
   });
@@ -22,7 +24,7 @@ class TScrollableCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    // final dark = THelperFunction.isDarkMode(context);
     return GestureDetector(
       onTap: onTap,
       child: Padding(
@@ -39,18 +41,15 @@ class TScrollableCategories extends StatelessWidget {
                 color: backGroundColor ??
                     (THelperFunction.isDarkMode(context)
                         ? TColors.light
-                        : TColors.dark),
+                        : TColors.light),
               ),
               child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  // color: THelperFunction.isDarkMode(context)
-                  //     ? TColors.white
-                  //     : TColors.black,
-                  fit: BoxFit.cover,
-                  // color: TColors.grey
-                ),
-              ),
+                  child: isNetworkImage
+                      ? CachedNetworkImage(
+                          imageUrl: image,
+                          fit: BoxFit.cover,
+                        )
+                      : const Icon(Icons.explicit_sharp)),
             ),
             const SizedBox(height: TSizes.spaceBtwItems / 2),
             //ICON SUBTITLE

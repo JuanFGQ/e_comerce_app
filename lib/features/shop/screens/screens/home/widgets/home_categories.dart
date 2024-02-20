@@ -40,7 +40,7 @@ class THomeCategories extends StatelessWidget {
 
             return SizedBox(
               width: double.infinity,
-              height: 80,
+              height: 100,
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: controller.featuredCategories.length,
