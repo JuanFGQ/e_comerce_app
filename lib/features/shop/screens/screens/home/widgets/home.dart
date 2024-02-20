@@ -5,7 +5,6 @@ import 'package:e_comerce_app/common/widgets/products/product_cards/product_card
 import 'package:e_comerce_app/common/widgets/shimmer_effect/vertical_shimmer.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/all_products/all_products.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_app_bar.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_categories.dart';
@@ -25,18 +24,18 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             //CUSTOM HEADER
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
-                  const SizedBox(height: TSizes.sm),
+                  SizedBox(height: TSizes.sm),
 
                   /// APPBAR
-                  const THomeAppBar(),
-                  const SizedBox(height: TSizes.spaceBtwSection),
+                  THomeAppBar(),
+                  SizedBox(height: TSizes.spaceBtwSection),
 
                   //SEARCH BAR
-                  const TSearchContainer(text: 'SearchInStore'),
-                  const SizedBox(height: TSizes.spaceBtwSection),
+                  TSearchContainer(text: 'SearchInStore'),
+                  SizedBox(height: TSizes.spaceBtwSection),
 
                   //CATEGORIES
 

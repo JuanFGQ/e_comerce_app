@@ -27,10 +27,10 @@ class CheckOutController extends GetxController {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TSectionHeading(
+                    const TSectionHeading(
                         title: 'Select Payment Method',
                         showActionButton: false),
-                    SizedBox(height: TSizes.spaceBtwSection),
+                    const SizedBox(height: TSizes.spaceBtwSection),
 
                     //PAYMENT OPTION
                     TPaymentTile(

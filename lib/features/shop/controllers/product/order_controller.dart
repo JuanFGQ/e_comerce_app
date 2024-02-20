@@ -71,7 +71,7 @@ class OrderController extends GetxController {
             image: TImages.handLoading,
             title: 'Payment Success',
             subTitle: 'Your Item will be shipped soon',
-            onPressed: () => Get.offAll(() => NavigationMenu()),
+            onPressed: () => Get.offAll(() => const NavigationMenu()),
           ));
     } catch (e) {
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

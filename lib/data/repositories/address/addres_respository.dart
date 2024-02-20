@@ -10,7 +10,7 @@ class AddressRepository extends GetxController {
 
   Future<List<AddressModel>> fetchUserAddresses() async {
     try {
-      final userId = AuthenticationRepository.instance.authUser!.uid;
+      final userId = AuthenticationRepository.instance.authUser.uid;
       if (userId.isEmpty) {
         throw 'Unable to find user information, Try again in few minuts.';
       }
@@ -33,7 +33,7 @@ class AddressRepository extends GetxController {
   //Clear the "selected" field for all addresses
   Future<void> updateSelectedField(String addressId, bool selected) async {
     try {
-      final userId = AuthenticationRepository.instance.authUser!.uid;
+      final userId = AuthenticationRepository.instance.authUser.uid;
       await _db
           .collection('Users')
           .doc(userId)
@@ -48,7 +48,7 @@ class AddressRepository extends GetxController {
   //store new user order/address
   Future<String> addAddress(AddressModel address) async {
     try {
-      final userId = AuthenticationRepository.instance.authUser!.uid;
+      final userId = AuthenticationRepository.instance.authUser.uid;
       final currentAddress = await _db
           .collection('User')
           .doc(userId)
