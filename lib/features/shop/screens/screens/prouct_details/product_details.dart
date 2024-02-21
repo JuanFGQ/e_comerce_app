@@ -20,7 +20,6 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: TBottomAddToCart(product: product),
       body: SingleChildScrollView(
@@ -67,10 +66,10 @@ class ProductDetailScreen extends StatelessWidget {
                   trimMode: TrimMode.Line,
                   trimCollapsedText: ' Show more',
                   trimExpandedText: ' Less',
-                  moreStyle:
-                      const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                  lessStyle:
-                      const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                  moreStyle: const TextStyle(
+                      fontSize: 14, fontWeight: FontWeight.w800),
+                  lessStyle: const TextStyle(
+                      fontSize: 14, fontWeight: FontWeight.w800),
                 ),
 
                 //REVIEWS

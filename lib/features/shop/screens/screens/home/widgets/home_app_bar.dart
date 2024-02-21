@@ -1,11 +1,14 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:e_comerce_app/common/widgets/shimmer_effect/shimmer_effect.dart';
+import 'package:e_comerce_app/features/messages/widgets/message_appbar_icon.dart';
 import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
+import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class THomeAppBar extends StatelessWidget {
   const THomeAppBar({
@@ -40,6 +43,8 @@ class THomeAppBar extends StatelessWidget {
       ),
       actions: const [
         TCartCounterIcon(),
+        SizedBox(width: TSizes.spaceBtwItems),
+        JMessagesIcon()
       ],
     );
   }

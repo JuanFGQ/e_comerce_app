@@ -5,7 +5,7 @@ import 'package:e_comerce_app/common/widgets/loaders/animation_loader_widget.dar
 import 'package:e_comerce_app/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:e_comerce_app/common/widgets/shimmer_effect/vertical_shimmer.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/favourite_controller.dart';
-import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home.dart';
+import 'package:e_comerce_app/features/shop/screens/screens/home/home.dart';
 import 'package:e_comerce_app/navigation_menu.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
