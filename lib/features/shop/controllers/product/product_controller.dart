@@ -50,7 +50,7 @@ class ProductController extends GetxController {
           .toString();
     } else {
       //calculate the smallest and largest prices among variations
-      for (var variation in product.productVariatiosn!) {
+      for (var variation in product.productVariations!) {
         //Determine the price to consider (sale price if available, otherwise regular price)
         double priceToCondider =
             variation.salePrice > 0.0 ? variation.salePrice : variation.price;

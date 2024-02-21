@@ -23,7 +23,7 @@ class VariationController extends GetxController {
     selectedAttributes[attributeName] = attributeValue;
     this.selectedAttributes[attributeName] = attributeValue;
 
-    final selectedVariation = product.productVariatiosn!.firstWhere(
+    final selectedVariation = product.productVariations!.firstWhere(
         (element) => _isSameAttributesValues(
             element.attributeValues, selectedAttributes),
         orElse: () => ProductVariationModel.empty());

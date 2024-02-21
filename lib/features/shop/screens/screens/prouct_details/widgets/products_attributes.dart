@@ -107,7 +107,7 @@ class ProductsAttributes extends StatelessWidget {
                                     attributeValue;
                                 final available = controller
                                     .getAttributesAvailabilityVariation(
-                                        product.productVariatiosn!,
+                                        product.productVariations!,
                                         attribute.name!)
                                     .contains(attributeValue);
 

@@ -19,7 +19,7 @@ class ProductModel {
   List<String>? images;
   String productType;
   List<ProductAttributeModel>? productAttributes;
-  List<ProductVariationModel>? productVariatiosn;
+  List<ProductVariationModel>? productVariations;
 
   ProductModel({
     required this.id,
@@ -37,7 +37,7 @@ class ProductModel {
     this.categoryId,
     this.images,
     this.productAttributes,
-    this.productVariatiosn,
+    this.productVariations,
   });
 
 //create empty func for clean code
@@ -64,8 +64,8 @@ class ProductModel {
       'productAttributes': productAttributes != null
           ? productAttributes!.map((e) => e.toJson()).toList()
           : [],
-      'productVariatiosn': productVariatiosn != null
-          ? productVariatiosn!.map((e) => e.toJson()).toList()
+      'productVariatiosn': productVariations != null
+          ? productVariations!.map((e) => e.toJson()).toList()
           : [],
     };
   }
@@ -89,7 +89,7 @@ class ProductModel {
         productAttributes: (data['productAttributes'] as List<dynamic>)
             .map((e) => ProductAttributeModel.fromJson(e))
             .toList(),
-        productVariatiosn: (data['productVariatiosn'] as List<dynamic>)
+        productVariations: (data['productVariatiosn'] as List<dynamic>)
             .map((e) => ProductVariationModel.fromJson(e))
             .toList(),
         stock: data['Stock'] ?? 0,
@@ -117,7 +117,7 @@ class ProductModel {
         productAttributes: (data['productAttributes'] as List<dynamic>)
             .map((e) => ProductAttributeModel.fromJson(e))
             .toList(),
-        productVariatiosn: (data['productVariatiosn'] as List<dynamic>)
+        productVariations: (data['productVariatiosn'] as List<dynamic>)
             .map((e) => ProductVariationModel.fromJson(e))
             .toList(),
         stock: data['Stock'] ?? 0,
