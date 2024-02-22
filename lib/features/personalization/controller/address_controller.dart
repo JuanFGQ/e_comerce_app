@@ -179,6 +179,7 @@ class AddressController extends GetxController {
     postalCode.clear();
     city.clear();
     state.clear();
+    country.clear();
     addressFormKey.currentState?.reset();
   }
 }

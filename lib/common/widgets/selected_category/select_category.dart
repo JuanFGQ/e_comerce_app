@@ -10,24 +10,24 @@ import 'package:iconsax/iconsax.dart';
 class JSelectedCategory extends StatelessWidget {
   const JSelectedCategory({
     super.key,
-    required this.products,
+    // required this.products,
   });
-  final List<ProductModel> products;
+  // final List<ProductModel> products;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AllProductsController());
-    controller.assignProducts(products);
+    // controller.assignProducts(products);
     return Column(
       children: [
         //dropdown
 
         DropdownButtonFormField(
-          value: controller.selectedSortOption.value,
+          hint: const Text('Selected the category'),
+          // value: controller.selectedSortOption.value,
           decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
           onChanged: (value) {
             //select products based on the selected option
-            controller.sortProducts(value!);
+            // controller.sortProducts(value!);
           },
           items: [
             'Animals',
@@ -47,13 +47,13 @@ class JSelectedCategory extends StatelessWidget {
         const SizedBox(height: TSizes.spaceBtwSection),
 
         //PRODUCTS
-        Obx(
-          () => GridLayout(
-            itemCount: controller.products.length,
-            itemBuilder: (_, index) =>
-                ProductCardVertical(product: controller.products[index]),
-          ),
-        )
+        // Obx(
+        //   () => GridLayout(
+        //     itemCount: controller.products.length,
+        //     itemBuilder: (_, index) =>
+        //         ProductCardVertical(product: controller.products[index]),
+        //   ),
+        // )
       ],
     );
   }

@@ -50,7 +50,7 @@ class AddressRepository extends GetxController {
     try {
       final userId = AuthenticationRepository.instance.authUser.uid;
       final currentAddress = await _db
-          .collection('User')
+          .collection('Users')
           .doc(userId)
           .collection('Addresses')
           .add(address.toJson());

@@ -10,7 +10,7 @@ class GeneralBindings extends Bindings {
   void dependencies() {
     Get.put(NetworkManager());
     Get.put(VariationController());
-    Get.put(AddressController());
+    // Get.put(AddressController());
     Get.put(CheckOutController());
     Get.put(FavouriteController());
   }

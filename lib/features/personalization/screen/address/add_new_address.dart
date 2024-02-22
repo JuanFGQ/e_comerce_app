@@ -100,7 +100,8 @@ class AddNewAssresScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () {}, child: const Text('Save')),
+                        onPressed: () => controller.addNewAddress(),
+                        child: const Text('Save')),
                   ),
                 ],
               )),

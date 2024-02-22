@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/data/services/firebase_storage/firebase_storage_service.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/utils/exceptions/firebase_exceptions.dart';
+import 'package:e_comerce_app/utils/exceptions/format_exception.dart';
 import 'package:e_comerce_app/utils/exceptions/platform_exception.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -223,6 +225,23 @@ class ProductRepository extends GetxController {
       throw TPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Pleae try again';
+    }
+  }
+
+  Future<void> uploadProduct(ProductModel model) async {
+    try {
+      await _db
+          .collection("Products")
+          .doc(AuthenticationRepository.instance.authUser.uid)
+          .set(model.toJson());
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. please try again';
     }
   }
 }
