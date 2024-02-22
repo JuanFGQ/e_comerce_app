@@ -3,41 +3,53 @@ import 'package:get/get.dart';
 class NewProductController extends GetxController {
   static NewProductController get instance => Get.find();
 
-  RxString assingCategory = 'shoes'.obs;
+  RxString assingCategory = 'Animals'.obs;
 
   void sortProducts(String sortOption) {
     assingCategory.value = sortOption;
 
     switch (sortOption) {
-      case 'Name':
-        products.sort((a, b) => a.title.compareTo(b.title));
+      case 'Animals':
+        sortProducts('1');
         break;
-      case 'Higher Price':
-        products.sort((a, b) => b.price.compareTo(a.price));
+      case 'Clothes':
+        sortProducts('2');
+
         break;
-      case 'Lower Price':
-        products.sort((a, b) => a.price.compareTo(b.price));
+      case 'Cosmetics':
+        sortProducts('3');
+
         break;
-      case 'Newest':
-        products.sort((a, b) => a.date!.compareTo(b.date!));
+      case 'Tools':
+        sortProducts('4');
+
         break;
 
-      case 'Sale':
-        products.sort((a, b) {
-          if (b.salePrice > 0) {
-            return b.salePrice.compareTo(a.salePrice);
-          } else if (a.salePrice > 0) {
-            return -1;
-          } else {
-            return 1;
-          }
-        });
+      case 'Electricity':
+        sortProducts('5');
+
+        break;
+      case 'Electronics':
+        sortProducts('6');
+
+        break;
+      case 'Furniture':
+        sortProducts('7');
+
+        break;
+      case 'Jewelry':
+        sortProducts('8');
+
+        break;
+      case 'Shoes':
+        sortProducts('9');
 
         break;
 
       default:
-        //Default sortin option, the fist of the list of options: Name
-        products.sort((a, b) => a.title.compareTo(b.title));
+        sortProducts('1');
+
+      //Default sortin option, the fist of the list of options: Name
     }
   }
 }

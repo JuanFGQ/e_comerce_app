@@ -30,12 +30,15 @@ class JSelectedCategory extends StatelessWidget {
             controller.sortProducts(value!);
           },
           items: [
-            'Name',
-            'Higher Price',
-            'Lowe Price',
-            'Sale',
-            'Newest',
-            'Popularity'
+            'Animals',
+            'Clothes',
+            'Cosmetics',
+            'Tools',
+            'Electricity',
+            'Electronics',
+            'Furniture',
+            'Jewelry',
+            'Shoes',
           ]
               .map((option) =>
                   DropdownMenuItem(value: option, child: Text(option)))
