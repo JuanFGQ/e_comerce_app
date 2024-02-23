@@ -6,6 +6,7 @@ import 'package:e_comerce_app/data/repositories/products/products_repository.dar
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
+import 'package:e_comerce_app/utils/firebasestorage/upload_image.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,8 +29,10 @@ class NewProductController extends GetxController {
   final productDescription = TextEditingController();
   //repository
   final productRepository = Get.put(ProductRepository());
+  final firebase = Get.put(JFireStorageMethods());
   //flags
   final isPublishPost = false.obs;
+  final imageUploading = false.obs;
 
   void sortProducts(String sortOption) {
     assingCategory.value = sortOption;
@@ -85,17 +88,19 @@ class NewProductController extends GetxController {
           await ImagePicker().pickImage(source: source, imageQuality: 70);
 
       if (image != null && isPublishPost.value != true) {
+        imageUploading.value = true;
+        //Upload Image
         imagesList.add(image);
 
+        /*what a i need is:
+        
+        *take the pictures with this method and add to listo of the top 
+        *the in other method i need to upload all of those strings to firestore
+        *with the urls returned from firestore, save it in other list , to set on images field in my model 
 
-        /* 
-        - pick image
-        - 
-        - convert that system url in firestorage url 
-        - parse 
 
-        */ 
-              }
+       */
+      }
     } catch (e) {
       TLoaders.errorSnackBar(
           title: 'Oh Snap!', message: 'Something went wrong');
@@ -120,8 +125,9 @@ class NewProductController extends GetxController {
 
       //upload the information
       await productRepository.uploadProduct(ProductModel(
-        categoryId: //this value might come from JSelectedCategory  ,
-        images: //todo: need a list of strings,so then its needed to get the url of each image selected,
+          //  categoryId: ,//this value might come from JSelectedCategory  ,
+          //images: ,//todo: need a list of strings,so then its needed to get the url of each image selected,
+          //the images url list are returned from firebase
           id: AuthenticationRepository.instance.authUser.uid,
           stock: int.tryParse(availableStock.text)!,
           price: double.tryParse(salePrice.text)!,

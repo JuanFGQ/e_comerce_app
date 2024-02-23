@@ -7,6 +7,7 @@ import 'package:e_comerce_app/features/personalization/screen/profile/widgets/re
 import 'package:e_comerce_app/features/shop/authentication/login/login.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
+import 'package:e_comerce_app/utils/firebasestorage/upload_image.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class UserController extends GetxController {
   final profileLoading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
   final userRepository = Get.put(UserRepository());
+  final firestore = Get.put(JFireStorageMethods());
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
@@ -179,7 +181,7 @@ class UserController extends GetxController {
         imageUploading.value = true;
         //upload image
         final imageUrl =
-            await userRepository.uploadImage('Users/Images/Profile', image);
+            await firestore.uploadImage('Users/Images/Profile', image);
 
         //Update User Image Record
         Map<String, dynamic> json = {'ProfilePicture': imageUrl};

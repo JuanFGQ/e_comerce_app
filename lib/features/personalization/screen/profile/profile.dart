@@ -40,7 +40,8 @@ class ProfileScreen extends StatelessWidget {
                             : TImages.darkAppLogo;
 
                         return controller.imageUploading.value
-                            ? const TShimmerEffect(width: 80, height: 80, raidus: 80)
+                            ? const TShimmerEffect(
+                                width: 80, height: 80, raidus: 80)
                             : TCircularImage(
                                 isNetWorkImage: networkImage.isNotEmpty,
                                 image: image,
