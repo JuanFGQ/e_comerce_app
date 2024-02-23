@@ -230,10 +230,7 @@ class ProductRepository extends GetxController {
 
   Future<void> uploadProduct(ProductModel model) async {
     try {
-      await _db
-          .collection("Products")
-          .doc(AuthenticationRepository.instance.authUser.uid)
-          .set(model.toJson());
+      await _db.collection("Products").doc().set(model.toJson());
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException catch (_) {
