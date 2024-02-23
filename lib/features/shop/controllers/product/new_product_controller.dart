@@ -18,7 +18,8 @@ class NewProductController extends GetxController {
 
   RxString assingCategory = 'Animals'.obs;
   //image list
-  RxList imagesList = [].obs;
+  RxList imagesListObservable = [].obs;
+  List listoToUpload = [];
   //numbers editings
   final salePrice = TextEditingController();
   final discountPrice = TextEditingController();
@@ -90,11 +91,14 @@ class NewProductController extends GetxController {
       if (image != null && isPublishPost.value != true) {
         imageUploading.value = true;
         //Upload Image
-        imagesList.add(image);
+        imagesListObservable.add(image);
+        listoToUpload.add(image);
+
+        TLoaders.successSnackBar(title: 'Image added', message: '');
 
         /*what a i need is:
         
-        *take the pictures with this method and add to listo of the top 
+        *take the pictures with this method and add to list of the top 
         *the in other method i need to upload all of those strings to firestore
         *with the urls returned from firestore, save it in other list , to set on images field in my model 
 
@@ -123,10 +127,12 @@ class NewProductController extends GetxController {
       //flag
       isPublishPost.value = true;
 
+      //VER NOBODY PELICULA
+
       //upload the information
       await productRepository.uploadProduct(ProductModel(
-          //  categoryId: ,//this value might come from JSelectedCategory  ,
-          //images: ,//todo: need a list of strings,so then its needed to get the url of each image selected,
+          //  categoryId:  ,//this value might come from JSelectedCategory  ,
+          //  images:,  //todo: need a list of strings,so then its needed to get the url of each image selected,
           //the images url list are returned from firebase
           id: AuthenticationRepository.instance.authUser.uid,
           stock: int.tryParse(availableStock.text)!,
