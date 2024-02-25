@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_comerce_app/data/services/firebase_storage/firebase_storage_service.dart';
 import 'package:e_comerce_app/features/shop/models/brand_model.dart';
 import 'package:e_comerce_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:e_comerce_app/utils/exceptions/format_exception.dart';
@@ -57,6 +58,38 @@ class BrandRepository extends GetxController {
           brandsQuery.docs.map((e) => BrandModel.fromSnapshot(e)).toList();
 
       return brands;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. please try again';
+    }
+  }
+
+//Upload dummy data
+  Future<void> uploadDummyData(List<BrandModel> brands) async {
+    try {
+      //upload all the categories along with their Images
+      final storage = Get.put(TFirebaseStorageService());
+
+      //loop through each category
+
+      for (var brand in brands) {
+        //Get image data Link from the local assets
+        final file = await storage.getImageDataFrommAssets(brand.image);
+
+        //upload image and get its url
+        final url = await storage.uploadImageData('Brand', file, brand.image);
+
+        //assing Url to category.image attribute
+        brand.image = url;
+
+        //store category in firestore
+        await _db.collection("Brands").doc(brand.id).set(brand.toJson());
+      }
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException catch (_) {

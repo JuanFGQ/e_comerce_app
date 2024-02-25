@@ -11,7 +11,7 @@ String addressModelToJson(AddressModel data) => json.encode(data.toJson());
 
 class AddressModel {
   String name;
-  late final String id;
+  String id;
   final String phoneNumber;
   final String street;
   final String city;
@@ -77,7 +77,7 @@ class AddressModel {
 
     return AddressModel(
         id: snapshot.id,
-        name: data['Name'] ?? '',
+        name: data['name'] ?? '',
         phoneNumber: data['phoneNumber'] ?? '',
         street: data['street'] ?? '',
         city: data['city'] ?? '',

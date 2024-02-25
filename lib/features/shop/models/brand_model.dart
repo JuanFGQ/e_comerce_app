@@ -34,17 +34,28 @@ class BrandModel {
     };
   }
 
-  factory BrandModel.fromJson(
-      QueryDocumentSnapshot<Map<String, dynamic>> document) {
-    final data = document.data();
+  // factory BrandModel.fromJson(
+  //     QueryDocumentSnapshot<Map<String, dynamic>> document) {
+  //   final data = document.data();
+
+  //   return BrandModel(
+  //     id: data["id"] ?? '',
+  //     name: data["name"] ?? '',
+  //     image: data["image"] ?? '',
+  //     isFeatured: data["isFeatured"] ?? false,
+  //     productsCount: data["productsCount"] ?? 0,
+  //   );
+  // }
+
+  factory BrandModel.fromJson(Map<String, dynamic> document) {
+    final data = document;
 
     return BrandModel(
-      id: data["id"] ?? '',
-      name: data["name"] ?? '',
-      image: data["image"] ?? '',
-      isFeatured: data["isFeatured"] ?? false,
-      productsCount: data["productsCount"] ?? 0,
-    );
+        id: data['id'] ?? '',
+        name: data['name'] ?? '',
+        image: data['image'] ?? '',
+        isFeatured: data['isFeatured'] ?? false,
+        productsCount: data['productsCount'] ?? 0);
   }
 //Map Json oriented document snapshot from Firebase to UserModel
   factory BrandModel.fromSnapshot(

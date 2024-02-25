@@ -19,101 +19,106 @@ class NewProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NewProductController());
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            //MAIN PRODUCT IMAGES
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (didPop) async {
+        controller.clearData();
+        return;
+      },
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              //!MAIN PRODUCT IMAGES
 
-            const JAddImagesSlider(),
+              const JAddImagesSlider(),
 
-            //PRICE SETTER
+              //!PRICE SETTER
 
-            Row(
-              children: [
-                //SALE PRICE
-                const SizedBox(width: TSizes.defaultSpace / 2),
-                Expanded(
-                  child: TextFormField(
-                      keyboardType: TextInputType.number,
-                      controller: controller.salePrice,
-                      validator: (value) =>
-                          TValidator.validateEmptyText('sale price', value),
-                      expands: false,
-                      decoration: const InputDecoration(
-                          labelText: 'Sale Price',
-                          prefixIcon: Icon(Iconsax.money_3))),
-                ),
-                const SizedBox(width: TSizes.spaceBtwSection / 2),
-                //DISCOUNT PRICE
-                Expanded(
-                  child: TextFormField(
-                      keyboardType: TextInputType.number,
-                      controller: controller.discountPrice,
-                      validator: (value) =>
-                          TValidator.validateEmptyText('discount price', value),
-                      expands: false,
-                      decoration: const InputDecoration(
-                          labelText: 'Discount Price',
-                          prefixIcon: Icon(Iconsax.discount_circle))),
-                ),
-                const SizedBox(width: TSizes.defaultSpace / 2),
-              ],
-            ),
-            const SizedBox(height: TSizes.spaceBtwSection),
+              Row(
+                children: [
+                  //!SALE PRICE
+                  const SizedBox(width: TSizes.defaultSpace / 2),
+                  Expanded(
+                    child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        controller: controller.salePrice,
+                        validator: (value) =>
+                            TValidator.validateEmptyText('sale price', value),
+                        expands: false,
+                        decoration: const InputDecoration(
+                            labelText: 'Sale Price',
+                            prefixIcon: Icon(Iconsax.money_3))),
+                  ),
+                  const SizedBox(width: TSizes.spaceBtwSection / 2),
+                  //!DISCOUNT PRICE
+                  Expanded(
+                    child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        controller: controller.discountPrice,
+                        validator: (value) => TValidator.validateEmptyText(
+                            'discount price', value),
+                        expands: false,
+                        decoration: const InputDecoration(
+                            labelText: 'Discount Price',
+                            prefixIcon: Icon(Iconsax.discount_circle))),
+                  ),
+                  const SizedBox(width: TSizes.defaultSpace / 2),
+                ],
+              ),
+              const SizedBox(height: TSizes.spaceBtwSection),
 
-            //PRODUCT NAME
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: TSizes.defaultSpace, right: TSizes.defaultSpace),
-              child: TextFormField(
-                  expands: false,
-                  controller: controller.productName,
-                  validator: (value) =>
-                      TValidator.validateEmptyText('Product name', value),
-                  decoration: const InputDecoration(
-                      labelText: 'Product Name',
-                      prefixIcon: Icon(Iconsax.additem4))),
-            ),
-            const SizedBox(height: TSizes.spaceBtwSection),
+              //!PRODUCT NAME
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: TSizes.defaultSpace, right: TSizes.defaultSpace),
+                child: TextFormField(
+                    expands: false,
+                    controller: controller.productName,
+                    validator: (value) =>
+                        TValidator.validateEmptyText('Product name', value),
+                    decoration: const InputDecoration(
+                        labelText: 'Product Name',
+                        prefixIcon: Icon(Iconsax.additem4))),
+              ),
+              const SizedBox(height: TSizes.spaceBtwSection),
 
-            //PRODUCT BRAND
-            Row(
-              children: [
-                const SizedBox(width: TSizes.defaultSpace / 2),
-                Expanded(
-                  child: TextFormField(
-                      controller: controller.productBrand,
-                      validator: (value) =>
-                          TValidator.validateEmptyText('Product Brand', value),
-                      expands: false,
-                      decoration: const InputDecoration(
-                          labelText: 'Product Brand',
-                          prefixIcon: Icon(Iconsax.airdrop5))),
-                ),
-                const SizedBox(width: TSizes.spaceBtwSection / 2),
+              //!PRODUCT BRAND
+              Row(
+                children: [
+                  const SizedBox(width: TSizes.defaultSpace / 2),
+                  Expanded(
+                    child: TextFormField(
+                        controller: controller.productBrand,
+                        validator: (value) => TValidator.validateEmptyText(
+                            'Product Brand', value),
+                        expands: false,
+                        decoration: const InputDecoration(
+                            labelText: 'Product Brand',
+                            prefixIcon: Icon(Iconsax.airdrop5))),
+                  ),
+                  const SizedBox(width: TSizes.spaceBtwSection / 2),
 
-                //AVAILABLE STOCK
-                Expanded(
-                  child: TextFormField(
-                      keyboardType: TextInputType.number,
-                      controller: controller.availableStock,
-                      validator: (value) => TValidator.validateEmptyText(
-                          'Available Stock', value),
-                      decoration: const InputDecoration(
-                          labelText: 'Available Stock',
-                          prefixIcon: Icon(Iconsax.computing))),
-                ),
-                const SizedBox(width: TSizes.defaultSpace / 2),
-              ],
-            ),
-            const SizedBox(height: TSizes.spaceBtwSection),
+                  //!AVAILABLE STOCK
+                  Expanded(
+                    child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        controller: controller.availableStock,
+                        validator: (value) => TValidator.validateEmptyText(
+                            'Available Stock', value),
+                        decoration: const InputDecoration(
+                            labelText: 'Available Stock',
+                            prefixIcon: Icon(Iconsax.computing))),
+                  ),
+                  const SizedBox(width: TSizes.defaultSpace / 2),
+                ],
+              ),
+              const SizedBox(height: TSizes.spaceBtwSection),
 
-            //DESCRIPTION
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: TSizes.defaultSpace, right: TSizes.defaultSpace),
-              child: Expanded(
+              //!DESCRIPTION
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: TSizes.defaultSpace, right: TSizes.defaultSpace),
                 child: TextFormField(
                     controller: controller.productDescription,
                     validator: (value) => TValidator.validateEmptyText(
@@ -122,29 +127,29 @@ class NewProductScreen extends StatelessWidget {
                         labelText: 'Describe your product',
                         prefixIcon: Icon(Iconsax.additem4))),
               ),
-            ),
-            const SizedBox(height: TSizes.spaceBtwSection),
+              const SizedBox(height: TSizes.spaceBtwSection),
 
-            //SELECT CATEGORY
-            const Padding(
-              padding: EdgeInsets.only(
-                  left: TSizes.defaultSpace, right: TSizes.defaultSpace),
-              child: JSelectedCategory(),
-            ),
-
-            //PUBLISH BUTTON
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: TSizes.defaultSpace, right: TSizes.defaultSpace),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                    onPressed: () => controller.uploadProducts(),
-                    // onPressed: () => ,
-                    child: const Text('Publish')),
+              //!SELECT CATEGORY
+              const Padding(
+                padding: EdgeInsets.only(
+                    left: TSizes.defaultSpace, right: TSizes.defaultSpace),
+                child: JSelectedCategory(),
               ),
-            )
-          ],
+
+              //!PUBLISH BUTTON
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: TSizes.defaultSpace, right: TSizes.defaultSpace),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      onPressed: () => controller.uploadProducts(),
+                      // onPressed: () => ,
+                      child: const Text('Publish')),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

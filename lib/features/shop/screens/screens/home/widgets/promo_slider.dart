@@ -34,15 +34,19 @@ class TPromoSlider extends StatelessWidget {
             children: [
               CarouselSlider(
                   options: CarouselOptions(
-                    viewportFraction: 0.8,
+                    viewportFraction: 0.9,
                     onPageChanged: (index, _) =>
                         controller.updatePageIndicator(index),
                   ),
                   items: controller.banners
-                      .map((e) => TRoundedImage(
-                            imageUrl: e.imageUrl,
-                            isNetworkImage: true,
-                            onPressed: () => Get.toNamed(e.targetScreen),
+                      .map((e) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TRoundedImage(
+                              fit: BoxFit.cover,
+                              imageUrl: e.imageUrl,
+                              isNetworkImage: true,
+                              onPressed: () => Get.toNamed(e.targetScreen),
+                            ),
                           ))
                       .toList()),
               const SizedBox(height: TSizes.spaceBtwItems),

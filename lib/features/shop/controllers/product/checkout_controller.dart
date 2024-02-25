@@ -15,15 +15,16 @@ class CheckOutController extends GetxController {
   @override
   void onInit() {
     selectedPaymenthMethod.value =
-        PaymentMethodModel(image: TImages.loadingAnim, name: 'Paypal');
+        PaymentMethodModel(image: TImages.paypal, name: 'Paypal');
     super.onInit();
   }
 
   Future<dynamic> selectPaymentMethod(BuildContext context) {
     return showModalBottomSheet(
         context: context,
-        builder: (_) => SingleChildScrollView(
-              child: Container(
+        builder: (_) => Padding(
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -35,35 +36,35 @@ class CheckOutController extends GetxController {
                     //PAYMENT OPTION
                     TPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: 'PayPal', name: TImages.google)),
+                            image: TImages.paypal, name: 'PayPal')),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
                     TPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: 'Google Pay', name: TImages.google)),
+                            image: TImages.googlePay, name: 'Google Pay')),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
                     TPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: 'Apple Pay', name: TImages.google)),
+                            image: TImages.applePay, name: 'Apple Pay')),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
                     TPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: 'VISA', name: TImages.google)),
+                            image: TImages.visa, name: 'VISA')),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
                     TPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: 'Master Card', name: TImages.google)),
+                            image: TImages.mastercard, name: 'Mastercard')),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TPaymentTile(
-                        paymentMethod: PaymentMethodModel(
-                            image: 'Paytm', name: TImages.google)),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TPaymentTile(
-                        paymentMethod: PaymentMethodModel(
-                            image: 'Paystack', name: TImages.google)),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TPaymentTile(
-                        paymentMethod: PaymentMethodModel(
-                            image: 'Credit Card', name: TImages.google)),
+                    // TPaymentTile(
+                    //     paymentMethod: PaymentMethodModel(
+                    //         image: 'Paytm', name: TImages.google)),
+                    // const SizedBox(height: TSizes.spaceBtwItems / 2),
+                    // TPaymentTile(
+                    //     paymentMethod: PaymentMethodModel(
+                    //         image: 'Paystack', name: TImages.google)),
+                    // const SizedBox(height: TSizes.spaceBtwItems / 2),
+                    // TPaymentTile(
+                    //     paymentMethod: PaymentMethodModel(
+                    //         image: 'Credit Card', name: TImages.google)),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
                     const SizedBox(height: TSizes.spaceBtwSection),
                   ],

@@ -48,7 +48,7 @@ class ProductDetailScreen extends StatelessWidget {
                 if (product.productType == ProductType.variable.toString())
                   const SizedBox(height: TSizes.spaceBtwSection),
 
-                //CHECKPOINT BUTTON
+                //!CHECKOUT BUTTON
                 SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(

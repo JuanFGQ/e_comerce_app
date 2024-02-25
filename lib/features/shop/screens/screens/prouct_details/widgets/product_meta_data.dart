@@ -46,8 +46,8 @@ class TProductMetaData extends StatelessWidget {
             ),
             const SizedBox(width: TSizes.spaceBtwItems),
 
-            //price
-            if (product.productType == ProductType.single.toString() &&
+            //!price
+            if (product.productType == ProductType.variable.toString() &&
                 product.salePrice > 0)
               Text('\$${product.price}',
                   style: Theme.of(context)
@@ -59,21 +59,29 @@ class TProductMetaData extends StatelessWidget {
               const SizedBox(width: TSizes.spaceBtwItems),
 
             TProductPriceText(
-                price: controller.getProductsPrice(product), isLarge: true)
+                price: product.price.toString(),
+
+                // controller.getProductsPrice(product),
+                isLarge: true)
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
         //title
-        ProductTitleText(title: product.title),
+        ProductTitleText(
+          title: product.title,
+        ),
         const SizedBox(height: TSizes.spaceBtwSection / 2),
 
         //stock status
 
         Row(
           children: [
-            const ProductTitleText(title: 'Status :'),
-            const SizedBox(width: TSizes.spaceBtwItems / 2),
+            ProductTitleText(
+              title: 'Status :',
+              size: TSizes.fontSizeMd,
+            ),
+            SizedBox(width: TSizes.spaceBtwItems / 2),
             Text(controller.getProductStockStatus(product.stock),
                 style: Theme.of(context).textTheme.titleMedium),
           ],
@@ -84,10 +92,12 @@ class TProductMetaData extends StatelessWidget {
         Row(
           children: [
             TCircularImage(
-                width: 50,
-                height: 50,
-                image: product.brand != null ? product.brand!.name : '',
-                overlayColor: darkMode ? TColors.white : TColors.black),
+              fit: BoxFit.cover,
+              isNetWorkImage: false,
+              width: 70,
+              height: 70,
+              image: product.brand != null ? product.brand!.image : '',
+            ),
             TBrandTitleTextWithVerifiedIcon(
                 title: product.brand != null ? product.brand!.name : '',
                 brandTextSize: TextSizes.medium),

@@ -128,6 +128,8 @@ class CartController extends GetxController {
             : product.price;
 
     return CartItemModel(
+        title: product.title,
+        price: price,
         productId: product.id,
         quantity: quantity,
         variationId: variation.id,

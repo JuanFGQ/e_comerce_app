@@ -39,8 +39,8 @@ class TCartItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               TBrandTitleTextWithVerifiedIcon(title: cartItem.brandName ?? ''),
-              Flexible(
-                  child: ProductTitleText(title: cartItem.title, maxLines: 1)),
+              ProductTitleText(
+                  title: cartItem.title, size: TSizes.fontSizeMd, maxLines: 1),
 
               ///attributes
               Text.rich(

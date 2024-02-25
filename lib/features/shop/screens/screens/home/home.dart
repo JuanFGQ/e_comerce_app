@@ -77,6 +77,8 @@ class HomePage extends StatelessWidget {
                               style: Theme.of(context).textTheme.bodyMedium),
                         );
                       }
+
+                      // Popular Products
                       return GridLayout(
                         itemBuilder: (_, index) => ProductCardVertical(
                             product: controller.featuredProducts[index]),

@@ -56,16 +56,16 @@ class TSingleAddress extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Mobile X',
+                      address.name,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: TSizes.sm / 2),
-                    const Text('((+123) 456 7890 )', maxLines: 1),
+                    Text(address.phoneNumber, maxLines: 1),
                     const SizedBox(height: TSizes.sm / 2),
-                    const Text(
-                      '82356 Timmy Coves ,South Liana, Maine , 87665,USA',
+                    Text(
+                      '${address.postalCode},${address.country},${address.city}',
                       softWrap: true,
                     ),
                   ],

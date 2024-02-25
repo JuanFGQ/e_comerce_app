@@ -22,7 +22,7 @@ class ProductRepository extends GetxController {
     try {
       final snapshot = await _db
           .collection('Products')
-          .where('IsFeatured', isEqualTo: true)
+          .where('isFeatured', isEqualTo: true)
           .limit(4)
           .get();
       //return the snapshot document of the products
@@ -40,7 +40,7 @@ class ProductRepository extends GetxController {
     try {
       final snapshot = await _db
           .collection('Products')
-          .where('IsFeatured', isEqualTo: true)
+          .where('isFeatured', isEqualTo: true)
           .limit(6)
           .get();
       //return the snapshot document of the products
@@ -54,7 +54,7 @@ class ProductRepository extends GetxController {
     }
   }
 
-  //!GET PRODUCTOS BASED ON THE BRAND
+  //!GET PRODUCTS BASED ON THE BRAND
   Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
     try {
       final querySnapshot = await query.get();

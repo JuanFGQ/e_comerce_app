@@ -55,6 +55,7 @@ class CategoryRepository extends GetxController {
   }
   //upload categories to the cloud firebase firesbas firestore
 
+//!UPLOAD DUMMY DATA
   Future<void> uploadDummyData(List<CategoryModel> categories) async {
     try {
       //upload all the categories along with their Images

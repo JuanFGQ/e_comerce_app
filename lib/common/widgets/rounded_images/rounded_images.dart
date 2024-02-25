@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +18,12 @@ class TRoundedImage extends StatelessWidget {
     this.padding,
     this.isNetworkImage = false,
     this.onPressed,
+    this.localImage = false,
   });
 
   final double? width, height;
   final double borderRadius;
+  final bool localImage;
 
   final String imageUrl;
   final bool applyImageRadius;
@@ -47,11 +51,16 @@ class TRoundedImage extends StatelessWidget {
             borderRadius: applyImageRadius
                 ? BorderRadius.circular(TSizes.md)
                 : BorderRadius.zero,
-            child: Image(
-                fit: fit,
-                image: isNetworkImage
-                    ? NetworkImage(imageUrl)
-                    : AssetImage(imageUrl) as ImageProvider)),
+            child: localImage
+                ? Image.file(
+                    File(imageUrl),
+                    fit: fit,
+                  )
+                : Image(
+                    fit: fit,
+                    image: isNetworkImage
+                        ? NetworkImage(imageUrl)
+                        : AssetImage(imageUrl) as ImageProvider)),
       ),
     );
   }

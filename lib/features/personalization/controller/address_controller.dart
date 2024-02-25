@@ -150,18 +150,20 @@ class AddressController extends GetxController {
                     snapshot: snapshot);
                 if (response != null) return response;
 
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) {
-                    return TSingleAddress(
-                      address: snapshot.data![index],
-                      onTap: () async {
-                        await selectAddress(snapshot.data![index]);
-                        Get.back();
-                      },
-                    );
-                  },
+                return Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return TSingleAddress(
+                        address: snapshot.data![index],
+                        onTap: () async {
+                          await selectAddress(snapshot.data![index]);
+                          Get.back();
+                        },
+                      );
+                    },
+                  ),
                 );
               },
             )

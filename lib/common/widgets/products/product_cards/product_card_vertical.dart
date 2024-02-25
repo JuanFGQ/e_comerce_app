@@ -97,13 +97,19 @@ class ProductCardVertical extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.only(left: TSizes.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ProductTitleText(title: product.title, smailSize: true),
-                  const SizedBox(height: TSizes.spaceBtwItems / 2),
-                  TBrandTitleTextWithVerifiedIcon(title: product.brand!.name)
-                ],
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ProductTitleText(
+                      title: product.title,
+                      size: TSizes.fontSize,
+                    ),
+                    const SizedBox(height: TSizes.spaceBtwItems / 2),
+                    TBrandTitleTextWithVerifiedIcon(title: product.brand!.name)
+                  ],
+                ),
               ),
             ),
             const Spacer(),
@@ -116,10 +122,13 @@ class ProductCardVertical extends StatelessWidget {
                 //*PRICE
                 Flexible(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       if (product.productType ==
                               ProductType.single.toString() &&
                           product.salePrice > 0)
+
+                        //discounted price
                         Padding(
                           padding: const EdgeInsets.only(left: TSizes.md),
                           child: Text(
@@ -130,16 +139,15 @@ class ProductCardVertical extends StatelessWidget {
                                 .apply(decoration: TextDecoration.lineThrough),
                           ),
                         ),
-                      //
-                      //price, show sale price as main price if sale exist
-                      //
 
-                      Padding(
-                        padding: const EdgeInsets.only(left: TSizes.md),
-                        child: TProductPriceText(
-                            price: controller.getProductsPrice(product),
-                            isLarge: false),
-                      ),
+                      //price, show sale price as main price if sale exist
+                      TProductPriceText(price: product.salePrice.toString())
+                      // Padding(
+                      //   padding: const EdgeInsets.only(left: TSizes.md),
+                      //   child: TProductPriceText(
+                      //       price: controller.getProductsPrice(product),
+                      //       isLarge: false),
+                      // ),
                     ],
                   ),
                 ),

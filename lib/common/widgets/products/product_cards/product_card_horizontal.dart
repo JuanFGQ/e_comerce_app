@@ -88,7 +88,7 @@ class TProductHorizontalCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ProductTitleText(title: product.title, smailSize: true),
+                      ProductTitleText(title: product.title, smallSize: true),
                       const SizedBox(height: TSizes.spaceBtwItems / 2),
                       TBrandTitleTextWithVerifiedIcon(
                           title: product.brand!.name),

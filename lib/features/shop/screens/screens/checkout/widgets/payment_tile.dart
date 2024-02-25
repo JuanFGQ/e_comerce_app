@@ -29,8 +29,9 @@ class TPaymentTile extends StatelessWidget {
         backGroundColor:
             THelperFunction.isDarkMode(context) ? TColors.light : TColors.white,
         padding: const EdgeInsets.all(TSizes.sm),
-        widget: const Image(
-            image: AssetImage(TImages.facebook), fit: BoxFit.contain),
+        widget: Image(
+            image: AssetImage(paymentMethod.image.toString()),
+            fit: BoxFit.contain),
       ),
       title: Text(paymentMethod.name),
       trailing: const Icon(Iconsax.arrow_right_34),

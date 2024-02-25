@@ -1,6 +1,7 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/brands/brand_repository.dart';
 import 'package:e_comerce_app/data/repositories/products/products_repository.dart';
+import 'package:e_comerce_app/dummy_data.dart';
 import 'package:e_comerce_app/features/shop/models/brand_model.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:get/get.dart';
@@ -64,6 +65,19 @@ class BrandController extends GetxController {
     } catch (e) {
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
+    }
+  }
+
+  //*Upload brand dummy data
+  Future<void> uploadBrandDummyData() async {
+    try {
+      final brandRepo = Get.put(BrandRepository());
+
+      await brandRepo.uploadDummyData(TDummyData.brands);
+      TLoaders.successSnackBar(title: 'Brands Succesfully Uploaded');
+    } catch (e) {
+      TLoaders.errorSnackBar(
+          title: 'Error while uploading', message: e.toString());
     }
   }
 }

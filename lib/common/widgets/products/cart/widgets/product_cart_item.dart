@@ -22,7 +22,6 @@ class ProductCartAddToCartButton extends StatelessWidget {
         if the product have variations then show the product details for variation selection.
         Else add product to the cart.
         */
-
         if (product.productType == ProductType.single.toString()) {
           final cartItem = cartController.convertToCartItem(product, 1);
           cartController.addOneToCart(cartItem);

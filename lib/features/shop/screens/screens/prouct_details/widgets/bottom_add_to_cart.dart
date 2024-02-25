@@ -22,7 +22,7 @@ class TBottomAddToCart extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: TSizes.defaultSpace, vertical: TSizes.defaultSpace / 2),
       decoration: BoxDecoration(
-          color: dark ? TColors.darkerGrey : TColors.light,
+          color: dark ? TColors.darkGrey : TColors.accent,
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(TSizes.cardRadiusLg),
               topRight: Radius.circular(TSizes.cardRadiusLg))),
@@ -69,8 +69,17 @@ class TBottomAddToCart extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(TSizes.md),
                     backgroundColor: TColors.black,
-                    side: const BorderSide(color: TColors.black)),
-                child: const Text('Add to Cart'))
+                    side: BorderSide(
+                        color: controller.productQuantityInCart.value < 1
+                            ? TColors.darkGrey
+                            : TColors.white)),
+                child: Text(
+                  'Add to Cart',
+                  style: TextStyle(
+                      color: controller.productQuantityInCart.value < 1
+                          ? TColors.darkGrey
+                          : TColors.white),
+                ))
           ],
         ),
       ),

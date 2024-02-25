@@ -4,10 +4,14 @@ import 'package:e_comerce_app/common/widgets/list_tiles/settings_menu_tile.dart'
 import 'package:e_comerce_app/common/widgets/list_tiles/user_list_tile.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
+import 'package:e_comerce_app/data/repositories/banners/banner_repository.dart';
 import 'package:e_comerce_app/data/repositories/categories/category_repository.dart';
 import 'package:e_comerce_app/dummy_data.dart';
 import 'package:e_comerce_app/features/personalization/screen/address/address.dart';
 import 'package:e_comerce_app/features/personalization/screen/profile/profile.dart';
+import 'package:e_comerce_app/features/shop/controllers/banner_controller.dart';
+import 'package:e_comerce_app/features/shop/controllers/product/brand_controller.dart';
+import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/cart/cart.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/order/orders.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
@@ -23,6 +27,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = AuthenticationRepository.instance;
     final uploadData = CategoryRepository.instance;
+    final uploadBanner = BannerController.instance;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -97,12 +102,38 @@ class SettingsScreen extends StatelessWidget {
                   const TSectionHeading(
                       title: 'App Settings', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
+                  //!UPLOAD DATA
+                  //!----------------------CATEGORIES-------------------------
                   TSettingMenuTile(
-                      onTap: () =>
-                          uploadData.uploadDummyData(TDummyData.categories),
+                      onTap: () => uploadData.uploadDummyData(
+                            TDummyData.categories,
+                          ),
                       icon: Iconsax.document_upload,
                       title: 'Load Data',
                       subTitle: 'Upload Data to your Cloud Firestorage '),
+                  //!-----------------------BANNERS------------------------
+                  TSettingMenuTile(
+                      onTap: () => uploadBanner.uploadBanners(),
+                      icon: Iconsax.document_upload1,
+                      title: 'Upload Banners Data',
+                      subTitle: 'Upload Data to your Cloud Firestorage '),
+                  //!----------------------BRANDS-------------------------
+
+                  TSettingMenuTile(
+                      onTap: () =>
+                          Get.put(BrandController()).uploadBrandDummyData(),
+                      icon: Iconsax.document,
+                      title: 'Upload Brands Data',
+                      subTitle: 'Upload Data to your Cloud Firestorage '),
+
+                  //!----------------------PRODUCTS-------------------------
+
+                  TSettingMenuTile(
+                      onTap: () => ProductController.instance.uploadDummyData(),
+                      icon: Iconsax.document,
+                      title: 'Upload Products Data',
+                      subTitle: 'Upload Data to your Cloud Firestorage '),
+                  //!-----------------------------------------------
                   TSettingMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',

@@ -58,7 +58,7 @@ class ProductModel {
       'SalePrice': salePrice,
       'isFeatured': isFeatured,
       'CategoryId': categoryId,
-      'Brand': brand!.toJson(),
+      'Brand': brand?.toJson(),
       'Description': description,
       'ProductType': productType,
       'productAttributes': productAttributes != null
@@ -76,7 +76,7 @@ class ProductModel {
       DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() == null) return ProductModel.empty();
 
-    final data = document.data() as Map<String, dynamic>;
+    final data = document.data()!;
     return ProductModel(
         id: document.id,
         sku: data['SKU'],
@@ -95,6 +95,7 @@ class ProductModel {
         stock: data['Stock'] ?? 0,
         price: double.parse((data['Price'] ?? 0.0).toString()),
         thumbnail: data['Thumbnail'] ?? '',
+        salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
         productType: data['ProductType'] ?? '');
   }
 

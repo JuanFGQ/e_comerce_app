@@ -28,7 +28,7 @@ class TProductQuantityWithAddRemove extends StatelessWidget {
           size: TSizes.md,
           color: THelperFunction.isDarkMode(context)
               ? TColors.white
-              : TColors.black,
+              : TColors.white,
           backGroundColor: THelperFunction.isDarkMode(context)
               ? TColors.darkGrey
               : TColors.black,

@@ -6,7 +6,9 @@ class TPricingCalculator {
 
     double shippingCost = getShippingCost(location);
 
-    double totalPrice = productPrice + taxAmount + shippingCost;
+    double totalPrice = productPrice +
+        // taxAmount +
+        shippingCost;
 
     return totalPrice;
   }

@@ -35,22 +35,23 @@ class TBillingAmountSection extends StatelessWidget {
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 2),
 
-        //TAX FEE
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Tax Fee', style: Theme.of(context).textTheme.bodyMedium),
-            Text('\$${TPricingCalculator.calculateTax(subTotal, 'EUR')}',
-                style: Theme.of(context).textTheme.labelLarge),
-          ],
-        ),
-        const SizedBox(height: TSizes.spaceBtwItems / 2),
+        //!TAX FEE
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //   children: [
+        //     Text('Tax Fee', style: Theme.of(context).textTheme.bodyMedium),
+        //     Text('\$${TPricingCalculator.calculateTax(subTotal, 'EUR')}',
+        //         style: Theme.of(context).textTheme.labelLarge),
+        //   ],
+        // ),
+        const SizedBox(height: TSizes.spaceBtwItems),
 
         //TOTAL ORDER
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Total Order', style: Theme.of(context).textTheme.bodyMedium),
+            Text('Total Order',
+                style: Theme.of(context).textTheme.headlineMedium),
             Text('\$${TPricingCalculator.calculateTotalPrice(subTotal, 'EUR')}',
                 style: Theme.of(context).textTheme.titleMedium),
           ],

@@ -1,5 +1,6 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/products/products_repository.dart';
+import 'package:e_comerce_app/dummy_data.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,12 @@ class ProductController extends GetxController {
   RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
   final productRepository = Get.put(ProductRepository());
   final isLoading = false.obs;
+
+  @override
+  void onInit() {
+    fetchFeaturedProducts();
+    super.onInit();
+  }
 
   void fetchFeaturedProducts() async {
     try {
@@ -88,5 +95,15 @@ class ProductController extends GetxController {
   //Check product Stock Status
   String getProductStockStatus(int stock) {
     return stock > 0 ? 'In Stock' : 'Out of Stock';
+  }
+
+  Future<void> uploadDummyData() async {
+    try {
+      await productRepository.uploadTestData(TDummyData.products);
+      TLoaders.successSnackBar(title: 'Brands Succesfully Uploaded');
+    } catch (e) {
+      TLoaders.errorSnackBar(
+          title: 'Error while uploading', message: e.toString());
+    }
   }
 }

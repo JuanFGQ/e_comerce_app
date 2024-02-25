@@ -33,6 +33,7 @@ dependencies:
   cloud_firestore: ^4.15.4
   connectivity_plus: ^5.0.2
   cupertino_icons: ^1.0.2
+  firebase_app_check: ^0.2.1+14
   firebase_auth: ^4.17.4
   firebase_core: ^2.25.4
   firebase_storage: ^11.6.5
@@ -78,6 +79,11 @@ flutter:
     - assets/logos/
     - assets/animation/
     - assets/categories/
+    - assets/banners/
+    - assets/brands/
+    - assets/thumbnails/
+    - assets/products/
+    - assets/payment/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

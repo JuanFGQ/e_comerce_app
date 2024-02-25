@@ -43,7 +43,7 @@ class ProductsAttributes extends StatelessWidget {
                           Row(
                             children: [
                               const ProductTitleText(
-                                  title: 'Price: ', smailSize: true),
+                                  title: 'Price: ', smallSize: true),
                               const SizedBox(width: TSizes.spaceBtwItems),
                               //Actual price
                               if (controller.selectedVariation.value.salePrice >
@@ -65,7 +65,7 @@ class ProductsAttributes extends StatelessWidget {
                           Row(
                             children: [
                               const ProductTitleText(
-                                  title: 'Stock:  ', smailSize: true),
+                                  title: 'Stock:  ', smallSize: true),
                               Text(
                                 controller.variationStockStatus.value,
                                 style: Theme.of(context).textTheme.titleMedium,
@@ -79,7 +79,7 @@ class ProductsAttributes extends StatelessWidget {
                   //VARIATION DESCRIPTION
                   const ProductTitleText(
                       title: 'This is a brief description of each product',
-                      smailSize: true,
+                      smallSize: true,
                       maxLines: 4)
                 ],
               ),

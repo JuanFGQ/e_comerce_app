@@ -1,9 +1,12 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/banners/banner_repository.dart';
+import 'package:e_comerce_app/dummy_data.dart';
 import 'package:e_comerce_app/features/shop/models/baner_model.dart';
 import 'package:get/get.dart';
 
 class BannerController extends GetxController {
+  static BannerController get instance => Get.find();
+
   //variables
   final isLoading = false.obs;
 
@@ -39,6 +42,19 @@ class BannerController extends GetxController {
     } finally {
       //remove loader
       isLoading.value = false;
+    }
+  }
+
+  Future<void> uploadBanners() async {
+    try {
+      final bannerRepo = Get.put(BannerRepository());
+
+      await bannerRepo.uploadBannersDummyData(TDummyData.banners);
+
+      TLoaders.successSnackBar(title: 'Succesfully uploaded');
+    } catch (e) {
+      TLoaders.errorSnackBar(
+          title: 'Error while uploading', message: e.toString());
     }
   }
 }
