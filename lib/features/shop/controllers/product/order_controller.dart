@@ -39,7 +39,7 @@ class OrderController extends GetxController {
     try {
       //Start Loader
       TFullScreenLoader.openLoadingDialog(
-          'Processing your order', TImages.handLoading);
+          'Processing your order', TImages.paymentSuccess);
 
       //Get user authentication Id
 
@@ -68,7 +68,7 @@ class OrderController extends GetxController {
 
       //show success screen
       Get.off(() => SuccesScreen(
-            image: TImages.handLoading,
+            image: TImages.paymentSuccess,
             title: 'Payment Success',
             subTitle: 'Your Item will be shipped soon',
             onPressed: () => Get.offAll(() => const NavigationMenu()),

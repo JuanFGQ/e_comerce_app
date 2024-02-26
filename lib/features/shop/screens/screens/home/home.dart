@@ -9,9 +9,12 @@ import 'package:e_comerce_app/features/shop/screens/screens/all_products/all_pro
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_app_bar.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/home_categories.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/widgets/promo_slider.dart';
+import 'package:e_comerce_app/features/shop/screens/screens/new_product/new_product.dart';
+import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,6 +23,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ProductController());
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.to(() => const NewProductScreen()),
+        child: const Icon(Iconsax.add, color: TColors.white),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -66,7 +73,7 @@ class HomePage extends StatelessWidget {
                           )),
                     ),
                     const SizedBox(height: TSizes.spaceBtwSection),
-                    //POPULAR PRODUCTS
+                    //!popular products
                     Obx(() {
                       if (controller.isLoading.value) {
                         return const TVerticalProductShimmer();
@@ -78,7 +85,7 @@ class HomePage extends StatelessWidget {
                         );
                       }
 
-                      // Popular Products
+                      // data founded
                       return GridLayout(
                         itemBuilder: (_, index) => ProductCardVertical(
                             product: controller.featuredProducts[index]),

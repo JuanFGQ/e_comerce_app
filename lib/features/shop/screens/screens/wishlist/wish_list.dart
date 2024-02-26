@@ -46,7 +46,7 @@ class FavouriteScreen extends StatelessWidget {
                     showAction: true,
                     actionText: 'Lets\'s add some',
                     text: 'Whoops! WishList is Empty...',
-                    animation: TImages.handLoading,
+                    animation: TImages.emptyWishList,
                     onActionProssed: () =>
                         Get.off(() => const NavigationMenu()),
                   );

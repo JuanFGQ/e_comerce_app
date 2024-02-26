@@ -26,7 +26,7 @@ class CartScreen extends StatelessWidget {
           actionText: 'Let\'s fill it',
           showAction: true,
           text: 'Whoops! cart is Empty',
-          animation: TImages.handLoading,
+          animation: TImages.emptyCart,
           onActionPressed: () => Get.off(() => const NavigationMenu()),
         );
 

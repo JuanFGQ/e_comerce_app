@@ -36,13 +36,15 @@ class JAddImagesSlider extends StatelessWidget {
                         const EdgeInsets.all(TSizes.productImageRadius * 2),
                     child: Obx(
                       () => Center(
-                          child: controller
-                                  .selectedProductImage.value.isNotEmpty
-                              ? Image.file(
-                                  File(controller.selectedProductImage.value),
-                                  fit: BoxFit.fill,
-                                )
-                              : Image.asset(TImages.lightAppLogo)),
+                          //*imageuploading variable is always false, look later for the solution
+                          child: controller.imageUploading.value
+                              ? const CircularProgressIndicator()
+                              : controller.selectedProductImage.value.isNotEmpty
+                                  ? Image.file(
+                                      File(controller
+                                          .selectedProductImage.value),
+                                      fit: BoxFit.fill)
+                                  : Image.asset(TImages.lightAppLogo)),
                     ))),
 
             //!IMAGES STACK

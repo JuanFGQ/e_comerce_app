@@ -2,6 +2,7 @@ import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/data/repositories/products/products_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
+import 'package:e_comerce_app/features/shop/models/brand_model.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
 import 'package:e_comerce_app/navigation_menu.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
@@ -32,12 +33,14 @@ class NewProductController extends GetxController {
   final navigationMenuController = NavigationController.instance;
   //*flags
   final isPublishPost = false.obs;
-  final imageUploading = false.obs;
+  RxBool imageUploading = false.obs;
   //*selecting flags
   RxString selectedProductImage = ''.obs;
   RxString selectedCategory = ''.obs;
   //*Lists
   final List<XFile> xfileList = [];
+  //*FormKey
+  GlobalKey<FormState> newProductFormKey = GlobalKey<FormState>();
 
   //!GET CATEGORY ID
   void setCategoryId(String sortOption) {
@@ -104,14 +107,16 @@ class NewProductController extends GetxController {
     try {
       final image =
           await ImagePicker().pickImage(source: source, imageQuality: 70);
-
       if (image != null) {
+        imageUploading.value = true;
+
         previewImages.add(image.path);
         xfileList.add(image);
 
         if (selectedProductImage.value.isEmpty) {
           selectedProductImage.value = image.path;
         }
+        imageUploading.value = false;
 
         TLoaders.successSnackBar(
             title: 'Image added', message: 'Upload succesfull');
@@ -176,7 +181,7 @@ class NewProductController extends GetxController {
     try {
       //start loading animation
       TFullScreenLoader.openLoadingDialog(
-          'Uploading product', TImages.handLoading);
+          'Uploading product', TImages.uploadingImages);
 
       //check internet conectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -185,8 +190,11 @@ class NewProductController extends GetxController {
         return;
       }
 
-      //flag
-      isPublishPost.value = true;
+      //form validation
+      if (!newProductFormKey.currentState!.validate()) {
+        TFullScreenLoader.stopLoading();
+        return;
+      }
 
       //upload to fire store and get url links
       final imageUrlList =
@@ -194,18 +202,23 @@ class NewProductController extends GetxController {
 
       //upload the information
       await productRepository.uploadProduct(ProductModel(
-        categoryId: selectedCategory.value,
-        images: imageUrlList,
-        id: AuthenticationRepository.instance.authUser.uid,
-        stock: int.tryParse(availableStock.text)!,
-        price: double.tryParse(salePrice.text)!,
-        salePrice: double.tryParse(discountPrice.text) ?? 0,
-        title: productName.text,
-        description: productDescription.text,
-        thumbnail: imageUrlList[0],
-        productType: 'single',
-        isFeatured: true,
-      ));
+          categoryId: selectedCategory.value,
+          images: imageUrlList,
+          id: AuthenticationRepository.instance.authUser.uid,
+          stock: int.tryParse(availableStock.text)!,
+          price: double.tryParse(salePrice.text)!,
+          salePrice: double.tryParse(discountPrice.text) ?? 0,
+          title: productName.text,
+          description: productDescription.text,
+          thumbnail: imageUrlList[0],
+          productType: 'single',
+          isFeatured: true,
+          brand: BrandModel(
+              isFeatured: true,
+              productsCount: int.tryParse(availableStock.text)!,
+              id: AuthenticationRepository.instance.authUser.uid,
+              name: AuthenticationRepository.instance.authUser.displayName!,
+              image: AuthenticationRepository.instance.authUser.photoURL!)));
 
       //remove loader
 
@@ -215,7 +228,10 @@ class NewProductController extends GetxController {
       TLoaders.successSnackBar(
           title: 'Congratulations', message: 'Your Name has been updated');
 
-      isPublishPost.value = false;
+      clearData();
+
+      //redirect
+      Navigator.of(Get.context!).pop();
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

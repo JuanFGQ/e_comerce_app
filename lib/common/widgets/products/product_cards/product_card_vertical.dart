@@ -124,10 +124,10 @@ class ProductCardVertical extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (product.productType ==
-                              ProductType.single.toString() &&
-                          product.salePrice > 0)
-
+                      // if (product.productType ==
+                      //         ProductType.single.toString() &&
+                      //     product.salePrice > 0)
+                      if (product.salePrice > 0)
                         //discounted price
                         Padding(
                           padding: const EdgeInsets.only(left: TSizes.md),
@@ -141,7 +141,11 @@ class ProductCardVertical extends StatelessWidget {
                         ),
 
                       //price, show sale price as main price if sale exist
-                      TProductPriceText(price: product.salePrice.toString())
+                      Padding(
+                        padding: const EdgeInsets.only(left: TSizes.md),
+                        child: TProductPriceText(
+                            price: product.salePrice.toString()),
+                      )
                       // Padding(
                       //   padding: const EdgeInsets.only(left: TSizes.md),
                       //   child: TProductPriceText(

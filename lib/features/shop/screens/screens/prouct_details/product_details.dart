@@ -1,5 +1,6 @@
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/features/shop/screens/screens/checkout/checkout.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/product_reviews/product_reviews.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/bottom_add_to_cart.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/product_detail_image_slider.dart';
@@ -8,7 +9,6 @@ import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widge
 import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/rating_share_widget.dart';
 import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
-import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -24,7 +24,7 @@ class ProductDetailScreen extends StatelessWidget {
       bottomNavigationBar: TBottomAddToCart(product: product),
       body: SingleChildScrollView(
         child: Column(children: [
-          // PRODUCT IMAGE SLIDER
+          //! PRODUCT IMAGE SLIDER
           TProductImageSlider(product: product),
 
           //PRODUCT DETAILS
@@ -52,10 +52,11 @@ class ProductDetailScreen extends StatelessWidget {
                 SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () {}, child: const Text('Checkout'))),
+                        onPressed: () => Get.to(() => const CheckOutScreen()),
+                        child: const Text('Checkout'))),
                 const SizedBox(height: TSizes.spaceBtwSection),
 
-                //DESCRIPTION
+                //!DESCRIPTION
 
                 const TSectionHeading(
                     title: 'Description', showActionButton: false),
@@ -72,7 +73,7 @@ class ProductDetailScreen extends StatelessWidget {
                       fontSize: 14, fontWeight: FontWeight.w800),
                 ),
 
-                //REVIEWS
+                //!REVIEWS
                 const Divider(),
                 const SizedBox(height: TSizes.spaceBtwSection),
                 Row(

@@ -19,6 +19,10 @@ class TImages {
   static const String loadingAnim = 'assets/animation/loading_animation.json';
   static const String handLoading = 'assets/animation/hand_loading.json';
   static const String successCheck = 'assets/animation/succes_check.json';
+  static const String uploadingImages = 'assets/animation/uploading.json';
+  static const String emptyCart = 'assets/animation/emptyCart.json';
+  static const String emptyWishList = 'assets/animation/emptyWIsh.json';
+  static const String paymentSuccess = 'assets/animation/paymentSucces.json';
 
   //categories String
 

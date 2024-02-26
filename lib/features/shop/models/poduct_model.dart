@@ -84,7 +84,9 @@ class ProductModel {
         isFeatured: data['IsFeatured'] ?? false,
         categoryId: data['CategoryId'] ?? '',
         description: data['Description'] ?? '',
-        brand: BrandModel.fromJson(data['Brand']),
+        brand: BrandModel.fromJson(
+          data['Brand'],
+        ),
         images: data['Images'] != null ? List<String>.from(data['Images']) : [],
         productAttributes: (data['productAttributes'] as List<dynamic>)
             .map((e) => ProductAttributeModel.fromJson(e))

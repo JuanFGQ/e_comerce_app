@@ -47,22 +47,20 @@ class TProductMetaData extends StatelessWidget {
             const SizedBox(width: TSizes.spaceBtwItems),
 
             //!price
-            if (product.productType == ProductType.variable.toString() &&
-                product.salePrice > 0)
+
+            if (product.salePrice > 0)
               Text('\$${product.price}',
                   style: Theme.of(context)
                       .textTheme
                       .titleSmall!
                       .apply(decoration: TextDecoration.lineThrough)),
-            if (product.productType == ProductType.single.toString() &&
-                product.salePrice > 0)
-              const SizedBox(width: TSizes.spaceBtwItems),
 
-            TProductPriceText(
-                price: product.price.toString(),
-
-                // controller.getProductsPrice(product),
-                isLarge: true)
+            const SizedBox(width: TSizes.spaceBtwItems),
+            if (product.salePrice > 0)
+              TProductPriceText(
+                  price:
+                      '\$${controller.calculatSalePercetange(product.price, product.salePrice)}',
+                  isLarge: true)
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
@@ -73,7 +71,7 @@ class TProductMetaData extends StatelessWidget {
         ),
         const SizedBox(height: TSizes.spaceBtwSection / 2),
 
-        //stock status
+        //!stock status
 
         Row(
           children: [
@@ -86,14 +84,14 @@ class TProductMetaData extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
-        const SizedBox(height: TSizes.spaceBtwItems / 2),
 
-        //brand
+        //!brand
         Row(
           children: [
             TCircularImage(
               fit: BoxFit.cover,
-              isNetWorkImage: false,
+              isNetWorkImage:
+                  product.brand!.image.contains('http') ? true : false,
               width: 70,
               height: 70,
               image: product.brand != null ? product.brand!.image : '',
