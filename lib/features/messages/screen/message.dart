@@ -17,59 +17,60 @@ class MessagesScreen extends StatelessWidget {
           showBackArrow: true,
           title: Text('Messages',
               style: Theme.of(context).textTheme.headlineMedium)),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: TSizes.spaceBtwSection),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: TSizes.md * 2),
-                  child: Text('Recent',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineLarge!
-                          .apply(color: Colors.white)),
-                ),
-                const SizedBox(height: TSizes.spaceBtwItems),
-                Padding(
-                  padding: const EdgeInsets.all(TSizes.defaultSpace),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 250,
-                    child: ListView.builder(
-                      itemCount: 1,
-                      itemBuilder: (context, index) => ChatCard(),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: TSizes.spaceBtwItems),
-            Padding(
-              padding: const EdgeInsets.only(left: TSizes.md * 2),
-              child: Text('Older',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineLarge!
-                      .apply(color: Colors.white)),
-            ),
-            const SizedBox(height: TSizes.spaceBtwItems),
-            Padding(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // const SizedBox(height: TSizes.spaceBtwSection),
+          //todo: if(newMessages)
+          // Flexible(
+          //   child: Visibility(
+          //     visible: false,
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         Padding(
+          //           padding: const EdgeInsets.only(left: TSizes.md * 2),
+          //           child: Text('Recent',
+          //               style: Theme.of(context)
+          //                   .textTheme
+          //                   .headlineLarge!
+          //                   .apply(color: Colors.white)),
+          //         ),
+          //         const SizedBox(height: TSizes.spaceBtwItems),
+          //         Expanded(
+          //           child: Padding(
+          //             padding: const EdgeInsets.all(TSizes.defaultSpace),
+          //             child: ListView.builder(
+          //               itemCount: 1,
+          //               itemBuilder: (context, index) => ChatCard(),
+          //             ),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+          // const SizedBox(height: TSizes.spaceBtwItems),
+          Padding(
+            padding: const EdgeInsets.only(left: TSizes.md * 2),
+            child: Text('Older',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(fontSize: 20)
+                    .apply(color: TColors.darkGrey)),
+          ),
+          const SizedBox(height: TSizes.sm / 2),
+          Expanded(
+            child: Padding(
               padding: const EdgeInsets.all(TSizes.defaultSpace),
-              child: SizedBox(
-                width: double.infinity,
-                height: 250,
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) => const ChatCard(),
-                ),
+              child: ListView.builder(
+                itemCount: 9,
+                itemBuilder: (context, index) => const ChatCard(),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
