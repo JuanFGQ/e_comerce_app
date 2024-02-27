@@ -50,5 +50,5 @@ class MessagesController extends GetxController {
     }
   }
 
-  Future getMessages() {}
+  // Future getMessages() {}
 }

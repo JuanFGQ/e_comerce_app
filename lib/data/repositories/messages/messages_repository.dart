@@ -38,14 +38,12 @@ class MessagingRepository extends GetxController {
 
   Stream<QuerySnapshot> fetchMessages(String chatRoomID) {
     try {
-      _db
+      return _db
           .collection("ChatRooms")
           .doc(chatRoomID)
           .collection('messages')
           .orderBy("timeStamp", descending: false)
           .snapshots();
-
-          return _db.
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException catch (_) {
