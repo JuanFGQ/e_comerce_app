@@ -6,26 +6,41 @@ import 'package:e_comerce_app/features/messages/model/messaging_model.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
-class MessagesController extends GetxController {
-  static MessagesController get instance => Get.find();
+class MessaggingController extends GetxController {
+  static MessaggingController get instance => Get.find();
+
+  //firebase auth instance
   final _auth = FirebaseAuth.instance;
-  final messageRepo = Get.put(MessagingRepository());
+  //firebase data base instance
   final _db = FirebaseFirestore.instance;
-  Future sendMessages(String receiverID, message) async {
+  //repositories
+  final messageRepo = Get.put(MessagingRepository());
+  //variables
+  final messages = TextEditingController();
+  //form validator
+  GlobalKey<FormState> messagesForm = GlobalKey<FormState>();
+
+  Future sendMessages(String receiverID) async {
     try {
-      TFullScreenLoader.openLoadingDialog(
-          'Storing Addres...', TImages.handLoading);
+      // TFullScreenLoader.openLoadingDialog(
+      //     'Storing Addres...', TImages.handLoading);
 
       //check internet connectivity
 
       final isConneted = await NetworkManager.instance.isConnected();
       if (!isConneted) {
-        TFullScreenLoader.stopLoading();
+        // TFullScreenLoader.stopLoading();
         return;
       }
+
+      if (!messagesForm.currentState!.validate()) {
+        return;
+      }
+
       final Timestamp timestamp = Timestamp.now();
       final currentUserID = _auth.currentUser!.uid;
       final currentUserEmail = _auth.currentUser!.email!;
@@ -34,7 +49,7 @@ class MessagesController extends GetxController {
           senderID: currentUserID,
           senderEmail: currentUserEmail,
           receiverID: receiverID,
-          message: message,
+          message: messages.text,
           timestamp: timestamp);
 
       //construct chat rrom ID for the two users(sorted to ensure uniqueness)
