@@ -6,8 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+class ChatScreen extends StatelessWidget {
+  final String receiverID;
+  final String receiverEmail;
+
+  const ChatScreen(
+      {super.key, required this.receiverID, required this.receiverEmail});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +70,9 @@ class ChatPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Iconsax.send1))
+                IconButton(
+                    onPressed: () => controller.sendMessages(receiverID),
+                    icon: Icon(Iconsax.send1))
               ],
             ),
           ),

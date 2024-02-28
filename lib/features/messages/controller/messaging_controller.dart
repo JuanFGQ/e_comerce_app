@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/messages/messages_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
+import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/messages/model/messaging_model.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
@@ -13,6 +14,7 @@ import 'package:get/state_manager.dart';
 class MessaggingController extends GetxController {
   static MessaggingController get instance => Get.find();
 
+  RxList<UserModel> usersList = <UserModel>[].obs;
   //firebase auth instance
   final _auth = FirebaseAuth.instance;
   //firebase data base instance
@@ -24,16 +26,26 @@ class MessaggingController extends GetxController {
   //form validator
   GlobalKey<FormState> messagesForm = GlobalKey<FormState>();
 
+  //!GET USERS LISTS
+
+  Stream<List<UserModel>> getUserList() {
+    try {
+      final user = messageRepo.getUsersStream();
+      // usersList.assignAll(user as Iterable<UserModel>);
+      return user;
+    } catch (e) {
+      return TLoaders.errorSnackBar(
+          title: 'Error try later', message: e.toString());
+    }
+  }
+
+  //! SEND MESSAGES
   Future sendMessages(String receiverID) async {
     try {
-      // TFullScreenLoader.openLoadingDialog(
-      //     'Storing Addres...', TImages.handLoading);
-
       //check internet connectivity
 
       final isConneted = await NetworkManager.instance.isConnected();
       if (!isConneted) {
-        // TFullScreenLoader.stopLoading();
         return;
       }
 
@@ -65,5 +77,19 @@ class MessaggingController extends GetxController {
     }
   }
 
-  // Future getMessages() {}
+  //!GET MESSAGES STREAM
+
+  Stream getMessages(String userID, otherUserID) {
+    try {
+      //construct a chatrrom ID for the two users
+      List<String> ids = [userID, otherUserID];
+      ids.sort();
+      String chatRoomID = ids.join('_');
+
+      return messageRepo.fetchMessages(chatRoomID);
+    } catch (e) {
+      return TLoaders.errorSnackBar(
+          title: 'Error try later', message: e.toString());
+    }
+  }
 }

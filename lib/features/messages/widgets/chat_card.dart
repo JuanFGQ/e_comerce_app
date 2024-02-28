@@ -1,4 +1,6 @@
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
+import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
+import 'package:e_comerce_app/features/messages/model/messaging_model.dart';
 import 'package:e_comerce_app/features/messages/screen/chat_page.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
@@ -8,12 +10,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChatCard extends StatelessWidget {
-  const ChatCard({super.key});
+  const ChatCard({super.key, required this.userModel, required this.messaging});
+  final UserModel userModel;
+  final MessagingModel messaging;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(() => const ChatPage()),
+      onTap: () => Get.to(() => const ChatScreen(
+            receiverID: '',
+            receiverEmail: '',
+          )),
       child: Padding(
         padding: const EdgeInsets.only(top: TSizes.md),
         child: Column(
@@ -22,12 +29,12 @@ class ChatCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //!USER IMAGE
-                const TRoundedImage(
+                TRoundedImage(
                     borderRadius: 60,
                     height: 60,
                     applyImageRadius: true,
                     width: 60,
-                    imageUrl: TImages.clothes,
+                    imageUrl: userModel.profilePicture,
                     isNetworkImage: false),
                 const SizedBox(width: TSizes.md),
 
@@ -37,12 +44,11 @@ class ChatCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //USER NAME
-                      Text('MobileX',
+                      Text(userModel.fullName,
                           style: Theme.of(context).textTheme.headlineMedium),
                       const SizedBox(height: TSizes.sm / 2),
                       //USER MESSAGE
-                      Text(
-                          'Proident magna duis ullamco nulla cupidatat laborum nostrud non. Sunt cillum enim velit do Lorem fugiat incididunt quis officia fugiat nisi commodo duis. Voluptate dolor et nostrud in excepteur amet sit. Dolor dolor quis sint irure cupidatat adipisicing culpa aliqua id. Ipsum ullamco commodo ipsum nisi pariatur aliqua pariatur.',
+                      Text(messaging.message,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                           textAlign: TextAlign.start,
@@ -56,7 +62,7 @@ class ChatCard extends StatelessWidget {
                 Column(
                   children: [
                     //TIME STAMP MESSAGE
-                    const Text('2 min ago'),
+                    Text(messaging.timestamp.toString()),
 
                     const SizedBox(height: TSizes.defaultSpace / 2),
 
