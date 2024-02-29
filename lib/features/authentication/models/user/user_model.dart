@@ -62,6 +62,21 @@ class UserModel {
     };
   }
 
+  factory UserModel.fromJson(Map<String, dynamic> document) {
+    final data = document;
+      return UserModel(
+          id: document.id,
+          firstName: data['FirstName'] ?? '',
+          lastName: data['LastName'] ?? '',
+          username: data['UserName'] ?? '',
+          email: data['Email'] ?? '',
+          phoneNumber: data['PhoneNumber'] ?? '',
+          profilePicture: data['ProfilePicture'] ?? '');
+    } else {
+      throw Exception('Doc have not data');
+    }
+  
+
   //factory method to create a usermodel from a firebase document snapshot
   factory UserModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {

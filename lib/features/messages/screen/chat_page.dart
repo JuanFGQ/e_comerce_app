@@ -1,5 +1,6 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
+import 'package:e_comerce_app/features/messages/model/messaging_model.dart';
 import 'package:e_comerce_app/features/messages/widgets/message_card.dart';
 import 'package:e_comerce_app/utils/validators/validators.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +8,9 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ChatScreen extends StatelessWidget {
-  final String receiverID;
-  final String receiverEmail;
+  final MessagingModel messaging;
 
-  const ChatScreen(
-      {super.key, required this.receiverID, required this.receiverEmail});
+  const ChatScreen({super.key, required this.messaging});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class ChatScreen extends StatelessWidget {
             child: ListView.builder(
               reverse: true,
               itemCount: 1,
-              itemBuilder: (context, index) => const MessageCard(),
+              itemBuilder: (context, index) => MessageCard(messages: messaging),
             ),
           ),
 
@@ -71,7 +70,8 @@ class ChatScreen extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                    onPressed: () => controller.sendMessages(receiverID),
+                    onPressed: () =>
+                        controller.sendMessages(messaging.receiverID),
                     icon: Icon(Iconsax.send1))
               ],
             ),
