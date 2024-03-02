@@ -67,4 +67,7 @@ class TImages {
   static const String mastercard = 'assets/payment/mastercard.png';
   static const String paypal = 'assets/payment/paypal.png';
   static const String visa = 'assets/payment/visa.png';
+
+  //GENERAL USE IMAGE
+  static const String userImage = 'assets/icons/userImage.png';
 }

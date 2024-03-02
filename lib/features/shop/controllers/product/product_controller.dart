@@ -1,7 +1,7 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/products/products_repository.dart';
 import 'package:e_comerce_app/dummy_data.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:get/get.dart';
 

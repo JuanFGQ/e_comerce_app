@@ -1,7 +1,5 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
-import 'package:e_comerce_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
-import 'package:e_comerce_app/features/messages/screen/chat_page.dart';
 import 'package:e_comerce_app/features/messages/widgets/chat_card.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
@@ -88,17 +86,9 @@ class MessagesScreen extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) => ChatCard(
-                          userModel: snapshot.data![index],
-                          messaging: ),
-                    )
-                    // ListView(
-                    //   children: snapshot.data!
-                    //       .map<Widget>((userData) => ChatCard(
-                    //           userModel: controller.getUserList[index],
-                    //           messaging: messaging))
-                    //       .toList(),
-                    // ),
-                    ),
+                        userModel: snapshot.data![index],
+                      ),
+                    )),
               );
             },
           ),

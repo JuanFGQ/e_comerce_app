@@ -1,7 +1,7 @@
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/variation_controller.dart';
 import 'package:e_comerce_app/features/shop/models/cart_item_model.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/local_storage/storage_utility.dart';
 import 'package:get/get.dart';

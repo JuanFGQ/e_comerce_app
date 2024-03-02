@@ -3,7 +3,7 @@ import 'package:e_comerce_app/data/repositories/brands/brand_repository.dart';
 import 'package:e_comerce_app/data/repositories/products/products_repository.dart';
 import 'package:e_comerce_app/dummy_data.dart';
 import 'package:e_comerce_app/features/shop/models/brand_model.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:get/get.dart';
 
 class BrandController extends GetxController {

@@ -4,7 +4,7 @@ import 'package:e_comerce_app/common/widgets/custom_shapes/curved_edges/curved_e
 import 'package:e_comerce_app/common/widgets/favourite_icon/favourite_icon.dart';
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/images_controller.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';

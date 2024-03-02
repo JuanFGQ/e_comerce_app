@@ -3,7 +3,7 @@ import 'package:e_comerce_app/data/repositories/autentication/authentication_rep
 import 'package:e_comerce_app/data/repositories/products/products_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/shop/models/brand_model.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/navigation_menu.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
@@ -218,7 +218,8 @@ class NewProductController extends GetxController {
               productsCount: int.tryParse(availableStock.text)!,
               id: AuthenticationRepository.instance.authUser.uid,
               name: AuthenticationRepository.instance.authUser.displayName!,
-              image: AuthenticationRepository.instance.authUser.photoURL!)));
+              image:
+                  AuthenticationRepository.instance.authUser.photoURL ?? '')));
 
       //remove loader
 

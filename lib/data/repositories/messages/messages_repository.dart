@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
-import 'package:e_comerce_app/features/messages/model/messaging_model.dart';
+import 'package:e_comerce_app/features/messages/model/message_model.dart';
 import 'package:e_comerce_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:e_comerce_app/utils/exceptions/format_exception.dart';
 import 'package:e_comerce_app/utils/exceptions/platform_exception.dart';
@@ -31,13 +32,16 @@ class MessagingRepository extends GetxController {
   }
 
   //!SEND MESSAGES
-  Future<void> sendMessages(
-      MessagingModel newMessage, String chatRoomID) async {
+  Future<void> sendMessages(MessageModel newMessage, String chatRoomID) async {
+    final userId = AuthenticationRepository.instance.authUser.uid;
+
     try {
       await _db
-          .collection("ChatRooms")
-          .doc(chatRoomID)
+          .collection("Users")
+          .doc(userId)
           .collection('messages')
+          .doc(chatRoomID)
+          .collection('message')
           .add(newMessage.toJson());
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
@@ -53,11 +57,15 @@ class MessagingRepository extends GetxController {
   //!FETCH MESSAGES
 
   Stream<QuerySnapshot<Map<String, dynamic>>> fetchMessages(String chatRoomID) {
+    final userId = AuthenticationRepository.instance.authUser.uid;
+
     try {
       return _db
-          .collection("ChatRooms")
-          .doc(chatRoomID)
+          .collection("Users")
+          .doc(userId)
           .collection('messages')
+          .doc(chatRoomID)
+          .collection('message')
           .orderBy("timeStamp", descending: false)
           .snapshots();
     } on FirebaseException catch (e) {

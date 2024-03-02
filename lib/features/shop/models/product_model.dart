@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/shop/models/brand_model.dart';
 import 'package:e_comerce_app/features/shop/models/product_attribute_model.dart';
 import 'package:e_comerce_app/features/shop/models/product_variation_model.dart';
@@ -14,6 +15,7 @@ class ProductModel {
   String thumbnail;
   bool? isFeatured;
   BrandModel? brand;
+  // UserModel? userModel;
   String? description;
   String? categoryId;
   List<String>? images;
@@ -28,6 +30,7 @@ class ProductModel {
     required this.title,
     required this.thumbnail,
     required this.productType,
+    // this.userModel,
     this.salePrice = 0.0,
     this.date,
     this.sku,
@@ -59,6 +62,7 @@ class ProductModel {
       'isFeatured': isFeatured,
       'CategoryId': categoryId,
       'Brand': brand?.toJson(),
+      // 'UserInfo': userModel?.toJson(),
       'Description': description,
       'ProductType': productType,
       'productAttributes': productAttributes != null
@@ -84,9 +88,8 @@ class ProductModel {
         isFeatured: data['IsFeatured'] ?? false,
         categoryId: data['CategoryId'] ?? '',
         description: data['Description'] ?? '',
-        brand: BrandModel.fromJson(
-          data['Brand'],
-        ),
+        brand: BrandModel.fromJson(data['Brand']),
+        // userModel: UserModel.fromJson(data['UserInfo']),
         images: data['Images'] != null ? List<String>.from(data['Images']) : [],
         productAttributes: (data['productAttributes'] as List<dynamic>)
             .map((e) => ProductAttributeModel.fromJson(e))
@@ -116,6 +119,7 @@ class ProductModel {
         categoryId: data['CategoryId'] ?? '',
         description: data['Description'] ?? '',
         brand: BrandModel.fromJson(data['Brand']),
+        // userModel: UserModel.fromJson(data['UserInfo']),
         images: data['Images'] != null ? List<String>.from(data['Images']) : [],
         productAttributes: (data['productAttributes'] as List<dynamic>)
             .map((e) => ProductAttributeModel.fromJson(e))

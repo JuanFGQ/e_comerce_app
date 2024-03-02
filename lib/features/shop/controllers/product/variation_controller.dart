@@ -1,6 +1,6 @@
 import 'package:e_comerce_app/features/shop/controllers/product/cart_controller.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/images_controller.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/features/shop/models/product_variation_model.dart';
 import 'package:get/get.dart';
 

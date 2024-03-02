@@ -1,5 +1,8 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
+import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
+import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
+import 'package:e_comerce_app/features/messages/model/message_model.dart';
 import 'package:e_comerce_app/features/messages/widgets/message_card.dart';
 import 'package:e_comerce_app/utils/validators/validators.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +10,17 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ChatScreen extends StatelessWidget {
-  final String receiverID;
-  final String receiverEmail;
-
-  const ChatScreen(
-      {super.key, required this.receiverID, required this.receiverEmail});
+  final UserModel userMod;
+  const ChatScreen({
+    super.key,
+    required this.userMod,
+  });
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
+    final auth = AuthenticationRepository.instance;
+
     return Scaffold(
         // bottomNavigationBar:
         appBar: TAppBar(
@@ -32,13 +37,30 @@ class ChatScreen extends StatelessWidget {
           ],
         ),
         body: Column(children: [
-          //!MESSAGE BUILDER
-          Expanded(
-            child: ListView.builder(
-              reverse: true,
-              itemCount: 1,
-              itemBuilder: (context, index) => const MessageCard(),
-            ),
+          //!MESSAGE STREAM
+
+          StreamBuilder(
+            stream: controller.getMessages(otherUserID: userMod.id),
+            builder: (context, snapshot) {
+              //error
+              if (snapshot.hasError) {
+                return const Text("Error");
+              }
+
+              //loading
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Text("Loading.");
+              }
+
+              return Expanded(
+                child: ListView.builder(
+                  reverse: true,
+                  itemCount: snapshot.data,
+                  itemBuilder: (context, index) =>
+                      MessageCard(userModel: snapshot.data![index]),
+                ),
+              );
+            },
           ),
 
           //!USER FORM FIELD
@@ -48,9 +70,8 @@ class ChatScreen extends StatelessWidget {
               children: [
                 IconButton(onPressed: () {}, icon: Icon(Iconsax.gallery)),
                 Expanded(
-                  child: Container(
-                    height:
-                        60, // Puedes ajustar la altura según tus necesidades
+                  child: SizedBox(
+                    height: 60,
                     child: Form(
                       key: controller.messagesForm,
                       child: TextFormField(
@@ -64,15 +85,15 @@ class ChatScreen extends StatelessWidget {
                         expands: false,
                         decoration: const InputDecoration(
                           labelText: 'Say something...',
-                          // prefixIcon: Icon(Iconsax.discount_circle),
                         ),
                       ),
                     ),
                   ),
                 ),
                 IconButton(
-                    onPressed: () => controller.sendMessages(receiverID),
-                    icon: Icon(Iconsax.send1))
+                    onPressed: () =>
+                        controller.sendMessages(receiverID: userMod.id),
+                    icon: const Icon(Iconsax.send1))
               ],
             ),
           ),

@@ -3,7 +3,7 @@ import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/messages/messages_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
-import 'package:e_comerce_app/features/messages/model/messaging_model.dart';
+import 'package:e_comerce_app/features/messages/model/message_model.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -40,7 +40,7 @@ class MessaggingController extends GetxController {
   }
 
   //! SEND MESSAGES
-  Future sendMessages(String receiverID) async {
+  Future sendMessages({required String receiverID}) async {
     try {
       //check internet connectivity
 
@@ -56,18 +56,27 @@ class MessaggingController extends GetxController {
       final Timestamp timestamp = Timestamp.now();
       final currentUserID = _auth.currentUser!.uid;
       final currentUserEmail = _auth.currentUser!.email!;
+      final userName = _auth.currentUser!.displayName!;
+      final imageUrl = _auth.currentUser!.photoURL ?? '';
+
 //send message model
-      final messageM = MessagingModel(
-          senderID: currentUserID,
-          senderEmail: currentUserEmail,
-          receiverID: receiverID,
-          message: messages.text,
-          timestamp: timestamp);
+      final messageM = MessageModel(
+        senderID: currentUserID,
+        senderEmail: currentUserEmail,
+        receiverID: receiverID,
+        message: messages.text,
+        timestamp: timestamp,
+        userName: userName,
+        photoUrl: imageUrl,
+      );
 
       //construct chat rrom ID for the two users(sorted to ensure uniqueness)
       List<String> ids = [currentUserID, receiverID];
       ids.sort(); //sort the ids (this ensure the chattoomID is the same for any 2 people)
       String chatRoomID = ids.join('_');
+
+      //clear the text controller
+      messages.clear();
 
       //SEND/STORE new message to firebase
       await messageRepo.sendMessages(messageM, chatRoomID);
@@ -79,10 +88,12 @@ class MessaggingController extends GetxController {
 
   //!GET MESSAGES STREAM
 
-  Stream getMessages(String userID, otherUserID) {
+  Stream getMessages({required String otherUserID}) {
     try {
+      //get the current ID for the user who will send the message
+      final currentUserID = _auth.currentUser!.uid;
       //construct a chatrrom ID for the two users
-      List<String> ids = [userID, otherUserID];
+      List<String> ids = [currentUserID, otherUserID];
       ids.sort();
       String chatRoomID = ids.join('_');
 

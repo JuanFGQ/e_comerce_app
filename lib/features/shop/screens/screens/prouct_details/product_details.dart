@@ -1,5 +1,5 @@
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/checkout/checkout.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/product_reviews/product_reviews.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/bottom_add_to_cart.dart';

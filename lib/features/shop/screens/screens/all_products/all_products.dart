@@ -3,7 +3,7 @@ import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/products/sortable/sortable_products.dart';
 import 'package:e_comerce_app/common/widgets/shimmer_effect/vertical_shimmer.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/all_products_controller.dart';
-import 'package:e_comerce_app/features/shop/models/poduct_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/cloud_helper_function.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,8 @@ class AllProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(AllProductsController());
     return Scaffold(
-      appBar: const TAppBar(title: Text('Popular Products'), showBackArrow: true),
+      appBar:
+          const TAppBar(title: Text('Popular Products'), showBackArrow: true),
       body: SingleChildScrollView(
           child: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
