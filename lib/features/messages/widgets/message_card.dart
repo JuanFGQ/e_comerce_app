@@ -1,4 +1,3 @@
-import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/messages/model/message_model.dart';

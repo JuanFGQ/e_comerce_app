@@ -3,6 +3,8 @@ import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
+import 'package:e_comerce_app/features/messages/model/messaging_model.dart';
+import 'package:e_comerce_app/features/messages/screen/chat_page.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
@@ -10,6 +12,8 @@ import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class TProductMetaData extends StatelessWidget {
   const TProductMetaData({super.key, required this.product});
@@ -99,6 +103,11 @@ class TProductMetaData extends StatelessWidget {
             TBrandTitleTextWithVerifiedIcon(
                 title: product.brand != null ? product.brand!.name : '',
                 brandTextSize: TextSizes.medium),
+            const Spacer(),
+            IconButton(
+                onPressed: () =>
+                    Get.to(ChatScreen(messaging: MessagingModel.empty())),
+                icon: const Icon(Iconsax.message))
           ],
         )
       ],
