@@ -56,11 +56,11 @@ class MessagingRepository extends GetxController {
 
   //!FETCH MESSAGES
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> fetchMessages(String chatRoomID) {
+  Stream<List<MessageModel>> fetchMessages(String chatRoomID) {
     final userId = AuthenticationRepository.instance.authUser.uid;
 
     try {
-      return _db
+      final snapshot = _db
           .collection("Users")
           .doc(userId)
           .collection('messages')
@@ -68,6 +68,9 @@ class MessagingRepository extends GetxController {
           .collection('message')
           .orderBy("timeStamp", descending: false)
           .snapshots();
+
+      return snapshot.map(
+          (m) => m.docs.map((e) => MessageModel.fromQuerySnapshot(e)).toList());
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException catch (_) {

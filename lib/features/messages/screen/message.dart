@@ -1,8 +1,14 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
+import 'package:e_comerce_app/common/widgets/loaders/animation_loader_widget.dart';
+import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
+import 'package:e_comerce_app/common/widgets/shimmer_effect/vertical_shimmer.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
 import 'package:e_comerce_app/features/messages/widgets/chat_card.dart';
+import 'package:e_comerce_app/navigation_menu.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
+import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
+import 'package:e_comerce_app/utils/helpers/cloud_helper_function.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,15 +74,21 @@ class MessagesScreen extends StatelessWidget {
           StreamBuilder(
             stream: controller.getUserList(),
             builder: (context, snapshot) {
-              //error
-              if (snapshot.hasError) {
-                return const Text("Error");
-              }
+              //Nothing Found
+              final emptyWidget = TAnimationControllerWidget(
+                showAction: true,
+                actionText: 'Lets\'s add some',
+                text: 'Whoops! WishList is Empty...',
+                animation: TImages.emptyWishList,
+                onActionProssed: () => Get.off(() => const NavigationMenu()),
+              );
 
-              //loading
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Text("Loading.");
-              }
+              const loader = TVerticalProductShimmer(itemCount: 6);
+              final widget = TCloudHelperFunction.checkMultiRecordState(
+                  snapshot: snapshot,
+                  loader: loader,
+                  nothingFound: emptyWidget);
+              if (widget != null) return widget;
 
               //data founded
 
@@ -84,6 +96,7 @@ class MessagesScreen extends StatelessWidget {
                 child: Padding(
                     padding: const EdgeInsets.all(TSizes.defaultSpace),
                     child: ListView.builder(
+                      addAutomaticKeepAlives: true,
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) => ChatCard(
                         userModel: snapshot.data![index],

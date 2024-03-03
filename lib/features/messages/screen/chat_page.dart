@@ -4,16 +4,19 @@ import 'package:e_comerce_app/features/authentication/models/user/user_model.dar
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
 import 'package:e_comerce_app/features/messages/model/message_model.dart';
 import 'package:e_comerce_app/features/messages/widgets/message_card.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/validators/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ChatScreen extends StatelessWidget {
-  final UserModel userMod;
+  final String otherUserID;
+  final ProductModel product;
   const ChatScreen({
     super.key,
-    required this.userMod,
+    required this.otherUserID,
+    required this.product,
   });
 
   @override
@@ -40,7 +43,7 @@ class ChatScreen extends StatelessWidget {
           //!MESSAGE STREAM
 
           StreamBuilder(
-            stream: controller.getMessages(otherUserID: userMod.id),
+            stream: controller.getMessages(otherUserID: otherUserID),
             builder: (context, snapshot) {
               //error
               if (snapshot.hasError) {
@@ -55,7 +58,7 @@ class ChatScreen extends StatelessWidget {
               return Expanded(
                 child: ListView.builder(
                   reverse: true,
-                  itemCount: snapshot.data,
+                  itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) =>
                       MessageCard(userModel: snapshot.data![index]),
                 ),
@@ -91,8 +94,8 @@ class ChatScreen extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                    onPressed: () =>
-                        controller.sendMessages(receiverID: userMod.id),
+                    onPressed: () => controller.sendMessages(
+                        receiverID: otherUserID, productModel: product),
                     icon: const Icon(Iconsax.send1))
               ],
             ),

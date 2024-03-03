@@ -4,6 +4,7 @@ import 'package:e_comerce_app/data/repositories/messages/messages_repository.dar
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/messages/model/message_model.dart';
+import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -40,7 +41,8 @@ class MessaggingController extends GetxController {
   }
 
   //! SEND MESSAGES
-  Future sendMessages({required String receiverID}) async {
+  Future sendMessages(
+      {required String receiverID, required ProductModel productModel}) async {
     try {
       //check internet connectivity
 
@@ -56,8 +58,6 @@ class MessaggingController extends GetxController {
       final Timestamp timestamp = Timestamp.now();
       final currentUserID = _auth.currentUser!.uid;
       final currentUserEmail = _auth.currentUser!.email!;
-      final userName = _auth.currentUser!.displayName!;
-      final imageUrl = _auth.currentUser!.photoURL ?? '';
 
 //send message model
       final messageM = MessageModel(
@@ -66,8 +66,8 @@ class MessaggingController extends GetxController {
         receiverID: receiverID,
         message: messages.text,
         timestamp: timestamp,
-        userName: userName,
-        photoUrl: imageUrl,
+        userName: productModel.brand!.name,
+        profilePicture: productModel.brand!.image,
       );
 
       //construct chat rrom ID for the two users(sorted to ensure uniqueness)
@@ -88,7 +88,7 @@ class MessaggingController extends GetxController {
 
   //!GET MESSAGES STREAM
 
-  Stream getMessages({required String otherUserID}) {
+  Stream<List<MessageModel>> getMessages({required String otherUserID}) {
     try {
       //get the current ID for the user who will send the message
       final currentUserID = _auth.currentUser!.uid;

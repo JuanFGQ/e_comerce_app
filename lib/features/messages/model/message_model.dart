@@ -7,11 +7,11 @@ class MessageModel {
   final String message;
   final Timestamp timestamp;
   final String userName;
-  final String photoUrl;
+  final String profilePicture;
 
   MessageModel({
     required this.userName,
-    required this.photoUrl,
+    required this.profilePicture,
     required this.senderID,
     required this.senderEmail,
     required this.receiverID,
@@ -26,7 +26,7 @@ class MessageModel {
         message: '',
         timestamp: Timestamp.now(),
         userName: '',
-        photoUrl: '',
+        profilePicture: '',
       );
 
   //JSON FORMAT
@@ -38,7 +38,7 @@ class MessageModel {
       'receiverID': receiverID,
       'message': message,
       'timeStamp': timestamp,
-      'photoUrl': photoUrl,
+      'photoUrl': profilePicture,
       'userName': userName
     };
   }
@@ -55,7 +55,7 @@ class MessageModel {
       message: data['message'],
       timestamp: data['timestamp'],
       userName: data['userName'],
-      photoUrl: data['photoUrl'],
+      profilePicture: data['photoUrl'],
     );
   }
 
@@ -71,7 +71,7 @@ class MessageModel {
       message: data['message'],
       timestamp: data['timestamp'],
       userName: data['userName'],
-      photoUrl: data['photoUrl'],
+      profilePicture: data['photoUrl'],
     );
   }
 }

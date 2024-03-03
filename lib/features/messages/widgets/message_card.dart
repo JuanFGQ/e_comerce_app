@@ -13,14 +13,14 @@ class MessageCard extends StatelessWidget {
     required this.userModel,
   });
 
-  final UserModel userModel;
+  final MessageModel userModel;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunction.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-//!USER MESSAGE
+        //!USER MESSAGE
         Container(
           width: 300,
           decoration: BoxDecoration(
@@ -50,7 +50,7 @@ class MessageCard extends StatelessWidget {
                                 ? true
                                 : false),
                     const SizedBox(width: TSizes.defaultSpace / 2),
-                    Text(userModel.fullName)
+                    Text(userModel.userName)
                   ],
                 ),
                 const SizedBox(height: TSizes.defaultSpace / 2),

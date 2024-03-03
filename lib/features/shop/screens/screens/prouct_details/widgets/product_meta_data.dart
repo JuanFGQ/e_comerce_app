@@ -3,7 +3,6 @@ import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
-import 'package:e_comerce_app/features/messages/model/messaging_model.dart';
 import 'package:e_comerce_app/features/messages/screen/chat_page.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
@@ -26,7 +25,6 @@ class TProductMetaData extends StatelessWidget {
     final salePercentage =
         controller.calculatSalePercetange(product.price, product.salePrice);
 
-    final darkMode = THelperFunction.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -79,11 +77,11 @@ class TProductMetaData extends StatelessWidget {
 
         Row(
           children: [
-            ProductTitleText(
+            const ProductTitleText(
               title: 'Status :',
               size: TSizes.fontSizeMd,
             ),
-            SizedBox(width: TSizes.spaceBtwItems / 2),
+            const SizedBox(width: TSizes.spaceBtwItems / 2),
             Text(controller.getProductStockStatus(product.stock),
                 style: Theme.of(context).textTheme.titleMedium),
           ],
@@ -105,9 +103,14 @@ class TProductMetaData extends StatelessWidget {
                 brandTextSize: TextSizes.medium),
             const Spacer(),
             IconButton(
-                onPressed: () =>
-                    Get.to(ChatScreen(messaging: MessagingModel.empty())),
-                icon: const Icon(Iconsax.message))
+                onPressed: () => Get.to(ChatScreen(
+                      otherUserID: product.brand!.id,
+                      product: product,
+                    )),
+                icon: const Icon(
+                  Iconsax.message,
+                  color: Colors.red,
+                ))
           ],
         )
       ],

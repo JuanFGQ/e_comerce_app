@@ -23,7 +23,7 @@ class ChatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
     return GestureDetector(
-      onTap: () => Get.to(() => ChatScreen(userMod: userModel)),
+      // onTap: () => Get.to(() => ChatScreen(otherUserID: ,)),
       child: Padding(
         padding: const EdgeInsets.only(top: TSizes.md),
         child: Column(
