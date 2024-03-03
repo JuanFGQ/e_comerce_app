@@ -11,11 +11,9 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ChatScreen extends StatelessWidget {
-  final String otherUserID;
   final ProductModel product;
   const ChatScreen({
     super.key,
-    required this.otherUserID,
     required this.product,
   });
 
@@ -43,7 +41,7 @@ class ChatScreen extends StatelessWidget {
           //!MESSAGE STREAM
 
           StreamBuilder(
-            stream: controller.getMessages(otherUserID: otherUserID),
+            stream: controller.getMessages(otherUserID: product.brand!.id),
             builder: (context, snapshot) {
               //error
               if (snapshot.hasError) {
@@ -94,8 +92,8 @@ class ChatScreen extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                    onPressed: () => controller.sendMessages(
-                        receiverID: otherUserID, productModel: product),
+                    onPressed: () =>
+                        controller.sendMessages(productModel: product),
                     icon: const Icon(Iconsax.send1))
               ],
             ),

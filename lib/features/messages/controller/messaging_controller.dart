@@ -41,8 +41,7 @@ class MessaggingController extends GetxController {
   }
 
   //! SEND MESSAGES
-  Future sendMessages(
-      {required String receiverID, required ProductModel productModel}) async {
+  Future sendMessages({required ProductModel productModel}) async {
     try {
       //check internet connectivity
 
@@ -63,7 +62,7 @@ class MessaggingController extends GetxController {
       final messageM = MessageModel(
         senderID: currentUserID,
         senderEmail: currentUserEmail,
-        receiverID: receiverID,
+        receiverID: productModel.brand!.id,
         message: messages.text,
         timestamp: timestamp,
         userName: productModel.brand!.name,
@@ -71,7 +70,7 @@ class MessaggingController extends GetxController {
       );
 
       //construct chat rrom ID for the two users(sorted to ensure uniqueness)
-      List<String> ids = [currentUserID, receiverID];
+      List<String> ids = [currentUserID, productModel.brand!.id];
       ids.sort(); //sort the ids (this ensure the chattoomID is the same for any 2 people)
       String chatRoomID = ids.join('_');
 

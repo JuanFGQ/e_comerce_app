@@ -104,7 +104,6 @@ class TProductMetaData extends StatelessWidget {
             const Spacer(),
             IconButton(
                 onPressed: () => Get.to(ChatScreen(
-                      otherUserID: product.brand!.id,
                       product: product,
                     )),
                 icon: const Icon(
