@@ -3,7 +3,7 @@ import 'package:e_comerce_app/common/widgets/images/circular_images.dart';
 import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
-import 'package:e_comerce_app/features/messages/screen/chat_page.dart';
+import 'package:e_comerce_app/features/messages/screen/chat_screen.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
@@ -103,9 +103,7 @@ class TProductMetaData extends StatelessWidget {
                 brandTextSize: TextSizes.medium),
             const Spacer(),
             IconButton(
-                onPressed: () => Get.to(ChatScreen(
-                      product: product,
-                    )),
+                onPressed: () => Get.to(ChatScreen(product: product)),
                 icon: const Icon(
                   Iconsax.message,
                   color: Colors.red,

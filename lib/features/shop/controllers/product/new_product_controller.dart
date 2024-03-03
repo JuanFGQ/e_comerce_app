@@ -227,7 +227,7 @@ class NewProductController extends GetxController {
 
       //show succes message
       TLoaders.successSnackBar(
-          title: 'Congratulations', message: 'Your Name has been updated');
+          title: 'Congratulations', message: 'Your Product has been uploaded');
 
       clearData();
 

@@ -40,7 +40,7 @@ class TAnimationControllerWidget extends StatelessWidget {
                       style: OutlinedButton.styleFrom(
                           backgroundColor: TColors.dark),
                       child: Text(
-                        actionText!,
+                        actionText ?? '',
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium!

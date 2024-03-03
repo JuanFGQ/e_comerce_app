@@ -17,10 +17,22 @@ class MessagingRepository extends GetxController {
 
   //!GET USER STREAM
 
-  Stream<List<UserModel>> getUsersStream() {
+  Stream<List<MessageModel>> getUsersStream() {
     try {
-      return _db.collection("Users").snapshots().map((snapshot) {
-        return snapshot.docs.map((doc) => UserModel.fromSnapshot(doc)).toList();
+      final userId = _auth.currentUser!.uid;
+      return _db
+          .collection("Users")
+          .doc(userId)
+          .collection('messsages')
+          .snapshots()
+          .map((snapshot) {
+        if (snapshot.docs.isNotEmpty) {
+          return snapshot.docs
+              .map((doc) => MessageModel.fromSnapshot(doc))
+              .toList();
+        } else {
+          return [];
+        }
       });
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;

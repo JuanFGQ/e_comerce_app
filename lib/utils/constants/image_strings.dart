@@ -23,6 +23,8 @@ class TImages {
   static const String emptyCart = 'assets/animation/emptyCart.json';
   static const String emptyWishList = 'assets/animation/emptyWIsh.json';
   static const String paymentSuccess = 'assets/animation/paymentSucces.json';
+  static const String noMessag = 'assets/animation/no_messag.json';
+  static const String emptyChat = 'assets/animation/emptychat.json';
 
   //categories String
 
@@ -70,4 +72,5 @@ class TImages {
 
   //GENERAL USE IMAGE
   static const String userImage = 'assets/icons/userImage.png';
+  static const String noMessage = 'assets/icons/no_message.png';
 }

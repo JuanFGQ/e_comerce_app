@@ -1,10 +1,14 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
+import 'package:e_comerce_app/common/widgets/loaders/animation_loader_widget.dart';
 import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
 import 'package:e_comerce_app/features/messages/model/message_model.dart';
 import 'package:e_comerce_app/features/messages/widgets/message_card.dart';
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
+import 'package:e_comerce_app/navigation_menu.dart';
+import 'package:e_comerce_app/utils/constants/image_strings.dart';
+import 'package:e_comerce_app/utils/helpers/cloud_helper_function.dart';
 import 'package:e_comerce_app/utils/validators/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,16 +47,19 @@ class ChatScreen extends StatelessWidget {
           StreamBuilder(
             stream: controller.getMessages(otherUserID: product.brand!.id),
             builder: (context, snapshot) {
-              //error
-              if (snapshot.hasError) {
-                return const Text("Error");
-              }
+              //nothing found
+              const emptyWidget = Expanded(
+                child: TAnimationControllerWidget(
+                  text: 'Chat with your seller',
+                  animation: TImages.noMessag,
+                ),
+              );
 
-              //loading
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Text("Loading.");
-              }
+              final widget = TCloudHelperFunction.checkMultiRecordState(
+                  snapshot: snapshot, nothingFound: emptyWidget);
+              if (widget != null) return widget;
 
+              //data found
               return Expanded(
                 child: ListView.builder(
                   reverse: true,

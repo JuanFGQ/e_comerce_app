@@ -29,7 +29,7 @@ class MessaggingController extends GetxController {
 
   //!GET USERS LISTS
 
-  Stream<List<UserModel>> getUserList() {
+  Stream<List<MessageModel>> getUserMessage() {
     try {
       final user = messageRepo.getUsersStream();
       // usersList.assignAll(user as Iterable<UserModel>);
@@ -95,6 +95,8 @@ class MessaggingController extends GetxController {
       List<String> ids = [currentUserID, otherUserID];
       ids.sort();
       String chatRoomID = ids.join('_');
+
+      print('${currentUserID + otherUserID}COMBI ${'CHAT ROOM' + chatRoomID}');
 
       return messageRepo.fetchMessages(chatRoomID);
     } catch (e) {

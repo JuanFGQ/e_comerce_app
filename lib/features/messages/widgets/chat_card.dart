@@ -1,8 +1,10 @@
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
+import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
 import 'package:e_comerce_app/features/messages/model/message_model.dart';
-import 'package:e_comerce_app/features/messages/screen/chat_page.dart';
+import 'package:e_comerce_app/features/messages/screen/chat_screen.dart';
+import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
@@ -13,15 +15,16 @@ import 'package:get/get.dart';
 class ChatCard extends StatelessWidget {
   const ChatCard({
     super.key,
-    required this.userModel,
+    required this.messaginModel,
     // required this.messaging,
   });
-  final UserModel userModel;
+  final MessageModel messaginModel;
   // final MessagingModel messaging;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
+    final _auth = AuthenticationRepository.instance.authUser.uid;
     return GestureDetector(
       // onTap: () => Get.to(() => ChatScreen(otherUserID: ,)),
       child: Padding(
@@ -29,7 +32,9 @@ class ChatCard extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: messaginModel.receiverID != _auth
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.end,
               children: [
                 //!USER IMAGE
                 TRoundedImage(
@@ -37,11 +42,12 @@ class ChatCard extends StatelessWidget {
                   height: 60,
                   applyImageRadius: true,
                   width: 60,
-                  imageUrl: userModel.profilePicture.contains('http')
-                      ? userModel.profilePicture
+                  imageUrl: messaginModel.profilePicture.contains('http')
+                      ? messaginModel.profilePicture
                       : TImages.userImage,
-                  isNetworkImage:
-                      userModel.profilePicture.contains('http') ? true : false,
+                  isNetworkImage: messaginModel.profilePicture.contains('http')
+                      ? true
+                      : false,
                 ),
                 const SizedBox(width: TSizes.md),
 
@@ -52,13 +58,13 @@ class ChatCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //USER NAME
-                      Text(userModel.fullName,
+                      Text(messaginModel.userName,
                           style: Theme.of(context).textTheme.headlineMedium),
                       const SizedBox(height: TSizes.sm / 2),
                       //USER MESSAGE
                       StreamBuilder(
-                          stream:
-                              controller.getMessages(otherUserID: userModel.id),
+                          stream: controller.getMessages(
+                              otherUserID: messaginModel.receiverID),
                           builder: (context, snapshot) {
                             return Text('messaging.message',
                                 overflow: TextOverflow.ellipsis,
