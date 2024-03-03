@@ -1,8 +1,8 @@
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class TSettingMenuTile extends StatelessWidget {
-  const TSettingMenuTile(
+class JSettingMenuTile extends StatelessWidget {
+  const JSettingMenuTile(
       {super.key,
       required this.icon,
       required this.title,
@@ -18,7 +18,7 @@ class TSettingMenuTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon, size: 28, color: TColors.primary),
+      leading: Icon(icon, size: 28, color: JColors.primary),
       title: Text(title, style: Theme.of(context).textTheme.titleMedium),
       subtitle: Text(subTitle, style: Theme.of(context).textTheme.labelMedium),
       trailing: trailing,

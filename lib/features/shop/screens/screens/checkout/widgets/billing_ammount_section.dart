@@ -3,8 +3,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/princing_calculator.dart';
 import 'package:flutter/material.dart';
 
-class TBillingAmountSection extends StatelessWidget {
-  const TBillingAmountSection({super.key});
+class JBillingAmountSection extends StatelessWidget {
+  const JBillingAmountSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class TBillingAmountSection extends StatelessWidget {
             Text('\$$subTotal', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
-        const SizedBox(height: TSizes.spaceBtwItems / 2),
+        const SizedBox(height: JSizes.spaceBtwItems / 2),
 
         //SHIPPING FEE
         Row(
@@ -29,11 +29,11 @@ class TBillingAmountSection extends StatelessWidget {
           children: [
             Text('Shippin Fee', style: Theme.of(context).textTheme.bodyMedium),
             Text(
-                '\$${TPricingCalculator.calculateShippingCost(subTotal, 'EUR')}',
+                '\$${JPricingCalculator.calculateShippingCost(subTotal, 'EUR')}',
                 style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
-        const SizedBox(height: TSizes.spaceBtwItems / 2),
+        const SizedBox(height: JSizes.spaceBtwItems / 2),
 
         //!TAX FEE
         // Row(
@@ -44,7 +44,7 @@ class TBillingAmountSection extends StatelessWidget {
         //         style: Theme.of(context).textTheme.labelLarge),
         //   ],
         // ),
-        const SizedBox(height: TSizes.spaceBtwItems),
+        const SizedBox(height: JSizes.spaceBtwItems),
 
         //TOTAL ORDER
         Row(
@@ -52,7 +52,7 @@ class TBillingAmountSection extends StatelessWidget {
           children: [
             Text('Total Order',
                 style: Theme.of(context).textTheme.headlineMedium),
-            Text('\$${TPricingCalculator.calculateTotalPrice(subTotal, 'EUR')}',
+            Text('\$${JPricingCalculator.calculateTotalPrice(subTotal, 'EUR')}',
                 style: Theme.of(context).textTheme.titleMedium),
           ],
         ),

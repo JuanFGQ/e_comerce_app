@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TProductPriceText extends StatelessWidget {
-  const TProductPriceText({
+class JProductPriceText extends StatelessWidget {
+  const JProductPriceText({
     super.key,
     required this.price,
     this.maxLines = 1,

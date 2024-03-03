@@ -21,32 +21,32 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: TBottomAddToCart(product: product),
+      bottomNavigationBar: JBottomAddToCart(product: product),
       body: SingleChildScrollView(
         child: Column(children: [
           //! PRODUCT IMAGE SLIDER
-          TProductImageSlider(product: product),
+          JProductImageSlider(product: product),
 
           //PRODUCT DETAILS
 
           Padding(
             padding: const EdgeInsets.only(
-                right: TSizes.defaultSpace,
-                left: TSizes.defaultSpace,
-                bottom: TSizes.defaultSpace),
+                right: JSizes.defaultSpace,
+                left: JSizes.defaultSpace,
+                bottom: JSizes.defaultSpace),
             child: Column(
               children: [
                 //ratin and share button
-                const TRatingAndShare(),
+                const JRatingAndShare(),
 
                 //PRICE TITLE STOCK & BRAND
-                TProductMetaData(product: product),
+                JProductMetaData(product: product),
 
                 //ATTRIBUTES
                 if (product.productType == ProductType.variable.toString())
                   ProductsAttributes(product: product),
                 if (product.productType == ProductType.variable.toString())
-                  const SizedBox(height: TSizes.spaceBtwSection),
+                  const SizedBox(height: JSizes.spaceBtwSection),
 
                 //!CHECKOUT BUTTON
                 SizedBox(
@@ -54,13 +54,13 @@ class ProductDetailScreen extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: () => Get.to(() => const CheckOutScreen()),
                         child: const Text('Checkout'))),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
 
                 //!DESCRIPTION
 
-                const TSectionHeading(
+                const JSectionHeading(
                     title: 'Description', showActionButton: false),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
                 ReadMoreText(
                   product.description ?? '',
                   trimLines: 2,
@@ -75,11 +75,11 @@ class ProductDetailScreen extends StatelessWidget {
 
                 //!REVIEWS
                 const Divider(),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TSectionHeading(
+                    JSectionHeading(
                         title: 'Reviews(199)',
                         onPressed: () {},
                         showActionButton: false),
@@ -89,7 +89,7 @@ class ProductDetailScreen extends StatelessWidget {
                         icon: const Icon(Iconsax.arrow_right_3, size: 18))
                   ],
                 ),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
               ],
             ),
           ),

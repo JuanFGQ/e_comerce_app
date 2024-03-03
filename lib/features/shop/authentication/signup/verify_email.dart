@@ -26,28 +26,28 @@ class VerifyEmailScreen extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(JSizes.defaultSpace),
         child: Column(
           children: [
             //IMAGE
             Image(
-                image: const AssetImage(TImages.lightAppLogo),
-                width: THelperFunction.screenWidth(context) * 0.6),
-            const SizedBox(height: TSizes.spaceBtwSection),
+                image: const AssetImage(JImages.lightAppLogo),
+                width: JHelperFunction.screenWidth(context) * 0.6),
+            const SizedBox(height: JSizes.spaceBtwSection),
 
             //TITLE and SUBTITLE
-            Text(TTexts.confirmEmail,
+            Text(JTexts.confirmEmail,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center),
-            const SizedBox(height: TSizes.spaceBtwItems),
+            const SizedBox(height: JSizes.spaceBtwItems),
             Text(email ?? '',
                 style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center),
-            const SizedBox(height: TSizes.spaceBtwItems),
-            Text(TTexts.confirmEmailSubTitle,
+            const SizedBox(height: JSizes.spaceBtwItems),
+            Text(JTexts.confirmEmailSubTitle,
                 style: Theme.of(context).textTheme.labelMedium,
                 textAlign: TextAlign.center),
-            const SizedBox(height: TSizes.spaceBtwSection),
+            const SizedBox(height: JSizes.spaceBtwSection),
 
             //BUTTONS
             SizedBox(
@@ -55,14 +55,14 @@ class VerifyEmailScreen extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () => controller.checkVerificationStatus(),
                     child: const Text('Continue'))),
-            const SizedBox(height: TSizes.spaceBtwItems),
+            const SizedBox(height: JSizes.spaceBtwItems),
             SizedBox(
                 width: double.infinity,
                 child: TextButton(
                     onPressed: () {},
                     child: TextButton(
                         onPressed: () => controller.sendEmailVerification(),
-                        child: const Text(TTexts.resendEmail)))),
+                        child: const Text(JTexts.resendEmail)))),
           ],
         ),
       ),

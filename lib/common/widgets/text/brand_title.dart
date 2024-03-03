@@ -1,8 +1,8 @@
 import 'package:e_comerce_app/utils/constants/enums.dart';
 import 'package:flutter/material.dart';
 
-class TBrandTextTitle extends StatelessWidget {
-  const TBrandTextTitle({
+class JBrandTextTitle extends StatelessWidget {
+  const JBrandTextTitle({
     super.key,
     required this.title,
     this.maxLines = 1,

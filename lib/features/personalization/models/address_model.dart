@@ -34,7 +34,7 @@ class AddressModel {
     this.selectedAddress = true,
   });
 
-  String get formattedPhoneNo => TFormatter.formatPhoneNumber(phoneNumber);
+  String get formattedPhoneNo => JFormatter.formatPhoneNumber(phoneNumber);
 
   static AddressModel empty() => AddressModel(
       id: '',

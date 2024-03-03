@@ -16,16 +16,16 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     final controller = Get.put(NavigationController());
     final newProductController = Get.put(NewProductController());
     return Scaffold(
       bottomNavigationBar: Obx(
         () => NavigationBar(
-            backgroundColor: dark ? TColors.black : TColors.white,
+            backgroundColor: dark ? JColors.black : JColors.white,
             indicatorColor: dark
-                ? TColors.white.withOpacity(0.1)
-                : TColors.black.withOpacity(0.1),
+                ? JColors.white.withOpacity(0.1)
+                : JColors.black.withOpacity(0.1),
             elevation: 0,
             selectedIndex: controller.selectedIndex.value,
             onDestinationSelected: (index) {

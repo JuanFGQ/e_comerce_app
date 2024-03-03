@@ -1,4 +1,4 @@
-class TImages {
+class JImages {
   //APP LOGOS
   static const String darkAppLogo = 'assets/logos/shopping-bag-dark.png';
   static const String lightAppLogo = 'assets/logos/shopping-bag-light.png';

@@ -2,8 +2,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TProfileMenuTile extends StatelessWidget {
-  const TProfileMenuTile({
+class JProfileMenuTile extends StatelessWidget {
+  const JProfileMenuTile({
     super.key,
     this.icon = Iconsax.arrow_right_34,
     required this.onPressed,
@@ -21,7 +21,7 @@ class TProfileMenuTile extends StatelessWidget {
       onTap: onPressed,
       child: Padding(
         padding:
-            const EdgeInsets.symmetric(vertical: TSizes.spaceBtwItems / 1.5),
+            const EdgeInsets.symmetric(vertical: JSizes.spaceBtwItems / 1.5),
         child: Row(
           children: [
             Expanded(

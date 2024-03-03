@@ -40,7 +40,7 @@ class CategoryController extends GetxController {
           .take(8)
           .toList());
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       //remove loader
       isLoading.value = false;
@@ -55,7 +55,7 @@ class CategoryController extends GetxController {
           await _categoryRepository.getSubCategories(categoryId);
       return subCategories;
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }
@@ -71,7 +71,7 @@ class CategoryController extends GetxController {
 
       return products;
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }

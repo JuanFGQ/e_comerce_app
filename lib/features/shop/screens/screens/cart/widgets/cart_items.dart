@@ -6,8 +6,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TCartItems extends StatelessWidget {
-  const TCartItems({
+class JCartItems extends StatelessWidget {
+  const JCartItems({
     super.key,
     this.showAddRemoveButton = true,
   });
@@ -20,15 +20,15 @@ class TCartItems extends StatelessWidget {
         shrinkWrap: true,
         itemCount: cartController.cartItems.length,
         separatorBuilder: (_, __) =>
-            const SizedBox(height: TSizes.spaceBtwSection),
+            const SizedBox(height: JSizes.spaceBtwSection),
         itemBuilder: (_, index) => Obx(() {
           final item = cartController.cartItems[index];
           return Column(
             children: [
               //CART ITEM
-              TCartItem(cartItem: item),
+              JCartItem(cartItem: item),
               if (showAddRemoveButton)
-                const SizedBox(height: TSizes.spaceBtwItems),
+                const SizedBox(height: JSizes.spaceBtwItems),
 
               //ADD REMOVE BUTTON WITH TOTAL PRICE
               if (showAddRemoveButton)
@@ -38,7 +38,7 @@ class TCartItems extends StatelessWidget {
                     Row(
                       children: [
                         //add remove buttons
-                        TProductQuantityWithAddRemove(
+                        JProductQuantityWithAddRemove(
                           quantity: item.quantity,
                           add: () => cartController.addOneToCart(item),
                           remove: () => cartController.removeOneFromChart(item),
@@ -46,7 +46,7 @@ class TCartItems extends StatelessWidget {
                       ],
                     ),
                     //PRODUCT TOTAL PRICE
-                    TProductPriceText(
+                    JProductPriceText(
                         price: (item.price * item.quantity).toStringAsFixed(1)),
                   ],
                 )

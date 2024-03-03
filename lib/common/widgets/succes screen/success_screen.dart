@@ -24,22 +24,22 @@ class SuccesScreen extends StatelessWidget {
           child: Column(
             children: [
               Lottie.asset(image,
-                  width: THelperFunction.screenWidth(context) * 0.8),
+                  width: JHelperFunction.screenWidth(context) * 0.8),
               // Image(
               //     image: AssetImage(image),
               //     width: THelperFunction.screenWidth(context) * 0.6),
-              const SizedBox(height: TSizes.spaceBtwSection),
+              const SizedBox(height: JSizes.spaceBtwSection),
 
               //TITLE and SUBTITLE
               Text(title,
                   style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center),
-              const SizedBox(height: TSizes.spaceBtwItems),
+              const SizedBox(height: JSizes.spaceBtwItems),
 
               Text(subTitle,
                   style: Theme.of(context).textTheme.labelMedium,
                   textAlign: TextAlign.center),
-              const SizedBox(height: TSizes.spaceBtwSection),
+              const SizedBox(height: JSizes.spaceBtwSection),
 
               //BUTTON
               SizedBox(

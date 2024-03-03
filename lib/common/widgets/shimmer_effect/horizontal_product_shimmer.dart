@@ -2,15 +2,15 @@ import 'package:e_comerce_app/common/widgets/shimmer_effect/shimmer_effect.dart'
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-class THorizontalProductShimmer extends StatelessWidget {
-  const THorizontalProductShimmer({super.key, this.itemCount = 4});
+class JHorizontalProductShimmer extends StatelessWidget {
+  const JHorizontalProductShimmer({super.key, this.itemCount = 4});
 
   final int itemCount;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: TSizes.spaceBtwSection),
+      margin: const EdgeInsets.only(bottom: JSizes.spaceBtwSection),
       height: 120,
       child: ListView.separated(
           shrinkWrap: true,
@@ -19,8 +19,8 @@ class THorizontalProductShimmer extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   //image
-                  TShimmerEffect(width: 120, height: 120),
-                  SizedBox(width: TSizes.spaceBtwItems)
+                  JShimmerEffect(width: 120, height: 120),
+                  SizedBox(width: JSizes.spaceBtwItems)
 
                   //text
                   ,
@@ -28,19 +28,19 @@ class THorizontalProductShimmer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(height: TSizes.spaceBtwItems / 2),
-                      TShimmerEffect(width: 160, height: 15),
-                      SizedBox(height: TSizes.spaceBtwItems / 2),
-                      TShimmerEffect(width: 110, height: 15),
-                      SizedBox(height: TSizes.spaceBtwItems / 2),
-                      TShimmerEffect(width: 80, height: 15),
+                      SizedBox(height: JSizes.spaceBtwItems / 2),
+                      JShimmerEffect(width: 160, height: 15),
+                      SizedBox(height: JSizes.spaceBtwItems / 2),
+                      JShimmerEffect(width: 110, height: 15),
+                      SizedBox(height: JSizes.spaceBtwItems / 2),
+                      JShimmerEffect(width: 80, height: 15),
                       Spacer()
                     ],
                   )
                 ],
               ),
           separatorBuilder: (context, index) => const SizedBox(
-                width: TSizes.spaceBtwItems,
+                width: JSizes.spaceBtwItems,
               ),
           itemCount: itemCount),
     );

@@ -29,7 +29,7 @@ class ProductController extends GetxController {
       //Assign Products
       featuredProducts.assignAll(products);
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       isLoading.value = false;
     }
@@ -41,7 +41,7 @@ class ProductController extends GetxController {
       final products = await productRepository.getFeaturedProducts();
       return products;
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }
@@ -99,10 +99,10 @@ class ProductController extends GetxController {
 
   Future<void> uploadDummyData() async {
     try {
-      await productRepository.uploadTestData(TDummyData.products);
-      TLoaders.successSnackBar(title: 'Brands Succesfully Uploaded');
+      await productRepository.uploadTestData(JDummyData.products);
+      JLoaders.successSnackBar(title: 'Brands Succesfully Uploaded');
     } catch (e) {
-      TLoaders.errorSnackBar(
+      JLoaders.errorSnackBar(
           title: 'Error while uploading', message: e.toString());
     }
   }

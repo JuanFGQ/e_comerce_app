@@ -23,11 +23,11 @@ class VerifyEmailController extends GetxController {
   void sendEmailVerification() async {
     try {
       await AuthenticationRepository.instance.sendEmailVerification();
-      TLoaders.successSnackBar(
+      JLoaders.successSnackBar(
           title: 'Email Sent',
           message: 'Please Check your inbox and verify your email.');
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 
@@ -39,9 +39,9 @@ class VerifyEmailController extends GetxController {
       if (user?.emailVerified ?? false) {
         timer.cancel();
         Get.off(() => SuccesScreen(
-              image: TImages.successCheck,
-              title: TTexts.yourAccountTitle,
-              subTitle: TTexts.yourAccountSubTitle,
+              image: JImages.successCheck,
+              title: JTexts.yourAccountTitle,
+              subTitle: JTexts.yourAccountSubTitle,
               onPressed: () =>
                   AuthenticationRepository.instance.screenRedirect(),
             ));
@@ -54,9 +54,9 @@ class VerifyEmailController extends GetxController {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
       Get.off(() => SuccesScreen(
-            image: TImages.successCheck,
-            title: TTexts.yourAccountTitle,
-            subTitle: TTexts.yourAccountSubTitle,
+            image: JImages.successCheck,
+            title: JTexts.yourAccountTitle,
+            subTitle: JTexts.yourAccountSubTitle,
             onPressed: () => AuthenticationRepository.instance.screenRedirect(),
           ));
     }

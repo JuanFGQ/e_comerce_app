@@ -28,11 +28,11 @@ class StoreScreen extends StatelessWidget {
       //change this to a specific number to
       length: categories.length,
       child: Scaffold(
-        appBar: TAppBar(
+        appBar: JAppBar(
           showBackArrow: true,
           title:
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
-          actions: const [TCartCounterIcon()],
+          actions: const [JCartCounterIcon()],
         ),
         body: NestedScrollView(
           headerSliverBuilder: (_, innerBoxScrolled) {
@@ -41,35 +41,35 @@ class StoreScreen extends StatelessWidget {
                   automaticallyImplyLeading: false,
                   pinned: true,
                   floating: true,
-                  backgroundColor: THelperFunction.isDarkMode(context)
-                      ? TColors.dark
-                      : TColors.light,
+                  backgroundColor: JHelperFunction.isDarkMode(context)
+                      ? JColors.dark
+                      : JColors.light,
                   expandedHeight: 440,
                   flexibleSpace: Padding(
-                    padding: const EdgeInsets.all(TSizes.defaultSpace),
+                    padding: const EdgeInsets.all(JSizes.defaultSpace),
                     child: ListView(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       children: [
                         //SEARCH BAR
-                        const SizedBox(height: TSizes.spaceBtwItems),
-                        const TSearchContainer(
+                        const SizedBox(height: JSizes.spaceBtwItems),
+                        const JSearchContainer(
                             text: 'Search in store',
                             showBorder: true,
                             showBakcground: false),
-                        const SizedBox(height: TSizes.spaceBtwSection),
+                        const SizedBox(height: JSizes.spaceBtwSection),
 
                         ///FEATURE BRANDS
-                        TSectionHeading(
+                        JSectionHeading(
                             showActionButton: true,
                             title: 'Featured Brands',
                             onPressed: () =>
                                 Get.to(() => const AllBrandsScreen())),
-                        const SizedBox(height: TSizes.spaceBtwItems / 1.5),
+                        const SizedBox(height: JSizes.spaceBtwItems / 1.5),
 
                         Obx(() {
                           if (brandController.isLoading.value) {
-                            return const TBrandShimmer();
+                            return const JBrandShimmer();
                           }
 
                           if (brandController.featuredBrands.isEmpty) {
@@ -89,7 +89,7 @@ class StoreScreen extends StatelessWidget {
                               itemBuilder: (_, index) {
                                 final brand =
                                     brandController.featuredBrands[index];
-                                return TBrandCard(
+                                return JBrandCard(
                                   showBorder: false,
                                   brand: brand,
                                   onTap: () => Get.to(
@@ -103,7 +103,7 @@ class StoreScreen extends StatelessWidget {
 
                   ///TABS BAR
 
-                  bottom: TTabBar(
+                  bottom: JTabBar(
                       tabs: categories
                           .map((category) => Tab(child: Text(category.name)))
                           .toList()
@@ -122,7 +122,7 @@ class StoreScreen extends StatelessWidget {
           //BODY TAB BAR VIEW
           body: TabBarView(
               children: categories
-                  .map((element) => TCategoryTab(category: element))
+                  .map((element) => JCategoryTab(category: element))
                   .toList()
               // [
               //   TCategoryTab(),

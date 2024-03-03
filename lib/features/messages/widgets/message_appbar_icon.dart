@@ -10,7 +10,7 @@ import 'package:iconsax/iconsax.dart';
 class JMessagesIcon extends StatelessWidget {
   const JMessagesIcon({
     super.key,
-    this.iconColor = TColors.white,
+    this.iconColor = JColors.white,
   });
 
   final Color? iconColor;
@@ -20,13 +20,13 @@ class JMessagesIcon extends StatelessWidget {
     //Get an instance of the CartController
     // final controller = Get.put(CartController());
 
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Stack(
       children: [
         IconButton(
             onPressed: () => Get.to(() => const MessagesScreen()),
             icon: Icon(Iconsax.message,
-                color: dark ? TColors.white : TColors.dark)),
+                color: dark ? JColors.white : JColors.dark)),
         Positioned(
           right: 0,
           child: Container(
@@ -34,7 +34,7 @@ class JMessagesIcon extends StatelessWidget {
             height: 18,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: TColors.black,
+              color: JColors.black,
             ),
             child: Center(
                 child: Text(
@@ -42,7 +42,7 @@ class JMessagesIcon extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge!
-                  .apply(color: TColors.white, fontSizeFactor: 0.8),
+                  .apply(color: JColors.white, fontSizeFactor: 0.8),
             )
                 // child: Obx(
                 //   () => Text(

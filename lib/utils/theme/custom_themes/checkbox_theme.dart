@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TCheckBoxTheme {
-  TCheckBoxTheme._();
+class JCheckBoxTheme {
+  JCheckBoxTheme._();
 
   static CheckboxThemeData lightCheckBoxTheme = CheckboxThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),

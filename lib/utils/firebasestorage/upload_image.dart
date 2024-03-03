@@ -19,11 +19,11 @@ class JFireStorageMethods {
       final url = await ref.getDownloadURL();
       return url;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. please try again';
     }
@@ -41,11 +41,11 @@ class JFireStorageMethods {
       }
       return imageUrl;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. please try again';
     }

@@ -23,10 +23,10 @@ class CheckOutScreen extends StatelessWidget {
     final cartController = CartController.instance;
     final subtotal = cartController.totalCartPrice.value;
     final orderController = Get.put(OrderController());
-    final totalAmount = TPricingCalculator.calculateTotalPrice(subtotal, 'EU');
-    final dark = THelperFunction.isDarkMode(context);
+    final totalAmount = JPricingCalculator.calculateTotalPrice(subtotal, 'EU');
+    final dark = JHelperFunction.isDarkMode(context);
     return Scaffold(
-      appBar: TAppBar(
+      appBar: JAppBar(
         showBackArrow: true,
         title: Text(
           'Order review',
@@ -35,37 +35,37 @@ class CheckOutScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(JSizes.defaultSpace),
           child: Column(
             children: [
               //ITEMS IN CART
-              const TCartItems(showAddRemoveButton: false),
-              const SizedBox(height: TSizes.defaultSpace),
+              const JCartItems(showAddRemoveButton: false),
+              const SizedBox(height: JSizes.defaultSpace),
 
               //COUPON TEXTFIELD
-              const TCouponCode(),
-              const SizedBox(height: TSizes.spaceBtwSection),
+              const JCouponCode(),
+              const SizedBox(height: JSizes.spaceBtwSection),
 
               /// BILLING SECTION
-              CRoundedContainer(
+              JRoundedContainer(
                 showBorder: true,
-                padding: const EdgeInsets.all(TSizes.md),
-                backGroundColor: dark ? TColors.black : TColors.white,
+                padding: const EdgeInsets.all(JSizes.md),
+                backGroundColor: dark ? JColors.black : JColors.white,
                 widget: const Column(
                   children: [
                     //PRICING
-                    TBillingAmountSection(),
-                    SizedBox(height: TSizes.spaceBtwItems),
+                    JBillingAmountSection(),
+                    SizedBox(height: JSizes.spaceBtwItems),
                     //DIVIDER
                     Divider(),
-                    SizedBox(height: TSizes.spaceBtwItems),
+                    SizedBox(height: JSizes.spaceBtwItems),
 
                     //PAYMENT METHODS
-                    TBillingPaymentSection(),
-                    SizedBox(height: TSizes.spaceBtwItems),
+                    JBillingPaymentSection(),
+                    SizedBox(height: JSizes.spaceBtwItems),
 
                     //ADDRESS
-                    TBillingAddressSection()
+                    JBillingAddressSection()
                   ],
                 ),
               )
@@ -74,11 +74,11 @@ class CheckOutScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(JSizes.defaultSpace),
         child: ElevatedButton(
             onPressed: subtotal > 0
                 ? () => orderController.processOrder(totalAmount)
-                : TLoaders.warningSnackBar(
+                : JLoaders.warningSnackBar(
                     title: 'Empty Cart',
                     message: 'Add items in the cart in order to proceed'),
             child: Text('Checkout \$$totalAmount')),

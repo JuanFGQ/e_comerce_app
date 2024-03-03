@@ -34,92 +34,92 @@ class SettingsScreen extends StatelessWidget {
         child: Column(
           children: [
             ///HEADER
-            TPrimaryHeaderContainer(
+            JPrimaryHeaderContainer(
                 child: Column(
               children: [
-                TAppBar(
+                JAppBar(
                     title: Text(
                   'Account',
                   style: Theme.of(context)
                       .textTheme
                       .headlineMedium!
-                      .apply(color: TColors.white),
+                      .apply(color: JColors.white),
                 )),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
 
                 //USER PROFILE SETTINGS
-                TUserProfileTile(
+                JUserProfileTile(
                   onPressed: () => Get.to(() => const ProfileScreen()),
                 ),
-                const SizedBox(height: TSizes.spaceBtwSection)
+                const SizedBox(height: JSizes.spaceBtwSection)
               ],
             )),
             Padding(
-              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              padding: const EdgeInsets.all(JSizes.defaultSpace),
               child: Column(
                 children: [
-                  const TSectionHeading(
+                  const JSectionHeading(
                       title: 'Account Settings', showActionButton: false),
-                  const SizedBox(height: TSizes.spaceBtwSection),
-                  TSettingMenuTile(
+                  const SizedBox(height: JSizes.spaceBtwSection),
+                  JSettingMenuTile(
                       icon: Iconsax.safe_home,
                       title: 'My Address',
                       subTitle: 'Set shopping delivery adress',
                       onTap: () => Get.to(() => const UserAddressScreen())),
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: 'My Cart',
                       subTitle: 'Add, remove products and move to checkout',
                       onTap: () => Get.to(() => const CartScreen())),
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       icon: Iconsax.bag_tick,
                       title: 'My Orders',
                       subTitle: 'In-progres and Completed Orders',
                       onTap: () => Get.to(() => const OrderScreen())),
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       icon: Iconsax.bank,
                       title: 'Bank Account',
                       subTitle: 'Withdraw balance to registered bank account',
                       onTap: () {}),
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       icon: Iconsax.discount_shape,
                       title: 'My Coupons',
                       subTitle: 'List of all the descounted coupons',
                       onTap: () {}),
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       icon: Iconsax.notification,
                       title: 'Notifications',
                       subTitle: 'Set any kind of notifications message',
                       onTap: () {}),
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       icon: Iconsax.security_card,
                       title: 'Account Privacy',
                       subTitle: 'Manage data usage and connected accounts',
                       onTap: () {}),
 
                   //APP SETTING
-                  const SizedBox(height: TSizes.spaceBtwSection),
-                  const TSectionHeading(
+                  const SizedBox(height: JSizes.spaceBtwSection),
+                  const JSectionHeading(
                       title: 'App Settings', showActionButton: false),
-                  const SizedBox(height: TSizes.spaceBtwItems),
+                  const SizedBox(height: JSizes.spaceBtwItems),
                   //!UPLOAD DATA
                   //!----------------------CATEGORIES-------------------------
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       onTap: () => uploadData.uploadDummyData(
-                            TDummyData.categories,
+                            JDummyData.categories,
                           ),
                       icon: Iconsax.document_upload,
                       title: 'Load Data',
                       subTitle: 'Upload Data to your Cloud Firestorage '),
                   //!-----------------------BANNERS------------------------
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       onTap: () => uploadBanner.uploadBanners(),
                       icon: Iconsax.document_upload1,
                       title: 'Upload Banners Data',
                       subTitle: 'Upload Data to your Cloud Firestorage '),
                   //!----------------------BRANDS-------------------------
 
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       onTap: () =>
                           Get.put(BrandController()).uploadBrandDummyData(),
                       icon: Iconsax.document,
@@ -128,25 +128,25 @@ class SettingsScreen extends StatelessWidget {
 
                   //!----------------------PRODUCTS-------------------------
 
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                       onTap: () => ProductController.instance.uploadDummyData(),
                       icon: Iconsax.document,
                       title: 'Upload Products Data',
                       subTitle: 'Upload Data to your Cloud Firestorage '),
                   //!-----------------------------------------------
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',
                     subTitle: 'Set recomendation based on location',
                     trailing: Switch(value: true, onChanged: (value) {}),
                   ),
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                     icon: Iconsax.security_user,
                     title: 'Safe Mode',
                     subTitle: 'Search result is safe for all ages',
                     trailing: Switch(value: false, onChanged: (value) {}),
                   ),
-                  TSettingMenuTile(
+                  JSettingMenuTile(
                     icon: Iconsax.image,
                     title: 'HD Image Quality',
                     subTitle: 'Set image quality to be seen',
@@ -154,14 +154,14 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   ///LOG OUT BUTTON
-                  const SizedBox(height: TSizes.spaceBtwSection),
+                  const SizedBox(height: JSizes.spaceBtwSection),
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
                         onPressed: () => controller.logOut(),
                         child: const Text('Logout')),
                   ),
-                  const SizedBox(height: TSizes.spaceBtwSection * 2.5),
+                  const SizedBox(height: JSizes.spaceBtwSection * 2.5),
                 ],
               ),
             )

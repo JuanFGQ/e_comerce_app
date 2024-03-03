@@ -8,8 +8,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class THomeCategories extends StatelessWidget {
-  const THomeCategories({
+class JHomeCategories extends StatelessWidget {
+  const JHomeCategories({
     super.key,
   });
 
@@ -17,19 +17,19 @@ class THomeCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(CategoryController());
     return Padding(
-      padding: const EdgeInsets.only(left: TSizes.defaultSpace),
+      padding: const EdgeInsets.only(left: JSizes.defaultSpace),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //HEADER
-          const TSectionHeading(
+          const JSectionHeading(
               textColor: Colors.white,
               title: 'Popular Categories',
               showActionButton: false),
-          const SizedBox(height: TSizes.spaceBtwItems),
+          const SizedBox(height: JSizes.spaceBtwItems),
           //SCROLL CATEGORIES
           Obx(() {
-            if (controller.isLoading.value) return const TCategoryShimmer();
+            if (controller.isLoading.value) return const JCategoryShimmer();
             if (controller.featuredCategories.isEmpty) {
               return Center(
                 child: Text('No Data Found!',
@@ -46,7 +46,7 @@ class THomeCategories extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   final category = controller.featuredCategories[index];
-                  return TScrollableCategories(
+                  return JScrollableCategories(
                     isNetworkImage: true,
                     image: category.image,
                     title: category.name,

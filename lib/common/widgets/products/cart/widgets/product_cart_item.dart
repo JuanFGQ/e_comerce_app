@@ -36,13 +36,13 @@ class ProductCartAddToCartButton extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(TSizes.cardRadiusMd),
-                bottomRight: Radius.circular(TSizes.productImageRadius)),
-            color: productQuantityInCart > 0 ? TColors.primary : TColors.black,
+                topLeft: Radius.circular(JSizes.cardRadiusMd),
+                bottomRight: Radius.circular(JSizes.productImageRadius)),
+            color: productQuantityInCart > 0 ? JColors.primary : JColors.black,
           ),
           child: SizedBox(
-            width: TSizes.iconLg * 1.2,
-            height: TSizes.iconLg * 1.2,
+            width: JSizes.iconLg * 1.2,
+            height: JSizes.iconLg * 1.2,
             child: Center(
                 child: productQuantityInCart > 0
                     ? Text(
@@ -50,9 +50,9 @@ class ProductCartAddToCartButton extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge!
-                            .apply(color: TColors.white),
+                            .apply(color: JColors.white),
                       )
-                    : const Icon(Iconsax.add, color: TColors.white)),
+                    : const Icon(Iconsax.add, color: JColors.white)),
           ),
         );
       }),

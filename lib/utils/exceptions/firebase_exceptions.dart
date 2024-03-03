@@ -1,7 +1,7 @@
-class TFirebaseException implements Exception {
+class JFirebaseException implements Exception {
   final String code;
 
-  TFirebaseException(this.code);
+  JFirebaseException(this.code);
 
   String get message {
     switch (code) {

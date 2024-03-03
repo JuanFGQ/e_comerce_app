@@ -3,8 +3,8 @@ import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
-class TChoiceChip extends StatelessWidget {
-  const TChoiceChip(
+class JChoiceChip extends StatelessWidget {
+  const JChoiceChip(
       {super.key, required this.text, required this.selected, this.onSelected});
 
   final String text;
@@ -13,25 +13,25 @@ class TChoiceChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isColor = THelperFunction.getColor(text) != null;
+    final isColor = JHelperFunction.getColor(text) != null;
     return Theme(
       data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
       child: ChoiceChip(
         label: isColor ? const SizedBox() : Text(text),
         selected: selected,
         onSelected: onSelected,
-        labelStyle: TextStyle(color: selected ? TColors.white : null),
+        labelStyle: TextStyle(color: selected ? JColors.white : null),
         avatar: isColor
-            ? TCircularContainer(
+            ? JCircularContainer(
                 width: 50,
                 height: 50,
-                backGroundColor: THelperFunction.getColor(text)!)
+                backGroundColor: JHelperFunction.getColor(text)!)
             : null,
         shape: isColor ? const CircleBorder() : null,
         labelPadding: isColor ? const EdgeInsets.all(0) : null,
         padding: isColor ? const EdgeInsets.all(0) : null,
         // selectedColor: isColor ? ,
-        backgroundColor: isColor ? THelperFunction.getColor(text) : null,
+        backgroundColor: isColor ? JHelperFunction.getColor(text) : null,
       ),
     );
   }

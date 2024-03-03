@@ -4,8 +4,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class TAnimationControllerWidget extends StatelessWidget {
-  const TAnimationControllerWidget({
+class JAnimationControllerWidget extends StatelessWidget {
+  const JAnimationControllerWidget({
     super.key,
     required this.text,
     required this.animation,
@@ -27,24 +27,24 @@ class TAnimationControllerWidget extends StatelessWidget {
         children: [
           Lottie.asset(animation,
               width: MediaQuery.of(context).size.width * 0.8),
-          const SizedBox(height: TSizes.defaultSpace),
+          const SizedBox(height: JSizes.defaultSpace),
           Text(text,
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center),
-          const SizedBox(height: TSizes.defaultSpace),
+          const SizedBox(height: JSizes.defaultSpace),
           showAction
               ? SizedBox(
                   width: 250,
                   child: OutlinedButton(
                       onPressed: onActionProssed,
                       style: OutlinedButton.styleFrom(
-                          backgroundColor: TColors.dark),
+                          backgroundColor: JColors.dark),
                       child: Text(
                         actionText ?? '',
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium!
-                            .apply(color: TColors.light),
+                            .apply(color: JColors.light),
                       )),
                 )
               : const SizedBox()

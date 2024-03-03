@@ -4,16 +4,16 @@ import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-class TRoundedImage extends StatelessWidget {
-  const TRoundedImage({
+class JRoundedImage extends StatelessWidget {
+  const JRoundedImage({
     super.key,
     this.width = 350,
     this.height = 350,
-    this.borderRadius = TSizes.md,
+    this.borderRadius = JSizes.md,
     required this.imageUrl,
     this.applyImageRadius = true,
     this.border,
-    this.backGroundColor = TColors.light,
+    this.backGroundColor = JColors.light,
     this.fit = BoxFit.contain,
     this.padding,
     this.isNetworkImage = false,
@@ -49,7 +49,7 @@ class TRoundedImage extends StatelessWidget {
         ),
         child: ClipRRect(
             borderRadius: applyImageRadius
-                ? BorderRadius.circular(TSizes.md)
+                ? BorderRadius.circular(JSizes.md)
                 : BorderRadius.zero,
             child: localImage
                 ? Image.file(

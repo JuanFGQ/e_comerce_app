@@ -13,8 +13,8 @@ import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TProductHorizontalCard extends StatelessWidget {
-  const TProductHorizontalCard({super.key, required this.product});
+class JProductHorizontalCard extends StatelessWidget {
+  const JProductHorizontalCard({super.key, required this.product});
 
   final ProductModel product;
 
@@ -23,27 +23,27 @@ class TProductHorizontalCard extends StatelessWidget {
     final controller = ProductController.instance;
     final salePercentage =
         controller.calculatSalePercetange(product.price, product.salePrice);
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Container(
       width: 310,
       padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(TSizes.productImageRadius),
-          color: dark ? TColors.darkerGrey : TColors.lightGrey),
+          borderRadius: BorderRadius.circular(JSizes.productImageRadius),
+          color: dark ? JColors.darkerGrey : JColors.lightGrey),
       child: Row(
         children: [
           //THUMBNAIL
-          CRoundedContainer(
+          JRoundedContainer(
             height: 120,
-            padding: const EdgeInsets.all(TSizes.sm),
-            backGroundColor: dark ? TColors.dark : TColors.light,
+            padding: const EdgeInsets.all(JSizes.sm),
+            backGroundColor: dark ? JColors.dark : JColors.light,
             widget: Stack(
               children: [
                 // THUMBNAIL IMAGE
                 SizedBox(
                     height: 120,
                     width: 120,
-                    child: TRoundedImage(
+                    child: JRoundedImage(
                         isNetworkImage: true,
                         imageUrl: product.thumbnail,
                         applyImageRadius: true)),
@@ -53,17 +53,17 @@ class TProductHorizontalCard extends StatelessWidget {
                   Positioned(
                     top: 12,
                     left: 5,
-                    child: CRoundedContainer(
-                      radius: TSizes.sm,
-                      backGroundColor: TColors.secondary.withOpacity(0.8),
+                    child: JRoundedContainer(
+                      radius: JSizes.sm,
+                      backGroundColor: JColors.secondary.withOpacity(0.8),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: TSizes.sm, vertical: TSizes.xs),
+                          horizontal: JSizes.sm, vertical: JSizes.xs),
                       widget: Text(
                         '$salePercentage%',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
-                            .apply(color: TColors.black),
+                            .apply(color: JColors.black),
                       ),
                     ),
                   ),
@@ -72,7 +72,7 @@ class TProductHorizontalCard extends StatelessWidget {
                 Positioned(
                     top: 0,
                     right: 0,
-                    child: TFavouriteIcon(productId: product.id)),
+                    child: JFavouriteIcon(productId: product.id)),
               ],
             ),
           )
@@ -82,15 +82,15 @@ class TProductHorizontalCard extends StatelessWidget {
           SizedBox(
             width: 172,
             child: Padding(
-              padding: const EdgeInsets.only(top: TSizes.sm, left: TSizes.sm),
+              padding: const EdgeInsets.only(top: JSizes.sm, left: JSizes.sm),
               child: Column(
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ProductTitleText(title: product.title, smallSize: true),
-                      const SizedBox(height: TSizes.spaceBtwItems / 2),
-                      TBrandTitleTextWithVerifiedIcon(
+                      const SizedBox(height: JSizes.spaceBtwItems / 2),
+                      JBrandTitleTextWithVerifiedIcon(
                           title: product.brand!.name),
                     ],
                   ),
@@ -109,7 +109,7 @@ class TProductHorizontalCard extends StatelessWidget {
                                     ProductType.single.toString() &&
                                 product.salePrice > 0)
                               Padding(
-                                padding: const EdgeInsets.only(left: TSizes.md),
+                                padding: const EdgeInsets.only(left: JSizes.md),
                                 child: Text(
                                   product.price.toString(),
                                   style: Theme.of(context)
@@ -125,8 +125,8 @@ class TProductHorizontalCard extends StatelessWidget {
                             //
 
                             Padding(
-                              padding: const EdgeInsets.only(left: TSizes.md),
-                              child: TProductPriceText(
+                              padding: const EdgeInsets.only(left: JSizes.md),
+                              child: JProductPriceText(
                                   price: controller.getProductsPrice(product),
                                   isLarge: false),
                             ),
@@ -138,18 +138,18 @@ class TProductHorizontalCard extends StatelessWidget {
                       Container(
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(TSizes.cardRadiusMd),
+                              topLeft: Radius.circular(JSizes.cardRadiusMd),
                               bottomRight:
-                                  Radius.circular(TSizes.productImageRadius)),
-                          color: TColors.dark,
+                                  Radius.circular(JSizes.productImageRadius)),
+                          color: JColors.dark,
                         ),
                         child: const SizedBox(
-                          width: TSizes.iconLg * 1.2,
-                          height: TSizes.iconLg * 1.2,
+                          width: JSizes.iconLg * 1.2,
+                          height: JSizes.iconLg * 1.2,
                           child: Center(
                             child: Icon(
                               Iconsax.add,
-                              color: TColors.white,
+                              color: JColors.white,
                             ),
                           ),
                         ),

@@ -22,18 +22,18 @@ class AllProducts extends StatelessWidget {
     final controller = Get.put(AllProductsController());
     return Scaffold(
       appBar:
-          const TAppBar(title: Text('Popular Products'), showBackArrow: true),
+          const JAppBar(title: Text('Popular Products'), showBackArrow: true),
       body: SingleChildScrollView(
           child: Padding(
-        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(JSizes.defaultSpace),
         child: FutureBuilder(
           future: futureMethod ?? controller.fetchProductsByQuery(query),
           builder: (context, snapshot) {
             //Check the state of the FutureBuilder snapshot
-            const loader = TVerticalProductShimmer();
+            const loader = JVerticalProductShimmer();
 
             //! this function it serves to execute all the has data an hasn´t data from a builder
-            final widget = TCloudHelperFunction.checkMultiRecordState(
+            final widget = JCloudHelperFunction.checkMultiRecordState(
                 snapshot: snapshot, loader: loader);
 
             //return appropiate widget based on snapshot state
@@ -41,7 +41,7 @@ class AllProducts extends StatelessWidget {
 
             //Products Found!
             final products = snapshot.data!;
-            return TSortableProducts(products: products);
+            return JSortableProducts(products: products);
           },
         ),
       )),

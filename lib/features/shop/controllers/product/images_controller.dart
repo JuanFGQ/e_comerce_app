@@ -47,11 +47,11 @@ class ImagesController extends GetxController {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: TSizes.defaultSpace * 2,
-                        horizontal: TSizes.defaultSpace),
+                        vertical: JSizes.defaultSpace * 2,
+                        horizontal: JSizes.defaultSpace),
                     child: CachedNetworkImage(imageUrl: image),
                   ),
-                  const SizedBox(height: TSizes.spaceBtwSection),
+                  const SizedBox(height: JSizes.spaceBtwSection),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: SizedBox(

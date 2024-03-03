@@ -4,22 +4,22 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
-class TCouponCode extends StatelessWidget {
-  const TCouponCode({
+class JCouponCode extends StatelessWidget {
+  const JCouponCode({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
-    return CRoundedContainer(
+    final dark = JHelperFunction.isDarkMode(context);
+    return JRoundedContainer(
       showBorder: true,
-      backGroundColor: dark ? TColors.dark : TColors.white,
+      backGroundColor: dark ? JColors.dark : JColors.white,
       padding: const EdgeInsets.only(
-        top: TSizes.sm,
-        bottom: TSizes.sm,
-        right: TSizes.sm,
-        left: TSizes.md,
+        top: JSizes.sm,
+        bottom: JSizes.sm,
+        right: JSizes.sm,
+        left: JSizes.md,
       ),
       widget: Row(
         children: [
@@ -42,8 +42,8 @@ class TCouponCode extends StatelessWidget {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                       foregroundColor: dark
-                          ? TColors.white.withOpacity(0.5)
-                          : TColors.dark.withOpacity(0.5),
+                          ? JColors.white.withOpacity(0.5)
+                          : JColors.dark.withOpacity(0.5),
                       backgroundColor: Colors.grey.withOpacity(0.2),
                       side: BorderSide(color: Colors.grey.withOpacity(0.1))),
                   child: const Text('Apply')))

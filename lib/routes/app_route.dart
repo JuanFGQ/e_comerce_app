@@ -19,21 +19,21 @@ import 'package:get/get.dart';
 //43
 class AppRoutes {
   static final pages = [
-    GetPage(name: TRoutes.home, page: () => const HomePage()),
-    GetPage(name: TRoutes.store, page: () => const StoreScreen()),
-    GetPage(name: TRoutes.favourites, page: () => const FavouriteScreen()),
-    GetPage(name: TRoutes.settings, page: () => const SettingsScreen()),
+    GetPage(name: JRoutes.home, page: () => const HomePage()),
+    GetPage(name: JRoutes.store, page: () => const StoreScreen()),
+    GetPage(name: JRoutes.favourites, page: () => const FavouriteScreen()),
+    GetPage(name: JRoutes.settings, page: () => const SettingsScreen()),
     GetPage(
-        name: TRoutes.productReviews, page: () => const ProductReviewsScreen()),
-    GetPage(name: TRoutes.order, page: () => const OrderScreen()),
-    GetPage(name: TRoutes.checkout, page: () => const CheckOutScreen()),
-    GetPage(name: TRoutes.cart, page: () => const CartScreen()),
-    GetPage(name: TRoutes.userProfile, page: () => const ProfileScreen()),
-    GetPage(name: TRoutes.userAddress, page: () => const UserAddressScreen()),
-    GetPage(name: TRoutes.signup, page: () => const SignUpScreen()),
-    GetPage(name: TRoutes.verifyEmail, page: () => const VerifyEmailScreen()),
-    GetPage(name: TRoutes.signIn, page: () => const LoginScreen()),
-    GetPage(name: TRoutes.forgetPassword, page: () => const ForgetPassword()),
-    GetPage(name: TRoutes.onBoarding, page: () => const OnBoardingScreen()),
+        name: JRoutes.productReviews, page: () => const ProductReviewsScreen()),
+    GetPage(name: JRoutes.order, page: () => const OrderScreen()),
+    GetPage(name: JRoutes.checkout, page: () => const CheckOutScreen()),
+    GetPage(name: JRoutes.cart, page: () => const CartScreen()),
+    GetPage(name: JRoutes.userProfile, page: () => const ProfileScreen()),
+    GetPage(name: JRoutes.userAddress, page: () => const UserAddressScreen()),
+    GetPage(name: JRoutes.signup, page: () => const SignUpScreen()),
+    GetPage(name: JRoutes.verifyEmail, page: () => const VerifyEmailScreen()),
+    GetPage(name: JRoutes.signIn, page: () => const LoginScreen()),
+    GetPage(name: JRoutes.forgetPassword, page: () => const ForgetPassword()),
+    GetPage(name: JRoutes.onBoarding, page: () => const OnBoardingScreen()),
   ];
 }

@@ -26,7 +26,7 @@ class ProductCardVertical extends StatelessWidget {
     final controller = ProductController.instance;
     final salePercentage =
         controller.calculatSalePercetange(product.price, product.salePrice);
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     //
     return GestureDetector(
       onTap: () => Get.to(() => ProductDetailScreen(product: product)),
@@ -36,22 +36,22 @@ class ProductCardVertical extends StatelessWidget {
         decoration: BoxDecoration(
             // border: Border.all(),
             // boxShadow: [ShadowStyle.verticalProductShadow],
-            borderRadius: BorderRadius.circular(TSizes.productImageRadius),
-            color: dark ? TColors.darkGrey : TColors.white),
+            borderRadius: BorderRadius.circular(JSizes.productImageRadius),
+            color: dark ? JColors.darkGrey : JColors.white),
         child: Column(
           children: [
             //*THUMBNAIL,WISHLIST
 
-            CRoundedContainer(
+            JRoundedContainer(
               height: 180,
               width: 180,
               // padding: const EdgeInsets.all(5),
-              backGroundColor: dark ? TColors.dark : TColors.grey,
+              backGroundColor: dark ? JColors.dark : JColors.grey,
               widget: Stack(
                 children: [
                   //thumbnail image
                   Center(
-                    child: TRoundedImage(
+                    child: JRoundedImage(
                         isNetworkImage: true,
                         // padding: EdgeInsets.all(TSizes.cardRadiusLg),
                         // backGroundColor: TColors.grey,
@@ -65,17 +65,17 @@ class ProductCardVertical extends StatelessWidget {
                     Positioned(
                       top: 12,
                       left: 5,
-                      child: CRoundedContainer(
-                        radius: TSizes.sm,
-                        backGroundColor: TColors.secondary.withOpacity(0.8),
+                      child: JRoundedContainer(
+                        radius: JSizes.sm,
+                        backGroundColor: JColors.secondary.withOpacity(0.8),
                         padding: const EdgeInsets.symmetric(
-                            horizontal: TSizes.sm, vertical: TSizes.xs),
+                            horizontal: JSizes.sm, vertical: JSizes.xs),
                         widget: Text(
                           '$salePercentage%',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!
-                              .apply(color: TColors.black),
+                              .apply(color: JColors.black),
                         ),
                       ),
                     ),
@@ -84,19 +84,19 @@ class ProductCardVertical extends StatelessWidget {
                   Positioned(
                       top: 0,
                       right: 0,
-                      child: TFavouriteIcon(
+                      child: JFavouriteIcon(
                         productId: product.id,
                       )),
                 ],
               ),
             ),
 
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
+            const SizedBox(height: JSizes.spaceBtwItems / 2),
 
             ///*DETAILS
 
             Padding(
-              padding: const EdgeInsets.only(left: TSizes.sm),
+              padding: const EdgeInsets.only(left: JSizes.sm),
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
@@ -104,10 +104,10 @@ class ProductCardVertical extends StatelessWidget {
                   children: [
                     ProductTitleText(
                       title: product.title,
-                      size: TSizes.fontSize,
+                      size: JSizes.fontSize,
                     ),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TBrandTitleTextWithVerifiedIcon(title: product.brand!.name)
+                    const SizedBox(height: JSizes.spaceBtwItems / 2),
+                    JBrandTitleTextWithVerifiedIcon(title: product.brand!.name)
                   ],
                 ),
               ),
@@ -130,7 +130,7 @@ class ProductCardVertical extends StatelessWidget {
                       if (product.salePrice > 0)
                         //discounted price
                         Padding(
-                          padding: const EdgeInsets.only(left: TSizes.md),
+                          padding: const EdgeInsets.only(left: JSizes.md),
                           child: Text(
                             product.price.toString(),
                             style: Theme.of(context)
@@ -142,8 +142,8 @@ class ProductCardVertical extends StatelessWidget {
 
                       //price, show sale price as main price if sale exist
                       Padding(
-                        padding: const EdgeInsets.only(left: TSizes.md),
-                        child: TProductPriceText(
+                        padding: const EdgeInsets.only(left: JSizes.md),
+                        child: JProductPriceText(
                             price: product.salePrice.toString()),
                       )
                       // Padding(

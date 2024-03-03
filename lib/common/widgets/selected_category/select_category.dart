@@ -46,7 +46,7 @@ class JSelectedCategory extends StatelessWidget {
                   DropdownMenuItem(value: option, child: Text(option)))
               .toList(),
         ),
-        const SizedBox(height: TSizes.spaceBtwSection),
+        const SizedBox(height: JSizes.spaceBtwSection),
 
         //PRODUCTS
         // Obx(

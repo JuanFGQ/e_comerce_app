@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TLoginForm extends StatelessWidget {
-  const TLoginForm({
+class JLoginForm extends StatelessWidget {
+  const JLoginForm({
     super.key,
   });
 
@@ -19,26 +19,26 @@ class TLoginForm extends StatelessWidget {
     return Form(
       key: controller.loginFormKey,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSection),
+        padding: const EdgeInsets.symmetric(vertical: JSizes.spaceBtwSection),
         child: Column(
           children: [
             //EMAIL
             TextFormField(
-                validator: (value) => TValidator.validateEmail(value),
+                validator: (value) => JValidator.validateEmail(value),
                 controller: controller.email,
                 decoration: const InputDecoration(
                     prefix: Icon(Iconsax.direct_right),
-                    labelText: TTexts.email)),
-            const SizedBox(height: TSizes.spaceBtwInputFields),
+                    labelText: JTexts.email)),
+            const SizedBox(height: JSizes.spaceBtwInputFields),
             //PASSWORD
             Obx(
               () => TextFormField(
                   obscureText: controller.hidePassword.value,
-                  validator: (value) => TValidator.validatePassword(value),
+                  validator: (value) => JValidator.validatePassword(value),
                   controller: controller.password,
                   decoration: InputDecoration(
                       prefix: const Icon(Iconsax.password_check),
-                      labelText: TTexts.password,
+                      labelText: JTexts.password,
                       suffixIcon: IconButton(
                           onPressed: () => controller.hidePassword.value =
                               !controller.hidePassword.value,
@@ -46,7 +46,7 @@ class TLoginForm extends StatelessWidget {
                               ? Iconsax.eye_slash
                               : Iconsax.eye)))),
             ),
-            const SizedBox(height: TSizes.spaceBtwInputFields / 2),
+            const SizedBox(height: JSizes.spaceBtwInputFields / 2),
 
             //REMEMBER ME & FORGET PASSWORD
             Row(
@@ -58,27 +58,27 @@ class TLoginForm extends StatelessWidget {
                         value: controller.rememberMe.value,
                         onChanged: (value) => controller.rememberMe.value =
                             !controller.rememberMe.value)),
-                    const Text(TTexts.rememberMe)
+                    const Text(JTexts.rememberMe)
                   ],
                 ),
                 TextButton(
                     onPressed: () => Get.to(() => const ForgetPassword()),
-                    child: const Text(TTexts.forgetPassword))
+                    child: const Text(JTexts.forgetPassword))
               ],
             ),
-            const SizedBox(height: TSizes.spaceBtwInputFields),
+            const SizedBox(height: JSizes.spaceBtwInputFields),
             //SIGN IN BUTTON
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                     onPressed: () => controller.emailAndPasswordSignIn(),
-                    child: const Text(TTexts.signIn))),
+                    child: const Text(JTexts.signIn))),
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                     onPressed: () => Get.to(() => const SignUpScreen()),
-                    child: const Text(TTexts.createAccount))),
-            const SizedBox(height: TSizes.spaceBtwInputFields),
+                    child: const Text(JTexts.createAccount))),
+            const SizedBox(height: JSizes.spaceBtwInputFields),
           ],
         ),
       ),

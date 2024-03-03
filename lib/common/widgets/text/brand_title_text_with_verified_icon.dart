@@ -5,13 +5,13 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TBrandTitleTextWithVerifiedIcon extends StatelessWidget {
-  const TBrandTitleTextWithVerifiedIcon({
+class JBrandTitleTextWithVerifiedIcon extends StatelessWidget {
+  const JBrandTitleTextWithVerifiedIcon({
     super.key,
     required this.title,
     this.maxLines = 1,
     this.textColor,
-    this.iconColor = TColors.primary,
+    this.iconColor = JColors.primary,
     this.textAlign = TextAlign.center,
     this.brandTextSize = TextSizes.small,
   });
@@ -26,18 +26,18 @@ class TBrandTitleTextWithVerifiedIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        TBrandTextTitle(
+        JBrandTextTitle(
           title: title,
           color: textColor,
           maxLines: maxLines,
           textAlign: textAlign,
           brandTextSize: brandTextSize,
         ),
-        const SizedBox(width: TSizes.xs),
+        const SizedBox(width: JSizes.xs),
         Icon(
           Iconsax.verify5,
           color: iconColor,
-          size: TSizes.iconXs,
+          size: JSizes.iconXs,
         )
       ],
     );

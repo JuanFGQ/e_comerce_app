@@ -7,35 +7,35 @@ import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TBillingPaymentSection extends StatelessWidget {
-  const TBillingPaymentSection({super.key});
+class JBillingPaymentSection extends StatelessWidget {
+  const JBillingPaymentSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CheckOutController());
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Column(
       children: [
-        TSectionHeading(
+        JSectionHeading(
             title: 'Payment Method',
             buttonTile: 'Change',
             showActionButton: true,
             onPressed: () => controller.selectPaymentMethod(context)),
-        const SizedBox(height: TSizes.spaceBtwItems),
+        const SizedBox(height: JSizes.spaceBtwItems),
         Obx(
           () => Row(
             children: [
-              CRoundedContainer(
+              JRoundedContainer(
                 width: 60,
                 height: 35,
-                padding: const EdgeInsets.all(TSizes.sm),
-                backGroundColor: dark ? TColors.light : TColors.white,
+                padding: const EdgeInsets.all(JSizes.sm),
+                backGroundColor: dark ? JColors.light : JColors.white,
                 widget: Image(
                     image: AssetImage(
                         controller.selectedPaymenthMethod.value.image),
                     fit: BoxFit.contain),
               ),
-              const SizedBox(width: TSizes.spaceBtwItems / 2),
+              const SizedBox(width: JSizes.spaceBtwItems / 2),
               Text(controller.selectedPaymenthMethod.value.name,
                   style: Theme.of(context).textTheme.bodyLarge),
             ],

@@ -26,64 +26,64 @@ class SignUpForm extends StatelessWidget {
               Expanded(
                   child: TextFormField(
                       validator: (value) =>
-                          TValidator.validateEmptyText('First name', (value)),
+                          JValidator.validateEmptyText('First name', (value)),
                       controller: controller.firstName,
                       expands: false,
                       decoration: const InputDecoration(
-                          labelText: TTexts.firstName,
+                          labelText: JTexts.firstName,
                           prefixIcon: Icon(Iconsax.user)))),
-              const SizedBox(width: TSizes.spaceBtwInputFields),
+              const SizedBox(width: JSizes.spaceBtwInputFields),
               Expanded(
                   child: TextFormField(
                       validator: (value) =>
-                          TValidator.validateEmptyText('Last name', (value)),
+                          JValidator.validateEmptyText('Last name', (value)),
                       controller: controller.lastName,
                       expands: false,
                       decoration: const InputDecoration(
-                          labelText: TTexts.lastName,
+                          labelText: JTexts.lastName,
                           prefixIcon: Icon(Iconsax.user)))),
             ],
           ),
-          const SizedBox(height: TSizes.spaceBtwInputFields),
+          const SizedBox(height: JSizes.spaceBtwInputFields),
 
           ///Username
           TextFormField(
               validator: (value) =>
-                  TValidator.validateEmptyText('User name', (value)),
+                  JValidator.validateEmptyText('User name', (value)),
               controller: controller.username,
               expands: false,
               decoration: const InputDecoration(
-                  labelText: TTexts.username,
+                  labelText: JTexts.username,
                   prefixIcon: Icon(Iconsax.user_edit))),
-          const SizedBox(height: TSizes.spaceBtwInputFields),
+          const SizedBox(height: JSizes.spaceBtwInputFields),
 
           //EMAIL
           TextFormField(
-              validator: (value) => TValidator.validateEmail(value),
+              validator: (value) => JValidator.validateEmail(value),
               controller: controller.email,
               expands: false,
               decoration: const InputDecoration(
-                  labelText: TTexts.email, prefixIcon: Icon(Iconsax.direct))),
-          const SizedBox(height: TSizes.spaceBtwInputFields),
+                  labelText: JTexts.email, prefixIcon: Icon(Iconsax.direct))),
+          const SizedBox(height: JSizes.spaceBtwInputFields),
 
           //PHONE NUMBER
           TextFormField(
               keyboardType: TextInputType.number,
-              validator: (value) => TValidator.validatePhoneNumber(value),
+              validator: (value) => JValidator.validatePhoneNumber(value),
               controller: controller.phoneNumber,
               expands: false,
               decoration: const InputDecoration(
-                  labelText: TTexts.phoneNo, prefixIcon: Icon(Iconsax.call))),
-          const SizedBox(height: TSizes.spaceBtwInputFields),
+                  labelText: JTexts.phoneNo, prefixIcon: Icon(Iconsax.call))),
+          const SizedBox(height: JSizes.spaceBtwInputFields),
           //PASSWORD
           Obx(
             () => TextFormField(
-                validator: (value) => TValidator.validatePassword(value),
+                validator: (value) => JValidator.validatePassword(value),
                 controller: controller.password,
                 obscureText: controller.hidePassword.value,
                 expands: false,
                 decoration: InputDecoration(
-                    labelText: TTexts.password,
+                    labelText: JTexts.password,
                     prefixIcon: const Icon(Iconsax.password_check),
                     suffixIcon: IconButton(
                         onPressed: () => controller.hidePassword.value =
@@ -92,19 +92,19 @@ class SignUpForm extends StatelessWidget {
                             ? Iconsax.eye_slash
                             : Iconsax.eye)))),
           ),
-          const SizedBox(height: TSizes.spaceBtwInputFields),
+          const SizedBox(height: JSizes.spaceBtwInputFields),
 
           //TERMS AND CONDITIONS CHECK BOX
 
           const TermsAndConditions(),
-          const SizedBox(height: TSizes.spaceBtwInputFields),
+          const SizedBox(height: JSizes.spaceBtwInputFields),
 
           //SIGNUP BUTTON
           SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () => controller.signup(),
-                  child: const Text(TTexts.createAccount)))
+                  child: const Text(JTexts.createAccount)))
         ],
       ),
     );

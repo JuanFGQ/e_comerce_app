@@ -33,19 +33,19 @@ class LoginController extends GetxController {
   Future<void> emailAndPasswordSignIn() async {
     try {
 //START LOADING
-      TFullScreenLoader.openLoadingDialog(
-          'Loggin you in...', TImages.handLoading);
+      JFullScreenLoader.openLoadingDialog(
+          'Loggin you in...', JImages.handLoading);
 
       //CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
       //FORM VALIDATION
       if (!loginFormKey.currentState!.validate()) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
@@ -60,26 +60,26 @@ class LoginController extends GetxController {
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       //REMOVE LOADER
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
 
       //REDIRECT
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
-      TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JFullScreenLoader.stopLoading();
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 
   Future<void> googleSignIn() async {
     try {
       //Start Loading
-      TFullScreenLoader.openLoadingDialog(
-          'Logging you in...', TImages.handLoading);
+      JFullScreenLoader.openLoadingDialog(
+          'Logging you in...', JImages.handLoading);
 
       //CHECK INTERNET CONNECTITVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
@@ -91,14 +91,14 @@ class LoginController extends GetxController {
       await userController.saveUserRecord(userCredentials);
 
       //remove Loader
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
 
       //redirect
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
 
-      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
     }
   }
 }

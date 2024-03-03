@@ -36,7 +36,7 @@ class BrandController extends GetxController {
       featuredBrands.assignAll(
           allBrands.where((brand) => brand.isFeatured ?? false).take(4));
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       //stop loader
       isLoading.value = false;
@@ -50,7 +50,7 @@ class BrandController extends GetxController {
       final brands = await brandRepository.getBrandsForCategory(categoryId);
       return brands;
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }
@@ -63,7 +63,7 @@ class BrandController extends GetxController {
           .getProductsForBrand(brandId: brandId, limit: limit);
       return products;
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }
@@ -73,10 +73,10 @@ class BrandController extends GetxController {
     try {
       final brandRepo = Get.put(BrandRepository());
 
-      await brandRepo.uploadDummyData(TDummyData.brands);
-      TLoaders.successSnackBar(title: 'Brands Succesfully Uploaded');
+      await brandRepo.uploadDummyData(JDummyData.brands);
+      JLoaders.successSnackBar(title: 'Brands Succesfully Uploaded');
     } catch (e) {
-      TLoaders.errorSnackBar(
+      JLoaders.errorSnackBar(
           title: 'Error while uploading', message: e.toString());
     }
   }

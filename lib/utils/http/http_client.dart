@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-class THttpHelper {
+class JHttpHelper {
   static const String _baseUrl = '';
 
   //HELPER TO MAKE GET REQUEST

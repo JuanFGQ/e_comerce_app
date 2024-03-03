@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TRatingBarIndicator extends StatelessWidget {
-  const TRatingBarIndicator({
+class JRatingBarIndicator extends StatelessWidget {
+  const JRatingBarIndicator({
     super.key,
     required this.rating,
   });
@@ -17,10 +17,10 @@ class TRatingBarIndicator extends StatelessWidget {
         rating: 3.5,
         itemSize: 20,
         itemCount: 4,
-        unratedColor: TColors.grey,
+        unratedColor: JColors.grey,
         itemBuilder: (_, __) => const Icon(
               Iconsax.star,
-              color: TColors.primary,
+              color: JColors.primary,
             ));
   }
 }

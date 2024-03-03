@@ -14,14 +14,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialBinding: GeneralBindings(),
       themeMode: ThemeMode.system,
-      theme: TAppTheme.lightTheme,
-      darkTheme: TAppTheme.darkTheme,
+      theme: JAppTheme.lightTheme,
+      darkTheme: JAppTheme.darkTheme,
       //43
       getPages: AppRoutes.pages,
       //show loader or circular Progress Indicator meanwhile Authentication Repository is deciding to show relevant screen
 
       home: const Scaffold(
-        backgroundColor: TColors.primary,
+        backgroundColor: JColors.primary,
         body: Center(
           child: CircularProgressIndicator(
             color: Colors.white,

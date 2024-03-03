@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 import 'package:get/get.dart';
 
-class THelperFunction {
+class JHelperFunction {
   static Color? getColor(String value) {
     ///DEFINE YOUR PRODUCT SPECIFIC COLORS HERE AND IT WILL MATCH THE ATTRIBUTE COLORS AND SHOW SPECIFIC
     ///

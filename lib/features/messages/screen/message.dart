@@ -19,10 +19,10 @@ class MessagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
-    final dark = THelperFunction.isDarkMode;
+    final dark = JHelperFunction.isDarkMode;
 
     return Scaffold(
-      appBar: TAppBar(
+      appBar: JAppBar(
           showBackArrow: true,
           title: Text('Messages',
               style: Theme.of(context).textTheme.headlineMedium)),
@@ -61,25 +61,25 @@ class MessagesScreen extends StatelessWidget {
           // ),
           // const SizedBox(height: TSizes.spaceBtwItems),
           Padding(
-            padding: const EdgeInsets.only(left: TSizes.md * 2),
+            padding: const EdgeInsets.only(left: JSizes.md * 2),
             child: Text('Older',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
                     .copyWith(fontSize: 20)
-                    .apply(color: TColors.darkGrey)),
+                    .apply(color: JColors.darkGrey)),
           ),
-          const SizedBox(height: TSizes.sm / 2),
+          const SizedBox(height: JSizes.sm / 2),
           StreamBuilder(
             stream: controller.getUserMessage(),
             builder: (context, snapshot) {
               //Nothing Found
-              const emptyWidget = TAnimationControllerWidget(
+              const emptyWidget = JAnimationControllerWidget(
                 text: '',
-                animation: TImages.emptyChat,
+                animation: JImages.emptyChat,
               );
 
-              final widget = TCloudHelperFunction.checkMultiRecordState(
+              final widget = JCloudHelperFunction.checkMultiRecordState(
                   snapshot: snapshot, nothingFound: emptyWidget);
               if (widget != null) return widget;
 
@@ -87,7 +87,7 @@ class MessagesScreen extends StatelessWidget {
 
               return Expanded(
                 child: Padding(
-                    padding: const EdgeInsets.all(TSizes.defaultSpace),
+                    padding: const EdgeInsets.all(JSizes.defaultSpace),
                     child: ListView.builder(
                       addAutomaticKeepAlives: true,
                       itemCount: snapshot.data!.length,

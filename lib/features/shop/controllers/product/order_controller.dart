@@ -28,7 +28,7 @@ class OrderController extends GetxController {
       final userOrders = await orderRepository.fetchUserOrders();
       return userOrders;
     } catch (e) {
-      TLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }
@@ -38,8 +38,8 @@ class OrderController extends GetxController {
   void processOrder(double totalAmount) async {
     try {
       //Start Loader
-      TFullScreenLoader.openLoadingDialog(
-          'Processing your order', TImages.paymentSuccess);
+      JFullScreenLoader.openLoadingDialog(
+          'Processing your order', JImages.paymentSuccess);
 
       //Get user authentication Id
 
@@ -68,13 +68,13 @@ class OrderController extends GetxController {
 
       //show success screen
       Get.off(() => SuccesScreen(
-            image: TImages.paymentSuccess,
+            image: JImages.paymentSuccess,
             title: 'Payment Success',
             subTitle: 'Your Item will be shipped soon',
             onPressed: () => Get.offAll(() => const NavigationMenu()),
           ));
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }

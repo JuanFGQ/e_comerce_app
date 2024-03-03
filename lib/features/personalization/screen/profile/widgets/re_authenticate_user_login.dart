@@ -14,10 +14,10 @@ class ReauthLoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return Scaffold(
-      appBar: const TAppBar(title: Text('Re-Authenticate User')),
+      appBar: const JAppBar(title: Text('Re-Authenticate User')),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(JSizes.defaultSpace),
           child: Form(
               key: controller.reAuthFormKey,
               child: Column(
@@ -26,12 +26,12 @@ class ReauthLoginForm extends StatelessWidget {
                   //email
                   TextFormField(
                     controller: controller.verifyEmail,
-                    validator: TValidator.validateEmail,
+                    validator: JValidator.validateEmail,
                     decoration: const InputDecoration(
                         prefixIcon: Icon(Iconsax.direct_right),
-                        labelText: TTexts.email),
+                        labelText: JTexts.email),
                   ),
-                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const SizedBox(height: JSizes.spaceBtwInputFields),
 
                   //passwords
                   Obx(
@@ -39,17 +39,17 @@ class ReauthLoginForm extends StatelessWidget {
                       obscureText: controller.hidePassword.value,
                       controller: controller.verifyPassword,
                       validator: (value) =>
-                          TValidator.validateEmptyText('Password', value),
+                          JValidator.validateEmptyText('Password', value),
                       decoration: InputDecoration(
                           prefixIcon: const Icon(Iconsax.password_check),
                           suffixIcon: IconButton(
                               onPressed: () => controller.hidePassword.value =
                                   !controller.hidePassword.value,
                               icon: const Icon(Iconsax.eye_slash)),
-                          labelText: TTexts.password),
+                          labelText: JTexts.password),
                     ),
                   ),
-                  const SizedBox(height: TSizes.spaceBtwSection),
+                  const SizedBox(height: JSizes.spaceBtwSection),
 
                   ///VERIFY BUTTON
                   SizedBox(

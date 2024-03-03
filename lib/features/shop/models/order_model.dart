@@ -37,10 +37,10 @@ class OrderModel {
         "items": items.map((e) => e.toJson()).toList(),
       };
 
-  String get formattedOrdeDate => THelperFunction.getFormattedDate(orderDate);
+  String get formattedOrdeDate => JHelperFunction.getFormattedDate(orderDate);
 
   String get formattedDeliveryDate => deliveryDate != null
-      ? THelperFunction.getFormattedDate(deliveryDate!)
+      ? JHelperFunction.getFormattedDate(deliveryDate!)
       : '';
 
   String get orderStatisText => status == OrderStatus.delivered

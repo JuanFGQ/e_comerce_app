@@ -25,46 +25,46 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => const NewProductScreen()),
-        child: const Icon(Iconsax.add, color: TColors.white),
+        child: const Icon(Iconsax.add, color: JColors.white),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             //CUSTOM HEADER
-            const TPrimaryHeaderContainer(
+            const JPrimaryHeaderContainer(
               child: Column(
                 children: [
-                  SizedBox(height: TSizes.sm),
+                  SizedBox(height: JSizes.sm),
 
                   /// APPBAR
-                  THomeAppBar(),
-                  SizedBox(height: TSizes.spaceBtwSection),
+                  JHomeAppBar(),
+                  SizedBox(height: JSizes.spaceBtwSection),
 
                   //SEARCH BAR
-                  TSearchContainer(text: 'SearchInStore'),
-                  SizedBox(height: TSizes.spaceBtwSection),
+                  JSearchContainer(text: 'SearchInStore'),
+                  SizedBox(height: JSizes.spaceBtwSection),
 
                   //CATEGORIES
 
-                  THomeCategories()
+                  JHomeCategories()
                 ],
               ),
             ),
             Padding(
-                padding: const EdgeInsets.all(TSizes.defaultSpace),
+                padding: const EdgeInsets.all(JSizes.defaultSpace),
                 child: Column(
                   children: [
                     //PROMO SLIDER
-                    const TPromoSlider(
+                    const JPromoSlider(
                         // banners: [
                         //   TImages.onBoardingImage1,
                         //   TImages.onBoardingImage2,
                         //   TImages.onBoardingImage3
                         // ],
                         ),
-                    const SizedBox(height: TSizes.spaceBtwSection),
+                    const SizedBox(height: JSizes.spaceBtwSection),
                     //!POPULAR PRODUCTS HEADING
-                    TSectionHeading(
+                    JSectionHeading(
                       showActionButton: true,
                       title: 'Popular Products',
                       onPressed: () => Get.to(() => AllProducts(
@@ -72,11 +72,11 @@ class HomePage extends StatelessWidget {
                             futureMethod: controller.fetchAllFeaturedProducts(),
                           )),
                     ),
-                    const SizedBox(height: TSizes.spaceBtwSection),
+                    const SizedBox(height: JSizes.spaceBtwSection),
                     //!popular products
                     Obx(() {
                       if (controller.isLoading.value) {
-                        return const TVerticalProductShimmer();
+                        return const JVerticalProductShimmer();
                       }
                       if (controller.featuredProducts.isEmpty) {
                         return Center(

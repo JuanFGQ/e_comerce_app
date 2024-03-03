@@ -1,4 +1,4 @@
-class TRoutes {
+class JRoutes {
   //43
   static const home = '/';
   static const store = '/store';

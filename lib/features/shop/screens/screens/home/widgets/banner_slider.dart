@@ -10,8 +10,8 @@ class PromoSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
-        child: TPromoSlider(
+        padding: EdgeInsets.all(JSizes.defaultSpace),
+        child: JPromoSlider(
             // banners: [
             //   TImages.onBoardingImage1,
             //   TImages.onBoardingImage2,

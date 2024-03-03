@@ -35,7 +35,7 @@ class MessaggingController extends GetxController {
       // usersList.assignAll(user as Iterable<UserModel>);
       return user;
     } catch (e) {
-      return TLoaders.errorSnackBar(
+      return JLoaders.errorSnackBar(
           title: 'Error try later', message: e.toString());
     }
   }
@@ -80,7 +80,7 @@ class MessaggingController extends GetxController {
       //SEND/STORE new message to firebase
       await messageRepo.sendMessages(messageM, chatRoomID);
     } catch (e) {
-      TLoaders.errorSnackBar(
+      JLoaders.errorSnackBar(
           title: 'Something went wrong try again later', message: e.toString());
     }
   }
@@ -100,7 +100,7 @@ class MessaggingController extends GetxController {
 
       return messageRepo.fetchMessages(chatRoomID);
     } catch (e) {
-      return TLoaders.errorSnackBar(
+      return JLoaders.errorSnackBar(
           title: 'Error try later', message: e.toString());
     }
   }

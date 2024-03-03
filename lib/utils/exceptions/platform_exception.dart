@@ -1,7 +1,7 @@
-class TPlatformException implements Exception {
+class JPlatformException implements Exception {
   final String code;
 
-  TPlatformException(this.code);
+  JPlatformException(this.code);
 
   String get message {
     switch (code) {

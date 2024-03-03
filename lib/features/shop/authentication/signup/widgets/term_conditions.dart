@@ -14,7 +14,7 @@ class TermsAndConditions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
 
     return Row(
       children: [
@@ -26,24 +26,24 @@ class TermsAndConditions extends StatelessWidget {
                 onChanged: (value) {
                   controller.privacyPolicy.value = value!;
                 }))),
-        const SizedBox(height: TSizes.spaceBtwItems),
+        const SizedBox(height: JSizes.spaceBtwItems),
         Text.rich(TextSpan(children: [
           TextSpan(
-              text: TTexts.iAgreeTo,
+              text: JTexts.iAgreeTo,
               style: Theme.of(context).textTheme.bodySmall),
           TextSpan(
-              text: TTexts.privacyPolicy,
+              text: JTexts.privacyPolicy,
               style: Theme.of(context).textTheme.bodyMedium!.apply(
-                  color: dark ? TColors.white : TColors.primary,
+                  color: dark ? JColors.white : JColors.primary,
                   decoration: TextDecoration.underline,
-                  decorationColor: dark ? TColors.white : TColors.primary)),
+                  decorationColor: dark ? JColors.white : JColors.primary)),
           TextSpan(text: 'AND', style: Theme.of(context).textTheme.bodySmall),
           TextSpan(
-              text: TTexts.termsOfUse,
+              text: JTexts.termsOfUse,
               style: Theme.of(context).textTheme.bodyMedium!.apply(
-                  color: dark ? TColors.white : TColors.primary,
+                  color: dark ? JColors.white : JColors.primary,
                   decoration: TextDecoration.underline,
-                  decorationColor: dark ? TColors.white : TColors.primary)),
+                  decorationColor: dark ? JColors.white : JColors.primary)),
         ]))
       ],
     );

@@ -4,7 +4,7 @@ import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TFullScreenLoader {
+class JFullScreenLoader {
   //open a full-screen loading dialog with a given text and animation
   //this methos doesn´t return anything
 
@@ -19,15 +19,15 @@ class TFullScreenLoader {
         builder: (_) => PopScope(
             canPop: false,
             child: Container(
-              color: THelperFunction.isDarkMode(Get.context!)
-                  ? TColors.dark
-                  : TColors.white,
+              color: JHelperFunction.isDarkMode(Get.context!)
+                  ? JColors.dark
+                  : JColors.white,
               width: double.infinity,
               height: double.infinity,
               child: Column(
                 children: [
                   const SizedBox(height: 250),
-                  TAnimationLoader(text: text, animation: animation)
+                  JAnimationLoader(text: text, animation: animation)
                 ],
               ),
             )));

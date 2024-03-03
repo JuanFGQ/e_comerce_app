@@ -21,19 +21,19 @@ class SubCategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = CategoryController.instance;
     return Scaffold(
-      appBar: TAppBar(title: Text(category.name), showBackArrow: true),
+      appBar: JAppBar(title: Text(category.name), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(JSizes.defaultSpace),
           child: Column(
             children: [
               //BANNER
-              const TRoundedImage(
-                  imageUrl: TImages.onBoardingImage1,
+              const JRoundedImage(
+                  imageUrl: JImages.onBoardingImage1,
                   width: double.infinity,
                   height: null,
                   applyImageRadius: true),
-              const SizedBox(height: TSizes.spaceBtwSection),
+              const SizedBox(height: JSizes.spaceBtwSection),
 
               //SUB CATEFORY
 
@@ -41,8 +41,8 @@ class SubCategoryScreen extends StatelessWidget {
                   future: controller.getSubCategories(category.id),
                   builder: (context, snapshot) {
                     //handle loader no record or error message
-                    const loader = THorizontalProductShimmer();
-                    final widget = TCloudHelperFunction.checkMultiRecordState(
+                    const loader = JHorizontalProductShimmer();
+                    final widget = JCloudHelperFunction.checkMultiRecordState(
                         snapshot: snapshot, loader: loader);
                     if (widget != null) return widget;
 
@@ -60,9 +60,9 @@ class SubCategoryScreen extends StatelessWidget {
                                 categoryId: subCategory.id),
                             builder: (context, snapshot) {
                               //handle loader , no record or error message
-                              const loader = THorizontalProductShimmer();
+                              const loader = JHorizontalProductShimmer();
                               final widget =
-                                  TCloudHelperFunction.checkMultiRecordState(
+                                  JCloudHelperFunction.checkMultiRecordState(
                                       snapshot: snapshot, loader: loader);
                               if (widget != null) return widget;
 
@@ -72,7 +72,7 @@ class SubCategoryScreen extends StatelessWidget {
                               return Column(
                                 children: [
                                   //heading
-                                  TSectionHeading(
+                                  JSectionHeading(
                                       title: subCategory.name,
                                       onPressed: () => Get.to(() => AllProducts(
                                             title: subCategory.name,
@@ -83,24 +83,25 @@ class SubCategoryScreen extends StatelessWidget {
                                           )),
                                       showActionButton: true),
                                   const SizedBox(
-                                      height: TSizes.spaceBtwItems / 2),
+                                      height: JSizes.spaceBtwItems / 2),
 
                                   //list of products
                                   SizedBox(
                                     height: 120,
                                     child: ListView.separated(
                                       separatorBuilder: (context, index) =>
-                                          const SizedBox(width: TSizes.spaceBtwItems),
+                                          const SizedBox(
+                                              width: JSizes.spaceBtwItems),
                                       scrollDirection: Axis.horizontal,
                                       itemCount: subCategories.length,
                                       itemBuilder: (context, index) {
-                                        return TProductHorizontalCard(
+                                        return JProductHorizontalCard(
                                           product: subCategories[index],
                                         );
                                       },
                                     ),
                                   ),
-                                  const SizedBox(height: TSizes.spaceBtwSection)
+                                  const SizedBox(height: JSizes.spaceBtwSection)
                                 ],
                               );
                             });

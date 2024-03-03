@@ -2,8 +2,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TRatingAndShare extends StatelessWidget {
-  const TRatingAndShare({
+class JRatingAndShare extends StatelessWidget {
+  const JRatingAndShare({
     super.key,
   });
 
@@ -16,7 +16,7 @@ class TRatingAndShare extends StatelessWidget {
         Row(
           children: [
             const Icon(Iconsax.star5, color: Colors.amber, size: 24),
-            const SizedBox(width: TSizes.spaceBtwItems / 2),
+            const SizedBox(width: JSizes.spaceBtwItems / 2),
             Text.rich(TextSpan(children: [
               TextSpan(
                   text: '5.0', style: Theme.of(context).textTheme.bodyLarge),
@@ -27,7 +27,7 @@ class TRatingAndShare extends StatelessWidget {
         //SHARE BUTTON
         IconButton(
             onPressed: () {},
-            icon: const Icon(Iconsax.share, size: TSizes.iconMd))
+            icon: const Icon(Iconsax.share, size: JSizes.iconMd))
       ],
     );
   }

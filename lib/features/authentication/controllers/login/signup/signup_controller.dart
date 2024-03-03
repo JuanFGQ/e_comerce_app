@@ -31,28 +31,28 @@ class SignUpController extends GetxController {
     try {
       //start loading
 
-      TFullScreenLoader.openLoadingDialog(
-          'We are Processing your information', TImages.handLoading);
+      JFullScreenLoader.openLoadingDialog(
+          'We are Processing your information', JImages.handLoading);
       //check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
       //form validation
 
       if (!signUpFormKey.currentState!.validate()) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
 
         return;
       }
 
       //privacy policy check
       if (!privacyPolicy.value) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
 
-        TLoaders.warningSnackBar(
+        JLoaders.warningSnackBar(
             title: 'Accept Privacy Policy',
             message:
                 'In order to create account, you must have to read and accept the privacy policy & terms of use');
@@ -78,7 +78,7 @@ class SignUpController extends GetxController {
       await userRepository.saveUserRecord(newUser);
 
       //show success message
-      TLoaders.successSnackBar(
+      JLoaders.successSnackBar(
           title: 'Congrats',
           message: 'Your accouns has been created,verify email to continue.');
 
@@ -88,10 +88,10 @@ class SignUpController extends GetxController {
           ));
     } catch (e) {
       //remove loader
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
 
       //show generic errors
-      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
     }
   }
 }

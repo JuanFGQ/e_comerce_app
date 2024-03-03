@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TCartCounterIcon extends StatelessWidget {
-  const TCartCounterIcon({
+class JCartCounterIcon extends StatelessWidget {
+  const JCartCounterIcon({
     super.key,
-    this.iconColor = TColors.white,
+    this.iconColor = JColors.white,
   });
 
   final Color? iconColor;
@@ -19,13 +19,13 @@ class TCartCounterIcon extends StatelessWidget {
     //Get an instance of the CartController
     final controller = Get.put(CartController());
 
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Stack(
       children: [
         IconButton(
             onPressed: () => Get.to(() => const CartScreen()),
             icon: Icon(Iconsax.shopping_bag,
-                color: dark ? TColors.white : TColors.dark)),
+                color: dark ? JColors.white : JColors.dark)),
         Positioned(
           right: 0,
           child: Container(
@@ -33,7 +33,7 @@ class TCartCounterIcon extends StatelessWidget {
             height: 18,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: TColors.black,
+              color: JColors.black,
             ),
             child: Center(
               child: Obx(
@@ -42,7 +42,7 @@ class TCartCounterIcon extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
-                      .apply(color: TColors.white, fontSizeFactor: 0.8),
+                      .apply(color: JColors.white, fontSizeFactor: 0.8),
                 ),
               ),
             ),

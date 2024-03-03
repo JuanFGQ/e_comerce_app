@@ -21,11 +21,11 @@ class CategoryRepository extends GetxController {
           snapshot.docs.map((e) => CategoryModel.fromSnapshot(e)).toList();
       return list;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. please try again';
     }
@@ -44,11 +44,11 @@ class CategoryRepository extends GetxController {
 
       return result;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. please try again';
     }
@@ -59,7 +59,7 @@ class CategoryRepository extends GetxController {
   Future<void> uploadDummyData(List<CategoryModel> categories) async {
     try {
       //upload all the categories along with their Images
-      final storage = Get.put(TFirebaseStorageService());
+      final storage = Get.put(JFirebaseStorageService());
 
       //loop through each category
 
@@ -81,11 +81,11 @@ class CategoryRepository extends GetxController {
             .set(category.toJson());
       }
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. please try again';
     }

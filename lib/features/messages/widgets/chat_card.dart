@@ -28,7 +28,7 @@ class ChatCard extends StatelessWidget {
     return GestureDetector(
       // onTap: () => Get.to(() => ChatScreen(otherUserID: ,)),
       child: Padding(
-        padding: const EdgeInsets.only(top: TSizes.md),
+        padding: const EdgeInsets.only(top: JSizes.md),
         child: Column(
           children: [
             Row(
@@ -37,19 +37,19 @@ class ChatCard extends StatelessWidget {
                   : CrossAxisAlignment.end,
               children: [
                 //!USER IMAGE
-                TRoundedImage(
+                JRoundedImage(
                   borderRadius: 60,
                   height: 60,
                   applyImageRadius: true,
                   width: 60,
                   imageUrl: messaginModel.profilePicture.contains('http')
                       ? messaginModel.profilePicture
-                      : TImages.userImage,
+                      : JImages.userImage,
                   isNetworkImage: messaginModel.profilePicture.contains('http')
                       ? true
                       : false,
                 ),
-                const SizedBox(width: TSizes.md),
+                const SizedBox(width: JSizes.md),
 
                 //!USER NAME
                 Expanded(
@@ -60,7 +60,7 @@ class ChatCard extends StatelessWidget {
                       //USER NAME
                       Text(messaginModel.userName,
                           style: Theme.of(context).textTheme.headlineMedium),
-                      const SizedBox(height: TSizes.sm / 2),
+                      const SizedBox(height: JSizes.sm / 2),
                       //USER MESSAGE
                       StreamBuilder(
                           stream: controller.getMessages(
@@ -75,7 +75,7 @@ class ChatCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: TSizes.defaultSpace / 2),
+                const SizedBox(width: JSizes.defaultSpace / 2),
 
                 //!NOTIFICATION INFO
                 Column(
@@ -85,7 +85,7 @@ class ChatCard extends StatelessWidget {
                         // 'messaging.timestamp.toString()'
                         ),
 
-                    const SizedBox(height: TSizes.defaultSpace / 2),
+                    const SizedBox(height: JSizes.defaultSpace / 2),
 
                     //NOTIFICATION CIRCLE
                     Container(
@@ -93,7 +93,7 @@ class ChatCard extends StatelessWidget {
                       height: 20,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        color: TColors.accent,
+                        color: JColors.accent,
                       ),
                       child: Center(
                           child: Text(
@@ -101,14 +101,14 @@ class ChatCard extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge!
-                            .apply(color: TColors.white, fontSizeFactor: 0.8),
+                            .apply(color: JColors.white, fontSizeFactor: 0.8),
                       )),
                     ),
                   ],
                 )
               ],
             ),
-            const SizedBox(height: TSizes.defaultSpace / 2),
+            const SizedBox(height: JSizes.defaultSpace / 2),
             const Divider(endIndent: 0, indent: 75)
           ],
         ),

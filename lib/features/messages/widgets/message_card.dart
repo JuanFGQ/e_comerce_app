@@ -16,7 +16,7 @@ class MessageCard extends StatelessWidget {
   final MessageModel userModel;
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -24,43 +24,43 @@ class MessageCard extends StatelessWidget {
         Container(
           width: 300,
           decoration: BoxDecoration(
-              color: dark ? TColors.accent : TColors.light,
+              color: dark ? JColors.accent : JColors.light,
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(30),
                   bottomLeft: Radius.circular(7),
                   bottomRight: Radius.circular(30),
                   topRight: Radius.circular(7))),
           child: Padding(
-            padding: const EdgeInsets.all(TSizes.sm),
+            padding: const EdgeInsets.all(JSizes.sm),
             child: Column(
               children: [
                 Row(
                   children: [
                     //!USER NAME AND IMAGE
-                    TRoundedImage(
+                    JRoundedImage(
                         borderRadius: 35,
                         height: 35,
                         applyImageRadius: true,
                         width: 35,
                         imageUrl: userModel.profilePicture.contains('http')
                             ? userModel.profilePicture
-                            : TImages.userImage,
+                            : JImages.userImage,
                         isNetworkImage:
                             userModel.profilePicture.contains('http')
                                 ? true
                                 : false),
-                    const SizedBox(width: TSizes.defaultSpace / 2),
+                    const SizedBox(width: JSizes.defaultSpace / 2),
                     Text(userModel.userName)
                   ],
                 ),
-                const SizedBox(height: TSizes.defaultSpace / 2),
+                const SizedBox(height: JSizes.defaultSpace / 2),
                 const Text(
                     'Labore consectetur est aute irure nostrud occaecat culpa nulla aute officia quis est laboris velit. Voluptate duis cillum veniam nostrud magna non Lorem consectetur id aliqua velit. Fugiat esse voluptate commodo irure nulla quis sunt do. Aliquip aute ullamco sint irure Lorem aliqua occaecat reprehenderit aute sunt do mollit. Nostrud nostrud irure quis ex non incididunt ad laborum id. Duis adipisicing sit incididunt laborum consectetur magna. Aute aliquip aute ex exercitation ipsum magna proident.'),
               ],
             ),
           ),
         ),
-        const SizedBox(height: TSizes.sm),
+        const SizedBox(height: JSizes.sm),
         Text('15 min ago',
             style: Theme.of(context)
                 .textTheme

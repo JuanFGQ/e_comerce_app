@@ -24,29 +24,29 @@ class ResetPasswordScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(JSizes.defaultSpace),
           child: Column(
             children: [
               Image(
-                  image: const AssetImage(TImages.darkAppLogo),
-                  width: THelperFunction.screenWidth(context) * 0.6),
-              const SizedBox(height: TSizes.spaceBtwSection),
+                  image: const AssetImage(JImages.darkAppLogo),
+                  width: JHelperFunction.screenWidth(context) * 0.6),
+              const SizedBox(height: JSizes.spaceBtwSection),
 
               //EMAIL , TITLE and SUBTITLE
               Text(email,
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center),
-              const SizedBox(height: TSizes.spaceBtwItems),
+              const SizedBox(height: JSizes.spaceBtwItems),
 
-              Text(TTexts.changeYourPasswordTitle,
+              Text(JTexts.changeYourPasswordTitle,
                   style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center),
-              const SizedBox(height: TSizes.spaceBtwItems),
+              const SizedBox(height: JSizes.spaceBtwItems),
 
-              Text(TTexts.changeYourPasswordSubTitle,
+              Text(JTexts.changeYourPasswordSubTitle,
                   style: Theme.of(context).textTheme.labelMedium,
                   textAlign: TextAlign.center),
-              const SizedBox(height: TSizes.spaceBtwSection),
+              const SizedBox(height: JSizes.spaceBtwSection),
 
               //BUTTON
               SizedBox(
@@ -54,13 +54,13 @@ class ResetPasswordScreen extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () => Get.offAll(() => const LoginScreen()),
                       child: const Text('Done'))),
-              const SizedBox(height: TSizes.spaceBtwItems),
+              const SizedBox(height: JSizes.spaceBtwItems),
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () => ForgetPasswordController.instace
                           .resendPasswordResetEmail(email),
-                      child: const Text(TTexts.resendEmail))),
+                      child: const Text(JTexts.resendEmail))),
             ],
           ),
         ),

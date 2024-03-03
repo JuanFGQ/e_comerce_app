@@ -118,11 +118,11 @@ class NewProductController extends GetxController {
         }
         imageUploading.value = false;
 
-        TLoaders.successSnackBar(
+        JLoaders.successSnackBar(
             title: 'Image added', message: 'Upload succesfull');
       }
     } catch (e) {
-      TLoaders.errorSnackBar(
+      JLoaders.errorSnackBar(
           title: 'Oh Snap!', message: 'Something went wrong');
     }
   }
@@ -132,18 +132,18 @@ class NewProductController extends GetxController {
     try {
       if (previewImages.isNotEmpty) {
         previewImages.remove(selectedProductImage.value);
-        TLoaders.successSnackBar(title: 'Added image', message: 'Deleted');
+        JLoaders.successSnackBar(title: 'Added image', message: 'Deleted');
         previewImages.isEmpty;
       }
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'No Image!', message: 'Added any image');
+      JLoaders.errorSnackBar(title: 'No Image!', message: 'Added any image');
     }
   }
   //!DELETE WARNING
 
   void deleteAccountWarningPopup() {
     Get.defaultDialog(
-        contentPadding: const EdgeInsets.all(TSizes.md),
+        contentPadding: const EdgeInsets.all(JSizes.md),
         title: 'Delete this image',
         middleText: 'Are you sure want to delete this image?',
         confirm: ElevatedButton(
@@ -155,7 +155,7 @@ class NewProductController extends GetxController {
               backgroundColor: Colors.red,
               side: const BorderSide(color: Colors.red)),
           child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: TSizes.lg),
+            padding: EdgeInsets.symmetric(horizontal: JSizes.lg),
             child: Text('Delete'),
           ),
         ),
@@ -180,19 +180,19 @@ class NewProductController extends GetxController {
   Future<void> uploadProducts() async {
     try {
       //start loading animation
-      TFullScreenLoader.openLoadingDialog(
-          'Uploading product', TImages.uploadingImages);
+      JFullScreenLoader.openLoadingDialog(
+          'Uploading product', JImages.uploadingImages);
 
       //check internet conectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
       //form validation
       if (!newProductFormKey.currentState!.validate()) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
@@ -223,10 +223,10 @@ class NewProductController extends GetxController {
 
       //remove loader
 
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
 
       //show succes message
-      TLoaders.successSnackBar(
+      JLoaders.successSnackBar(
           title: 'Congratulations', message: 'Your Product has been uploaded');
 
       clearData();
@@ -234,8 +234,8 @@ class NewProductController extends GetxController {
       //redirect
       Navigator.of(Get.context!).pop();
     } catch (e) {
-      TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JFullScreenLoader.stopLoading();
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }

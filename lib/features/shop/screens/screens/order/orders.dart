@@ -10,14 +10,14 @@ class OrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       /// APPBAR
-      appBar: TAppBar(
+      appBar: JAppBar(
           title: Text('My Orders',
               style: Theme.of(context).textTheme.headlineSmall)),
       body: const Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: EdgeInsets.all(JSizes.defaultSpace),
 
         ///ORDERS
-        child: TOrderListItems(),
+        child: JOrderListItems(),
       ),
     );
   }

@@ -21,11 +21,11 @@ class FavouriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = FavouriteController.instance;
     return Scaffold(
-      appBar: TAppBar(
+      appBar: JAppBar(
         title:
             Text('WishList', style: Theme.of(context).textTheme.headlineMedium),
         actions: [
-          TCircularIcon(
+          JCircularIcon(
             icon: Iconsax.add,
             onPressed: () => Get.to(const HomePage()),
           )
@@ -35,24 +35,24 @@ class FavouriteScreen extends StatelessWidget {
       //*BODY
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(JSizes.defaultSpace),
           //*PRODUCTS GRID
           child: Obx(
             () => FutureBuilder(
                 future: controller.favoritesProducts(),
                 builder: (context, snapshot) {
                   //Nothing Found
-                  final emptyWidget = TAnimationControllerWidget(
+                  final emptyWidget = JAnimationControllerWidget(
                     showAction: true,
                     actionText: 'Lets\'s add some',
                     text: 'Whoops! WishList is Empty...',
-                    animation: TImages.emptyWishList,
+                    animation: JImages.emptyWishList,
                     onActionProssed: () =>
                         Get.off(() => const NavigationMenu()),
                   );
 
-                  const loader = TVerticalProductShimmer(itemCount: 6);
-                  final widget = TCloudHelperFunction.checkMultiRecordState(
+                  const loader = JVerticalProductShimmer(itemCount: 6);
+                  final widget = JCloudHelperFunction.checkMultiRecordState(
                       snapshot: snapshot,
                       loader: loader,
                       nothingFound: emptyWidget);

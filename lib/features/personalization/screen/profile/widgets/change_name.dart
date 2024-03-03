@@ -14,12 +14,12 @@ class ChangeNameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(UpdateNameController());
     return Scaffold(
-      appBar: TAppBar(
+      appBar: JAppBar(
           showBackArrow: true,
           title: Text('Change Name',
               style: Theme.of(context).textTheme.headlineSmall)),
       body: Padding(
-        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(JSizes.defaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -27,30 +27,30 @@ class ChangeNameScreen extends StatelessWidget {
             Text(
                 'Use real name for esay verification. this name will appear on several pages.',
                 style: Theme.of(context).textTheme.labelMedium),
-            const SizedBox(height: TSizes.spaceBtwSection),
+            const SizedBox(height: JSizes.spaceBtwSection),
             Form(
                 child: Column(
               children: [
                 TextFormField(
                   validator: (value) =>
-                      TValidator.validateEmptyText('First name', value),
+                      JValidator.validateEmptyText('First name', value),
                   controller: controller.firstName,
                   expands: false,
                   decoration: const InputDecoration(
-                      labelText: TTexts.firstName,
+                      labelText: JTexts.firstName,
                       prefixIcon: Icon(Iconsax.user)),
                 ),
-                const SizedBox(height: TSizes.spaceBtwInputFields),
+                const SizedBox(height: JSizes.spaceBtwInputFields),
                 TextFormField(
                   validator: (value) =>
-                      TValidator.validateEmptyText('Last name', value),
+                      JValidator.validateEmptyText('Last name', value),
                   controller: controller.lastName,
                   expands: false,
                   decoration: const InputDecoration(
-                      labelText: TTexts.lastName,
+                      labelText: JTexts.lastName,
                       prefixIcon: Icon(Iconsax.user)),
                 ),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
 
                 //save button
                 SizedBox(

@@ -18,13 +18,13 @@ class ProfileScreen extends StatelessWidget {
     final controller = UserController.instance;
 
     return Scaffold(
-        appBar: const TAppBar(
+        appBar: const JAppBar(
           showBackArrow: true,
           title: Text('Profile'),
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(TSizes.defaultSpace),
+            padding: const EdgeInsets.all(JSizes.defaultSpace),
             child: Column(
               children: [
                 //*profilePicture
@@ -37,12 +37,12 @@ class ProfileScreen extends StatelessWidget {
                             controller.user.value.profilePicture;
                         final image = networkImage.isNotEmpty
                             ? networkImage
-                            : TImages.darkAppLogo;
+                            : JImages.darkAppLogo;
 
                         return controller.imageUploading.value
-                            ? const TShimmerEffect(
+                            ? const JShimmerEffect(
                                 width: 80, height: 80, raidus: 80)
-                            : TCircularImage(
+                            : JCircularImage(
                                 isNetWorkImage: networkImage.isNotEmpty,
                                 image: image,
                                 width: 80,
@@ -54,22 +54,22 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: TSizes.spaceBtwItems / 2),
+                const SizedBox(height: JSizes.spaceBtwItems / 2),
                 const Divider(),
-                const SizedBox(height: TSizes.spaceBtwItems),
+                const SizedBox(height: JSizes.spaceBtwItems),
 
                 //*HEADING PERSONAL INFO
-                const TSectionHeading(
+                const JSectionHeading(
                     title: 'Profile Information', showActionButton: false),
-                const SizedBox(height: TSizes.spaceBtwItems),
+                const SizedBox(height: JSizes.spaceBtwItems),
 
                 //USER PROFILE TILES
-                TProfileMenuTile(
+                JProfileMenuTile(
                     onPressed: () => Get.to(() => const ChangeNameScreen()),
                     title: 'Name',
                     value: controller.user.value.fullName),
 
-                TProfileMenuTile(
+                JProfileMenuTile(
                     onPressed: () {},
                     title: 'Username',
                     value: controller.user.value.username),
@@ -78,31 +78,31 @@ class ProfileScreen extends StatelessWidget {
 
                 //PERSONAL INFORMATION
 
-                TProfileMenuTile(
+                JProfileMenuTile(
                     onPressed: () {},
                     title: 'User ID',
                     value: controller.user.value.id),
 
-                TProfileMenuTile(
+                JProfileMenuTile(
                     onPressed: () {},
                     title: 'E-mail',
                     value: controller.user.value.email),
 
-                TProfileMenuTile(
+                JProfileMenuTile(
                     onPressed: () {},
                     title: 'Phone Number',
                     value: controller.user.value.phoneNumber),
 
-                TProfileMenuTile(
+                JProfileMenuTile(
                     onPressed: () {}, title: 'Gender', value: 'Male'),
 
-                TProfileMenuTile(
+                JProfileMenuTile(
                     onPressed: () {},
                     title: 'Date of Birth',
                     value: '10 Oct,1994'),
 
                 const Divider(),
-                const SizedBox(height: TSizes.spaceBtwItems),
+                const SizedBox(height: JSizes.spaceBtwItems),
 
                 Center(
                   child: TextButton(

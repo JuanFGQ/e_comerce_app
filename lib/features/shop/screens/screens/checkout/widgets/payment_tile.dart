@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TPaymentTile extends StatelessWidget {
-  const TPaymentTile({super.key, required this.paymentMethod});
+class JPaymentTile extends StatelessWidget {
+  const JPaymentTile({super.key, required this.paymentMethod});
 
   final PaymentMethodModel paymentMethod;
 
@@ -23,12 +23,12 @@ class TPaymentTile extends StatelessWidget {
         controller.selectedPaymenthMethod.value = paymentMethod;
         Get.back();
       },
-      leading: CRoundedContainer(
+      leading: JRoundedContainer(
         width: 60,
         height: 40,
         backGroundColor:
-            THelperFunction.isDarkMode(context) ? TColors.light : TColors.white,
-        padding: const EdgeInsets.all(TSizes.sm),
+            JHelperFunction.isDarkMode(context) ? JColors.light : JColors.white,
+        padding: const EdgeInsets.all(JSizes.sm),
         widget: Image(
             image: AssetImage(paymentMethod.image.toString()),
             fit: BoxFit.contain),

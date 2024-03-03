@@ -19,12 +19,12 @@ class JAddImagesSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     final controller = Get.put(NewProductController());
 
-    return TCurvedEdgesWidget(
+    return JCurvedEdgesWidget(
       child: Container(
-        color: dark ? TColors.darkGrey : TColors.light,
+        color: dark ? JColors.darkGrey : JColors.light,
         child: Stack(
           children: [
             //!MAIN LARGE PRODUCT IMAGE
@@ -33,7 +33,7 @@ class JAddImagesSlider extends StatelessWidget {
                 width: double.infinity,
                 child: Padding(
                     padding:
-                        const EdgeInsets.all(TSizes.productImageRadius * 2),
+                        const EdgeInsets.all(JSizes.productImageRadius * 2),
                     child: Obx(
                       () => Center(
                           //*imageuploading variable is always false, look later for the solution
@@ -44,14 +44,14 @@ class JAddImagesSlider extends StatelessWidget {
                                       File(controller
                                           .selectedProductImage.value),
                                       fit: BoxFit.fill)
-                                  : Image.asset(TImages.lightAppLogo)),
+                                  : Image.asset(JImages.lightAppLogo)),
                     ))),
 
             //!IMAGES STACK
             Positioned(
               right: 0,
               bottom: 30,
-              left: TSizes.defaultSpace,
+              left: JSizes.defaultSpace,
               child: SizedBox(
                 width: double.infinity,
                 height: 80,
@@ -68,13 +68,13 @@ class JAddImagesSlider extends StatelessWidget {
                             physics: const AlwaysScrollableScrollPhysics(),
                             itemCount: controller.previewImages.length,
                             separatorBuilder: (_, __) =>
-                                const SizedBox(width: TSizes.spaceBtwItems),
+                                const SizedBox(width: JSizes.spaceBtwItems),
                             itemBuilder: (_, index) => Obx(() {
                                   final imageSelected =
                                       controller.selectedProductImage.value ==
                                           controller.previewImages[index];
 
-                                  return TRoundedImage(
+                                  return JRoundedImage(
                                     onPressed: () =>
                                         controller.selectedProductImage.value =
                                             controller.previewImages[index],
@@ -84,28 +84,28 @@ class JAddImagesSlider extends StatelessWidget {
                                     imageUrl: controller.previewImages[index],
                                     border: Border.all(
                                         color: imageSelected
-                                            ? TColors.primary
+                                            ? JColors.primary
                                             : Colors.transparent),
                                   );
                                 })),
                       ),
                     ),
-                    const SizedBox(width: TSizes.spaceBtwSection / 2),
+                    const SizedBox(width: JSizes.spaceBtwSection / 2),
                     Row(
                       children: [
                         //!CAPTURE IMAGES FROM GALLEY
-                        TCircularIcon(
+                        JCircularIcon(
                             icon: Iconsax.gallery,
                             onPressed: () =>
                                 controller.captureImages(ImageSource.gallery)),
-                        const SizedBox(width: TSizes.spaceBtwItems / 2),
+                        const SizedBox(width: JSizes.spaceBtwItems / 2),
                         //!CAPTURE IMAGES FROM CAMERA
 
-                        TCircularIcon(
+                        JCircularIcon(
                             icon: Iconsax.camera,
                             onPressed: () =>
                                 controller.captureImages(ImageSource.camera)),
-                        const SizedBox(width: TSizes.spaceBtwItems / 2),
+                        const SizedBox(width: JSizes.spaceBtwItems / 2),
                       ],
                     )
                   ],
@@ -116,7 +116,7 @@ class JAddImagesSlider extends StatelessWidget {
             Positioned(
                 right: 10,
                 top: 10,
-                child: TCircularIcon(
+                child: JCircularIcon(
                     onPressed: () => controller.deleteAccountWarningPopup(),
                     backGroundColor: Colors.red,
                     icon: Iconsax.trash)),

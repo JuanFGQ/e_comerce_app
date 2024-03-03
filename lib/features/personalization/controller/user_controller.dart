@@ -78,7 +78,7 @@ class UserController extends GetxController {
         }
       }
     } catch (e) {
-      TLoaders.warningSnackBar(
+      JLoaders.warningSnackBar(
           title: 'Data not saved',
           message:
               'Something went wrong while saving your information. You can re-save your data in your Profile.');
@@ -89,7 +89,7 @@ class UserController extends GetxController {
 
   void deleteAccountWarningPopup() {
     Get.defaultDialog(
-        contentPadding: const EdgeInsets.all(TSizes.md),
+        contentPadding: const EdgeInsets.all(JSizes.md),
         title: 'Delete Account',
         middleText:
             'Are you sure you want to delete your account permanently? This action is not reversible and all your data will be removed permanently.',
@@ -99,7 +99,7 @@ class UserController extends GetxController {
               backgroundColor: Colors.red,
               side: const BorderSide(color: Colors.red)),
           child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: TSizes.lg),
+            padding: EdgeInsets.symmetric(horizontal: JSizes.lg),
             child: Text('Delete'),
           ),
         ),
@@ -111,7 +111,7 @@ class UserController extends GetxController {
   //delete user account
   void deleteUserAccount() async {
     try {
-      TFullScreenLoader.openLoadingDialog('Processing', TImages.handLoading);
+      JFullScreenLoader.openLoadingDialog('Processing', JImages.handLoading);
 
       //FIRST RE-AUTHENTICATE USER
       final auth = AuthenticationRepository.instance;
@@ -123,33 +123,33 @@ class UserController extends GetxController {
         if (provider == 'google.com') {
           await auth.signInWithGoogle();
           await auth.deleteAccount();
-          TFullScreenLoader.stopLoading();
+          JFullScreenLoader.stopLoading();
           Get.offAll(() => const LoginScreen());
         } else if (provider == 'password') {
-          TFullScreenLoader.stopLoading();
+          JFullScreenLoader.stopLoading();
           Get.to(() => const ReauthLoginForm());
         }
       }
     } catch (e) {
-      TFullScreenLoader.stopLoading();
-      TLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
+      JFullScreenLoader.stopLoading();
+      JLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 
   //Re authenticare before deleting
   Future<void> reAuthenticateEmailAndPasswordUser() async {
     try {
-      TFullScreenLoader.openLoadingDialog('Processing', TImages.handLoading);
+      JFullScreenLoader.openLoadingDialog('Processing', JImages.handLoading);
 
       //check internet
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
       if (!reAuthFormKey.currentState!.validate()) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
@@ -159,11 +159,11 @@ class UserController extends GetxController {
 
       await AuthenticationRepository.instance.deleteAccount();
 
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
       Get.offAll(() => const LoginScreen());
     } catch (e) {
-      TFullScreenLoader.stopLoading();
-      TLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
+      JFullScreenLoader.stopLoading();
+      JLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 
@@ -191,12 +191,12 @@ class UserController extends GetxController {
         user.value.profilePicture = imageUrl;
         //trigger a refreshing of the screen this is a method from getx controller
         user.refresh();
-        TLoaders.successSnackBar(
+        JLoaders.successSnackBar(
             title: 'Congratulations',
             message: 'Your Profile Image has been updated');
       }
     } catch (e) {
-      TLoaders.errorSnackBar(
+      JLoaders.errorSnackBar(
           title: 'Oh Snap!', message: 'Somenthing went wrong: $e');
     } finally {
       imageUploading.value = false;

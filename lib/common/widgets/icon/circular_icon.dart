@@ -3,12 +3,12 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
-class TCircularIcon extends StatelessWidget {
-  const TCircularIcon({
+class JCircularIcon extends StatelessWidget {
+  const JCircularIcon({
     super.key,
     this.width,
     this.height,
-    this.size = TSizes.lg,
+    this.size = JSizes.lg,
     required this.icon,
     this.color,
     this.backGroundColor,
@@ -30,18 +30,18 @@ class TCircularIcon extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
         color: backGroundColor ??
-            (THelperFunction.isDarkMode(context)
-                ? TColors.white.withOpacity(0.9)
-                : TColors.black.withOpacity(0.9)),
+            (JHelperFunction.isDarkMode(context)
+                ? JColors.white.withOpacity(0.9)
+                : JColors.black.withOpacity(0.9)),
       ),
       child: IconButton(
           onPressed: onPressed,
           icon: Icon(
             icon,
             color: color ??
-                (THelperFunction.isDarkMode(context)
-                    ? TColors.black.withOpacity(0.9)
-                    : TColors.white.withOpacity(0.9)),
+                (JHelperFunction.isDarkMode(context)
+                    ? JColors.black.withOpacity(0.9)
+                    : JColors.white.withOpacity(0.9)),
           )),
     );
   }

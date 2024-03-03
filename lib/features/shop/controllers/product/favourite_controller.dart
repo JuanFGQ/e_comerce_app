@@ -20,7 +20,7 @@ class FavouriteController extends GetxController {
 
   //Method to initialize favourites by reading from storage
   Future<void> initFavourites() async {
-    final json = TLocalStorage.instace().readData('favorites');
+    final json = JLocalStorage.instace().readData('favorites');
     if (json != null) {
       final storedFavorites = jsonDecode(json) as Map<String, dynamic>;
       favorites.assignAll(
@@ -36,20 +36,20 @@ class FavouriteController extends GetxController {
     if (!favorites.containsKey(productId)) {
       favorites[productId] = true;
       saveFavoritesToStorage();
-      TLoaders.customToast(message: 'Products has been added to the wishList.');
+      JLoaders.customToast(message: 'Products has been added to the wishList.');
     } else {
-      TLocalStorage.instace().removeData(productId);
+      JLocalStorage.instace().removeData(productId);
       favorites.remove(productId);
       saveFavoritesToStorage();
       favorites.refresh();
-      TLoaders.customToast(
+      JLoaders.customToast(
           message: 'Product has been removed from the WishList.');
     }
   }
 
   void saveFavoritesToStorage() {
     final encodedFavorites = json.encode(favorites);
-    TLocalStorage.instace().saveData('favorites', encodedFavorites);
+    JLocalStorage.instace().saveData('favorites', encodedFavorites);
   }
 
   Future<List<ProductModel>> favoritesProducts() async {

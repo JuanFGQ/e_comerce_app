@@ -11,8 +11,8 @@ import 'package:e_comerce_app/utils/helpers/cloud_helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TCategoryTab extends StatelessWidget {
-  const TCategoryTab({super.key, required this.category});
+class JCategoryTab extends StatelessWidget {
+  const JCategoryTab({super.key, required this.category});
 
   final CategoryModel category;
 
@@ -24,12 +24,12 @@ class TCategoryTab extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           Padding(
-            padding: const EdgeInsets.all(TSizes.defaultSpace),
+            padding: const EdgeInsets.all(JSizes.defaultSpace),
             child: Column(
               children: [
                 //BRANDS
                 CategoryBrand(category: category),
-                const SizedBox(height: TSizes.spaceBtwItems),
+                const SizedBox(height: JSizes.spaceBtwItems),
 
                 //!dummy test
                 // const TBrandShowCase(
@@ -56,9 +56,9 @@ class TCategoryTab extends StatelessWidget {
                     builder: (context, snapshot) {
 //Helper funtion to handler loader, no record or error
                       final response =
-                          TCloudHelperFunction.checkMultiRecordState(
+                          JCloudHelperFunction.checkMultiRecordState(
                               snapshot: snapshot,
-                              loader: const TVerticalProductShimmer());
+                              loader: const JVerticalProductShimmer());
 
                       if (response != null) return response;
 
@@ -68,7 +68,7 @@ class TCategoryTab extends StatelessWidget {
 
                       return Column(
                         children: [
-                          TSectionHeading(
+                          JSectionHeading(
                             title: 'You might like',
                             showActionButton: true,
                             onPressed: () => Get.to((AllProducts(
@@ -77,13 +77,13 @@ class TCategoryTab extends StatelessWidget {
                                   categoryId: category.id, limit: -1),
                             ))),
                           ),
-                          const SizedBox(height: TSizes.spaceBtwItems),
+                          const SizedBox(height: JSizes.spaceBtwItems),
                           GridLayout(
                               itemCount: products.length,
                               itemBuilder: (_, index) => ProductCardVertical(
                                     product: products[index],
                                   )),
-                          const SizedBox(height: TSizes.spaceBtwSection),
+                          const SizedBox(height: JSizes.spaceBtwSection),
                         ],
                       );
                     })

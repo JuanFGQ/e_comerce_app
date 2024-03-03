@@ -5,8 +5,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
-class TCircularImage extends StatelessWidget {
-  const TCircularImage({
+class JCircularImage extends StatelessWidget {
+  const JCircularImage({
     super.key,
     this.fit = BoxFit.cover,
     required this.image,
@@ -15,7 +15,7 @@ class TCircularImage extends StatelessWidget {
     this.backGroundColor,
     this.width = 56,
     this.height = 56,
-    this.padding = TSizes.md,
+    this.padding = JSizes.md,
   });
   final BoxFit? fit;
   final String image;
@@ -32,9 +32,9 @@ class TCircularImage extends StatelessWidget {
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: THelperFunction.isDarkMode(context)
-              ? TColors.black
-              : TColors.white),
+          color: JHelperFunction.isDarkMode(context)
+              ? JColors.black
+              : JColors.white),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
         child: Center(
@@ -43,7 +43,7 @@ class TCircularImage extends StatelessWidget {
                   fit: fit,
                   color: overlayColor,
                   progressIndicatorBuilder: (context, url, progress) =>
-                      const TShimmerEffect(width: 55, height: 55),
+                      const JShimmerEffect(width: 55, height: 55),
                   imageUrl: image,
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 )

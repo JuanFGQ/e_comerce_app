@@ -7,8 +7,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
-class TCartItem extends StatelessWidget {
-  const TCartItem({
+class JCartItem extends StatelessWidget {
+  const JCartItem({
     super.key,
     required this.cartItem,
   });
@@ -20,17 +20,17 @@ class TCartItem extends StatelessWidget {
       children: [
         //IMAGE
 
-        TRoundedImage(
+        JRoundedImage(
           isNetworkImage: true,
           imageUrl: cartItem.image ?? '',
           width: 60,
           height: 60,
-          padding: const EdgeInsets.all(TSizes.sm),
-          backGroundColor: THelperFunction.isDarkMode(context)
-              ? TColors.light
-              : TColors.dark,
+          padding: const EdgeInsets.all(JSizes.sm),
+          backGroundColor: JHelperFunction.isDarkMode(context)
+              ? JColors.light
+              : JColors.dark,
         ),
-        const SizedBox(width: TSizes.spaceBtwSection),
+        const SizedBox(width: JSizes.spaceBtwSection),
 
         //title,price & size
         Expanded(
@@ -38,9 +38,9 @@ class TCartItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              TBrandTitleTextWithVerifiedIcon(title: cartItem.brandName ?? ''),
+              JBrandTitleTextWithVerifiedIcon(title: cartItem.brandName ?? ''),
               ProductTitleText(
-                  title: cartItem.title, size: TSizes.fontSizeMd, maxLines: 1),
+                  title: cartItem.title, size: JSizes.fontSizeMd, maxLines: 1),
 
               ///attributes
               Text.rich(

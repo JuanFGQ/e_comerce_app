@@ -40,55 +40,55 @@ class NewProductScreen extends StatelessWidget {
                 Row(
                   children: [
                     //!SALE PRICE
-                    const SizedBox(width: TSizes.defaultSpace / 2),
+                    const SizedBox(width: JSizes.defaultSpace / 2),
                     Expanded(
                       child: TextFormField(
                           keyboardType: TextInputType.number,
                           controller: controller.salePrice,
                           validator: (value) =>
-                              TValidator.validateEmptyText('sale price', value),
+                              JValidator.validateEmptyText('sale price', value),
                           expands: false,
                           decoration: const InputDecoration(
                               labelText: 'Sale Price',
                               prefixIcon: Icon(Iconsax.money_3))),
                     ),
-                    const SizedBox(width: TSizes.spaceBtwSection / 2),
+                    const SizedBox(width: JSizes.spaceBtwSection / 2),
                     //!DISCOUNT PRICE
                     Expanded(
                       child: TextFormField(
                           keyboardType: TextInputType.number,
                           controller: controller.discountPrice,
-                          validator: (value) => TValidator.validateEmptyText(
+                          validator: (value) => JValidator.validateEmptyText(
                               'discount price', value),
                           expands: false,
                           decoration: const InputDecoration(
                               labelText: 'Discount Price',
                               prefixIcon: Icon(Iconsax.discount_circle))),
                     ),
-                    const SizedBox(width: TSizes.defaultSpace / 2),
+                    const SizedBox(width: JSizes.defaultSpace / 2),
                   ],
                 ),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
 
                 //!PRODUCT NAME
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: TSizes.defaultSpace, right: TSizes.defaultSpace),
+                      left: JSizes.defaultSpace, right: JSizes.defaultSpace),
                   child: TextFormField(
                       expands: false,
                       controller: controller.productName,
                       validator: (value) =>
-                          TValidator.validateEmptyText('Product name', value),
+                          JValidator.validateEmptyText('Product name', value),
                       decoration: const InputDecoration(
                           labelText: 'Product Name',
                           prefixIcon: Icon(Iconsax.additem4))),
                 ),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
 
                 //!PRODUCT BRAND
                 Row(
                   children: [
-                    const SizedBox(width: TSizes.defaultSpace * 4),
+                    const SizedBox(width: JSizes.defaultSpace * 4),
                     // Expanded(
                     //   child: TextFormField(
                     //       controller: controller.productBrand,
@@ -106,42 +106,42 @@ class NewProductScreen extends StatelessWidget {
                       child: TextFormField(
                           keyboardType: TextInputType.number,
                           controller: controller.availableStock,
-                          validator: (value) => TValidator.validateEmptyText(
+                          validator: (value) => JValidator.validateEmptyText(
                               'Available Stock', value),
                           decoration: const InputDecoration(
                               labelText: 'Available Stock',
                               prefixIcon: Icon(Iconsax.computing))),
                     ),
-                    const SizedBox(width: TSizes.defaultSpace * 4),
+                    const SizedBox(width: JSizes.defaultSpace * 4),
                   ],
                 ),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
 
                 //!DESCRIPTION
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: TSizes.defaultSpace, right: TSizes.defaultSpace),
+                      left: JSizes.defaultSpace, right: JSizes.defaultSpace),
                   child: TextFormField(
                       controller: controller.productDescription,
-                      validator: (value) => TValidator.validateEmptyText(
+                      validator: (value) => JValidator.validateEmptyText(
                           'Describe your product', value),
                       decoration: const InputDecoration(
                           labelText: 'Describe your product',
                           prefixIcon: Icon(Iconsax.additem4))),
                 ),
-                const SizedBox(height: TSizes.spaceBtwSection),
+                const SizedBox(height: JSizes.spaceBtwSection),
 
                 //!SELECT CATEGORY
                 const Padding(
                   padding: EdgeInsets.only(
-                      left: TSizes.defaultSpace, right: TSizes.defaultSpace),
+                      left: JSizes.defaultSpace, right: JSizes.defaultSpace),
                   child: JSelectedCategory(),
                 ),
 
                 //!PUBLISH BUTTON
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: TSizes.defaultSpace, right: TSizes.defaultSpace),
+                      left: JSizes.defaultSpace, right: JSizes.defaultSpace),
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(

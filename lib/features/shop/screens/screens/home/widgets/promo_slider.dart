@@ -8,8 +8,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TPromoSlider extends StatelessWidget {
-  const TPromoSlider({
+class JPromoSlider extends StatelessWidget {
+  const JPromoSlider({
     super.key,
   });
 
@@ -23,7 +23,7 @@ class TPromoSlider extends StatelessWidget {
 
 //43
         if (controller.isLoading.value) {
-          return const TShimmerEffect(width: double.infinity, height: 190);
+          return const JShimmerEffect(width: double.infinity, height: 190);
         }
 
         //no data found
@@ -41,7 +41,7 @@ class TPromoSlider extends StatelessWidget {
                   items: controller.banners
                       .map((e) => Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: TRoundedImage(
+                            child: JRoundedImage(
                               fit: BoxFit.cover,
                               imageUrl: e.imageUrl,
                               isNetworkImage: true,
@@ -49,20 +49,20 @@ class TPromoSlider extends StatelessWidget {
                             ),
                           ))
                       .toList()),
-              const SizedBox(height: TSizes.spaceBtwItems),
+              const SizedBox(height: JSizes.spaceBtwItems),
               Obx(
                 () => Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     for (int i = 0; i < controller.banners.length; i++)
-                      TCircularContainer(
+                      JCircularContainer(
                           margin: const EdgeInsets.only(right: 10),
                           width: 20,
                           height: 4,
                           backGroundColor:
                               controller.carouselCurrentIndex.value == i
-                                  ? TColors.primary
-                                  : TColors.grey),
+                                  ? JColors.primary
+                                  : JColors.grey),
                   ],
                 ),
               )

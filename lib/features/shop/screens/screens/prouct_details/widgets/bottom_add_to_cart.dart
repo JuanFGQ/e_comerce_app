@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TBottomAddToCart extends StatelessWidget {
-  const TBottomAddToCart({super.key, required this.product});
+class JBottomAddToCart extends StatelessWidget {
+  const JBottomAddToCart({super.key, required this.product});
 
   final ProductModel product;
 
@@ -17,15 +17,15 @@ class TBottomAddToCart extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = CartController.instance;
     controller.updateAlreadyAddedProductCount(product);
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Container(
       padding: const EdgeInsets.symmetric(
-          horizontal: TSizes.defaultSpace, vertical: TSizes.defaultSpace / 2),
+          horizontal: JSizes.defaultSpace, vertical: JSizes.defaultSpace / 2),
       decoration: BoxDecoration(
-          color: dark ? TColors.darkGrey : TColors.accent,
+          color: dark ? JColors.darkGrey : JColors.accent,
           borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(TSizes.cardRadiusLg),
-              topRight: Radius.circular(TSizes.cardRadiusLg))),
+              topLeft: Radius.circular(JSizes.cardRadiusLg),
+              topRight: Radius.circular(JSizes.cardRadiusLg))),
       child: Obx(
         () => Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,28 +34,28 @@ class TBottomAddToCart extends StatelessWidget {
               () => Row(
                 children: [
                   //MINUS PRODUCT BUTTON
-                  TCircularIcon(
+                  JCircularIcon(
                     width: 40,
                     height: 40,
                     icon: Iconsax.minus,
-                    backGroundColor: TColors.darkGrey,
-                    color: TColors.white,
+                    backGroundColor: JColors.darkGrey,
+                    color: JColors.white,
                     onPressed: () => controller.productQuantityInCart.value < 1
                         ? null
                         : controller.productQuantityInCart.value -= 1,
                   ),
-                  const SizedBox(width: TSizes.spaceBtwItems),
+                  const SizedBox(width: JSizes.spaceBtwItems),
                   //QUANTITY INDICATOR
                   Text(controller.productQuantityInCart.value.toString(),
                       style: Theme.of(context).textTheme.titleSmall),
-                  const SizedBox(width: TSizes.spaceBtwItems),
+                  const SizedBox(width: JSizes.spaceBtwItems),
                   //PLUSS PRODUCT BUTTON
-                  TCircularIcon(
+                  JCircularIcon(
                     width: 40,
                     height: 40,
                     icon: Iconsax.add,
-                    backGroundColor: TColors.black,
-                    color: TColors.white,
+                    backGroundColor: JColors.black,
+                    color: JColors.white,
                     onPressed: () =>
                         controller.productQuantityInCart.value += 1,
                   ),
@@ -67,18 +67,18 @@ class TBottomAddToCart extends StatelessWidget {
                     ? null
                     : () => controller.addCart(product),
                 style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(TSizes.md),
-                    backgroundColor: TColors.black,
+                    padding: const EdgeInsets.all(JSizes.md),
+                    backgroundColor: JColors.black,
                     side: BorderSide(
                         color: controller.productQuantityInCart.value < 1
-                            ? TColors.darkGrey
-                            : TColors.white)),
+                            ? JColors.darkGrey
+                            : JColors.white)),
                 child: Text(
                   'Add to Cart',
                   style: TextStyle(
                       color: controller.productQuantityInCart.value < 1
-                          ? TColors.darkGrey
-                          : TColors.white),
+                          ? JColors.darkGrey
+                          : JColors.white),
                 ))
           ],
         ),

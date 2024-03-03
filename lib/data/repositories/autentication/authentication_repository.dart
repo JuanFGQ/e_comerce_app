@@ -40,7 +40,7 @@ class AuthenticationRepository extends GetxController {
       //if the user´s email is verified, navigate to the main Navigation menu
       if (user.emailVerified) {
         //initialize user specific storage //49
-        await TLocalStorage.init(user.uid);
+        await JLocalStorage.init(user.uid);
 
         //if the user´s email is verified , navigate to the main Navigation Menu
         Get.offAll(() => const NavigationMenu());
@@ -65,13 +65,13 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw JFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -84,13 +84,13 @@ class AuthenticationRepository extends GetxController {
       return await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw JFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw JFirebaseAuthException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong, Please try again';
     }
@@ -109,13 +109,13 @@ class AuthenticationRepository extends GetxController {
 
       await _auth.currentUser!.reauthenticateWithCredential(credential);
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw JFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -127,13 +127,13 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.currentUser?.sendEmailVerification();
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw JFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -144,13 +144,13 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw JFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -177,13 +177,13 @@ class AuthenticationRepository extends GetxController {
 
       return await _auth.signInWithCredential(credentials);
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw JFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       // throw 'Something went wrong. Please try again';
       if (kDebugMode) print('Shomething went wrong: $e');
@@ -202,13 +202,13 @@ class AuthenticationRepository extends GetxController {
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw JFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -223,13 +223,13 @@ class AuthenticationRepository extends GetxController {
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw JFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }

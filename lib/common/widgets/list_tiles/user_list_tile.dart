@@ -5,8 +5,8 @@ import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TUserProfileTile extends StatelessWidget {
-  const TUserProfileTile({
+class JUserProfileTile extends StatelessWidget {
+  const JUserProfileTile({
     super.key,
     required this.onPressed,
   });
@@ -22,18 +22,18 @@ class TUserProfileTile extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .headlineSmall!
-              .apply(color: TColors.white)),
+              .apply(color: JColors.white)),
       subtitle: Text(controller.user.value.email,
           style: Theme.of(context)
               .textTheme
               .bodyMedium!
-              .apply(color: TColors.white)),
+              .apply(color: JColors.white)),
       trailing: IconButton(
           onPressed: onPressed,
           icon: const Icon(Iconsax.edit),
-          color: TColors.white),
-      leading: const TCircularImage(
-        image: TImages.google,
+          color: JColors.white),
+      leading: const JCircularImage(
+        image: JImages.google,
         width: 50,
         height: 50,
         padding: 0,

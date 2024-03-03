@@ -16,17 +16,17 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = CartController.instance;
     return Scaffold(
-      appBar: TAppBar(
+      appBar: JAppBar(
         showBackArrow: true,
         title: Text('Cart', style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: Obx(() {
         //Nothing Found Widget
-        final emptyWidget = TAnimationLoader(
+        final emptyWidget = JAnimationLoader(
           actionText: 'Let\'s fill it',
           showAction: true,
           text: 'Whoops! cart is Empty',
-          animation: TImages.emptyCart,
+          animation: JImages.emptyCart,
           onActionPressed: () => Get.off(() => const NavigationMenu()),
         );
 
@@ -35,10 +35,10 @@ class CartScreen extends StatelessWidget {
         } else {
           return const SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.all(TSizes.defaultSpace),
+              padding: EdgeInsets.all(JSizes.defaultSpace),
 
               //items in cart
-              child: TCartItems(),
+              child: JCartItems(),
             ),
           );
         }
@@ -48,7 +48,7 @@ class CartScreen extends StatelessWidget {
       bottomNavigationBar: controller.cartItems.isEmpty
           ? const SizedBox()
           : Padding(
-              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              padding: const EdgeInsets.all(JSizes.defaultSpace),
               child: ElevatedButton(
                   onPressed: () => Get.to(() => const CheckOutScreen()),
                   child: Obx(() =>

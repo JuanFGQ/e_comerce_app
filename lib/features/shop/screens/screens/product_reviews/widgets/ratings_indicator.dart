@@ -2,8 +2,8 @@ import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
-class TRatingProgressIndicator extends StatelessWidget {
-  const TRatingProgressIndicator({
+class JRatingProgressIndicator extends StatelessWidget {
+  const JRatingProgressIndicator({
     super.key,
     required this.text,
     required this.value,
@@ -22,12 +22,12 @@ class TRatingProgressIndicator extends StatelessWidget {
         Expanded(
           flex: 12,
           child: SizedBox(
-            width: THelperFunction.screenWidth(context) * 0.8,
+            width: JHelperFunction.screenWidth(context) * 0.8,
             child: LinearProgressIndicator(
               value: value,
               minHeight: 11,
-              backgroundColor: TColors.grey,
-              valueColor: const AlwaysStoppedAnimation(TColors.primary),
+              backgroundColor: JColors.grey,
+              valueColor: const AlwaysStoppedAnimation(JColors.primary),
               borderRadius: BorderRadius.circular(7),
             ),
           ),

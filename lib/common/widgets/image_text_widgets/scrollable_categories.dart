@@ -4,13 +4,13 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
-class TScrollableCategories extends StatelessWidget {
-  const TScrollableCategories({
+class JScrollableCategories extends StatelessWidget {
+  const JScrollableCategories({
     super.key,
     required this.image,
     required this.title,
-    this.textColor = TColors.white,
-    this.backGroundColor = TColors.light,
+    this.textColor = JColors.white,
+    this.backGroundColor = JColors.light,
     this.onTap,
     this.isNetworkImage = true,
   });
@@ -27,20 +27,20 @@ class TScrollableCategories extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(right: TSizes.spaceBtwItems),
+        padding: const EdgeInsets.only(right: JSizes.spaceBtwItems),
         child: Column(
           children: [
             //CIRCULAR ICON
             Container(
               width: 56,
               height: 56,
-              padding: const EdgeInsets.all(TSizes.sm),
+              padding: const EdgeInsets.all(JSizes.sm),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 color: backGroundColor ??
-                    (THelperFunction.isDarkMode(context)
-                        ? TColors.light
-                        : TColors.light),
+                    (JHelperFunction.isDarkMode(context)
+                        ? JColors.light
+                        : JColors.light),
               ),
               child: Center(
                   child: isNetworkImage
@@ -50,7 +50,7 @@ class TScrollableCategories extends StatelessWidget {
                         )
                       : const Icon(Icons.explicit_sharp)),
             ),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
+            const SizedBox(height: JSizes.spaceBtwItems / 2),
             //ICON SUBTITLE
             Text(
               title,

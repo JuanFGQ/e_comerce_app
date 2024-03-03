@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TAppBar extends StatelessWidget implements PreferredSize {
-  const TAppBar(
+class JAppBar extends StatelessWidget implements PreferredSize {
+  const JAppBar(
       {super.key,
       this.title,
       this.showBackArrow = false,
@@ -23,23 +23,23 @@ class TAppBar extends StatelessWidget implements PreferredSize {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: TSizes.md),
+        padding: const EdgeInsets.symmetric(horizontal: JSizes.md),
         child: AppBar(
           automaticallyImplyLeading: false,
           leading: showBackArrow
               ? IconButton(
                   icon: Icon(
                     Iconsax.arrow_left,
-                    color: dark ? TColors.white : TColors.dark,
+                    color: dark ? JColors.white : JColors.dark,
                   ),
                   onPressed: () => Get.back())
               : leadingIcon != null
                   ? IconButton(
                       icon: Icon(
                         leadingIcon,
-                        color: dark ? TColors.white : TColors.dark,
+                        color: dark ? JColors.white : JColors.dark,
                       ),
                       onPressed: leadingOnPressed)
                   : null,
@@ -53,5 +53,5 @@ class TAppBar extends StatelessWidget implements PreferredSize {
   Widget get child => throw UnimplementedError();
 
   @override
-  Size get preferredSize => Size.fromHeight(TDeviceUtils.getAppBarHeight());
+  Size get preferredSize => Size.fromHeight(JDeviceUtils.getAppBarHeight());
 }

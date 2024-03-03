@@ -19,29 +19,29 @@ class ForgetPasswordController extends GetxController {
   sendPasswordResetEmail() async {
     try {
       //START LOADING
-      TFullScreenLoader.openLoadingDialog(
-          'Processing your request...', TImages.handLoading);
+      JFullScreenLoader.openLoadingDialog(
+          'Processing your request...', JImages.handLoading);
 
       //CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
       //form validation
       if (!forgetPasswordFormKey.currentState!.validate()) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
       //TRIGGER THE METHOD
       await AuthenticationRepository.instance.resetPassword(email.text.trim());
 
       //REMOVE LOADER
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
 
       //SHOW SUCCES SCREEN
-      TLoaders.successSnackBar(
+      JLoaders.successSnackBar(
           title: 'Email Sent',
           message: 'Email Link Sento to Reset your Password'.tr);
 
@@ -49,21 +49,21 @@ class ForgetPasswordController extends GetxController {
       Get.to(() => ResetPasswordScreen(email: email.text.trim()));
     } catch (e) {
       //REMOVE LOADER
-      TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JFullScreenLoader.stopLoading();
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 
   resendPasswordResetEmail(String email) async {
     try {
       //START LOADING
-      TFullScreenLoader.openLoadingDialog(
-          'Processing your request...', TImages.handLoading);
+      JFullScreenLoader.openLoadingDialog(
+          'Processing your request...', JImages.handLoading);
 
       //CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
@@ -71,16 +71,16 @@ class ForgetPasswordController extends GetxController {
       await AuthenticationRepository.instance.resetPassword(email);
 
       //REMOVE LOADER
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
 
       //SHOW SUCCES SCREEN
-      TLoaders.successSnackBar(
+      JLoaders.successSnackBar(
           title: 'Email Sent',
           message: 'Email Link Sento to Reset your Password'.tr);
     } catch (e) {
       //REMOVE LOADER
-      TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JFullScreenLoader.stopLoading();
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }

@@ -14,8 +14,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TProductMetaData extends StatelessWidget {
-  const TProductMetaData({super.key, required this.product});
+class JProductMetaData extends StatelessWidget {
+  const JProductMetaData({super.key, required this.product});
 
   final ProductModel product;
 
@@ -33,20 +33,20 @@ class TProductMetaData extends StatelessWidget {
         Row(
           children: [
             //sale tag
-            CRoundedContainer(
-              radius: TSizes.sm,
-              backGroundColor: TColors.secondary.withOpacity(0.8),
+            JRoundedContainer(
+              radius: JSizes.sm,
+              backGroundColor: JColors.secondary.withOpacity(0.8),
               padding: const EdgeInsets.symmetric(
-                  horizontal: TSizes.sm, vertical: TSizes.xs),
+                  horizontal: JSizes.sm, vertical: JSizes.xs),
               widget: Text(
                 '$salePercentage%',
                 style: Theme.of(context)
                     .textTheme
                     .labelLarge!
-                    .apply(color: TColors.black),
+                    .apply(color: JColors.black),
               ),
             ),
-            const SizedBox(width: TSizes.spaceBtwItems),
+            const SizedBox(width: JSizes.spaceBtwItems),
 
             //!price
 
@@ -57,21 +57,21 @@ class TProductMetaData extends StatelessWidget {
                       .titleSmall!
                       .apply(decoration: TextDecoration.lineThrough)),
 
-            const SizedBox(width: TSizes.spaceBtwItems),
+            const SizedBox(width: JSizes.spaceBtwItems),
             if (product.salePrice > 0)
-              TProductPriceText(
+              JProductPriceText(
                   price:
                       '\$${controller.calculatSalePercetange(product.price, product.salePrice)}',
                   isLarge: true)
           ],
         ),
-        const SizedBox(height: TSizes.spaceBtwItems / 1.5),
+        const SizedBox(height: JSizes.spaceBtwItems / 1.5),
 
         //title
         ProductTitleText(
           title: product.title,
         ),
-        const SizedBox(height: TSizes.spaceBtwSection / 2),
+        const SizedBox(height: JSizes.spaceBtwSection / 2),
 
         //!stock status
 
@@ -79,9 +79,9 @@ class TProductMetaData extends StatelessWidget {
           children: [
             const ProductTitleText(
               title: 'Status :',
-              size: TSizes.fontSizeMd,
+              size: JSizes.fontSizeMd,
             ),
-            const SizedBox(width: TSizes.spaceBtwItems / 2),
+            const SizedBox(width: JSizes.spaceBtwItems / 2),
             Text(controller.getProductStockStatus(product.stock),
                 style: Theme.of(context).textTheme.titleMedium),
           ],
@@ -90,7 +90,7 @@ class TProductMetaData extends StatelessWidget {
         //!brand
         Row(
           children: [
-            TCircularImage(
+            JCircularImage(
               fit: BoxFit.cover,
               isNetWorkImage:
                   product.brand!.image.contains('http') ? true : false,
@@ -98,7 +98,7 @@ class TProductMetaData extends StatelessWidget {
               height: 70,
               image: product.brand != null ? product.brand!.image : '',
             ),
-            TBrandTitleTextWithVerifiedIcon(
+            JBrandTitleTextWithVerifiedIcon(
                 title: product.brand != null ? product.brand!.name : '',
                 brandTextSize: TextSizes.medium),
             const Spacer(),

@@ -28,9 +28,9 @@ class ProductRepository extends GetxController {
       //return the snapshot document of the products
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Pleae try again';
     }
@@ -46,9 +46,9 @@ class ProductRepository extends GetxController {
       //return the snapshot document of the products
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Pleae try again';
     }
@@ -64,9 +64,9 @@ class ProductRepository extends GetxController {
 
       return productList;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Pleae try again';
     }
@@ -84,9 +84,9 @@ class ProductRepository extends GetxController {
           .map((quuerySnapshot) => ProductModel.fromSnapshot(quuerySnapshot))
           .toList();
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Pleae try again';
     }
@@ -99,7 +99,7 @@ class ProductRepository extends GetxController {
   Future<void> uploadTestData(List<ProductModel> products) async {
     try {
       //Upload all the products along with theis images
-      final storage = Get.put(TFirebaseStorageService());
+      final storage = Get.put(JFirebaseStorageService());
 
       //loop through each product
       for (var product in products) {
@@ -181,9 +181,9 @@ class ProductRepository extends GetxController {
           querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
       return products;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Pleae try again';
     }
@@ -220,9 +220,9 @@ class ProductRepository extends GetxController {
 
       return products;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Pleae try again';
     }
@@ -232,11 +232,11 @@ class ProductRepository extends GetxController {
     try {
       await _db.collection("Products").doc().set(model.toJson());
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. please try again';
     }

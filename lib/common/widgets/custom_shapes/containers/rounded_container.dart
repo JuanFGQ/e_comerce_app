@@ -2,16 +2,16 @@ import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-class CRoundedContainer extends StatelessWidget {
-  const CRoundedContainer(
+class JRoundedContainer extends StatelessWidget {
+  const JRoundedContainer(
       {super.key,
       this.width,
       this.height,
-      this.radius = TSizes.cardRadiusLg,
+      this.radius = JSizes.cardRadiusLg,
       this.widget,
       this.showBorder = false,
-      this.borderColor = TColors.primary,
-      this.backGroundColor = TColors.white,
+      this.borderColor = JColors.primary,
+      this.backGroundColor = JColors.white,
       this.padding,
       this.margin});
   final double? width;

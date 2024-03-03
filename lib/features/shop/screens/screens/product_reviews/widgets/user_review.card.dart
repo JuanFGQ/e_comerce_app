@@ -12,7 +12,7 @@ class UserReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Container(
       child: Column(
         children: [
@@ -21,27 +21,28 @@ class UserReviewCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const CircleAvatar(backgroundImage: AssetImage(TImages.facebook)),
-                  const SizedBox(width: TSizes.spaceBtwItems),
+                  const CircleAvatar(
+                      backgroundImage: AssetImage(JImages.facebook)),
+                  const SizedBox(width: JSizes.spaceBtwItems),
                   Text('MobileX', style: Theme.of(context).textTheme.titleLarge)
                 ],
               ),
               IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
             ],
           ),
-          const SizedBox(width: TSizes.spaceBtwItems),
+          const SizedBox(width: JSizes.spaceBtwItems),
 
           //REVIEWS
 
           Row(
             children: [
-              const TRatingBarIndicator(rating: 4),
-              const SizedBox(width: TSizes.spaceBtwItems),
+              const JRatingBarIndicator(rating: 4),
+              const SizedBox(width: JSizes.spaceBtwItems),
               Text('0.1 Nov, 2023',
                   style: Theme.of(context).textTheme.bodyMedium)
             ],
           ),
-          const SizedBox(height: TSizes.spaceBtwItems),
+          const SizedBox(height: JSizes.spaceBtwItems),
           const ReadMoreText(
               'Ex quis veniam magna duis excepteur adipisicing nisi culpa laborum. Consequat dolor ullamco deserunt exercitation reprehenderit nulla enim. Nostrud nulla excepteur non veniam. Nostrud excepteur elit sit eiusmod sit. Fugiat ut enim magna do exercitation aliquip.',
               trimLines: 2,
@@ -51,19 +52,19 @@ class UserReviewCard extends StatelessWidget {
               moreStyle: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: TColors.primary),
+                  color: JColors.primary),
               lessStyle: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: TColors.primary)),
-          const SizedBox(height: TSizes.spaceBtwItems),
+                  color: JColors.primary)),
+          const SizedBox(height: JSizes.spaceBtwItems),
 
           ///Company Review
           ///
-          CRoundedContainer(
-            backGroundColor: dark ? TColors.darkerGrey : TColors.grey,
+          JRoundedContainer(
+            backGroundColor: dark ? JColors.darkerGrey : JColors.grey,
             widget: Padding(
-              padding: const EdgeInsets.all(TSizes.md),
+              padding: const EdgeInsets.all(JSizes.md),
               child: Column(
                 children: [
                   Row(
@@ -75,7 +76,7 @@ class UserReviewCard extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyMedium),
                     ],
                   ),
-                  const SizedBox(height: TSizes.spaceBtwItems),
+                  const SizedBox(height: JSizes.spaceBtwItems),
                   const ReadMoreText(
                       'Ex quis veniam magna duis excepteur adipisicing nisi culpa laborum. Consequat dolor ullamco deserunt exercitation reprehenderit nulla enim. Nostrud nulla excepteur non veniam. Nostrud excepteur elit sit eiusmod sit. Fugiat ut enim magna do exercitation aliquip.',
                       trimLines: 2,
@@ -85,11 +86,11 @@ class UserReviewCard extends StatelessWidget {
                       moreStyle: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: TColors.primary),
+                          color: JColors.primary),
                       lessStyle: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: TColors.primary)),
+                          color: JColors.primary)),
                 ],
               ),
             ),

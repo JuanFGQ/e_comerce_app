@@ -3,8 +3,8 @@ import 'package:e_comerce_app/common/widgets/shimmer_effect/shimmer_effect.dart'
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-class TVerticalProductShimmer extends StatelessWidget {
-  const TVerticalProductShimmer({super.key, this.itemCount = 4});
+class JVerticalProductShimmer extends StatelessWidget {
+  const JVerticalProductShimmer({super.key, this.itemCount = 4});
 
   final int itemCount;
 
@@ -18,13 +18,13 @@ class TVerticalProductShimmer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //Image
-            TShimmerEffect(width: 180, height: 180),
-            SizedBox(height: TSizes.spaceBtwItems),
+            JShimmerEffect(width: 180, height: 180),
+            SizedBox(height: JSizes.spaceBtwItems),
 
             //TEXT
-            TShimmerEffect(width: 160, height: 15),
-            SizedBox(height: TSizes.spaceBtwItems / 2),
-            TShimmerEffect(width: 110, height: 15),
+            JShimmerEffect(width: 160, height: 15),
+            SizedBox(height: JSizes.spaceBtwItems / 2),
+            JShimmerEffect(width: 110, height: 15),
 
             //
           ],

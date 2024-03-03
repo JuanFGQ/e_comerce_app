@@ -1,4 +1,4 @@
-class TPricingCalculator {
+class JPricingCalculator {
   //CALCULATE PRICE BASED ON TAX AND SHIPPING
   static double calculateTotalPrice(double productPrice, String location) {
     double taxRate = getTaxRateForLocation(location);

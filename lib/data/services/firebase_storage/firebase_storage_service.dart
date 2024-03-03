@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class TFirebaseStorageService extends GetxController {
-  static TFirebaseStorageService get instance => Get.find();
+class JFirebaseStorageService extends GetxController {
+  static JFirebaseStorageService get instance => Get.find();
 
   final _firebaseStorage = FirebaseStorage.instance;
 

@@ -18,25 +18,25 @@ class ProductsAttributes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     final controller = Get.put(VariationController());
     return Obx(
       () => Column(
         children: [
           if (controller.selectedVariation.value.id.isNotEmpty)
-            CRoundedContainer(
-              padding: const EdgeInsets.all(TSizes.md),
-              backGroundColor: dark ? TColors.darkerGrey : TColors.grey,
+            JRoundedContainer(
+              padding: const EdgeInsets.all(JSizes.md),
+              backGroundColor: dark ? JColors.darkerGrey : JColors.grey,
               widget: Column(
                 children: [
                   ///TITLE PRICE AND STOCK STATUS
                   Row(
                     children: [
-                      const TSectionHeading(
+                      const JSectionHeading(
                         title: 'Variation',
                         showActionButton: false,
                       ),
-                      const SizedBox(width: TSizes.spaceBtwItems),
+                      const SizedBox(width: JSizes.spaceBtwItems),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -44,7 +44,7 @@ class ProductsAttributes extends StatelessWidget {
                             children: [
                               const ProductTitleText(
                                   title: 'Price: ', smallSize: true),
-                              const SizedBox(width: TSizes.spaceBtwItems),
+                              const SizedBox(width: JSizes.spaceBtwItems),
                               //Actual price
                               if (controller.selectedVariation.value.salePrice >
                                   0)
@@ -55,10 +55,10 @@ class ProductsAttributes extends StatelessWidget {
                                         .apply(
                                             decoration:
                                                 TextDecoration.lineThrough)),
-                              const SizedBox(width: TSizes.spaceBtwItems),
+                              const SizedBox(width: JSizes.spaceBtwItems),
 
                               //sale price
-                              TProductPriceText(
+                              JProductPriceText(
                                   price: controller.getVariationPrice())
                             ],
                           ),
@@ -84,7 +84,7 @@ class ProductsAttributes extends StatelessWidget {
                 ],
               ),
             ),
-          const SizedBox(height: TSizes.spaceBtwItems),
+          const SizedBox(height: JSizes.spaceBtwItems),
 
           //Atributes - Colors
           Column(
@@ -94,10 +94,10 @@ class ProductsAttributes extends StatelessWidget {
                     (attribute) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TSectionHeading(
+                        JSectionHeading(
                             title: attribute.name ?? '',
                             showActionButton: false),
-                        const SizedBox(height: TSizes.spaceBtwItems / 2),
+                        const SizedBox(height: JSizes.spaceBtwItems / 2),
                         Obx(
                           () => Wrap(
                               spacing: 8,
@@ -111,7 +111,7 @@ class ProductsAttributes extends StatelessWidget {
                                         attribute.name!)
                                     .contains(attributeValue);
 
-                                return TChoiceChip(
+                                return JChoiceChip(
                                     text: attributeValue,
                                     selected: isSelected,
                                     onSelected: available

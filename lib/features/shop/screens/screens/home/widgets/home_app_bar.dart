@@ -10,40 +10,40 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class THomeAppBar extends StatelessWidget {
-  const THomeAppBar({
+class JHomeAppBar extends StatelessWidget {
+  const JHomeAppBar({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
-    return TAppBar(
+    return JAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(TTexts.homeAppbarTitle,
+          Text(JTexts.homeAppbarTitle,
               style: Theme.of(context)
                   .textTheme
                   .labelMedium!
-                  .apply(color: TColors.grey)),
+                  .apply(color: JColors.grey)),
           Obx(() {
             if (controller.profileLoading.value) {
               //display a shimmer loader while user profile is being loaded
-              return const TShimmerEffect(width: 80, height: 15);
+              return const JShimmerEffect(width: 80, height: 15);
             } else {
               return Text(controller.user.value.fullName,
                   style: Theme.of(context)
                       .textTheme
                       .headlineSmall!
-                      .apply(color: TColors.white));
+                      .apply(color: JColors.white));
             }
           })
         ],
       ),
       actions: const [
-        TCartCounterIcon(),
-        SizedBox(width: TSizes.spaceBtwItems),
+        JCartCounterIcon(),
+        SizedBox(width: JSizes.spaceBtwItems),
         JMessagesIcon()
       ],
     );

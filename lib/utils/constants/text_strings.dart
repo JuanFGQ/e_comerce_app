@@ -1,4 +1,4 @@
-class TTexts {
+class JTexts {
   static const String onBoardingTitle1 = 'Choose your product';
   static const String onBoardingTitle2 = 'Select payment method';
 

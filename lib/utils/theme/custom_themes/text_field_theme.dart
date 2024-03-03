@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TTextFieldTheme {
-  TTextFieldTheme._();
+class JTextFieldTheme {
+  JTextFieldTheme._();
 
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
       errorMaxLines: 3,

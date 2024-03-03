@@ -28,7 +28,7 @@ class ChatScreen extends StatelessWidget {
 
     return Scaffold(
         // bottomNavigationBar:
-        appBar: TAppBar(
+        appBar: JAppBar(
           showBackArrow: true,
           title: Text('Friend  name',
               style: Theme.of(context).textTheme.headlineMedium),
@@ -49,13 +49,13 @@ class ChatScreen extends StatelessWidget {
             builder: (context, snapshot) {
               //nothing found
               const emptyWidget = Expanded(
-                child: TAnimationControllerWidget(
+                child: JAnimationControllerWidget(
                   text: 'Chat with your seller',
-                  animation: TImages.noMessag,
+                  animation: JImages.noMessag,
                 ),
               );
 
-              final widget = TCloudHelperFunction.checkMultiRecordState(
+              final widget = JCloudHelperFunction.checkMultiRecordState(
                   snapshot: snapshot, nothingFound: emptyWidget);
               if (widget != null) return widget;
 
@@ -85,7 +85,7 @@ class ChatScreen extends StatelessWidget {
                       child: TextFormField(
                         controller: controller.messages,
                         validator: (value) =>
-                            TValidator.validateEmptyText('Name', value),
+                            JValidator.validateEmptyText('Name', value),
                         keyboardType: TextInputType.text,
                         // controller: controller.discountPrice,
                         // validator: (value) => TValidator.validateEmptyText(

@@ -5,8 +5,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TSocialButton extends StatelessWidget {
-  const TSocialButton({
+class JSocialButton extends StatelessWidget {
+  const JSocialButton({
     super.key,
   });
 
@@ -21,28 +21,28 @@ class TSocialButton extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
               color: Colors.white,
-              border: Border.all(color: TColors.grey)),
+              border: Border.all(color: JColors.grey)),
           child: IconButton(
               onPressed: () => controller.googleSignIn(),
               icon: const Image(
-                  width: TSizes.iconMd,
-                  height: TSizes.iconMd,
-                  image: AssetImage(TImages.google))),
+                  width: JSizes.iconMd,
+                  height: JSizes.iconMd,
+                  image: AssetImage(JImages.google))),
         ),
-        const SizedBox(width: TSizes.spaceBtwItems),
+        const SizedBox(width: JSizes.spaceBtwItems),
         //FACEBOOK SIGN IN BUTTON
 
         Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
               color: Colors.white,
-              border: Border.all(color: TColors.grey)),
+              border: Border.all(color: JColors.grey)),
           child: IconButton(
               onPressed: () {},
               icon: const Image(
-                  width: TSizes.iconMd,
-                  height: TSizes.iconMd,
-                  image: AssetImage(TImages.facebook))),
+                  width: JSizes.iconMd,
+                  height: JSizes.iconMd,
+                  image: AssetImage(JImages.facebook))),
         )
       ],
     );

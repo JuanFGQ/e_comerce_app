@@ -8,8 +8,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
-class TBrandCard extends StatelessWidget {
-  const TBrandCard({
+class JBrandCard extends StatelessWidget {
+  const JBrandCard({
     super.key,
     required this.showBorder,
     this.onTap,
@@ -23,8 +23,8 @@ class TBrandCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: CRoundedContainer(
-        padding: const EdgeInsets.all(TSizes.sm),
+      child: JRoundedContainer(
+        padding: const EdgeInsets.all(JSizes.sm),
         showBorder: showBorder,
         backGroundColor: Colors.transparent,
         widget: Row(
@@ -32,22 +32,22 @@ class TBrandCard extends StatelessWidget {
             //ICON
 
             Flexible(
-              child: TCircularImage(
+              child: JCircularImage(
                   image: brand.image,
                   backGroundColor: Colors.transparent,
                   isNetWorkImage: true,
-                  overlayColor: THelperFunction.isDarkMode(context)
-                      ? TColors.white
-                      : TColors.black),
+                  overlayColor: JHelperFunction.isDarkMode(context)
+                      ? JColors.white
+                      : JColors.black),
             ),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
+            const SizedBox(height: JSizes.spaceBtwItems / 2),
             //TEXT
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TBrandTitleTextWithVerifiedIcon(
+                  JBrandTitleTextWithVerifiedIcon(
                       title: brand.name, brandTextSize: TextSizes.large),
                   Text('${brand.productsCount ?? 0} products',
                       overflow: TextOverflow.ellipsis,

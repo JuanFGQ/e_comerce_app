@@ -14,13 +14,13 @@ class OnBoardingDotNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = OnBoardingController.instance;
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Positioned(
-        bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
-        left: TSizes.defaultSpace,
+        bottom: JDeviceUtils.getBottomNavigationBarHeight() + 25,
+        left: JSizes.defaultSpace,
         child: SmoothPageIndicator(
             effect: ExpandingDotsEffect(
-                activeDotColor: dark ? TColors.light : TColors.dark,
+                activeDotColor: dark ? JColors.light : JColors.dark,
                 dotHeight: 6),
             controller: controller.pageController,
             onDotClicked: controller.dotNavigationClick,

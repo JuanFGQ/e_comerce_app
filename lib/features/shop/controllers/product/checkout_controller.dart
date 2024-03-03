@@ -15,7 +15,7 @@ class CheckOutController extends GetxController {
   @override
   void onInit() {
     selectedPaymenthMethod.value =
-        PaymentMethodModel(image: TImages.paypal, name: 'Paypal');
+        PaymentMethodModel(image: JImages.paypal, name: 'Paypal');
     super.onInit();
   }
 
@@ -23,37 +23,37 @@ class CheckOutController extends GetxController {
     return showModalBottomSheet(
         context: context,
         builder: (_) => Padding(
-              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              padding: const EdgeInsets.all(JSizes.defaultSpace),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const TSectionHeading(
+                    const JSectionHeading(
                         title: 'Select Payment Method',
                         showActionButton: false),
-                    const SizedBox(height: TSizes.spaceBtwSection),
+                    const SizedBox(height: JSizes.spaceBtwSection),
 
                     //PAYMENT OPTION
-                    TPaymentTile(
+                    JPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: TImages.paypal, name: 'PayPal')),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TPaymentTile(
+                            image: JImages.paypal, name: 'PayPal')),
+                    const SizedBox(height: JSizes.spaceBtwItems / 2),
+                    JPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: TImages.googlePay, name: 'Google Pay')),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TPaymentTile(
+                            image: JImages.googlePay, name: 'Google Pay')),
+                    const SizedBox(height: JSizes.spaceBtwItems / 2),
+                    JPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: TImages.applePay, name: 'Apple Pay')),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TPaymentTile(
+                            image: JImages.applePay, name: 'Apple Pay')),
+                    const SizedBox(height: JSizes.spaceBtwItems / 2),
+                    JPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: TImages.visa, name: 'VISA')),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TPaymentTile(
+                            image: JImages.visa, name: 'VISA')),
+                    const SizedBox(height: JSizes.spaceBtwItems / 2),
+                    JPaymentTile(
                         paymentMethod: PaymentMethodModel(
-                            image: TImages.mastercard, name: 'Mastercard')),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
+                            image: JImages.mastercard, name: 'Mastercard')),
+                    const SizedBox(height: JSizes.spaceBtwItems / 2),
                     // TPaymentTile(
                     //     paymentMethod: PaymentMethodModel(
                     //         image: 'Paytm', name: TImages.google)),
@@ -65,8 +65,8 @@ class CheckOutController extends GetxController {
                     // TPaymentTile(
                     //     paymentMethod: PaymentMethodModel(
                     //         image: 'Credit Card', name: TImages.google)),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    const SizedBox(height: TSizes.spaceBtwSection),
+                    const SizedBox(height: JSizes.spaceBtwItems / 2),
+                    const SizedBox(height: JSizes.spaceBtwSection),
                   ],
                 ),
               ),

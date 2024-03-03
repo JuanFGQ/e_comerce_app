@@ -38,7 +38,7 @@ class BannerController extends GetxController {
 
       //fetch banners
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       //remove loader
       isLoading.value = false;
@@ -49,11 +49,11 @@ class BannerController extends GetxController {
     try {
       final bannerRepo = Get.put(BannerRepository());
 
-      await bannerRepo.uploadBannersDummyData(TDummyData.banners);
+      await bannerRepo.uploadBannersDummyData(JDummyData.banners);
 
-      TLoaders.successSnackBar(title: 'Succesfully uploaded');
+      JLoaders.successSnackBar(title: 'Succesfully uploaded');
     } catch (e) {
-      TLoaders.errorSnackBar(
+      JLoaders.errorSnackBar(
           title: 'Error while uploading', message: e.toString());
     }
   }

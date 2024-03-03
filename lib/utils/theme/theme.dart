@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 
 import 'custom_themes/elevated_button_theme.dart';
 
-class TAppTheme {
-  TAppTheme._();
+class JAppTheme {
+  JAppTheme._();
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
@@ -18,13 +18,13 @@ class TAppTheme {
     brightness: Brightness.light,
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
-    textTheme: TTextTheme.lightTextTheme,
-    elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
-    appBarTheme: TAppBarTheme.lightBarTheme,
-    checkboxTheme: TCheckBoxTheme.lightCheckBoxTheme,
-    bottomSheetTheme: TBottomSheeTheme.lightBottomSheetTheme,
-    outlinedButtonTheme: TOutlineButtonTheme.lightOutlineButtonTheme,
-    inputDecorationTheme: TTextFieldTheme.lightInputDecorationTheme,
+    textTheme: JTextTheme.lightTextTheme,
+    elevatedButtonTheme: JElevatedButtonTheme.lightElevatedButtonTheme,
+    appBarTheme: JAppBarTheme.lightBarTheme,
+    checkboxTheme: JCheckBoxTheme.lightCheckBoxTheme,
+    bottomSheetTheme: JBottomSheeTheme.lightBottomSheetTheme,
+    outlinedButtonTheme: JOutlineButtonTheme.lightOutlineButtonTheme,
+    inputDecorationTheme: JTextFieldTheme.lightInputDecorationTheme,
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
@@ -34,12 +34,12 @@ class TAppTheme {
     brightness: Brightness.dark,
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.black,
-    textTheme: TTextTheme.darkTextTheme,
-    elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
-    appBarTheme: TAppBarTheme.darkBarTheme,
-    checkboxTheme: TCheckBoxTheme.darkCheckBoxTheme,
-    bottomSheetTheme: TBottomSheeTheme.darkBottomSheetTheme,
-    outlinedButtonTheme: TOutlineButtonTheme.darkOutlineButtonTheme,
-    inputDecorationTheme: TTextFieldTheme.darkInputDecorationTheme,
+    textTheme: JTextTheme.darkTextTheme,
+    elevatedButtonTheme: JElevatedButtonTheme.darkElevatedButtonTheme,
+    appBarTheme: JAppBarTheme.darkBarTheme,
+    checkboxTheme: JCheckBoxTheme.darkCheckBoxTheme,
+    bottomSheetTheme: JBottomSheeTheme.darkBottomSheetTheme,
+    outlinedButtonTheme: JOutlineButtonTheme.darkOutlineButtonTheme,
+    inputDecorationTheme: JTextFieldTheme.darkInputDecorationTheme,
   );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TCustomCurvedEdges extends CustomClipper<Path> {
+class JCustomCurvedEdges extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();

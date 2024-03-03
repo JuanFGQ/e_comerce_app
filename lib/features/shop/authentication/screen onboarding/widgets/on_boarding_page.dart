@@ -15,7 +15,7 @@ class OnBoardingImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(TSizes.defaultSpace),
+      padding: const EdgeInsets.all(JSizes.defaultSpace),
       child: Column(
         children: [
           Image(
@@ -27,7 +27,7 @@ class OnBoardingImage extends StatelessWidget {
           Text(title,
               style: Theme.of(context).textTheme.headlineMedium,
               textAlign: TextAlign.center),
-          const SizedBox(height: TSizes.spaceBtwItems),
+          const SizedBox(height: JSizes.spaceBtwItems),
           Text(subTitle,
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center)

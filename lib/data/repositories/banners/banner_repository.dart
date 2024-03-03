@@ -27,11 +27,11 @@ class BannerRepository extends GetxController {
           .map((documentSnapshot) => BannerModel.fromSnapshot(documentSnapshot))
           .toList();
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. please try again';
     }
@@ -42,7 +42,7 @@ class BannerRepository extends GetxController {
   Future<void> uploadBannersDummyData(List<BannerModel> banners) async {
     try {
       //upload all the categories along with their Images
-      final storage = Get.put(TFirebaseStorageService());
+      final storage = Get.put(JFirebaseStorageService());
 
       //loop through each category
 
@@ -61,11 +61,11 @@ class BannerRepository extends GetxController {
         await _db.collection("Banners").doc().set(banners.toJson());
       }
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw JFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw TFormatException();
+      throw JFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw JPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. please try again';
     }

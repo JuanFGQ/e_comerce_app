@@ -19,18 +19,18 @@ class CategoryBrand extends StatelessWidget {
           //handle loade , No record , Or Error Message
           const loader = Column(
             children: [
-              TListTileShimmer(),
+              JListTileShimmer(),
               SizedBox(
-                height: TSizes.spaceBtwItems,
+                height: JSizes.spaceBtwItems,
               ),
-              TBoxesShimmer(),
+              JBoxesShimmer(),
               SizedBox(
-                height: TSizes.spaceBtwItems,
+                height: JSizes.spaceBtwItems,
               )
             ],
           );
 
-          final widget = TCloudHelperFunction.checkMultiRecordState(
+          final widget = JCloudHelperFunction.checkMultiRecordState(
               snapshot: snapshot, loader: loader);
           if (widget != null) return widget;
 
@@ -48,14 +48,14 @@ class CategoryBrand extends StatelessWidget {
                       controller.getBrandProducts(brandId: brand.id, limit: 3),
                   builder: (context, snapshot) {
                     //handle loader , No record, Or Error Message
-                    final widget = TCloudHelperFunction.checkMultiRecordState(
+                    final widget = JCloudHelperFunction.checkMultiRecordState(
                         snapshot: snapshot, loader: loader);
                     if (widget != null) return widget;
                     //record Found!
 
                     final products = snapshot.data!;
 
-                    return TBrandShowCase(
+                    return JBrandShowCase(
                       images: products.map((e) => e.thumbnail).toList(),
                       brand: brand,
                     );

@@ -24,25 +24,25 @@ class CartController extends GetxController {
   void addCart(ProductModel product) {
     //Quantity check
     if (productQuantityInCart.value < 1) {
-      TLoaders.customToast(message: 'Select Quantity');
+      JLoaders.customToast(message: 'Select Quantity');
       return;
     }
     //variation selected?
     if (product.productType == ProductType.variable.toString() &&
         variationController.selectedVariation.value.id.isEmpty) {
-      TLoaders.customToast(message: 'Select Variation');
+      JLoaders.customToast(message: 'Select Variation');
       return;
     }
     //Out of Stock
     if (product.productType == ProductType.variable.toString()) {
       if (variationController.selectedVariation.value.stock < 1) {
-        TLoaders.warningSnackBar(
+        JLoaders.warningSnackBar(
             title: 'Oh Snap!', message: 'Selected variation is out of stock');
         return;
       }
     } else {
       if (product.stock < 1) {
-        TLoaders.warningSnackBar(
+        JLoaders.warningSnackBar(
             title: 'Oh Snap!', message: 'Selected Product is out of stock');
       }
     }
@@ -62,7 +62,7 @@ class CartController extends GetxController {
       cartItems.add(selectedCartItem);
     }
     updateCart();
-    TLoaders.customToast(message: 'Your Product has been added to the cart ');
+    JLoaders.customToast(message: 'Your Product has been added to the cart ');
   }
 
   void addOneToCart(CartItemModel item) {
@@ -104,7 +104,7 @@ class CartController extends GetxController {
         //remove the item from the cart
         cartItems.removeAt(index);
         updateCart();
-        TLoaders.customToast(message: 'Product removed from the cart.');
+        JLoaders.customToast(message: 'Product removed from the cart.');
         Get.back();
       },
       onCancel: () => () => Get.back(),
@@ -159,12 +159,12 @@ class CartController extends GetxController {
 
   void saveCartItems() {
     final cartItemStrings = cartItems.map((item) => item.toJson()).toList();
-    TLocalStorage.instace().saveData('cartItems', cartItemStrings);
+    JLocalStorage.instace().saveData('cartItems', cartItemStrings);
   }
 
   void loadCartItems() {
     final cartItemsString =
-        TLocalStorage.instace().readData<List<dynamic>>('cartItems');
+        JLocalStorage.instace().readData<List<dynamic>>('cartItems');
     if (cartItemsString != null) {
       cartItems.assignAll(cartItemsString.map(
           (items) => CartItemModel.fromJson(items as Map<String, dynamic>)));

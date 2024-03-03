@@ -18,16 +18,16 @@ class UserAddressScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => const AddNewAssresScreen()),
-        child: const Icon(Iconsax.add, color: TColors.white),
+        child: const Icon(Iconsax.add, color: JColors.white),
       ),
-      appBar: TAppBar(
+      appBar: JAppBar(
         showBackArrow: true,
         title:
             Text('Addresses', style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(JSizes.defaultSpace),
           child: Obx(
             () => FutureBuilder(
                 //Use Key to trigger refresh
@@ -36,7 +36,7 @@ class UserAddressScreen extends StatelessWidget {
                 future: controller.getAllUserAddresses(),
                 builder: (context, snapshot) {
                   //handle loader, no record or error message
-                  final response = TCloudHelperFunction.checkMultiRecordState(
+                  final response = JCloudHelperFunction.checkMultiRecordState(
                       snapshot: snapshot);
 
                   if (response != null) return response;
@@ -44,7 +44,7 @@ class UserAddressScreen extends StatelessWidget {
                   return ListView.builder(
                     shrinkWrap: true,
                     itemCount: addresses.length,
-                    itemBuilder: (_, index) => TSingleAddress(
+                    itemBuilder: (_, index) => JSingleAddress(
                         address: addresses[index],
                         onTap: () =>
                             controller.selectedAddress(addresses[index])),

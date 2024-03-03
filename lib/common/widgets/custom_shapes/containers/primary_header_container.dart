@@ -3,8 +3,8 @@ import 'package:e_comerce_app/common/widgets/custom_shapes/curved_edges/curved_e
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class TPrimaryHeaderContainer extends StatelessWidget {
-  const TPrimaryHeaderContainer({
+class JPrimaryHeaderContainer extends StatelessWidget {
+  const JPrimaryHeaderContainer({
     super.key,
     required this.child,
   });
@@ -12,23 +12,23 @@ class TPrimaryHeaderContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TCurvedEdgesWidget(
+    return JCurvedEdgesWidget(
       child: Container(
-        color: TColors.primary,
+        color: JColors.primary,
         padding: const EdgeInsets.all(0),
         child: Stack(
           children: [
             Positioned(
               top: -150,
               right: -250,
-              child: TCircularContainer(
-                  backGroundColor: TColors.textWhite.withOpacity(0.1)),
+              child: JCircularContainer(
+                  backGroundColor: JColors.textWhite.withOpacity(0.1)),
             ),
             Positioned(
               top: 100,
               right: -300,
-              child: TCircularContainer(
-                  backGroundColor: TColors.textWhite.withOpacity(0.1)),
+              child: JCircularContainer(
+                  backGroundColor: JColors.textWhite.withOpacity(0.1)),
             ),
             child
           ],

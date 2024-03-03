@@ -17,20 +17,20 @@ class AllBrandsScreen extends StatelessWidget {
     final brandController = BrandController.instance;
 
     return Scaffold(
-      appBar: const TAppBar(title: Text('Brand'), showBackArrow: true),
+      appBar: const JAppBar(title: Text('Brand'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(JSizes.defaultSpace),
           child: Column(
             children: [
               //HEADING
-              const TSectionHeading(title: 'Brands'),
-              const SizedBox(height: TSizes.spaceBtwItems),
+              const JSectionHeading(title: 'Brands'),
+              const SizedBox(height: JSizes.spaceBtwItems),
 
               /// BRANDS
               Obx(() {
                 if (brandController.isLoading.value) {
-                  return const TBrandShimmer();
+                  return const JBrandShimmer();
                 }
 
                 if (brandController.allBrands.isEmpty) {
@@ -49,7 +49,7 @@ class AllBrandsScreen extends StatelessWidget {
                     mainAxisExtent: 80,
                     itemBuilder: (_, index) {
                       final brand = brandController.allBrands[index];
-                      return TBrandCard(
+                      return JBrandCard(
                         showBorder: false,
                         brand: brand,
                         onTap: () => Get.to(() => BrandProductsScreen(

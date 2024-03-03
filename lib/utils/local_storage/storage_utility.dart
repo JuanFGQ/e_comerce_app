@@ -1,20 +1,20 @@
 import 'package:get_storage/get_storage.dart';
 
-class TLocalStorage {
+class JLocalStorage {
   late final GetStorage _storage;
 
   //Singleton instace
-  static TLocalStorage? _instance;
-  TLocalStorage._internal();
+  static JLocalStorage? _instance;
+  JLocalStorage._internal();
 
-  factory TLocalStorage.instace() {
-    _instance ??= TLocalStorage._internal();
+  factory JLocalStorage.instace() {
+    _instance ??= JLocalStorage._internal();
     return _instance!;
   }
 
   static Future<void> init(String bucketName) async {
     await GetStorage.init(bucketName);
-    _instance = TLocalStorage._internal();
+    _instance = JLocalStorage._internal();
     _instance!._storage = GetStorage(bucketName);
   }
 

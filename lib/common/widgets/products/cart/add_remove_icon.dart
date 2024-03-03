@@ -5,8 +5,8 @@ import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TProductQuantityWithAddRemove extends StatelessWidget {
-  const TProductQuantityWithAddRemove({
+class JProductQuantityWithAddRemove extends StatelessWidget {
+  const JProductQuantityWithAddRemove({
     super.key,
     required this.quantity,
     this.add,
@@ -21,35 +21,35 @@ class TProductQuantityWithAddRemove extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         // minus button
-        TCircularIcon(
+        JCircularIcon(
           icon: Iconsax.minus,
           width: 32,
           height: 32,
-          size: TSizes.md,
-          color: THelperFunction.isDarkMode(context)
-              ? TColors.white
-              : TColors.white,
-          backGroundColor: THelperFunction.isDarkMode(context)
-              ? TColors.darkGrey
-              : TColors.black,
+          size: JSizes.md,
+          color: JHelperFunction.isDarkMode(context)
+              ? JColors.white
+              : JColors.white,
+          backGroundColor: JHelperFunction.isDarkMode(context)
+              ? JColors.darkGrey
+              : JColors.black,
           onPressed: remove,
         ),
-        const SizedBox(width: TSizes.spaceBtwItems),
+        const SizedBox(width: JSizes.spaceBtwItems),
         //quantity indicator
         Text(quantity.toString(),
             style: Theme.of(context).textTheme.titleSmall),
-        const SizedBox(width: TSizes.spaceBtwItems),
+        const SizedBox(width: JSizes.spaceBtwItems),
 
         //pluss button
-        TCircularIcon(
+        JCircularIcon(
           icon: Iconsax.add,
           width: 32,
           height: 32,
-          size: TSizes.md,
-          color: THelperFunction.isDarkMode(context)
-              ? TColors.white
-              : TColors.black,
-          backGroundColor: TColors.primary,
+          size: JSizes.md,
+          color: JHelperFunction.isDarkMode(context)
+              ? JColors.white
+              : JColors.black,
+          backGroundColor: JColors.primary,
           onPressed: add,
         ),
       ],

@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TSingleAddress extends StatelessWidget {
-  const TSingleAddress({
+class JSingleAddress extends StatelessWidget {
+  const JSingleAddress({
     super.key,
     required this.address,
     required this.onTap,
@@ -20,24 +20,24 @@ class TSingleAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = AddressController.instance;
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Obx(() {
       final selectedAddressID = controller.selectedAddress.value.id;
       final selectedAddress = selectedAddressID == address.id;
       return InkWell(
         onTap: onTap,
-        child: CRoundedContainer(
+        child: JRoundedContainer(
           width: double.infinity,
           showBorder: true,
           backGroundColor: selectedAddress
-              ? TColors.primary.withOpacity(0.5)
+              ? JColors.primary.withOpacity(0.5)
               : Colors.transparent,
           borderColor: selectedAddress
               ? Colors.transparent
               : dark
-                  ? TColors.darkerGrey
-                  : TColors.grey,
-          margin: const EdgeInsets.all(TSizes.spaceBtwItems),
+                  ? JColors.darkerGrey
+                  : JColors.grey,
+          margin: const EdgeInsets.all(JSizes.spaceBtwItems),
           widget: Stack(
             children: [
               Positioned(
@@ -46,12 +46,12 @@ class TSingleAddress extends StatelessWidget {
                 child: Icon(selectedAddress ? Iconsax.tick_circle : null,
                     color: selectedAddress
                         ? dark
-                            ? TColors.light
-                            : TColors.dark.withOpacity(0.2)
+                            ? JColors.light
+                            : JColors.dark.withOpacity(0.2)
                         : null),
               ),
               Padding(
-                padding: const EdgeInsets.all(TSizes.spaceBtwItems),
+                padding: const EdgeInsets.all(JSizes.spaceBtwItems),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -61,9 +61,9 @@ class TSingleAddress extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    const SizedBox(height: TSizes.sm / 2),
+                    const SizedBox(height: JSizes.sm / 2),
                     Text(address.phoneNumber, maxLines: 1),
-                    const SizedBox(height: TSizes.sm / 2),
+                    const SizedBox(height: JSizes.sm / 2),
                     Text(
                       '${address.postalCode},${address.country},${address.city}',
                       softWrap: true,

@@ -18,33 +18,33 @@ class BrandProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final brandController = Get.put(BrandController.instance);
     return Scaffold(
-      appBar: TAppBar(
+      appBar: JAppBar(
         title: Text(brand.name),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(JSizes.defaultSpace),
           child: Column(
             children: [
               //BRAND DETAIL
-              TBrandCard(
+              JBrandCard(
                 showBorder: true,
                 brand: brand,
               ),
-              const SizedBox(height: TSizes.spaceBtwSection),
+              const SizedBox(height: JSizes.spaceBtwSection),
               FutureBuilder(
                   future: brandController.getBrandProducts(brandId: brand.id),
                   builder: (context, snapshot) {
                     //handle loader , no record , or Error Message
-                    const loader = TVerticalProductShimmer();
-                    final widget = TCloudHelperFunction.checkMultiRecordState(
+                    const loader = JVerticalProductShimmer();
+                    final widget = JCloudHelperFunction.checkMultiRecordState(
                         snapshot: snapshot, loader: loader);
                     if (widget != null) return widget;
 
                     //record found
                     final brandProducts = snapshot.data!;
 
-                    return TSortableProducts(products: brandProducts);
+                    return JSortableProducts(products: brandProducts);
                   })
             ],
           ),

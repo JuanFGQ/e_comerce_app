@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TLoaders {
+class JLoaders {
   static hideSnackBar() =>
       ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();
 
@@ -18,9 +18,9 @@ class TLoaders {
           margin: const EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
-              color: THelperFunction.isDarkMode(Get.context!)
-                  ? TColors.darkerGrey.withOpacity(0.9)
-                  : TColors.grey.withOpacity(0.9)),
+              color: JHelperFunction.isDarkMode(Get.context!)
+                  ? JColors.darkerGrey.withOpacity(0.9)
+                  : JColors.grey.withOpacity(0.9)),
           child: Center(
             child: Text(message,
                 style: Theme.of(Get.context!).textTheme.labelLarge),
@@ -32,35 +32,35 @@ class TLoaders {
     Get.snackbar(title, message,
         isDismissible: true,
         shouldIconPulse: true,
-        colorText: TColors.white,
-        backgroundColor: TColors.primary,
+        colorText: JColors.white,
+        backgroundColor: JColors.primary,
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(seconds: duration),
         margin: const EdgeInsets.all(10),
-        icon: const Icon(Iconsax.check, color: TColors.white));
+        icon: const Icon(Iconsax.check, color: JColors.white));
   }
 
   static warningSnackBar({required title, message = ''}) {
     Get.snackbar(title, message,
         isDismissible: true,
         shouldIconPulse: true,
-        colorText: TColors.white,
+        colorText: JColors.white,
         backgroundColor: Colors.orange,
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),
         margin: const EdgeInsets.all(20),
-        icon: const Icon(Iconsax.warning_2, color: TColors.white));
+        icon: const Icon(Iconsax.warning_2, color: JColors.white));
   }
 
   static errorSnackBar({required title, message = ''}) {
     Get.snackbar(title, message,
         isDismissible: true,
         shouldIconPulse: true,
-        colorText: TColors.white,
+        colorText: JColors.white,
         backgroundColor: Colors.red.shade600,
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),
         margin: const EdgeInsets.all(20),
-        icon: const Icon(Iconsax.warning_2, color: TColors.white));
+        icon: const Icon(Iconsax.warning_2, color: JColors.white));
   }
 }

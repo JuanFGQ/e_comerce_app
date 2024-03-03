@@ -24,7 +24,7 @@ class UserModel {
   String get fullName => '$firstName $lastName';
 
   //Helper fucntion to format phone number
-  String get formattedPhoneNo => TFormatter.formatPhoneNumber(phoneNumber);
+  String get formattedPhoneNo => JFormatter.formatPhoneNumber(phoneNumber);
 
   //Static function to split full name into first and last name
   static List<String> nameParts(fullName) => fullName.split(" ");

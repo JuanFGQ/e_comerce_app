@@ -1,8 +1,8 @@
-class TFirebaseAuthException implements Exception {
+class JFirebaseAuthException implements Exception {
 //The error code associated with the exception
   final String code;
 
-  TFirebaseAuthException(this.code);
+  JFirebaseAuthException(this.code);
 
 // get the corresponding error message based on error code
   String get message {

@@ -12,24 +12,24 @@ class ProductReviewsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       //appbar
-      appBar: const TAppBar(title: Text('Reviews & Ratings')),
+      appBar: const JAppBar(title: Text('Reviews & Ratings')),
 
       //body
       body: SingleChildScrollView(
           child: Padding(
-        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(JSizes.defaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
                 'Ratings and reviews are verified and are from pleople who use the same type of device that you use'),
-            const SizedBox(height: TSizes.defaultSpace),
+            const SizedBox(height: JSizes.defaultSpace),
 
             //overall product ratings
             const OverallProductRatings(),
-            const TRatingBarIndicator(rating: 3.5),
+            const JRatingBarIndicator(rating: 3.5),
             Text('12,611', style: Theme.of(context).textTheme.bodySmall),
-            const SizedBox(height: TSizes.spaceBtwSection),
+            const SizedBox(height: JSizes.spaceBtwSection),
 
             ///USER Reviews List
             const UserReviewCard(),

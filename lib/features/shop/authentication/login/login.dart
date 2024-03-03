@@ -14,7 +14,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -22,16 +22,16 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               //LOGO ,TITLE, HEADER
-              TLoginHeader(dark: dark),
+              JLoginHeader(dark: dark),
               // FORM
-              const TLoginForm(),
+              const JLoginForm(),
               //DIVIDER
-              TFormDivider(
-                  dark: dark, dividerText: TTexts.orSignInWith.capitalize!),
-              const SizedBox(height: TSizes.spaceBtwSection),
+              JFormDivider(
+                  dark: dark, dividerText: JTexts.orSignInWith.capitalize!),
+              const SizedBox(height: JSizes.spaceBtwSection),
 
               //FOOTER
-              const TSocialButton()
+              const JSocialButton()
             ],
           ),
         ),

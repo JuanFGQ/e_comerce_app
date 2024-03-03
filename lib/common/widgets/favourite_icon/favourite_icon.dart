@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TFavouriteIcon extends StatelessWidget {
-  const TFavouriteIcon({super.key, required this.productId});
+class JFavouriteIcon extends StatelessWidget {
+  const JFavouriteIcon({super.key, required this.productId});
 
   final String productId;
 
@@ -14,12 +14,12 @@ class TFavouriteIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(FavouriteController());
     return Obx(
-      () => TCircularIcon(
+      () => JCircularIcon(
           onPressed: () => controller.toggleFavoriteProduct(productId),
           icon: controller.isFavourite(productId)
               ? Iconsax.heart5
               : Iconsax.heart,
-          color: controller.isFavourite(productId) ? TColors.error : null),
+          color: controller.isFavourite(productId) ? JColors.error : null),
     );
   }
 }

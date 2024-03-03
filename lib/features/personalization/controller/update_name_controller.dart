@@ -35,19 +35,19 @@ class UpdateNameController extends GetxController {
   Future<void> updateUserName() async {
     try {
       //start loading
-      TFullScreenLoader.openLoadingDialog(
-          'We are updating your information...', TImages.handLoading);
+      JFullScreenLoader.openLoadingDialog(
+          'We are updating your information...', JImages.handLoading);
 
       //check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
       //FORM VALIDATION
       if (!updateUserNameFormKey.currentState!.validate()) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
@@ -65,17 +65,17 @@ class UpdateNameController extends GetxController {
 
       //remove loader
 
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
 
       //show succes message
-      TLoaders.successSnackBar(
+      JLoaders.successSnackBar(
           title: 'Congratulations', message: 'Your Name has been updated');
 
       //move to previous screen
       Get.off(() => const ProfileScreen());
     } catch (e) {
-      TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      JFullScreenLoader.stopLoading();
+      JLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }

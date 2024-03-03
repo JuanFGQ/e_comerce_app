@@ -11,26 +11,26 @@ import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TProductImageSlider extends StatelessWidget {
-  const TProductImageSlider({super.key, required this.product});
+class JProductImageSlider extends StatelessWidget {
+  const JProductImageSlider({super.key, required this.product});
 
   final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    final dark = JHelperFunction.isDarkMode(context);
     final controller = Get.put(ImagesController());
     final images = controller.getAllProductImages(product);
-    return TCurvedEdgesWidget(
+    return JCurvedEdgesWidget(
       child: Container(
-        color: dark ? TColors.darkGrey : TColors.light,
+        color: dark ? JColors.darkGrey : JColors.light,
         child: Stack(
           children: [
             //MAIN LARGE PRODUCT IMAGE
             SizedBox(
                 height: 400,
                 child: Padding(
-                  padding: const EdgeInsets.all(TSizes.productImageRadius * 2),
+                  padding: const EdgeInsets.all(JSizes.productImageRadius * 2),
                   child: Center(child: Obx(() {
                     final image = controller.selectedProductImage.value;
                     return GestureDetector(
@@ -40,7 +40,7 @@ class TProductImageSlider extends StatelessWidget {
                         progressIndicatorBuilder: (_, __, downLoadProgress) =>
                             CircularProgressIndicator(
                                 value: downLoadProgress.progress,
-                                color: TColors.primary),
+                                color: JColors.primary),
                       ),
                     );
                   })),
@@ -50,7 +50,7 @@ class TProductImageSlider extends StatelessWidget {
             Positioned(
               right: 0,
               bottom: 30,
-              left: TSizes.defaultSpace,
+              left: JSizes.defaultSpace,
               child: SizedBox(
                 height: 80,
                 child: ListView.separated(
@@ -59,23 +59,23 @@ class TProductImageSlider extends StatelessWidget {
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: images.length,
                     separatorBuilder: (_, __) =>
-                        const SizedBox(width: TSizes.spaceBtwItems),
+                        const SizedBox(width: JSizes.spaceBtwItems),
                     itemBuilder: (_, index) => Obx(
                           () {
                             final imageSelected =
                                 controller.selectedProductImage.value ==
                                     images[index];
-                            return TRoundedImage(
+                            return JRoundedImage(
                               fit: BoxFit.fill,
                               onPressed: () => controller
                                   .selectedProductImage.value = images[index],
                               isNetworkImage: true,
                               imageUrl: images[index],
                               backGroundColor:
-                                  dark ? TColors.dark : TColors.white,
+                                  dark ? JColors.dark : JColors.white,
                               border: Border.all(
                                   color: imageSelected
-                                      ? TColors.primary
+                                      ? JColors.primary
                                       : Colors.transparent),
                               // padding: const EdgeInsets.all(TSizes.sm),
                               width: 80,
@@ -84,10 +84,10 @@ class TProductImageSlider extends StatelessWidget {
                         )),
               ),
             ),
-            TAppBar(
+            JAppBar(
               showBackArrow: true,
               actions: [
-                TFavouriteIcon(
+                JFavouriteIcon(
                   productId: product.id,
                 ),
               ],

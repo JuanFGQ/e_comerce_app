@@ -3,8 +3,8 @@ import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
-class TLoginHeader extends StatelessWidget {
-  const TLoginHeader({
+class JLoginHeader extends StatelessWidget {
+  const JLoginHeader({
     super.key,
     required this.dark,
   });
@@ -19,11 +19,11 @@ class TLoginHeader extends StatelessWidget {
         Image(
             height: 150,
             image:
-                AssetImage(dark ? TImages.darkAppLogo : TImages.lightAppLogo)),
-        Text(TTexts.loginTitle,
+                AssetImage(dark ? JImages.darkAppLogo : JImages.lightAppLogo)),
+        Text(JTexts.loginTitle,
             style: Theme.of(context).textTheme.headlineLarge),
-        const SizedBox(height: TSizes.sm),
-        Text(TTexts.loginTitle,
+        const SizedBox(height: JSizes.sm),
+        Text(JTexts.loginTitle,
             style: Theme.of(context).textTheme.headlineMedium)
       ],
     );

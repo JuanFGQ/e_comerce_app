@@ -12,13 +12,13 @@ class AddNewAssresScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = AddressController.instance;
     return Scaffold(
-      appBar: const TAppBar(
+      appBar: const JAppBar(
         showBackArrow: true,
         title: Text('Add new address'),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(JSizes.defaultSpace),
           child: Form(
               key: controller.addressFormKey,
               child: Column(
@@ -26,33 +26,33 @@ class AddNewAssresScreen extends StatelessWidget {
                   TextFormField(
                       controller: controller.name,
                       validator: (value) =>
-                          TValidator.validateEmptyText('Name', value),
+                          JValidator.validateEmptyText('Name', value),
                       decoration: const InputDecoration(
                           prefixIcon: Icon(Iconsax.user), labelText: 'Name')),
-                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const SizedBox(height: JSizes.spaceBtwInputFields),
                   TextFormField(
-                      validator: TValidator.validatePhoneNumber,
+                      validator: JValidator.validatePhoneNumber,
                       controller: controller.phoneNumber,
                       decoration: const InputDecoration(
                           prefixIcon: Icon(Iconsax.mobile),
                           labelText: 'Phone Number')),
-                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const SizedBox(height: JSizes.spaceBtwInputFields),
                   Row(
                     children: [
                       Expanded(
                         child: TextFormField(
                           validator: (value) =>
-                              TValidator.validateEmptyText('Street', value),
+                              JValidator.validateEmptyText('Street', value),
                           controller: controller.street,
                           decoration: const InputDecoration(
                               prefixIcon: Icon(Iconsax.building_31),
                               labelText: 'Street'),
                         ),
                       ),
-                      const SizedBox(width: TSizes.spaceBtwInputFields),
+                      const SizedBox(width: JSizes.spaceBtwInputFields),
                       Expanded(
                         child: TextFormField(
-                          validator: (value) => TValidator.validateEmptyText(
+                          validator: (value) => JValidator.validateEmptyText(
                               'Postal Code', value),
                           controller: controller.postalCode,
                           decoration: const InputDecoration(
@@ -62,24 +62,24 @@ class AddNewAssresScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const SizedBox(height: JSizes.spaceBtwInputFields),
                   Row(
                     children: [
                       Expanded(
                         child: TextFormField(
                           validator: (value) =>
-                              TValidator.validateEmptyText('City', value),
+                              JValidator.validateEmptyText('City', value),
                           controller: controller.city,
                           decoration: const InputDecoration(
                               prefixIcon: Icon(Iconsax.building),
                               labelText: 'City'),
                         ),
                       ),
-                      const SizedBox(width: TSizes.spaceBtwInputFields),
+                      const SizedBox(width: JSizes.spaceBtwInputFields),
                       Expanded(
                         child: TextFormField(
                           validator: (value) =>
-                              TValidator.validateEmptyText('State', value),
+                              JValidator.validateEmptyText('State', value),
                           controller: controller.state,
                           decoration: const InputDecoration(
                               prefixIcon: Icon(Iconsax.activity),
@@ -88,15 +88,15 @@ class AddNewAssresScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const SizedBox(height: JSizes.spaceBtwInputFields),
                   TextFormField(
                       controller: controller.country,
                       validator: (value) =>
-                          TValidator.validateEmptyText('Country', value),
+                          JValidator.validateEmptyText('Country', value),
                       decoration: const InputDecoration(
                           prefixIcon: Icon(Iconsax.global),
                           labelText: 'Country')),
-                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const SizedBox(height: JSizes.spaceBtwInputFields),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(

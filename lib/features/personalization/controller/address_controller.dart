@@ -36,7 +36,7 @@ class AddressController extends GetxController {
           orElse: () => AddressModel.empty());
       return addresses;
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Address not found', message: e.toString());
+      JLoaders.errorSnackBar(title: 'Address not found', message: e.toString());
       return [];
     }
   }
@@ -69,7 +69,7 @@ class AddressController extends GetxController {
 
       Get.back();
     } catch (e) {
-      TLoaders.errorSnackBar(
+      JLoaders.errorSnackBar(
           title: 'Error in selection', message: e.toString());
     }
   }
@@ -78,18 +78,18 @@ class AddressController extends GetxController {
   Future addNewAddress() async {
     try {
       //start loading
-      TFullScreenLoader.openLoadingDialog(
-          'Storing Addres...', TImages.handLoading);
+      JFullScreenLoader.openLoadingDialog(
+          'Storing Addres...', JImages.handLoading);
 
       //check internet connectivity
       final isConneted = await NetworkManager.instance.isConnected();
       if (!isConneted) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
       //form validation
       if (!addressFormKey.currentState!.validate()) {
-        TFullScreenLoader.stopLoading();
+        JFullScreenLoader.stopLoading();
         return;
       }
 
@@ -111,10 +111,10 @@ class AddressController extends GetxController {
       await selectAddress(address);
 
       //remove loader
-      TFullScreenLoader.stopLoading();
+      JFullScreenLoader.stopLoading();
 
       //show succes message
-      TLoaders.successSnackBar(
+      JLoaders.successSnackBar(
           title: 'Congratulations',
           message: 'Your address has been saved succesfully');
 
@@ -127,8 +127,8 @@ class AddressController extends GetxController {
       //redirect
       Navigator.of(Get.context!).pop();
     } catch (e) {
-      TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: 'Address not found', message: e.toString());
+      JFullScreenLoader.stopLoading();
+      JLoaders.errorSnackBar(title: 'Address not found', message: e.toString());
     }
   }
 
@@ -137,16 +137,16 @@ class AddressController extends GetxController {
     return showModalBottomSheet(
       context: context,
       builder: (_) => Container(
-        padding: const EdgeInsets.all(TSizes.lg),
+        padding: const EdgeInsets.all(JSizes.lg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const TSectionHeading(title: 'Select Address'),
+            const JSectionHeading(title: 'Select Address'),
             FutureBuilder(
               future: getAllUserAddresses(),
               builder: (_, snapshot) {
                 //Helper function: handle Loader , No Recor , Or Error message
-                final response = TCloudHelperFunction.checkMultiRecordState(
+                final response = JCloudHelperFunction.checkMultiRecordState(
                     snapshot: snapshot);
                 if (response != null) return response;
 
@@ -155,7 +155,7 @@ class AddressController extends GetxController {
                     shrinkWrap: true,
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
-                      return TSingleAddress(
+                      return JSingleAddress(
                         address: snapshot.data![index],
                         onTap: () async {
                           await selectAddress(snapshot.data![index]);

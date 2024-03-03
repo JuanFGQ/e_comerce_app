@@ -10,8 +10,8 @@ import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TBrandShowCase extends StatelessWidget {
-  const TBrandShowCase({
+class JBrandShowCase extends StatelessWidget {
+  const JBrandShowCase({
     super.key,
     required this.images,
     required this.brand,
@@ -24,16 +24,16 @@ class TBrandShowCase extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Get.to(() => BrandProductsScreen(brand: brand)),
-      child: CRoundedContainer(
+      child: JRoundedContainer(
         showBorder: true,
-        borderColor: TColors.darkGrey,
+        borderColor: JColors.darkGrey,
         backGroundColor: Colors.transparent,
-        margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItems),
+        margin: const EdgeInsets.only(bottom: JSizes.spaceBtwItems),
         widget: Column(
           children: [
             //BRAND with product count
-            TBrandCard(showBorder: false, brand: brand),
-            const SizedBox(height: TSizes.spaceBtwItems),
+            JBrandCard(showBorder: false, brand: brand),
+            const SizedBox(height: JSizes.spaceBtwItems),
 
             // TBrand TOP 3 PRODUCT IMAGES
             Row(
@@ -49,18 +49,18 @@ class TBrandShowCase extends StatelessWidget {
 
 Widget brandTopProductImageWidget(String image, context) {
   return Expanded(
-      child: CRoundedContainer(
+      child: JRoundedContainer(
           height: 100,
-          padding: const EdgeInsets.all(TSizes.md),
-          margin: const EdgeInsets.only(right: TSizes.sm),
-          backGroundColor: THelperFunction.isDarkMode(context)
-              ? TColors.darkerGrey
-              : TColors.light,
+          padding: const EdgeInsets.all(JSizes.md),
+          margin: const EdgeInsets.only(right: JSizes.sm),
+          backGroundColor: JHelperFunction.isDarkMode(context)
+              ? JColors.darkerGrey
+              : JColors.light,
           widget: CachedNetworkImage(
             imageUrl: image,
             fit: BoxFit.contain,
             progressIndicatorBuilder: (context, url, progress) =>
-                const TShimmerEffect(width: 100, height: 100),
+                const JShimmerEffect(width: 100, height: 100),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           )));
 }

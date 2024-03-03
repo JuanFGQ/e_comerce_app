@@ -18,11 +18,11 @@ class OverallProductRatings extends StatelessWidget {
           flex: 7,
           child: Column(
             children: [
-              TRatingProgressIndicator(text: '5', value: 1.0),
-              TRatingProgressIndicator(text: '4', value: 0.8),
-              TRatingProgressIndicator(text: '3', value: 0.6),
-              TRatingProgressIndicator(text: '2', value: 0.4),
-              TRatingProgressIndicator(text: '1', value: 0.2),
+              JRatingProgressIndicator(text: '5', value: 1.0),
+              JRatingProgressIndicator(text: '4', value: 0.8),
+              JRatingProgressIndicator(text: '3', value: 0.6),
+              JRatingProgressIndicator(text: '2', value: 0.4),
+              JRatingProgressIndicator(text: '1', value: 0.2),
             ],
           ),
         )

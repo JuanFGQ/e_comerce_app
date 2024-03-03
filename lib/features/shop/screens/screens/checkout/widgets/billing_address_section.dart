@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TBillingAddressSection extends StatelessWidget {
-  const TBillingAddressSection({super.key});
+class JBillingAddressSection extends StatelessWidget {
+  const JBillingAddressSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class TBillingAddressSection extends StatelessWidget {
       () => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TSectionHeading(
+          JSectionHeading(
               showActionButton: true,
               title: 'Shipping Address',
               buttonTile: 'Change',
@@ -28,27 +28,27 @@ class TBillingAddressSection extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(Iconsax.user, color: Colors.grey, size: 16),
-                        const SizedBox(width: TSizes.spaceBtwItems),
+                        const SizedBox(width: JSizes.spaceBtwItems),
                         Text(addressController.selectedAddress.value.name,
                             style: Theme.of(context).textTheme.titleLarge),
                       ],
                     ),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
+                    const SizedBox(height: JSizes.spaceBtwItems / 2),
                     Row(
                       children: [
                         const Icon(Icons.phone, color: Colors.grey, size: 16),
-                        const SizedBox(width: TSizes.spaceBtwItems),
+                        const SizedBox(width: JSizes.spaceBtwItems),
                         Text(
                             addressController.selectedAddress.value.phoneNumber,
                             style: Theme.of(context).textTheme.bodyMedium),
                       ],
                     ),
-                    const SizedBox(height: TSizes.spaceBtwItems / 2),
+                    const SizedBox(height: JSizes.spaceBtwItems / 2),
                     Row(
                       children: [
                         const Icon(Iconsax.location,
                             color: Colors.grey, size: 16),
-                        const SizedBox(width: TSizes.spaceBtwItems),
+                        const SizedBox(width: JSizes.spaceBtwItems),
                         Expanded(
                           child: Text(
                               '${addressController.selectedAddress.value.state},${addressController.selectedAddress.value.country},${addressController.selectedAddress.value.city},${addressController.selectedAddress.value.postalCode}',
