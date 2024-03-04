@@ -10,6 +10,8 @@
   * User profile management, allowing users to update their information(send address. profile picture.
   * Buy orders tracker.
   * Messaging functionality for communication between sellers.
+
+  ## :memo: State Managment
+   *  GetX
     
 
- ### Check on my social Networks the guide and the explanation for this project 
