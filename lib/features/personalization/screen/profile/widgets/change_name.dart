@@ -29,38 +29,39 @@ class ChangeNameScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.labelMedium),
             const SizedBox(height: JSizes.spaceBtwSection),
             Form(
+                key: controller.updateUserNameFormKey,
                 child: Column(
-              children: [
-                TextFormField(
-                  validator: (value) =>
-                      JValidator.validateEmptyText('First name', value),
-                  controller: controller.firstName,
-                  expands: false,
-                  decoration: const InputDecoration(
-                      labelText: JTexts.firstName,
-                      prefixIcon: Icon(Iconsax.user)),
-                ),
-                const SizedBox(height: JSizes.spaceBtwInputFields),
-                TextFormField(
-                  validator: (value) =>
-                      JValidator.validateEmptyText('Last name', value),
-                  controller: controller.lastName,
-                  expands: false,
-                  decoration: const InputDecoration(
-                      labelText: JTexts.lastName,
-                      prefixIcon: Icon(Iconsax.user)),
-                ),
-                const SizedBox(height: JSizes.spaceBtwSection),
+                  children: [
+                    TextFormField(
+                      validator: (value) =>
+                          JValidator.validateEmptyText('First name', value),
+                      controller: controller.firstName,
+                      expands: false,
+                      decoration: const InputDecoration(
+                          labelText: JTexts.firstName,
+                          prefixIcon: Icon(Iconsax.user)),
+                    ),
+                    const SizedBox(height: JSizes.spaceBtwInputFields),
+                    TextFormField(
+                      validator: (value) =>
+                          JValidator.validateEmptyText('Last name', value),
+                      controller: controller.lastName,
+                      expands: false,
+                      decoration: const InputDecoration(
+                          labelText: JTexts.lastName,
+                          prefixIcon: Icon(Iconsax.user)),
+                    ),
+                    const SizedBox(height: JSizes.spaceBtwSection),
 
-                //save button
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      onPressed: () => controller.updateUserName,
-                      child: const Text('Save')),
-                )
-              ],
-            ))
+                    //save button
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          onPressed: () => controller.updateUserName(),
+                          child: const Text('Save')),
+                    )
+                  ],
+                ))
           ],
         ),
       ),

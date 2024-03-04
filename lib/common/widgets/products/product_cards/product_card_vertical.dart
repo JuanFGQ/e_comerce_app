@@ -104,6 +104,7 @@ class ProductCardVertical extends StatelessWidget {
                   children: [
                     ProductTitleText(
                       title: product.title,
+                      maxLines: 1,
                       size: JSizes.fontSize,
                     ),
                     const SizedBox(height: JSizes.spaceBtwItems / 2),

@@ -30,29 +30,25 @@ class JCircularImage extends StatelessWidget {
       width: width,
       height: height,
       padding: EdgeInsets.all(padding),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: JHelperFunction.isDarkMode(context)
-              ? JColors.black
-              : JColors.white),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+      ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
-        child: Center(
-          child: isNetWorkImage
-              ? CachedNetworkImage(
-                  fit: fit,
-                  color: overlayColor,
-                  progressIndicatorBuilder: (context, url, progress) =>
-                      const JShimmerEffect(width: 55, height: 55),
-                  imageUrl: image,
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                )
-              : Image(
-                  fit: fit,
-                  image: AssetImage(image),
-                  color: overlayColor,
-                ),
-        ),
+        child: isNetWorkImage
+            ? CachedNetworkImage(
+                fit: fit,
+                color: overlayColor,
+                progressIndicatorBuilder: (context, url, progress) =>
+                    const JShimmerEffect(width: 55, height: 55),
+                imageUrl: image,
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              )
+            : Image(
+                fit: fit,
+                image: AssetImage(image),
+                color: overlayColor,
+              ),
       ),
     );
   }

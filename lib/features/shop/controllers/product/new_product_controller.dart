@@ -2,6 +2,7 @@ import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
 import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/data/repositories/products/products_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
+import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:e_comerce_app/features/shop/models/brand_model.dart';
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/navigation_menu.dart';
@@ -41,6 +42,8 @@ class NewProductController extends GetxController {
   final List<XFile> xfileList = [];
   //*FormKey
   GlobalKey<FormState> newProductFormKey = GlobalKey<FormState>();
+  //*Instances
+  final userInfoInsta = UserController.instance;
 
   //!GET CATEGORY ID
   void setCategoryId(String sortOption) {
@@ -206,20 +209,20 @@ class NewProductController extends GetxController {
           images: imageUrlList,
           id: AuthenticationRepository.instance.authUser.uid,
           stock: int.tryParse(availableStock.text)!,
-          price: double.tryParse(salePrice.text)!,
-          salePrice: double.tryParse(discountPrice.text) ?? 0,
+          salePrice: double.tryParse(salePrice.text)!,
+          price: double.tryParse(discountPrice.text) ?? 0,
           title: productName.text,
           description: productDescription.text,
           thumbnail: imageUrlList[0],
           productType: 'single',
           isFeatured: true,
           brand: BrandModel(
-              isFeatured: true,
-              productsCount: int.tryParse(availableStock.text)!,
-              id: AuthenticationRepository.instance.authUser.uid,
-              name: AuthenticationRepository.instance.authUser.displayName!,
-              image:
-                  AuthenticationRepository.instance.authUser.photoURL ?? '')));
+            isFeatured: true,
+            productsCount: int.tryParse(availableStock.text)!,
+            id: userInfoInsta.user.value.id,
+            name: userInfoInsta.user.value.fullName,
+            image: userInfoInsta.user.value.profilePicture,
+          )));
 
       //remove loader
 

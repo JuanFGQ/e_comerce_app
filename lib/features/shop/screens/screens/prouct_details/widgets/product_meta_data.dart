@@ -8,6 +8,7 @@ import 'package:e_comerce_app/features/shop/controllers/product/product_controll
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/enums.dart';
+import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,8 @@ class JProductMetaData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = JHelperFunction.isDarkMode(context);
+
     final controller = ProductController.instance;
     final salePercentage =
         controller.calculatSalePercetange(product.price, product.salePrice);
@@ -60,8 +63,8 @@ class JProductMetaData extends StatelessWidget {
             const SizedBox(width: JSizes.spaceBtwItems),
             if (product.salePrice > 0)
               JProductPriceText(
-                  price:
-                      '\$${controller.calculatSalePercetange(product.price, product.salePrice)}',
+                  price: ((product.price * product.salePrice) / 100)
+                      .toStringAsFixed(0),
                   isLarge: true)
           ],
         ),
@@ -91,12 +94,15 @@ class JProductMetaData extends StatelessWidget {
         Row(
           children: [
             JCircularImage(
-              fit: BoxFit.cover,
+              padding: 10,
+              fit: BoxFit.fill,
               isNetWorkImage:
                   product.brand!.image.contains('http') ? true : false,
               width: 70,
               height: 70,
-              image: product.brand != null ? product.brand!.image : '',
+              image: product.brand != null
+                  ? product.brand!.image
+                  : JImages.userImage,
             ),
             JBrandTitleTextWithVerifiedIcon(
                 title: product.brand != null ? product.brand!.name : '',
@@ -104,9 +110,9 @@ class JProductMetaData extends StatelessWidget {
             const Spacer(),
             IconButton(
                 onPressed: () => Get.to(ChatScreen(product: product)),
-                icon: const Icon(
+                icon: Icon(
                   Iconsax.message,
-                  color: Colors.red,
+                  color: dark ? JColors.white : JColors.accent,
                 ))
           ],
         )

@@ -62,7 +62,7 @@ class NewProductScreen extends StatelessWidget {
                               'discount price', value),
                           expands: false,
                           decoration: const InputDecoration(
-                              labelText: 'Discount Price',
+                              labelText: 'Discount Ammount',
                               prefixIcon: Icon(Iconsax.discount_circle))),
                     ),
                     const SizedBox(width: JSizes.defaultSpace / 2),
