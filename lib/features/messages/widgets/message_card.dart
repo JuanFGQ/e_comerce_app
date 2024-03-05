@@ -1,6 +1,4 @@
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
-import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
-import 'package:e_comerce_app/features/messages/model/message_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
@@ -10,15 +8,23 @@ import 'package:flutter/material.dart';
 class MessageCard extends StatelessWidget {
   const MessageCard({
     super.key,
-    required this.userModel,
+    required this.photoUrl,
+    required this.userName,
+    required this.message,
+    required this.alignment,
+    // required this.timeStamp,
   });
+  final String photoUrl;
+  final String userName;
+  final String message;
+  final CrossAxisAlignment alignment;
+  // final String timeStamp;
 
-  final MessageModel userModel;
   @override
   Widget build(BuildContext context) {
     final dark = JHelperFunction.isDarkMode(context);
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: alignment,
       children: [
         //!USER MESSAGE
         Container(
@@ -42,31 +48,28 @@ class MessageCard extends StatelessWidget {
                         height: 35,
                         applyImageRadius: true,
                         width: 35,
-                        imageUrl: userModel.profilePicture.contains('http')
-                            ? userModel.profilePicture
+                        imageUrl: photoUrl.contains('http')
+                            ? photoUrl
                             : JImages.userImage,
                         isNetworkImage:
-                            userModel.profilePicture.contains('http')
-                                ? true
-                                : false),
+                            photoUrl.contains('http') ? true : false),
                     const SizedBox(width: JSizes.defaultSpace / 2),
-                    Text(userModel.userName)
+                    Text(userName)
                   ],
                 ),
                 const SizedBox(height: JSizes.defaultSpace / 2),
-                const Text(
-                    'Labore consectetur est aute irure nostrud occaecat culpa nulla aute officia quis est laboris velit. Voluptate duis cillum veniam nostrud magna non Lorem consectetur id aliqua velit. Fugiat esse voluptate commodo irure nulla quis sunt do. Aliquip aute ullamco sint irure Lorem aliqua occaecat reprehenderit aute sunt do mollit. Nostrud nostrud irure quis ex non incididunt ad laborum id. Duis adipisicing sit incididunt laborum consectetur magna. Aute aliquip aute ex exercitation ipsum magna proident.'),
+                Text(message),
               ],
             ),
           ),
         ),
         const SizedBox(height: JSizes.sm),
-        Text('15 min ago',
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(fontSize: 10)
-                .apply())
+        // Text(timeStamp,
+        //     style: Theme.of(context)
+        //         .textTheme
+        //         .bodySmall!
+        //         .copyWith(fontSize: 10)
+        //         .apply())
       ],
     );
   }

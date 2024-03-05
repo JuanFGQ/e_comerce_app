@@ -41,7 +41,7 @@ class MessaggingController extends GetxController {
   }
 
   //! SEND MESSAGES
-  Future sendMessages({required ProductModel productModel}) async {
+  Future<void> sendMessages({required ProductModel productModel}) async {
     try {
       //check internet connectivity
 
@@ -87,7 +87,11 @@ class MessaggingController extends GetxController {
 
   //!GET MESSAGES STREAM
 
-  Stream<List<MessageModel>> getMessages({required String otherUserID}) {
+  Stream<
+      QuerySnapshot
+      // List<MessageModel>
+
+      > getMessages({required String otherUserID}) {
     try {
       //get the current ID for the user who will send the message
       final currentUserID = _auth.currentUser!.uid;
@@ -95,8 +99,6 @@ class MessaggingController extends GetxController {
       List<String> ids = [currentUserID, otherUserID];
       ids.sort();
       String chatRoomID = ids.join('_');
-
-      print('${currentUserID + otherUserID}COMBI ${'CHAT ROOM' + chatRoomID}');
 
       return messageRepo.fetchMessages(chatRoomID);
     } catch (e) {

@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/loaders/animation_loader_widget.dart';
 import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
 import 'package:e_comerce_app/features/messages/model/message_model.dart';
+import 'package:e_comerce_app/features/messages/widgets/chat_card.dart';
 import 'package:e_comerce_app/features/messages/widgets/message_card.dart';
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/navigation_menu.dart';
@@ -14,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
   final ProductModel product;
   const ChatScreen({
     super.key,
@@ -22,15 +24,21 @@ class ChatScreen extends StatelessWidget {
   });
 
   @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+//LACK TO IMPLEMENT FOCUS NODE FROM THE TUTORIAL OF MITCH KOK
+  FocusNode 
+  @override
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
-    final auth = AuthenticationRepository.instance;
 
     return Scaffold(
         // bottomNavigationBar:
         appBar: JAppBar(
           showBackArrow: true,
-          title: Text('Friend  name',
+          title: Text(widget.product.brand!.name,
               style: Theme.of(context).textTheme.headlineMedium),
           actions: [
             PopupMenuButton(
@@ -45,29 +53,34 @@ class ChatScreen extends StatelessWidget {
           //!MESSAGE STREAM
 
           StreamBuilder(
-            stream: controller.getMessages(otherUserID: product.brand!.id),
+            stream: controller.getMessages(otherUserID: widget.product.brand!.id),
             builder: (context, snapshot) {
               //nothing found
-              const emptyWidget = Expanded(
-                child: JAnimationControllerWidget(
-                  text: 'Chat with your seller',
-                  animation: JImages.noMessag,
-                ),
-              );
+              if (snapshot.hasError) {
+                return const Expanded(
+                  child: JAnimationControllerWidget(
+                    text: 'Chat with your seller',
+                    animation: JImages.noMessag,
+                  ),
+                );
+              }
 
-              final widget = JCloudHelperFunction.checkMultiRecordState(
-                  snapshot: snapshot, nothingFound: emptyWidget);
-              if (widget != null) return widget;
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              }
+
+              // final widget = JCloudHelperFunction.checkMultiRecordState(
+              //     snapshot: snapshot, nothingFound: emptyWidget);
+              // if (widget != null) return widget;
 
               //data found
               return Expanded(
-                child: ListView.builder(
-                  reverse: true,
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) =>
-                      MessageCard(userModel: snapshot.data![index]),
-                ),
-              );
+                  child: ListView(
+                reverse: false,
+                children: snapshot.data!.docs
+                    .map((e) => _buildMessageItem(e))
+                    .toList(),
+              ));
             },
           ),
 
@@ -85,11 +98,10 @@ class ChatScreen extends StatelessWidget {
                       child: TextFormField(
                         controller: controller.messages,
                         validator: (value) =>
-                            JValidator.validateEmptyText('Name', value),
+                            JValidator.validateEmptyText('Text', value),
                         keyboardType: TextInputType.text,
                         // controller: controller.discountPrice,
-                        // validator: (value) => TValidator.validateEmptyText(
-                        //     'discount price', value),
+
                         expands: false,
                         decoration: const InputDecoration(
                           labelText: 'Say something...',
@@ -100,11 +112,27 @@ class ChatScreen extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () =>
-                        controller.sendMessages(productModel: product),
+                        controller.sendMessages(productModel: widget.product),
                     icon: const Icon(Iconsax.send1))
               ],
             ),
           ),
         ]));
+  }
+
+  Widget _buildMessageItem(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    final _auth = Get.put(AuthenticationRepository());
+
+    bool isCurrentUser = data['senderID'] == _auth.authUser.uid;
+
+    return MessageCard(
+      alignment:
+          isCurrentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+      photoUrl: data['photoUrl'],
+      userName: data['userName'],
+      message: data['message'],
+      // timeStamp: data['timeStamp'],
+    );
   }
 }
