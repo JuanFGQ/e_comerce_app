@@ -29,7 +29,37 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
 //LACK TO IMPLEMENT FOCUS NODE FROM THE TUTORIAL OF MITCH KOK
-  FocusNode 
+  FocusNode listViewFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+
+    //add listener to focus node
+    listViewFocusNode.addListener(() {
+      if (listViewFocusNode.hasFocus) {
+        //cause a delay so that the keyboard has time to show up
+        //then the amount of remaining space will be calculated.
+        Future.delayed(Duration(milliseconds: 500), () => scrollDown());
+      }
+    });
+    //wait a bit for listView to be built, then scroll to bottom
+    Future.delayed(Duration(milliseconds: 500), () => scrollDown());
+  }
+
+  final ScrollController _scrollController = ScrollController();
+  void scrollDown() {
+    _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    listViewFocusNode.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
@@ -53,7 +83,8 @@ class _ChatScreenState extends State<ChatScreen> {
           //!MESSAGE STREAM
 
           StreamBuilder(
-            stream: controller.getMessages(otherUserID: widget.product.brand!.id),
+            stream:
+                controller.getMessages(otherUserID: widget.product.brand!.id),
             builder: (context, snapshot) {
               //nothing found
               if (snapshot.hasError) {
@@ -76,7 +107,8 @@ class _ChatScreenState extends State<ChatScreen> {
               //data found
               return Expanded(
                   child: ListView(
-                reverse: false,
+                controller: _scrollController,
+                // reverse: false,
                 children: snapshot.data!.docs
                     .map((e) => _buildMessageItem(e))
                     .toList(),
@@ -96,6 +128,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: Form(
                       key: controller.messagesForm,
                       child: TextFormField(
+                        focusNode: listViewFocusNode,
                         controller: controller.messages,
                         validator: (value) =>
                             JValidator.validateEmptyText('Text', value),
@@ -111,8 +144,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
                 IconButton(
-                    onPressed: () =>
-                        controller.sendMessages(productModel: widget.product),
+                    onPressed: () {
+                      controller.sendMessages(productModel: widget.product);
+                      scrollDown();
+                    },
                     icon: const Icon(Iconsax.send1))
               ],
             ),
