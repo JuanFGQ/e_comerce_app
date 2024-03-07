@@ -48,11 +48,9 @@ class MessagingRepository extends GetxController {
 
     try {
       await _db
-          .collection("Users")
-          .doc(userId)
-          .collection('messages')
+          .collection("Chat_Rooms")
           .doc(chatRoomID)
-          .collection('message')
+          .collection('messages')
           .add(newMessage.toJson());
     } on FirebaseException catch (e) {
       throw JFirebaseException(e.code).message;
@@ -70,17 +68,14 @@ class MessagingRepository extends GetxController {
   Stream<
       QuerySnapshot
       // List<MessageModel>
-
       > fetchMessages(String chatRoomID) {
     final userId = AuthenticationRepository.instance.authUser.uid;
 
     try {
       final snapshot = _db
-          .collection("Users")
-          .doc(userId)
-          .collection('messages')
+          .collection("Chat_Rooms")
           .doc(chatRoomID)
-          .collection('message')
+          .collection('messages')
           .orderBy("timeStamp", descending: false)
           .snapshots();
       return snapshot;
