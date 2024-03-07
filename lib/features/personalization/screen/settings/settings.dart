@@ -4,7 +4,6 @@ import 'package:e_comerce_app/common/widgets/list_tiles/settings_menu_tile.dart'
 import 'package:e_comerce_app/common/widgets/list_tiles/user_list_tile.dart';
 import 'package:e_comerce_app/common/widgets/text/section_header.dart';
 import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
-import 'package:e_comerce_app/data/repositories/banners/banner_repository.dart';
 import 'package:e_comerce_app/data/repositories/categories/category_repository.dart';
 import 'package:e_comerce_app/dummy_data.dart';
 import 'package:e_comerce_app/features/personalization/screen/address/address.dart';

@@ -2,7 +2,6 @@ import 'package:e_comerce_app/features/shop/models/baner_model.dart';
 import 'package:e_comerce_app/features/shop/models/brand_model.dart';
 import 'package:e_comerce_app/features/shop/models/category_model.dart';
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
-import 'package:e_comerce_app/features/shop/models/product_variation_model.dart';
 import 'package:e_comerce_app/routes/routes.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 

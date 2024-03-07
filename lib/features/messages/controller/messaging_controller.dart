@@ -4,13 +4,10 @@ import 'package:e_comerce_app/data/repositories/messages/messages_repository.dar
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/messages/model/message_model.dart';
-import 'package:e_comerce_app/features/shop/models/product_model.dart';
-import 'package:e_comerce_app/utils/constants/image_strings.dart';
-import 'package:e_comerce_app/utils/popups/full_screen_loader.dart';
+import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 
 class MessaggingController extends GetxController {
   static MessaggingController get instance => Get.find();
@@ -26,6 +23,8 @@ class MessaggingController extends GetxController {
   final messages = TextEditingController();
   //form validator
   GlobalKey<FormState> messagesForm = GlobalKey<FormState>();
+  //user controller
+  final userController = UserController.instance;
 
   //!GET USERS LISTS
 
@@ -41,7 +40,7 @@ class MessaggingController extends GetxController {
   }
 
   //! SEND MESSAGES
-  Future<void> sendMessages({required ProductModel productModel}) async {
+  Future<void> sendMessages({required String receptorID}) async {
     try {
       //check internet connectivity
 
@@ -62,15 +61,15 @@ class MessaggingController extends GetxController {
       final messageM = MessageModel(
         senderID: currentUserID,
         senderEmail: currentUserEmail,
-        receiverID: productModel.brand!.id,
+        receiverID: receptorID,
         message: messages.text,
         timestamp: timestamp,
-        userName: productModel.brand!.name,
-        profilePicture: productModel.brand!.image,
+        userName: userController.user.value.fullName,
+        profilePicture: userController.user.value.profilePicture,
       );
 
       //construct chat rrom ID for the two users(sorted to ensure uniqueness)
-      List<String> ids = [currentUserID, productModel.brand!.id];
+      List<String> ids = [currentUserID, receptorID];
       ids.sort(); //sort the ids (this ensure the chattoomID is the same for any 2 people)
       String chatRoomID = ids.join('_');
 
@@ -91,7 +90,7 @@ class MessaggingController extends GetxController {
       QuerySnapshot
       // List<MessageModel>
 
-      > getMessages({required String otherUserID}) {
+      > getMessages({required String userID, otherUserID}) {
     try {
       //get the current ID for the user who will send the message
       final currentUserID = _auth.currentUser!.uid;

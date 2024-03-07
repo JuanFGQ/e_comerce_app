@@ -1,9 +1,7 @@
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/loaders/animation_loader_widget.dart';
-import 'package:e_comerce_app/common/widgets/shimmer_effect/vertical_shimmer.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
 import 'package:e_comerce_app/features/messages/widgets/chat_card.dart';
-import 'package:e_comerce_app/navigation_menu.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
@@ -11,7 +9,6 @@ import 'package:e_comerce_app/utils/helpers/cloud_helper_function.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class MessagesScreen extends StatelessWidget {
   const MessagesScreen({super.key});
@@ -19,7 +16,7 @@ class MessagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
-    final dark = JHelperFunction.isDarkMode;
+    const dark = JHelperFunction.isDarkMode;
 
     return Scaffold(
       appBar: JAppBar(
@@ -70,6 +67,8 @@ class MessagesScreen extends StatelessWidget {
                     .apply(color: JColors.darkGrey)),
           ),
           const SizedBox(height: JSizes.sm / 2),
+
+          //!MODIFICAR URGENTEMENTE
           StreamBuilder(
             stream: controller.getUserMessage(),
             builder: (context, snapshot) {

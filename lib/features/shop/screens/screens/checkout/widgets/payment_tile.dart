@@ -2,7 +2,6 @@ import 'package:e_comerce_app/common/widgets/custom_shapes/containers/rounded_co
 import 'package:e_comerce_app/features/shop/controllers/product/checkout_controller.dart';
 import 'package:e_comerce_app/features/shop/models/payment_method_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
-import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:e_comerce_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';

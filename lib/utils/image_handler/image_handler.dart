@@ -6,7 +6,7 @@ Widget getImage(String? picture) {
   if (picture != null && picture.startsWith('http')) {
     return FadeInImage(
       image: NetworkImage(picture),
-      placeholder: AssetImage('assets/jar-loading.gif'),
+      placeholder: const AssetImage('assets/jar-loading.gif'),
       fit: BoxFit.cover,
     );
   }

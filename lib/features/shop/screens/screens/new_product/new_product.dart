@@ -1,16 +1,10 @@
-import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
 import 'package:e_comerce_app/common/widgets/selected_category/select_category.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/new_product_controller.dart';
-import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/new_product/widgets/add_images_slider.dart';
-import 'package:e_comerce_app/features/shop/screens/screens/prouct_details/widgets/product_detail_image_slider.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
-import 'package:e_comerce_app/utils/constants/text_strings.dart';
 import 'package:e_comerce_app/utils/validators/validators.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:iconsax/iconsax.dart';
 
 class NewProductScreen extends StatelessWidget {

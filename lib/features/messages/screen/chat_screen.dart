@@ -28,7 +28,6 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-//LACK TO IMPLEMENT FOCUS NODE FROM THE TUTORIAL OF MITCH KOK
   FocusNode listViewFocusNode = FocusNode();
 
   @override
@@ -50,12 +49,12 @@ class _ChatScreenState extends State<ChatScreen> {
   final ScrollController _scrollController = ScrollController();
   void scrollDown() {
     _scrollController.animateTo(_scrollController.position.maxScrollExtent,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastOutSlowIn);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     listViewFocusNode.dispose();
     super.dispose();
   }
@@ -97,7 +96,7 @@ class _ChatScreenState extends State<ChatScreen> {
               }
 
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
 
               // final widget = JCloudHelperFunction.checkMultiRecordState(
@@ -145,8 +144,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 IconButton(
                     onPressed: () {
-                      controller.sendMessages(productModel: widget.product);
-                      scrollDown();
+                      controller.sendMessages(
+                          receptorID: widget.product.brand!.id);
                     },
                     icon: const Icon(Iconsax.send1))
               ],

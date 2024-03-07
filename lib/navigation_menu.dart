@@ -1,8 +1,6 @@
 import 'package:e_comerce_app/features/personalization/screen/settings/settings.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/new_product_controller.dart';
-import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/home/home.dart';
-import 'package:e_comerce_app/features/shop/screens/screens/new_product/new_product.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/store/store.dart';
 import 'package:e_comerce_app/features/shop/screens/screens/wishlist/wish_list.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';

@@ -19,14 +19,15 @@ class LoginController extends GetxController {
   final userController = Get.put(UserController());
   @override
 
+  //!check this condition
   // void onInit() {
-  // if(localStorge.isNotEmpty)
-  // {   email.text = localStorage.read('REMEMBER_ME_EMAIL');
-  //password.text = localStorage.read('REMEMBER_ME_PASSWORD');
-//}else{
-// email.text = '';
-  //password.text = '');
-//}
+  //   if (localStorage.isNotEmpty) {
+  //     email.text = localStorage.read('REMEMBER_ME_EMAIL');
+  //     password.text = localStorage.read('REMEMBER_ME_PASSWORD');
+  //   } else {
+  //     email.text = '';
+  //     password.text = '';
+  //   }
   //   super.onInit();
   // }
 
@@ -56,7 +57,7 @@ class LoginController extends GetxController {
       }
 
       //LOGIN USER USING EMAIL & PASSWORD AUTHENTICATION
-      final userCredentials = await AuthenticationRepository.instance
+      await AuthenticationRepository.instance
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       //REMOVE LOADER

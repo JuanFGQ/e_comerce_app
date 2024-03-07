@@ -1,14 +1,10 @@
 import 'package:e_comerce_app/common/widgets/rounded_images/rounded_images.dart';
 import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
-import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
 import 'package:e_comerce_app/features/messages/model/message_model.dart';
-import 'package:e_comerce_app/features/messages/screen/chat_screen.dart';
-import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +20,7 @@ class ChatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
-    final _auth = AuthenticationRepository.instance.authUser.uid;
+    final auth = AuthenticationRepository.instance.authUser.uid;
     return GestureDetector(
       // onTap: () => Get.to(() => ChatScreen(otherUserID: ,)),
       child: Padding(
@@ -32,7 +28,7 @@ class ChatCard extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              crossAxisAlignment: messaginModel.receiverID != _auth
+              crossAxisAlignment: messaginModel.receiverID != auth
                   ? CrossAxisAlignment.start
                   : CrossAxisAlignment.end,
               children: [
@@ -81,7 +77,7 @@ class ChatCard extends StatelessWidget {
                 Column(
                   children: [
                     //TIME STAMP MESSAGE
-                    Text('15 min'
+                    const Text('15 min'
                         // 'messaging.timestamp.toString()'
                         ),
 

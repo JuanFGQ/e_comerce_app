@@ -1,4 +1,3 @@
-import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class ProductTitleText extends StatelessWidget {

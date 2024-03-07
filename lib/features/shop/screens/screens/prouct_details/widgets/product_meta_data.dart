@@ -4,6 +4,7 @@ import 'package:e_comerce_app/common/widgets/text/brand_title_text_with_verified
 import 'package:e_comerce_app/common/widgets/text/price_text.dart';
 import 'package:e_comerce_app/common/widgets/text/product_title_text.dart';
 import 'package:e_comerce_app/features/messages/screen/chat_screen.dart';
+import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:e_comerce_app/features/shop/controllers/product/product_controller.dart';
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
@@ -27,6 +28,7 @@ class JProductMetaData extends StatelessWidget {
     final controller = ProductController.instance;
     final salePercentage =
         controller.calculatSalePercetange(product.price, product.salePrice);
+    final userController = UserController.instance;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,12 +110,15 @@ class JProductMetaData extends StatelessWidget {
                 title: product.brand != null ? product.brand!.name : '',
                 brandTextSize: TextSizes.medium),
             const Spacer(),
-            IconButton(
-                onPressed: () => Get.to(ChatScreen(product: product)),
-                icon: Icon(
-                  Iconsax.message,
-                  color: dark ? JColors.white : JColors.accent,
-                ))
+
+            //!message
+            if (userController.user.value.id != product.brand!.id)
+              IconButton(
+                  onPressed: () => Get.to(ChatScreen(product: product)),
+                  icon: Icon(
+                    Iconsax.message,
+                    color: dark ? JColors.white : JColors.accent,
+                  ))
           ],
         )
       ],
