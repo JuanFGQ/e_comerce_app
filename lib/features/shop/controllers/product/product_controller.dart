@@ -48,6 +48,19 @@ class ProductController extends GetxController {
 
   //Get the product price or price range fro variations
   String getProductsPrice(ProductModel product) {
+//! PAY ATTENTION TO THIS;
+/*
+! I don´t need to show the percentage in value , i need to show the result of that percetage operation 
+  so, what means i will show the result of that operation, that´s what i have to do here...
+
+  *place orignal price
+  *place the value of discount for original price
+  *if i discounted 50€ for example. how much are those 50€ in percentaje related with the orginal price
+
+  //WHIT THIS STEPS MAKE THE NECESSARY VALIDATIONS AND CALCULATE...
+  //ITS NECCESSARY TO ADD THE SCENARIO WHERE THERE ISN´T A VALUE FOR DISCOUNT PRICE 
+*/
+
     double smallestPrice = double.infinity;
     double largestPrice = 0.0;
 

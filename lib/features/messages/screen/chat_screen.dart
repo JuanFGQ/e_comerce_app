@@ -7,6 +7,7 @@ import 'package:e_comerce_app/features/messages/controller/messaging_controller.
 import 'package:e_comerce_app/features/messages/model/message_model.dart';
 import 'package:e_comerce_app/features/messages/widgets/chat_card.dart';
 import 'package:e_comerce_app/features/messages/widgets/message_card.dart';
+import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:e_comerce_app/features/shop/models/product_model.dart';
 import 'package:e_comerce_app/navigation_menu.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
@@ -29,6 +30,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   FocusNode listViewFocusNode = FocusNode();
+  final userController = UserController.instance;
 
   @override
   void initState() {
@@ -82,8 +84,9 @@ class _ChatScreenState extends State<ChatScreen> {
           //!MESSAGE STREAM
 
           StreamBuilder(
-            stream:
-                controller.getMessages(otherUserID: widget.product.brand!.id),
+            stream: controller.getMessages(
+                userID: userController.user.value.id,
+                otherUserID: widget.product.brand!.id),
             builder: (context, snapshot) {
               //nothing found
               if (snapshot.hasError) {

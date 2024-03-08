@@ -60,6 +60,8 @@ class ChatCard extends StatelessWidget {
                       //USER MESSAGE
                       StreamBuilder(
                           stream: controller.getMessages(
+                              userID:
+                                  'PLACE HERE THE ID WHOSE IS USING THE APP ',
                               otherUserID: messaginModel.receiverID),
                           builder: (context, snapshot) {
                             return Text('messaging.message',
