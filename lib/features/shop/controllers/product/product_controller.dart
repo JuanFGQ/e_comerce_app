@@ -46,6 +46,16 @@ class ProductController extends GetxController {
     }
   }
 
+  // String getDiscountPrice(ProductModel productModel) {
+  //   double finalPrice = 0.0;
+
+  //   if (productModel.price > 0) {
+  //     double priceWithDiscount =
+  //         (productModel.salePrice * productModel.price) / 100;
+  //     return priceWithDiscount.toString();
+  //   }
+  // }
+
   //Get the product price or price range fro variations
   String getProductsPrice(ProductModel product) {
 //! PAY ATTENTION TO THIS;
@@ -57,8 +67,8 @@ class ProductController extends GetxController {
   *place the value of discount for original price
   *if i discounted 50€ for example. how much are those 50€ in percentaje related with the orginal price
 
-  //WHIT THIS STEPS MAKE THE NECESSARY VALIDATIONS AND CALCULATE...
-  //ITS NECCESSARY TO ADD THE SCENARIO WHERE THERE ISN´T A VALUE FOR DISCOUNT PRICE 
+  WHIT THIS STEPS MAKE THE NECESSARY VALIDATIONS AND CALCULATE...
+  ITS NECCESSARY TO ADD THE SCENARIO WHERE THERE ISN´T A VALUE FOR DISCOUNT PRICE 
 */
 
     double smallestPrice = double.infinity;
@@ -96,6 +106,15 @@ class ProductController extends GetxController {
   }
 
 // calculate discount percentage
+
+  String? calculatePercentage(double originalPrice, double? salePrice) {
+    if (salePrice == null || salePrice <= 0.0) return null;
+    if (originalPrice <= 0) return null;
+
+    double percetage = (salePrice / originalPrice) * 100;
+
+    return percetage.toStringAsFixed(0);
+  }
 
   String? calculatSalePercetange(double originalPrice, double? salePrice) {
     if (salePrice == null || salePrice <= 0.0) return null;

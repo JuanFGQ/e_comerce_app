@@ -24,7 +24,7 @@ class ProductCardVertical extends StatelessWidget {
     //
     final controller = ProductController.instance;
     final salePercentage =
-        controller.calculatSalePercetange(product.price, product.salePrice);
+        controller.calculatePercentage(product.salePrice, product.price);
     final dark = JHelperFunction.isDarkMode(context);
     //
     return GestureDetector(
@@ -144,7 +144,8 @@ class ProductCardVertical extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: JSizes.md),
                         child: JProductPriceText(
-                            price: product.salePrice.toString()),
+                            price: (product.salePrice - product.price)
+                                .toStringAsFixed(0)),
                       )
                       // Padding(
                       //   padding: const EdgeInsets.only(left: TSizes.md),

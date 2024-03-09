@@ -27,7 +27,7 @@ class JProductMetaData extends StatelessWidget {
 
     final controller = ProductController.instance;
     final salePercentage =
-        controller.calculatSalePercetange(product.price, product.salePrice);
+        controller.calculatePercentage(product.salePrice, product.price);
     final userController = UserController.instance;
 
     return Column(
@@ -65,8 +65,7 @@ class JProductMetaData extends StatelessWidget {
             const SizedBox(width: JSizes.spaceBtwItems),
             if (product.salePrice > 0)
               JProductPriceText(
-                  price: ((product.price * product.salePrice) / 100)
-                      .toStringAsFixed(0),
+                  price: (product.salePrice - product.price).toStringAsFixed(0),
                   isLarge: true)
           ],
         ),
