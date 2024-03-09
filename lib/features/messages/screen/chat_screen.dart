@@ -31,6 +31,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   FocusNode listViewFocusNode = FocusNode();
   final userController = UserController.instance;
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -41,14 +42,13 @@ class _ChatScreenState extends State<ChatScreen> {
       if (listViewFocusNode.hasFocus) {
         //cause a delay so that the keyboard has time to show up
         //then the amount of remaining space will be calculated.
-        Future.delayed(Duration(milliseconds: 500), () => scrollDown());
+        Future.delayed(const Duration(milliseconds: 300), () => scrollDown());
       }
     });
     //wait a bit for listView to be built, then scroll to bottom
-    Future.delayed(Duration(milliseconds: 500), () => scrollDown());
+    Future.delayed(const Duration(milliseconds: 300), () => scrollDown());
   }
 
-  final ScrollController _scrollController = ScrollController();
   void scrollDown() {
     _scrollController.animateTo(_scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 300),
@@ -66,7 +66,6 @@ class _ChatScreenState extends State<ChatScreen> {
     final controller = Get.put(MessaggingController());
 
     return Scaffold(
-        // bottomNavigationBar:
         appBar: JAppBar(
           showBackArrow: true,
           title: Text(widget.product.brand!.name,
@@ -99,6 +98,7 @@ class _ChatScreenState extends State<ChatScreen> {
               }
 
               if (snapshot.connectionState == ConnectionState.waiting) {
+                Future.delayed(const Duration(seconds: 1));
                 return const CircularProgressIndicator();
               }
 
@@ -107,6 +107,10 @@ class _ChatScreenState extends State<ChatScreen> {
               // if (widget != null) return widget;
 
               //data found
+
+              Future.microtask(() {
+                scrollDown();
+              });
               return Expanded(
                   child: ListView(
                 controller: _scrollController,
@@ -147,8 +151,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 IconButton(
                     onPressed: () {
-                      controller.sendMessages(
-                          receptorID: widget.product.brand!.id);
+                      controller
+                          .sendMessages(receptorID: widget.product.brand!.id)
+                          .then((_) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          scrollDown();
+                        });
+                      });
                     },
                     icon: const Icon(Iconsax.send1))
               ],

@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_comerce_app/common/widgets/shimmer_effect/shimmer_effect.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -51,17 +53,25 @@ class JRoundedImage extends StatelessWidget {
             borderRadius: applyImageRadius
                 ? BorderRadius.circular(JSizes.md)
                 : BorderRadius.zero,
-            child: localImage
-                ? Image.file(
-                    File(imageUrl),
+            child: isNetworkImage
+                ? CachedNetworkImage(
                     fit: fit,
-                  )
+                    progressIndicatorBuilder: (context, url, progress) =>
+                        JShimmerEffect(width: width!, height: height!),
+                    imageUrl: imageUrl,
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error))
                 : Image(
                     fit: fit,
-                    image: isNetworkImage
-                        ? NetworkImage(imageUrl)
-                        : AssetImage(imageUrl) as ImageProvider)),
+                    image: localImage
+                        ? Image.file(File(imageUrl), fit: fit).image
+                        : AssetImage(imageUrl))),
       ),
     );
   }
 }
+
+  // Image.file(
+                //     File(imageUrl),
+                //     fit: fit,
+                //   )

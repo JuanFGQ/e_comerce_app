@@ -4,6 +4,8 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
+
         {
             "name": "e_comerce_app",
             "request": "launch",
@@ -14,6 +16,12 @@
             "request": "launch",
             "type": "dart",
             "deviceId": "z5lzz9bmons4zphq"
+        },
+        {
+            "name": "Oppo",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "6DNN956TCIAY4XKN"
         },
         {
             "name": "Emulator",
@@ -39,7 +47,7 @@
         {
             "name": "Compound",
             "configurations": [
-                "Xiaomi","Emulator"
+                "Xiaomi","Oppo"
               
             ]
         }
