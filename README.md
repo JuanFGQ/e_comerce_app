@@ -32,9 +32,10 @@
 
 # :construction_worker: Folder/Project Structure
 
-  *  all the project was managed over MVC
-
-
+  *  all the project was managed over MVC design pattern for concern separations for more modular and clean code.
+  *  all the code is commented and well organized to an easy reading.
+  *  Widgets were created to be reused as much as possible.
+  *  all the sizes / colors /margins / spaces / assets - were handled by static classes on its own documents for guarantee homogeneous dimensions throughout the app.
 --------------------------------------------------------
 
  ## :iphone: Login Page
