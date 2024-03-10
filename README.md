@@ -11,8 +11,31 @@
   * Buy orders tracker.
   * Messaging functionality for communication between sellers.
 
-  ## :memo: State Managment
-   *  GetX
+--------------------------------------------------------
+# 🔥 FireBase 
+
+  * managment of collections and subcollection for an efficiente data storing in database
+  * also used like media storage with FirebaseStorage
+  * Authentication methods (google and email)
+
+--------------------------------------------------------
+
+# 📈 State-Management GETX
+
+ ## it was choosen by:
+  *  its simplicty and productitvy
+  *  navigation routes simplified
+  *  high performance
+  *  reactive statements to refresh widgets and update widgets automatically 
+  *  and to gain profiencicy with this state managment 
+--------------------------------------------------------
+
+# :construction_worker: Folder/Project Structure
+
+  *  all the project was managed over MVC
+
+
+--------------------------------------------------------
 
  ## :iphone: Login Page
   <img align="right" src="https://github.com/JuanFGQ/e_comerce_app/assets/97085649/e1185402-044d-49a4-90fb-c239a6b652c0" width="150" height="300px">
@@ -31,7 +54,7 @@
 
 
 
-    --------------------------------------------------------
+--------------------------------------------------------
 
 
 ## :house: HomePage
