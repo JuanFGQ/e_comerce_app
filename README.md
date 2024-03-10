@@ -42,6 +42,34 @@
   * add product direct to favourite list from de preview of the product
 
 
+    --------------------------------------------------------
+
+## :raising_hand: User Profile
+  <img  align ="right" src="https://github.com/JuanFGQ/e_comerce_app/assets/97085649/36b0f258-518b-41b9-9a24-527333e96798" width="150px" height="300px">
+
+
+## ***Features***
+  * It gets the user information directly from google 
+  * Update user profile picture
+  * Update user name
+  * Access to the cart
+  * Address managment (update and add)
+  * Track orders with the date of purchase
+
+
+--------------------------------------------------------
+
+
+## 🆕 Create new product
+  <img  align ="right" src="https://github.com/JuanFGQ/e_comerce_app/assets/97085649/56d6f278-aa23-4358-8702-ed7b881e530d
+" width="150px" height="300px">
+
+
+## ***Features***
+  * Add images from gallery as well camera
+  * Place multiple information to the product 
+  * Available to select a category for applying filters
+  * Validators for avoid empty fields
 
      
     
