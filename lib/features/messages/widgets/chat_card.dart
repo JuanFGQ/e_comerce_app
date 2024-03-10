@@ -11,16 +11,26 @@ import 'package:get/get.dart';
 class ChatCard extends StatelessWidget {
   const ChatCard({
     super.key,
-    required this.messaginModel,
+    // required this.messaginModel,
+    required this.profilePicture,
+    required this.userName,
+    required this.lastMessage,
+    required this.timeStamp,
+    // required this.messaginModel,
     // required this.messaging,
   });
-  final MessageModel messaginModel;
+  // final MessageModel messaginModel;
+  final String profilePicture;
+  final String userName;
+  final String lastMessage;
+  final String timeStamp;
   // final MessagingModel messaging;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
     final auth = AuthenticationRepository.instance.authUser.uid;
+    final newMessageInt = MessaggingController.instance;
     return GestureDetector(
       // onTap: () => Get.to(() => ChatScreen(otherUserID: ,)),
       child: Padding(
@@ -28,9 +38,9 @@ class ChatCard extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              crossAxisAlignment: messaginModel.receiverID != auth
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
+              // crossAxisAlignment: messaginModel.receiverID != auth
+              //     ? CrossAxisAlignment.start
+              //     : CrossAxisAlignment.end,
               children: [
                 //!USER IMAGE
                 JRoundedImage(
@@ -38,12 +48,11 @@ class ChatCard extends StatelessWidget {
                   height: 60,
                   applyImageRadius: true,
                   width: 60,
-                  imageUrl: messaginModel.profilePicture.contains('http')
-                      ? messaginModel.profilePicture
+                  imageUrl: profilePicture.contains('http')
+                      ? profilePicture
                       : JImages.userImage,
-                  isNetworkImage: messaginModel.profilePicture.contains('http')
-                      ? true
-                      : false,
+                  isNetworkImage:
+                      profilePicture.contains('http') ? true : false,
                 ),
                 const SizedBox(width: JSizes.md),
 
@@ -54,22 +63,15 @@ class ChatCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //USER NAME
-                      Text(messaginModel.userName,
+                      Text(userName,
                           style: Theme.of(context).textTheme.headlineMedium),
                       const SizedBox(height: JSizes.sm / 2),
                       //USER MESSAGE
-                      StreamBuilder(
-                          stream: controller.getMessages(
-                              userID:
-                                  'PLACE HERE THE ID WHOSE IS USING THE APP ',
-                              otherUserID: messaginModel.receiverID),
-                          builder: (context, snapshot) {
-                            return Text('messaging.message',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                textAlign: TextAlign.start,
-                                style: Theme.of(context).textTheme.bodySmall);
-                          }),
+                      Text(lastMessage,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          textAlign: TextAlign.start,
+                          style: Theme.of(context).textTheme.bodySmall)
                     ],
                   ),
                 ),
@@ -79,9 +81,7 @@ class ChatCard extends StatelessWidget {
                 Column(
                   children: [
                     //TIME STAMP MESSAGE
-                    const Text('15 min'
-                        // 'messaging.timestamp.toString()'
-                        ),
+                    Text(timeStamp),
 
                     const SizedBox(height: JSizes.defaultSpace / 2),
 
@@ -95,7 +95,7 @@ class ChatCard extends StatelessWidget {
                       ),
                       child: Center(
                           child: Text(
-                        '5',
+                        newMessageInt.nonReaded.toString(),
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge!

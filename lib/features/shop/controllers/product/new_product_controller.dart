@@ -108,21 +108,21 @@ class NewProductController extends GetxController {
   //!CAPTURE IMAGES
   void captureImages(ImageSource source) async {
     try {
+      imageUploading.value = true;
+
       final image =
           await ImagePicker().pickImage(source: source, imageQuality: 70);
       if (image != null) {
-        imageUploading.value = true;
-
         previewImages.add(image.path);
         xfileList.add(image);
 
         if (selectedProductImage.value.isEmpty) {
           selectedProductImage.value = image.path;
         }
-        imageUploading.value = false;
 
         JLoaders.successSnackBar(
             title: 'Image added', message: 'Upload succesfull');
+        imageUploading.value = false;
       }
     } catch (e) {
       JLoaders.errorSnackBar(

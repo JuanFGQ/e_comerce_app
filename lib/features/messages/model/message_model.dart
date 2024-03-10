@@ -8,8 +8,10 @@ class MessageModel {
   final Timestamp timestamp;
   final String userName;
   final String profilePicture;
+  final bool isRead;
 
   MessageModel({
+    required this.isRead,
     required this.userName,
     required this.profilePicture,
     required this.senderID,
@@ -20,6 +22,7 @@ class MessageModel {
   });
 
   static MessageModel empty() => MessageModel(
+        isRead: false,
         senderID: '',
         senderEmail: '',
         receiverID: '',
@@ -33,6 +36,7 @@ class MessageModel {
 
   toJson() {
     return {
+      'isRead': isRead,
       'senderID': senderID,
       'senderEmail': senderEmail,
       'receiverID': receiverID,
@@ -56,6 +60,7 @@ class MessageModel {
       timestamp: data['timestamp'],
       userName: data['userName'],
       profilePicture: data['photoUrl'],
+      isRead: data['isRead'],
     );
   }
 
@@ -72,6 +77,7 @@ class MessageModel {
       timestamp: data['timestamp'],
       userName: data['userName'],
       profilePicture: data['photoUrl'],
+      isRead: data['isRead'],
     );
   }
 }

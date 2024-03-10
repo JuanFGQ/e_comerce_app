@@ -83,17 +83,6 @@ class NewProductScreen extends StatelessWidget {
                 Row(
                   children: [
                     const SizedBox(width: JSizes.defaultSpace * 4),
-                    // Expanded(
-                    //   child: TextFormField(
-                    //       controller: controller.productBrand,
-                    //       validator: (value) => TValidator.validateEmptyText(
-                    //           'Product Brand', value),
-                    //       expands: false,
-                    //       decoration: const InputDecoration(
-                    //           labelText: 'Product Brand',
-                    //           prefixIcon: Icon(Iconsax.airdrop5))),
-                    // ),
-                    // const SizedBox(width: TSizes.spaceBtwSection / 2),
 
                     //!AVAILABLE STOCK
                     Expanded(

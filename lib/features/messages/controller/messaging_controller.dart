@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comerce_app/common/widgets/loaders/loaders.dart';
+import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/data/repositories/messages/messages_repository.dart';
 import 'package:e_comerce_app/features/authentication/controllers/network/network_manager.dart';
 import 'package:e_comerce_app/features/authentication/models/user/user_model.dart';
@@ -25,19 +26,10 @@ class MessaggingController extends GetxController {
   GlobalKey<FormState> messagesForm = GlobalKey<FormState>();
   //user controller
   final userController = UserController.instance;
-
-  //!GET USERS LISTS
-
-  Stream<List<MessageModel>> getUserMessage() {
-    try {
-      final user = messageRepo.getUsersStream();
-      // usersList.assignAll(user as Iterable<UserModel>);
-      return user;
-    } catch (e) {
-      return JLoaders.errorSnackBar(
-          title: 'Error try later', message: e.toString());
-    }
-  }
+  //non readed messages
+  RxInt nonReaded = 0.obs;
+  //only once execute flag
+  RxBool isExecutedFunction = false.obs;
 
   //! SEND MESSAGES
   Future<void> sendMessages({required String receptorID}) async {
@@ -59,6 +51,7 @@ class MessaggingController extends GetxController {
 
 //send message model
       final messageM = MessageModel(
+        isRead: false,
         senderID: currentUserID,
         senderEmail: currentUserEmail,
         receiverID: receptorID,
@@ -84,13 +77,18 @@ class MessaggingController extends GetxController {
     }
   }
 
+  Future<void> storeChatRoomID({required String receptorID}) async {
+    try {
+      await messageRepo.storeChatRoom(otherUserID: receptorID);
+    } catch (e) {
+      return JLoaders.errorSnackBar(
+          title: 'Error try later', message: e.toString());
+    }
+  }
+
   //!GET MESSAGES STREAM
 
-  Stream<
-      QuerySnapshot
-      // List<MessageModel>
-
-      > getMessages({required String userID, otherUserID}) {
+  Stream<QuerySnapshot> getMessages({required String userID, otherUserID}) {
     try {
       //get the current ID for the user who will send the message
       final currentUserID = _auth.currentUser!.uid;
@@ -100,6 +98,22 @@ class MessaggingController extends GetxController {
       String chatRoomID = ids.join('_');
 
       return messageRepo.fetchMessages(chatRoomID);
+    } catch (e) {
+      return JLoaders.errorSnackBar(
+          title: 'Error try later', message: e.toString());
+    }
+  }
+
+  //!GET LAST MESSAGE
+
+  Stream<QuerySnapshot> fetchLastMeesage() {
+    try {
+      final userId = AuthenticationRepository.instance.authUser.uid;
+
+      final userID = messageRepo.getChatRoomID(userID: userId);
+      //here i need to get the chatRoomIDS available for this user
+
+      return messageRepo.fetchMessages(userID.toString());
     } catch (e) {
       return JLoaders.errorSnackBar(
           title: 'Error try later', message: e.toString());

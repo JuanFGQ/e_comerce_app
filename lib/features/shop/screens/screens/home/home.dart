@@ -41,8 +41,8 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: JSizes.spaceBtwSection),
 
                   //SEARCH BAR
-                  JSearchContainer(text: 'SearchInStore'),
-                  SizedBox(height: JSizes.spaceBtwSection),
+                  // JSearchContainer(text: 'SearchInStore'),
+                  // SizedBox(height: JSizes.spaceBtwSection),
 
                   //CATEGORIES
 
@@ -55,14 +55,8 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: [
                     //PROMO SLIDER
-                    const JPromoSlider(
-                        // banners: [
-                        //   TImages.onBoardingImage1,
-                        //   TImages.onBoardingImage2,
-                        //   TImages.onBoardingImage3
-                        // ],
-                        ),
-                    const SizedBox(height: JSizes.spaceBtwSection),
+                    // const JPromoSlider(),
+                    // const SizedBox(height: JSizes.spaceBtwSection),
                     //!POPULAR PRODUCTS HEADING
                     JSectionHeading(
                       showActionButton: true,

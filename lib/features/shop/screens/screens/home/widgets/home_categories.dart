@@ -22,10 +22,10 @@ class JHomeCategories extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //HEADER
-          const JSectionHeading(
-              textColor: Colors.white,
-              title: 'Popular Categories',
-              showActionButton: false),
+          // const JSectionHeading(
+          //     textColor: Colors.white,
+          //     title: 'Popular Categories',
+          //     showActionButton: false),
           const SizedBox(height: JSizes.spaceBtwItems),
           //SCROLL CATEGORIES
           Obx(() {

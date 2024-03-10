@@ -151,6 +151,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 IconButton(
                     onPressed: () {
+                      if (!controller.isExecutedFunction.value) {
+                        controller.storeChatRoomID(
+                            receptorID: widget.product.brand!.id);
+
+                        controller.isExecutedFunction.value = true;
+                      }
+
                       controller
                           .sendMessages(receptorID: widget.product.brand!.id)
                           .then((_) {
@@ -159,7 +166,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         });
                       });
                     },
-                    icon: const Icon(Iconsax.send1))
+                    icon: const Icon(Iconsax.send1)),
               ],
             ),
           ),

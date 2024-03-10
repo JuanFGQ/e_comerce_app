@@ -113,7 +113,7 @@ class JProductMetaData extends StatelessWidget {
             //!message
             if (userController.user.value.id != product.brand!.id)
               IconButton(
-                  onPressed: () => Get.to(ChatScreen(product: product)),
+                  onPressed: () => Get.to(() => ChatScreen(product: product)),
                   icon: Icon(
                     Iconsax.message,
                     color: dark ? JColors.white : JColors.accent,

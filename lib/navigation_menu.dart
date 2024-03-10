@@ -35,7 +35,7 @@ class NavigationMenu extends StatelessWidget {
             height: 80,
             destinations: const [
               NavigationDestination(icon: Icon(Iconsax.note), label: 'Home'),
-              NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
+              // NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
               NavigationDestination(
                   icon: Icon(Iconsax.heart), label: 'WishList'),
               NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
@@ -52,7 +52,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomePage(),
-    const StoreScreen(),
+    // const StoreScreen(),
     const FavouriteScreen(),
     const SettingsScreen()
   ];

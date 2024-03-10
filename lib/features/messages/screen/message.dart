@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_comerce_app/common/widgets/loaders/animation_loader_widget.dart';
+import 'package:e_comerce_app/data/repositories/autentication/authentication_repository.dart';
 import 'package:e_comerce_app/features/messages/controller/messaging_controller.dart';
 import 'package:e_comerce_app/features/messages/widgets/chat_card.dart';
+import 'package:e_comerce_app/features/personalization/controller/user_controller.dart';
 import 'package:e_comerce_app/utils/constants/colors.dart';
 import 'package:e_comerce_app/utils/constants/image_strings.dart';
 import 'package:e_comerce_app/utils/constants/sizes.dart';
@@ -16,7 +19,6 @@ class MessagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MessaggingController());
-    const dark = JHelperFunction.isDarkMode;
 
     return Scaffold(
       appBar: JAppBar(
@@ -57,48 +59,62 @@ class MessagesScreen extends StatelessWidget {
           //   ),
           // ),
           // const SizedBox(height: TSizes.spaceBtwItems),
-          Padding(
-            padding: const EdgeInsets.only(left: JSizes.md * 2),
-            child: Text('Older',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(fontSize: 20)
-                    .apply(color: JColors.darkGrey)),
-          ),
-          const SizedBox(height: JSizes.sm / 2),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: JSizes.md * 2),
+          //   child: Text('Older',
+          //       style: Theme.of(context)
+          //           .textTheme
+          //           .bodyLarge!
+          //           .copyWith(fontSize: 20)
+          //           .apply(color: JColors.darkGrey)),
+          // ),
+          // const SizedBox(height: JSizes.sm / 2),
 
-          //!MODIFICAR URGENTEMENTE
+          //*HERE I NEED TO FETCH FOR CHATROOM ID´s AVAILABLES FOR THIS USER AND THEN GET IT
           StreamBuilder(
-            stream: controller.getUserMessage(),
+            stream: controller.fetchLastMeesage(),
             builder: (context, snapshot) {
-              //Nothing Found
-              const emptyWidget = JAnimationControllerWidget(
-                text: '',
-                animation: JImages.emptyChat,
-              );
+              //nothing found
+              if (snapshot.hasError) {
+                return const Expanded(
+                  child: JAnimationControllerWidget(
+                    text: 'No messagges yet',
+                    animation: JImages.noMessag,
+                  ),
+                );
+              }
 
-              final widget = JCloudHelperFunction.checkMultiRecordState(
-                  snapshot: snapshot, nothingFound: emptyWidget);
-              if (widget != null) return widget;
+              //waiting for data
 
-              //data founded
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                Future.delayed(const Duration(seconds: 1));
+                return Center(child: const CircularProgressIndicator());
+              }
 
+//data found
               return Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.all(JSizes.defaultSpace),
-                    child: ListView.builder(
-                      addAutomaticKeepAlives: true,
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) => ChatCard(
-                        messaginModel: snapshot.data![index],
-                      ),
-                    )),
-              );
+                  child: ListView(
+                // controller: _scrollController,
+                // reverse: false,
+                children: snapshot.data!.docs
+                    .map((e) => _buildMessageItem(e))
+                    .toList(),
+              ));
             },
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildMessageItem(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    return ChatCard(
+      profilePicture: data['photoUrl'],
+      userName: data['userName'],
+      lastMessage: data['message'],
+      timeStamp: data['timeStamp'],
     );
   }
 }
