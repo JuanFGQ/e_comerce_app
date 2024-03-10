@@ -26,6 +26,8 @@
   * create new account with email and google
   * implements a confirmation email before starts using the app
   * forgotten password feature for recovering
+  * Automatic login if the user logged before
+  * Validators, for login and password and read terms.
 
 
 
@@ -70,6 +72,22 @@
   * Place multiple information to the product 
   * Available to select a category for applying filters
   * Validators for avoid empty fields
+
+
+--------------------------------------------------------
+
+
+## 💸 CheckOut 
+  <img  align ="right" src="https://github.com/JuanFGQ/e_comerce_app/assets/97085649/f002e3d0-758f-43d9-9957-7989eb973185" width="150px" height="300px">
+
+## ***Features***
+  * Apply deduction in taxes and fees according to the country 
+  * Select multiple payment methods
+  * Select differetn addresses
+  * Modify the product quatity to charge
+
+
+
 
      
     
